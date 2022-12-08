@@ -433,6 +433,9 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
 
     private void btnCaretakerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaretakerActionPerformed
         // TODO add your handling code here:
+        CardLayout cardLayout = (CardLayout) panelAdminWork.getLayout();
+        panelAdminWork.add("CareTaker", panelCareTaker);
+        cardLayout.next(panelAdminWork);
     }//GEN-LAST:event_btnCaretakerActionPerformed
 
 //    public void listResult(ObjectSet result){
