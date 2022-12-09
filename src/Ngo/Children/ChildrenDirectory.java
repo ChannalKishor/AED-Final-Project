@@ -4,10 +4,35 @@
  */
 package Ngo.Children;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author chinm
  */
 public class ChildrenDirectory {
+    private ArrayList<Children> childrenList;
+
+    public ChildrenDirectory() {
+        childrenList = new ArrayList<Children>();
+        
+    }
+
+    public ArrayList<Children> getChildrenList() {
+        return childrenList;
+    }
+
+    public void setChildrenList(ArrayList<Children> childrenList) {
+        this.childrenList = childrenList;
+    }
+
+    public Children addChildren(){
+        Children c = new Children();
+        childrenList.add(c);
+        return c;
+    }
     
+    public void deleteChildren(Children c){
+        childrenList.remove(c);
+    }
 }

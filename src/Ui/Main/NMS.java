@@ -4,7 +4,6 @@
  */
 package Ui.Main;
 
-import Ngo.NgoManager.NgoManagerDirectory;
 import System.Directories.DB4OUtil;
 import System.Directories.MainSystem;
 import Ui.LoginPage.NmsLoginPage;

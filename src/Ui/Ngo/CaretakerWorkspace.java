@@ -4,10 +4,13 @@
  */
 package Ui.Ngo;
 
+import Ngo.Children.Children;
 import System.Directories.DB4OUtil;
 import System.Directories.MainSystem;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -28,7 +31,8 @@ public class CaretakerWorkspace extends javax.swing.JPanel {
         this.cardPanel = cardPanel;
         this.system = system;
         this.dB4OUtil = dB4OUtil;
-//        populateTable();
+        populateChildrenCreateTable();
+        populateChildrenHealthTable();
     }
 
     /**
@@ -51,21 +55,36 @@ public class CaretakerWorkspace extends javax.swing.JPanel {
         lblRole = new javax.swing.JLabel();
         btnLogOut = new javax.swing.JButton();
         panelHealth = new javax.swing.JPanel();
-        ScrollPane5 = new javax.swing.JScrollPane();
-        tableChildren = new javax.swing.JTable();
         lblTitle6 = new javax.swing.JLabel();
+        ScrollPane5 = new javax.swing.JScrollPane();
+        tableChildrenHealth = new javax.swing.JTable();
         lblPatient = new javax.swing.JLabel();
-        lblHealthDate = new javax.swing.JLabel();
         txtPatient = new javax.swing.JTextField();
+        lblHealthDate = new javax.swing.JLabel();
         txtHealthDate = new javax.swing.JTextField();
+        btnAppointment = new javax.swing.JButton();
         panelChildren = new javax.swing.JPanel();
         lblTitle9 = new javax.swing.JLabel();
         ScrollPane7 = new javax.swing.JScrollPane();
-        tablePerson1 = new javax.swing.JTable();
+        tableChildrenCreate = new javax.swing.JTable();
         lblChildrenName = new javax.swing.JLabel();
         txtChildrenName = new javax.swing.JTextField();
         lblChildrenAge = new javax.swing.JLabel();
         txtChildrenAge = new javax.swing.JTextField();
+        lblChildrenId = new javax.swing.JLabel();
+        txtChildrenId = new javax.swing.JTextField();
+        lblChildrenDob = new javax.swing.JLabel();
+        txtChildrenDOB = new javax.swing.JTextField();
+        lblChildrenGender = new javax.swing.JLabel();
+        cmbChildrenGender = new javax.swing.JComboBox<>();
+        lblChildrenSearch = new javax.swing.JLabel();
+        txtChildrenSearch = new javax.swing.JTextField();
+        btnChildrenView = new javax.swing.JButton();
+        btnChildrenDelete = new javax.swing.JButton();
+        btnChildrenCreate = new javax.swing.JButton();
+        btnChildrenUpdate = new javax.swing.JButton();
+        lblChildrenRole = new javax.swing.JLabel();
+        txtChildrenRole = new javax.swing.JTextField();
 
         btnHome.setText("Home");
         btnHome.addActionListener(new java.awt.event.ActionListener() {
@@ -140,7 +159,7 @@ public class CaretakerWorkspace extends javax.swing.JPanel {
             panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblTitle2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHomeLayout.createSequentialGroup()
-                .addContainerGap(505, Short.MAX_VALUE)
+                .addContainerGap(528, Short.MAX_VALUE)
                 .addGroup(panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnLogOut)
                     .addComponent(lblRole, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -160,45 +179,49 @@ public class CaretakerWorkspace extends javax.swing.JPanel {
 
         panelWork.add(panelHome, "card2");
 
-        tableChildren.setModel(new javax.swing.table.DefaultTableModel(
+        lblTitle6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTitle6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle6.setText("Children Health");
+
+        tableChildrenHealth.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Children Id", "Name", "Age", "DOB"
+                "Children Id", "Name", "Age", "DOB", "Gender"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        ScrollPane5.setViewportView(tableChildren);
-
-        lblTitle6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblTitle6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitle6.setText("Children Health");
+        ScrollPane5.setViewportView(tableChildrenHealth);
 
         lblPatient.setText("Patient:");
 
         lblHealthDate.setText("Date:");
 
+        btnAppointment.setText("Book Appointment");
+        btnAppointment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAppointmentActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelHealthLayout = new javax.swing.GroupLayout(panelHealth);
         panelHealth.setLayout(panelHealthLayout);
         panelHealthLayout.setHorizontalGroup(
             panelHealthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHealthLayout.createSequentialGroup()
-                .addContainerGap(103, Short.MAX_VALUE)
-                .addComponent(ScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(111, 111, 111))
+            .addComponent(lblTitle6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelHealthLayout.createSequentialGroup()
-                .addGap(126, 126, 126)
+                .addGap(114, 114, 114)
                 .addGroup(panelHealthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblPatient)
                     .addComponent(lblHealthDate))
@@ -207,14 +230,22 @@ public class CaretakerWorkspace extends javax.swing.JPanel {
                     .addComponent(txtHealthDate, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(lblTitle6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHealthLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelHealthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHealthLayout.createSequentialGroup()
+                        .addComponent(btnAppointment)
+                        .addGap(256, 256, 256))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHealthLayout.createSequentialGroup()
+                        .addComponent(ScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 699, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26))))
         );
         panelHealthLayout.setVerticalGroup(
             panelHealthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelHealthLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblTitle6)
-                .addGap(96, 96, 96)
+                .addGap(85, 85, 85)
                 .addComponent(ScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
                 .addGroup(panelHealthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -224,39 +255,84 @@ public class CaretakerWorkspace extends javax.swing.JPanel {
                 .addGroup(panelHealthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblHealthDate)
                     .addComponent(txtHealthDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(202, 202, 202))
+                .addGap(159, 159, 159)
+                .addComponent(btnAppointment)
+                .addGap(29, 29, 29))
         );
 
-        panelWork.add(panelHealth, "card3");
+        panelWork.add(panelHealth, "card7");
 
         lblTitle9.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblTitle9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle9.setText("Children");
 
-        tablePerson1.setModel(new javax.swing.table.DefaultTableModel(
+        tableChildrenCreate.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Name", "Age"
+                "Children Id", "Name", "Age", "DOB", "Gender"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        ScrollPane7.setViewportView(tablePerson1);
+        ScrollPane7.setViewportView(tableChildrenCreate);
 
         lblChildrenName.setText("Name:");
 
         lblChildrenAge.setText("Age:");
+
+        lblChildrenId.setText("Children Id:");
+
+        lblChildrenDob.setText("DOB:");
+
+        lblChildrenGender.setText("Gender:");
+
+        cmbChildrenGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Others" }));
+
+        lblChildrenSearch.setText("Search:");
+
+        btnChildrenView.setText("View");
+        btnChildrenView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChildrenViewActionPerformed(evt);
+            }
+        });
+
+        btnChildrenDelete.setText("Delete");
+        btnChildrenDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChildrenDeleteActionPerformed(evt);
+            }
+        });
+
+        btnChildrenCreate.setText("Create");
+        btnChildrenCreate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChildrenCreateActionPerformed(evt);
+            }
+        });
+
+        btnChildrenUpdate.setText("Update");
+        btnChildrenUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChildrenUpdateActionPerformed(evt);
+            }
+        });
+
+        lblChildrenRole.setText("Role:");
+
+        txtChildrenRole.setEditable(false);
+        txtChildrenRole.setText("Child");
 
         javax.swing.GroupLayout panelChildrenLayout = new javax.swing.GroupLayout(panelChildren);
         panelChildren.setLayout(panelChildrenLayout);
@@ -264,18 +340,45 @@ public class CaretakerWorkspace extends javax.swing.JPanel {
             panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblTitle9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelChildrenLayout.createSequentialGroup()
-                .addGap(143, 143, 143)
-                .addComponent(ScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(119, Short.MAX_VALUE))
+                .addGap(41, 41, 41)
+                .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelChildrenLayout.createSequentialGroup()
+                        .addComponent(btnChildrenView)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnChildrenDelete))
+                    .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(panelChildrenLayout.createSequentialGroup()
+                            .addComponent(lblChildrenSearch)
+                            .addGap(18, 18, 18)
+                            .addComponent(txtChildrenSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(ScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 677, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(19, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelChildrenLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblChildrenName)
-                    .addComponent(lblChildrenAge))
-                .addGap(18, 18, 18)
-                .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtChildrenAge, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtChildrenName, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblChildrenRole)
+                    .addComponent(lblChildrenGender)
+                    .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(panelChildrenLayout.createSequentialGroup()
+                            .addComponent(lblChildrenId)
+                            .addGap(18, 18, 18)
+                            .addComponent(txtChildrenId, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelChildrenLayout.createSequentialGroup()
+                            .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblChildrenName)
+                                .addComponent(lblChildrenAge)
+                                .addComponent(lblChildrenDob))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtChildrenAge, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtChildrenName, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtChildrenDOB, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cmbChildrenGender, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(panelChildrenLayout.createSequentialGroup()
+                                    .addComponent(btnChildrenCreate)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnChildrenUpdate))
+                                .addComponent(txtChildrenRole, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(199, 199, 199))
         );
         panelChildrenLayout.setVerticalGroup(
@@ -283,9 +386,21 @@ public class CaretakerWorkspace extends javax.swing.JPanel {
             .addGroup(panelChildrenLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblTitle9)
-                .addGap(160, 160, 160)
-                .addComponent(ScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(92, 92, 92)
+                .addGap(94, 94, 94)
+                .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblChildrenSearch)
+                    .addComponent(txtChildrenSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(ScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnChildrenView)
+                    .addComponent(btnChildrenDelete))
+                .addGap(23, 23, 23)
+                .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblChildrenId)
+                    .addComponent(txtChildrenId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblChildrenName)
                     .addComponent(txtChildrenName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -293,10 +408,26 @@ public class CaretakerWorkspace extends javax.swing.JPanel {
                 .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblChildrenAge)
                     .addComponent(txtChildrenAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(246, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblChildrenDob)
+                    .addComponent(txtChildrenDOB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblChildrenGender)
+                    .addComponent(cmbChildrenGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblChildrenRole)
+                    .addComponent(txtChildrenRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnChildrenCreate)
+                    .addComponent(btnChildrenUpdate))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
-        panelWork.add(panelChildren, "card4");
+        panelWork.add(panelChildren, "card10");
 
         SplitPaneCaretaker.setRightComponent(panelWork);
 
@@ -304,7 +435,7 @@ public class CaretakerWorkspace extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(SplitPaneCaretaker)
+            .addComponent(SplitPaneCaretaker, javax.swing.GroupLayout.DEFAULT_SIZE, 873, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -346,17 +477,167 @@ public class CaretakerWorkspace extends javax.swing.JPanel {
         cardLayout.previous(cardPanel);
     }//GEN-LAST:event_btnLogOutActionPerformed
 
+    private void btnAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAppointmentActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAppointmentActionPerformed
+
+    private void btnChildrenViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChildrenViewActionPerformed
+        // TODO add your handling code here:
+        Integer selectedRowIndex = tableChildrenCreate.getSelectedRow();
+
+        if (selectedRowIndex<0){
+
+            JOptionPane.showMessageDialog(this, "Please select a row to view.");
+            return;
+        }
+
+        else{
+            DefaultTableModel model = (DefaultTableModel) tableChildrenCreate.getModel();
+            Children selMan = (Children) model.getValueAt(selectedRowIndex,0);
+
+            txtChildrenId.setText(selMan.getChildrenId());
+            txtChildrenName.setText(selMan.getName());
+            txtChildrenAge.setText(String.valueOf(selMan.getAge()));
+            txtChildrenDOB.setText(selMan.getDob());
+            cmbChildrenGender.setSelectedItem(selMan.getGender());
+            txtChildrenRole.setText(selMan.getRole());
+        }
+    }//GEN-LAST:event_btnChildrenViewActionPerformed
+
+    private void btnChildrenDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChildrenDeleteActionPerformed
+        // TODO add your handling code here:
+        Integer selectedRowIndex = tableChildrenCreate.getSelectedRow();
+
+        if (selectedRowIndex<0){
+
+            JOptionPane.showMessageDialog(this, "Please select a row to delete.");
+            return;
+        }
+
+        else{
+            DefaultTableModel model = (DefaultTableModel) tableChildrenCreate.getModel();
+            Children selectedMan = (Children) model.getValueAt(selectedRowIndex,0);
+
+            system.getChildrenList().deleteChildren(selectedMan);
+
+            JOptionPane.showMessageDialog(this, "Child deleted successfully.");
+
+            //            dB4OUtil.storeSystem(system);
+            populateChildrenCreateTable();
+        }
+    }//GEN-LAST:event_btnChildrenDeleteActionPerformed
+
+    private void btnChildrenCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChildrenCreateActionPerformed
+        // TODO add your handling code here:
+        String id = txtChildrenId.getText();
+        String name = txtChildrenName.getText();
+        Integer age = Integer.valueOf(txtChildrenAge.getText());
+        String dob = txtChildrenDOB.getText();
+        String gender = String.valueOf(cmbChildrenGender.getSelectedItem());
+        String role = txtChildrenRole.getText();
+
+        Children newManager = system.getChildrenList().addChildren();
+
+        newManager.setChildrenId(id);
+        newManager.setName(name);
+        newManager.setAge(age);
+        newManager.setDob(dob);
+        newManager.setGender(gender);
+        newManager.setRole(role);
+
+        JOptionPane.showMessageDialog(this, "Child created successfully");
+
+        txtChildrenId.setText("");
+        txtChildrenName.setText("");
+        txtChildrenAge.setText("");
+        txtChildrenDOB.setText("");
+
+        populateChildrenCreateTable();
+    }//GEN-LAST:event_btnChildrenCreateActionPerformed
+
+    private void btnChildrenUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChildrenUpdateActionPerformed
+        // TODO add your handling code here:
+        Integer selectedRowIndex = tableChildrenCreate.getSelectedRow();
+
+        if (selectedRowIndex<0){
+
+            JOptionPane.showMessageDialog(this, "Please select a row to view.");
+            return;
+        }
+
+        else{
+            DefaultTableModel model = (DefaultTableModel) tableChildrenCreate.getModel();
+            Children selMan = (Children) model.getValueAt(selectedRowIndex,0);
+
+            selMan.setChildrenId(txtChildrenId.getText());
+            selMan.setName(txtChildrenName.getText());
+            selMan.setAge(Integer.valueOf(txtChildrenAge.getText()));
+            selMan.setDob(txtChildrenDOB.getText());
+            selMan.setGender(String.valueOf(cmbChildrenGender.getSelectedItem()));
+            selMan.setRole(txtChildrenRole.getText());
+
+            JOptionPane.showMessageDialog(this, "Child updated successfully");
+
+            //            dB4OUtil.storeSystem(system);
+            populateChildrenCreateTable();
+        }
+    }//GEN-LAST:event_btnChildrenUpdateActionPerformed
+
+    private void populateChildrenCreateTable(){
+        DefaultTableModel model = (DefaultTableModel) tableChildrenCreate.getModel();
+        model.setRowCount(0);
+        
+//        
+            for(Children c: system.getChildrenList().getChildrenList()){
+
+                Object[] row = new Object[5];
+                row[0] = c; 
+                row[1] = c.getName();
+                row[2] = c.getAge();
+                row[3] = c.getDob();
+                row[4] = c.getGender();
+                model.addRow(row);
+            }
+      }
+      
+      private void populateChildrenHealthTable(){
+        DefaultTableModel model = (DefaultTableModel) tableChildrenHealth.getModel();
+        model.setRowCount(0);
+        
+//        
+            for(Children c: system.getChildrenList().getChildrenList()){
+
+                Object[] row = new Object[5];
+                row[0] = c; 
+                row[1] = c.getName();
+                row[2] = c.getAge();
+                row[3] = c.getDob();
+                row[4] = c.getGender();
+                model.addRow(row);
+            }
+      }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane ScrollPane5;
     private javax.swing.JScrollPane ScrollPane7;
     private javax.swing.JSplitPane SplitPaneCaretaker;
+    private javax.swing.JButton btnAppointment;
     private javax.swing.JButton btnChildren;
+    private javax.swing.JButton btnChildrenCreate;
+    private javax.swing.JButton btnChildrenDelete;
+    private javax.swing.JButton btnChildrenUpdate;
+    private javax.swing.JButton btnChildrenView;
     private javax.swing.JButton btnHealth;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnLogOut;
+    private javax.swing.JComboBox<String> cmbChildrenGender;
     private javax.swing.JLabel lblChildrenAge;
+    private javax.swing.JLabel lblChildrenDob;
+    private javax.swing.JLabel lblChildrenGender;
+    private javax.swing.JLabel lblChildrenId;
     private javax.swing.JLabel lblChildrenName;
+    private javax.swing.JLabel lblChildrenRole;
+    private javax.swing.JLabel lblChildrenSearch;
     private javax.swing.JLabel lblHealthDate;
     private javax.swing.JLabel lblPatient;
     private javax.swing.JLabel lblRole;
@@ -368,10 +649,14 @@ public class CaretakerWorkspace extends javax.swing.JPanel {
     private javax.swing.JPanel panelHealth;
     private javax.swing.JPanel panelHome;
     private javax.swing.JPanel panelWork;
-    private javax.swing.JTable tableChildren;
-    private javax.swing.JTable tablePerson1;
+    private javax.swing.JTable tableChildrenCreate;
+    private javax.swing.JTable tableChildrenHealth;
     private javax.swing.JTextField txtChildrenAge;
+    private javax.swing.JTextField txtChildrenDOB;
+    private javax.swing.JTextField txtChildrenId;
     private javax.swing.JTextField txtChildrenName;
+    private javax.swing.JTextField txtChildrenRole;
+    private javax.swing.JTextField txtChildrenSearch;
     private javax.swing.JTextField txtHealthDate;
     private javax.swing.JTextField txtPatient;
     // End of variables declaration//GEN-END:variables
