@@ -10,6 +10,7 @@ import Hospital.Doctor.DoctorDirectory;
 import Hospital.Hospital.HospitalDirectory;
 import Hospital.Patient.PatientDirectory;
 import Ngo.CareTaker.CaretakerDirectory;
+import Ngo.Children.ChildrenDirectory;
 import Ngo.Ngo.NgoDirectory;
 import Ngo.NgoManager.NgoManagerDirectory;
 
@@ -27,6 +28,7 @@ public class MainSystem {
     private PatientDirectory patientList;
     private HospitalDirectory hospitalList;
     private NgoDirectory ngoList;
+    private ChildrenDirectory childrenList;
 
     
     public MainSystem(){
@@ -38,6 +40,7 @@ public class MainSystem {
         patientList = new PatientDirectory();
         hospitalList = new HospitalDirectory();
         ngoList = new NgoDirectory();
+        childrenList = new ChildrenDirectory();
     }
     
    
@@ -113,6 +116,15 @@ public class MainSystem {
     public void setNgoList(NgoDirectory ngoList) {
         this.ngoList = ngoList;
     }
+
+    public ChildrenDirectory getChildrenList() {
+        return childrenList;
+    }
+
+    public void setChildrenList(ChildrenDirectory childrenList) {
+        this.childrenList = childrenList;
+    }
+    
     
     
     

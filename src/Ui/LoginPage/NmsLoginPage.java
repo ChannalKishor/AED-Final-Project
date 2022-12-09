@@ -60,7 +60,7 @@ public class NmsLoginPage extends javax.swing.JPanel {
 
         lblRole.setText("Role:");
 
-        cmbRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NGO Admin", "NGO Manager", "Fund Manager", "Caretaker", "Person (Public)" }));
 
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
