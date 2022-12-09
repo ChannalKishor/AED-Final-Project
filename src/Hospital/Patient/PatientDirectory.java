@@ -3,11 +3,36 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Hospital.Patient;
+import java.util.ArrayList;
 
 /**
  *
- * @author chinm
+ * @author kishor
  */
 public class PatientDirectory {
+    
+     private ArrayList<Patient> patientList;
+    
+    public PatientDirectory() {
+        patientList = new ArrayList<Patient>();   
+    }
+
+    public ArrayList<Patient> getPatientList() {
+        return patientList;
+    }
+
+    public void setPatientList(ArrayList<Patient> patientList) {
+        this.patientList = patientList;
+    }
+    
+    public Patient addPatient(){
+        Patient newpatient = new Patient();
+        patientList.add(newpatient);
+        return newpatient;
+    }
+    
+    public void deleteHospitalAdmin(Patient m){
+        patientList.remove(m);
+    }
     
 }

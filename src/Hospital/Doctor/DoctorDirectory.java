@@ -17,21 +17,21 @@ public class DoctorDirectory {
         doctorList = new ArrayList<Doctor>();   
     }
 
-    public ArrayList<Doctor> getHospitalAdminList() {
+    public ArrayList<Doctor> getDoctorList() {
         return doctorList;
     }
 
-    public void setHospitalAdminList(ArrayList<Doctor> hospitalAdminList) {
-        this.doctorList = hospitalAdminList;
+    public void setDoctorList(ArrayList<Doctor> doctorList) {
+        this.doctorList = doctorList;
     }
     
-    public Doctor addHospitalAdmin(){
-        Doctor newhospitaladmin = new Doctor();
-        doctorList.add(newhospitaladmin);
-        return newhospitaladmin;
+    public Doctor addDoctor(){
+        Doctor newdoctor = new Doctor();
+        doctorList.add(newdoctor);
+        return newdoctor;
     }
     
-    public void deleteHospitalAdmin(Doctor m){
+    public void deleteDoctor(Doctor m){
         doctorList.remove(m);
     }
     
