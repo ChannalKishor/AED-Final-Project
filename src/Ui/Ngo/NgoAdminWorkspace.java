@@ -55,6 +55,7 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
         btnFundManager = new javax.swing.JButton();
         btnPerson = new javax.swing.JButton();
         lblAccounts = new javax.swing.JLabel();
+        btnChildren = new javax.swing.JButton();
         panelAdminWork = new javax.swing.JPanel();
         panelHome = new javax.swing.JPanel();
         lblTitle2 = new javax.swing.JLabel();
@@ -123,6 +124,14 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
         txtHealth = new javax.swing.JTextField();
         lblFood = new javax.swing.JLabel();
         txtFood = new javax.swing.JTextField();
+        panelChildren = new javax.swing.JPanel();
+        lblTitle9 = new javax.swing.JLabel();
+        ScrollPane7 = new javax.swing.JScrollPane();
+        tablePerson1 = new javax.swing.JTable();
+        lblChildrenName = new javax.swing.JLabel();
+        txtChildrenName = new javax.swing.JTextField();
+        lblChildrenAge = new javax.swing.JLabel();
+        txtChildrenAge = new javax.swing.JTextField();
 
         btnHome.setText("Home");
         btnHome.addActionListener(new java.awt.event.ActionListener() {
@@ -182,6 +191,13 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
 
         lblAccounts.setText("Accounts:");
 
+        btnChildren.setText("Children");
+        btnChildren.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChildrenActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelAdminControlLayout = new javax.swing.GroupLayout(panelAdminControl);
         panelAdminControl.setLayout(panelAdminControlLayout);
         panelAdminControlLayout.setHorizontalGroup(
@@ -200,7 +216,8 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
                     .addComponent(btnPerson, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panelAdminControlLayout.createSequentialGroup()
                         .addComponent(lblAccounts)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(btnChildren, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panelAdminControlLayout.setVerticalGroup(
@@ -224,7 +241,9 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
                 .addComponent(btnFundManager)
                 .addGap(18, 18, 18)
                 .addComponent(btnPerson)
-                .addGap(124, 124, 124))
+                .addGap(18, 18, 18)
+                .addComponent(btnChildren)
+                .addGap(81, 81, 81))
         );
 
         SplitPaneAdmin.setLeftComponent(panelAdminControl);
@@ -811,6 +830,75 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
 
         panelAdminWork.add(panelBudget, "card9");
 
+        lblTitle9.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTitle9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle9.setText("Children");
+
+        tablePerson1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Name", "Age"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        ScrollPane7.setViewportView(tablePerson1);
+
+        lblChildrenName.setText("Name:");
+
+        lblChildrenAge.setText("Age:");
+
+        javax.swing.GroupLayout panelChildrenLayout = new javax.swing.GroupLayout(panelChildren);
+        panelChildren.setLayout(panelChildrenLayout);
+        panelChildrenLayout.setHorizontalGroup(
+            panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblTitle9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(panelChildrenLayout.createSequentialGroup()
+                .addGap(143, 143, 143)
+                .addComponent(ScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(135, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelChildrenLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblChildrenName)
+                    .addComponent(lblChildrenAge))
+                .addGap(18, 18, 18)
+                .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtChildrenAge, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtChildrenName, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(199, 199, 199))
+        );
+        panelChildrenLayout.setVerticalGroup(
+            panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelChildrenLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTitle9)
+                .addGap(160, 160, 160)
+                .addComponent(ScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(92, 92, 92)
+                .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblChildrenName)
+                    .addComponent(txtChildrenName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblChildrenAge)
+                    .addComponent(txtChildrenAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(246, Short.MAX_VALUE))
+        );
+
+        panelAdminWork.add(panelChildren, "card10");
+
         SplitPaneAdmin.setRightComponent(panelAdminWork);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -973,6 +1061,14 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
         panelAdminWork.revalidate();
     }//GEN-LAST:event_btnEducationActionPerformed
 
+    private void btnChildrenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChildrenActionPerformed
+        // TODO add your handling code here:
+        panelAdminWork.removeAll();
+        panelAdminWork.add(panelChildren);
+        panelAdminWork.repaint();
+        panelAdminWork.revalidate();
+    }//GEN-LAST:event_btnChildrenActionPerformed
+
 
     private void populateTable(){
     
@@ -997,12 +1093,14 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
     private javax.swing.JScrollPane ScrollPane4;
     private javax.swing.JScrollPane ScrollPane5;
     private javax.swing.JScrollPane ScrollPane6;
+    private javax.swing.JScrollPane ScrollPane7;
     private javax.swing.JScrollPane ScrollPaneNgoManager;
     private javax.swing.JSplitPane SplitPaneAdmin;
     private javax.swing.JButton btnApply;
     private javax.swing.JButton btnAppointment;
     private javax.swing.JButton btnBudget;
     private javax.swing.JButton btnCaretaker;
+    private javax.swing.JButton btnChildren;
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEducation;
@@ -1017,6 +1115,8 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
     private javax.swing.JLabel lblCaretakerAge;
     private javax.swing.JLabel lblCaretakerName;
     private javax.swing.JLabel lblChildName;
+    private javax.swing.JLabel lblChildrenAge;
+    private javax.swing.JLabel lblChildrenName;
     private javax.swing.JLabel lblEducation;
     private javax.swing.JLabel lblEducationDate;
     private javax.swing.JLabel lblFood;
@@ -1038,11 +1138,13 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
     private javax.swing.JLabel lblTitle6;
     private javax.swing.JLabel lblTitle7;
     private javax.swing.JLabel lblTitle8;
+    private javax.swing.JLabel lblTitle9;
     private javax.swing.JLabel lblTotal;
     private javax.swing.JPanel panelAdminControl;
     private javax.swing.JPanel panelAdminWork;
     private javax.swing.JPanel panelBudget;
     private javax.swing.JPanel panelCareTaker;
+    private javax.swing.JPanel panelChildren;
     private javax.swing.JPanel panelEducation;
     private javax.swing.JPanel panelFundManager;
     private javax.swing.JPanel panelHealth;
@@ -1055,9 +1157,12 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
     private javax.swing.JTable tableFundManager;
     private javax.swing.JTable tableNgoManager;
     private javax.swing.JTable tablePerson;
+    private javax.swing.JTable tablePerson1;
     private javax.swing.JTextField txtCaretakerAge;
     private javax.swing.JTextField txtCaretakerName;
     private javax.swing.JTextField txtChildName;
+    private javax.swing.JTextField txtChildrenAge;
+    private javax.swing.JTextField txtChildrenName;
     private javax.swing.JTextField txtEducation;
     private javax.swing.JTextField txtEducationDate;
     private javax.swing.JTextField txtFood;
