@@ -4,7 +4,6 @@
  */
 package Ui.LoginPage;
 
-import Ngo.NgoManager.NgoManagerDirectory;
 import System.Directories.DB4OUtil;
 import System.Directories.MainSystem;
 import Ui.Ngo.NgoAdminWorkspace;
@@ -28,7 +27,6 @@ public class NmsLoginPage extends javax.swing.JPanel {
     public NmsLoginPage(JPanel cardPanel, MainSystem system, DB4OUtil dB4OUtil) {
         initComponents();
         this.cardPanel = cardPanel;
-//        this.ngoManagerList = ngoManagerList;
         this.system = system;
         this.dB4OUtil = dB4OUtil;
     }
