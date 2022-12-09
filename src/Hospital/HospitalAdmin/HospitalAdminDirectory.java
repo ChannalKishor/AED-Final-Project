@@ -3,17 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Hospital.HospitalAdmin;
-
 import java.util.ArrayList; 
 /**
  *
- * @author chinm
+ * @author kishor
  */
 import java.util.ArrayList;
 
 /**
  *
- * @author chinm
+ * @author kishor
  */
 public class HospitalAdminDirectory {
     
@@ -28,23 +27,18 @@ public class HospitalAdminDirectory {
         return hospitalAdminList;
     }
 
-    public void setNgoManagerList(ArrayList<HospitalAdmin> hospitalAdminList) {
+    public void setHospitalAdminList(ArrayList<HospitalAdmin> hospitalAdminList) {
         this.hospitalAdminList = hospitalAdminList;
     }
-//    
-//    public NgoManager addNgoManager(){
-//        NgoManager newmanager = new NgoManager();
-//        ngoManagerList.add(newmanager);
-//        return newmanager;
-//    }
-//    
-//    public void deleteNgoManager(NgoManager m){
-//        ngoManagerList.remove(m);
-//    }
-//    
-//    
-//    
     
+    public HospitalAdmin addHospitalAdmin(){
+        HospitalAdmin newhospitaladmin = new HospitalAdmin();
+        hospitalAdminList.add(newhospitaladmin);
+        return newhospitaladmin;
+    }
     
+    public void deleteHospitalAdmin(HospitalAdmin m){
+        hospitalAdminList.remove(m);
+    }
     
 }
