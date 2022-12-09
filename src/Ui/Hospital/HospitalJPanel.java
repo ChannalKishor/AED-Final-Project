@@ -184,7 +184,7 @@ public class HospitalJPanel extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("DOCTOR");
+        jLabel1.setText("HOSPITAL DOCTOR");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -313,7 +313,7 @@ public class HospitalJPanel extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("PATIENT");
+        jLabel2.setText("HOSPITAL PATIENT");
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -391,7 +391,7 @@ public class HospitalJPanel extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("ENCOUNTER");
+        jLabel3.setText("HOSPITAL ENCOUNTER");
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -469,7 +469,7 @@ public class HospitalJPanel extends javax.swing.JPanel {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("HOSPITAL");
+        jLabel4.setText("LIST OF HOSPITAL");
 
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
