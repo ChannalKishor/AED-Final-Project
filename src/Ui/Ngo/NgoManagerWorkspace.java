@@ -37,6 +37,7 @@ public class NgoManagerWorkspace extends javax.swing.JPanel {
         this.system = system;
         this.dB4OUtil = dB4OUtil;
         this.ngoManager = ngoManager;
+        
         populateFundManagerTable();
         populateCaretakerTable();
         populateChildrenEducationTable();

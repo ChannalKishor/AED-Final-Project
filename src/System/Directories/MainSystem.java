@@ -29,15 +29,19 @@ public class MainSystem {
     private CaretakerDirectory careTakerList;
     private FundManagerDirectory fundManagerList;
     private PublicUserDirectory publicUserList;
+    
     private DoctorDirectory doctorList;
     private PatientDirectory patientList;
     private HospitalDirectory hospitalList;
+    
     private NgoDirectory ngoList;
     private ChildrenDirectory childrenList;
     private TeacherDirectory teacherList;
     private StudentDirectory studentList;
     private ApplicantDirectory applicantList;
     private PrincipalDirectory principalList;
+    
+
 
     
     public MainSystem(){
@@ -45,9 +49,11 @@ public class MainSystem {
         careTakerList = new CaretakerDirectory();
         fundManagerList = new FundManagerDirectory();
         publicUserList = new PublicUserDirectory();
+        
         doctorList = new DoctorDirectory();
         patientList = new PatientDirectory();
         hospitalList = new HospitalDirectory();
+        
         ngoList = new NgoDirectory();
         childrenList = new ChildrenDirectory();
         teacherList = new TeacherDirectory();

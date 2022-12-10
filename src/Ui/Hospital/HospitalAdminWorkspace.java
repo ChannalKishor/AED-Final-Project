@@ -4,6 +4,16 @@
  */
 package Ui.Hospital;
 
+import Funding.FundManager.FundManager;
+import Hospital.Doctor.Doctor;
+import Ngo.CareTaker.Caretaker;
+import Ngo.NgoManager.NgoManager;
+import System.Directories.DB4OUtil;
+import System.Directories.MainSystem;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Kishor
@@ -13,8 +23,21 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
     /**
      * Creates new form HospitalJPanel
      */
-    public HospitalAdminWorkspace() {
+    private JPanel cardPanel;
+    private NgoManager ngoManager;
+    private MainSystem system;
+    private DB4OUtil dB4OUtil;
+    private final String FILENAME = "ProjectDataBank.db4o";
+    
+    
+    public HospitalAdminWorkspace(JPanel cardPanel,MainSystem system,DB4OUtil dB4OUtil) {
         initComponents();
+        this.cardPanel = cardPanel;
+        this.system = system;
+        this.dB4OUtil = dB4OUtil;
+        
+        populateDoctorTable();
+        
     }
 
     /**
@@ -46,7 +69,7 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
         tableDoctor = new javax.swing.JTable();
         btnCreate = new javax.swing.JButton();
         btnView = new javax.swing.JButton();
-        btnEdit = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         txtDoctorRole = new javax.swing.JTextField();
         lblDoctorRole = new javax.swing.JLabel();
@@ -307,10 +330,25 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
         });
 
         btnView.setText("View");
+        btnView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewActionPerformed(evt);
+            }
+        });
 
-        btnEdit.setText("Edit");
+        btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         txtDoctorRole.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -349,6 +387,12 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
         lblDoctorGender.setText("Gender");
 
         lblDoctorEmail.setText("Email ID");
+
+        txtDoctorEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDoctorEmailActionPerformed(evt);
+            }
+        });
 
         lblDoctorPhone.setText("Phone No");
 
@@ -425,13 +469,13 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
                         .addGroup(panelDoctorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnCreate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(67, 67, 67))))
         );
 
-        panelDoctorLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCreate, btnDelete, btnEdit, btnView});
+        panelDoctorLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCreate, btnDelete, btnUpdate, btnView});
 
         panelDoctorLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtDoctorExperience, txtDoctorHospital, txtDoctorPassword, txtDoctorSpecialization});
 
@@ -447,7 +491,7 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(btnView)
                         .addGap(18, 18, 18)
-                        .addComponent(btnEdit))
+                        .addComponent(btnUpdate))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDoctorLayout.createSequentialGroup()
                         .addGap(87, 87, 87)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1063,6 +1107,53 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
         
+        
+        String id = txtDoctorID.getText();
+        String name = txtDoctorName.getText();
+        String username = txtDoctorUsername.getText();
+        Integer age = Integer.valueOf(txtDoctorAge.getText());
+        String gender = String.valueOf(cbDoctorGender.getSelectedItem());
+        String role = txtDoctorRole.getText();
+        String emailid= txtDoctorEmail.getText();
+        Long phno = Long.valueOf(txtDoctorPhone.getText());
+        String pass = txtDoctorPassword.getText();
+        Integer experience = Integer.valueOf(txtDoctorExperience.getText());
+        String specialization = txtDoctorSpecialization.getText();
+        String hospital = txtDoctorHospital.getText();
+        
+        Doctor newDoctor = system.getDoctorList().addDoctor();
+        
+        newDoctor.setDoctorId(id);
+        newDoctor.setName(name);
+        newDoctor.setUsername(username);
+        newDoctor.setAge(age);
+        newDoctor.setGender(gender);
+        newDoctor.setRole(role);
+        newDoctor.setEmailId(emailid);
+        newDoctor.setPhno(phno);
+        newDoctor.setPassword(pass);
+        newDoctor.setExperience(experience);
+        newDoctor.setSpecialization(specialization);
+        newDoctor.setHospital(hospital);
+        
+        JOptionPane.showMessageDialog(this, "Doctor created successfully");
+        
+        
+        txtDoctorID.setText("");
+        txtDoctorName.setText("");
+        txtDoctorUsername.setText("");
+        txtDoctorAge.setText("");
+//        cbDoctorGender.setText("");
+        txtDoctorRole.setText("");
+        txtDoctorEmail.setText("");
+        txtDoctorPhone.setText("");
+        txtDoctorPassword.setText("");
+        txtDoctorExperience.setText("");
+        txtDoctorSpecialization.setText("");
+        txtDoctorHospital.setText("");
+        
+        populateDoctorTable();
+        
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnPatientCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPatientCreateActionPerformed
@@ -1097,13 +1188,128 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnDoctorActionPerformed
 
+    private void txtDoctorEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDoctorEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDoctorEmailActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+        Integer selectedRowIndex = tableDoctor.getSelectedRow();
+        
+        if (selectedRowIndex<0){
+
+            JOptionPane.showMessageDialog(this, "Please select a row to view.");
+            return;
+        }
+        
+        else{
+            DefaultTableModel model = (DefaultTableModel) tableDoctor.getModel();
+            Doctor doc = (Doctor) model.getValueAt(selectedRowIndex,0);
+            
+            doc.setDoctorId(txtDoctorID.getText());
+            doc.setName(txtDoctorName.getText());
+            doc.setUsername(txtDoctorUsername.getText());
+        
+            doc.setAge(Integer.valueOf(txtDoctorAge.getText()));
+            doc.setGender(String.valueOf(cbDoctorGender.getSelectedItem()));
+        
+            doc.setRole(txtDoctorRole.getText());
+            doc.setEmailId(txtDoctorEmail.getText());
+            doc.setPhno(Long.valueOf(txtDoctorPhone.getText()));
+            doc.setPassword(txtDoctorPassword.getText());
+            doc.setExperience(Integer.valueOf(txtDoctorExperience.getText()));
+            doc.setSpecialization(txtDoctorSpecialization.getText());
+            doc.setHospital(txtDoctorHospital.getText());
+
+            JOptionPane.showMessageDialog(this, "Doctor updated successfully");
+            
+            populateDoctorTable();
+        }
+        
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
+        // TODO add your handling code here:
+        Integer selectedRowIndex = tableDoctor.getSelectedRow();
+        
+        if (selectedRowIndex<0){
+
+            JOptionPane.showMessageDialog(this, "Please select a row to view.");
+            return;
+        }
+        
+        else{
+            DefaultTableModel model = (DefaultTableModel) tableDoctor.getModel();
+            Doctor doc = (Doctor) model.getValueAt(selectedRowIndex,0);
+
+            txtDoctorID.setText(doc.getDoctorId());
+            txtDoctorName.setText(doc.getName());
+            txtDoctorUsername.setText(doc.getUsername());
+            txtDoctorAge.setText(String.valueOf(doc.getAge()));
+            cbDoctorGender.setSelectedItem(doc.getGender());
+            txtDoctorRole.setText(doc.getRole());
+            txtDoctorEmail.setText(doc.getEmailId());
+            txtDoctorPhone.setText(String.valueOf(doc.getPhno()));
+            txtDoctorPassword.setText(doc.getPassword());
+            
+            txtDoctorHospital.setText(doc.getHospital());
+            txtDoctorSpecialization.setText(doc.getSpecialization());
+            txtDoctorExperience.setText(String.valueOf(doc.getExperience()));
+
+        }
+        
+        
+        
+    }//GEN-LAST:event_btnViewActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        Integer selectedRowIndex = tableDoctor.getSelectedRow();
+
+        if (selectedRowIndex<0){
+
+            JOptionPane.showMessageDialog(this, "Please select a row to delete.");
+            return;
+        }
+
+        else{
+            DefaultTableModel model = (DefaultTableModel) tableDoctor.getModel();
+            Doctor doc = (Doctor) model.getValueAt(selectedRowIndex,0);
+
+            system.getDoctorList().deleteDoctor(doc);
+            JOptionPane.showMessageDialog(this, "Doctor deleted successfully.");
+
+            //            dB4OUtil.storeSystem(system);
+            populateDoctorTable();
+        }
+        
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+        private void populateDoctorTable(){
+        DefaultTableModel model = (DefaultTableModel) tableDoctor.getModel();
+        model.setRowCount(0);
+        
+//        
+            for(Doctor c: system.getDoctorList().getDoctorList()){
+
+                Object[] row = new Object[5];
+                row[0] = c; 
+                row[1] = c.getDoctorId();
+                row[2] = c.getName();
+                row[3] = c.getSpecialization();
+                row[4] = c.getAge();
+                row[5] = c.getGender();
+                row[6] = c.getPhno();
+                model.addRow(row);
+            }
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSplitPane SplitPaneDoctor;
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnDoctor;
-    private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnEncounter;
     private javax.swing.JButton btnEncounterClear;
     private javax.swing.JButton btnEncounterCreate;
@@ -1125,6 +1331,7 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
     private javax.swing.JButton btnPatientEdit;
     private javax.swing.JButton btnPatientSave;
     private javax.swing.JButton btnPatientView;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btnView;
     private javax.swing.JButton btnpharmacist;
     private javax.swing.JComboBox<String> cbDoctorGender;

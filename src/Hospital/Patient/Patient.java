@@ -9,8 +9,30 @@ package Hospital.Patient;
  * @author kishor
  */
 public class Patient {
-    private String name;
-    private String age;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(String patientId) {
+        this.patientId = patientId;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public String getName() {
         return name;
@@ -20,13 +42,63 @@ public class Patient {
         this.name = name;
     }
 
-    public String getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getEmailId() {
+        return emailId;
+    }
+
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
+    }
+
+    public Long getPhno() {
+        return phno;
+    }
+
+    public void setPhno(Long phno) {
+        this.phno = phno;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
+    private String role;
+    private String patientId;
+    private String username;
+    private String name;
+    private Integer age;
+    private String gender;
+    private String emailId;
+    private Long phno;
+    private String password;
+    
+
+    
+    
+    
+    
+    
+    
     
     @Override
     public String toString(){

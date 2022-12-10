@@ -282,7 +282,7 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="btnCreate" linkSize="5" alignment="0" max="32767" attributes="0"/>
                                       <Component id="btnView" linkSize="5" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="btnEdit" linkSize="5" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnUpdate" linkSize="5" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="jScrollPane1" min="-2" pref="539" max="-2" attributes="0"/>
@@ -304,7 +304,7 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="btnView" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="btnEdit" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnUpdate" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
@@ -452,16 +452,25 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="View"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnEdit">
+                <Component class="javax.swing.JButton" name="btnUpdate">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Edit"/>
+                    <Property name="text" type="java.lang.String" value="Update"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnDelete">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Delete"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtDoctorRole">
                   <Events>
@@ -521,6 +530,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtDoctorEmail">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDoctorEmailActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblDoctorPhone">
                   <Properties>
