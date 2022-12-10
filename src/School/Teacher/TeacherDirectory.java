@@ -37,4 +37,13 @@ public class TeacherDirectory {
         teacherList.remove(m);
     }
     
+    public Teacher findTeacher(String username, String password){
+        for(Teacher n: teacherList){
+            if(n.getUsername().equals(username) && n.getPassword().equals(password)){
+                return n;
+            }
+            
+        }
+        return null;
+    }
 }

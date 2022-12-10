@@ -4,9 +4,13 @@
  */
 package Ui.LoginPage;
 
+import School.Principal.Principal;
+import School.Teacher.Teacher;
 import System.Directories.DB4OUtil;
 import System.Directories.MainSystem;
+import Ui.School.PrincipalWorkspace;
 import Ui.School.SchoolAdminWorkspace;
+import Ui.School.TeacherWorkspace;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -151,7 +155,8 @@ public class SchoolLoginPage extends javax.swing.JPanel {
         String username = txtUsername.getText();
         String password = txtPass.getText();
         String role = String.valueOf(cmbRole.getSelectedItem());
-//        Principal principal =  
+        Principal principal =  system.getPrincipalList().findPrincipal(username, password);
+        Teacher teacher = system.getTeacherList().findTeacher(username, password);
          
 
         try{
@@ -163,22 +168,22 @@ public class SchoolLoginPage extends javax.swing.JPanel {
                     cardLayout.next(cardPanel);
                 }
             }
-//            else if(role.equals("Principal")){
-//                if(username.equals(.getUsername()) && password.equals(ngoManager.getPassword())){
-//                    NgoManagerWorkspace ngoManJPanel = new NgoManagerWorkspace(ngoManager,cardPanel, system, dB4OUtil);
-//                    CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
-//                    cardPanel.add("ngoManagerJPanel",ngoManJPanel);
-//                    cardLayout.next(cardPanel);
-//                }
-//            }
-//            else if(role.equals("Teacher")){
-//                if(username.equals(caretaker.getUsername()) && password.equals(caretaker.getPassword())){
-//                    CaretakerWorkspace caretakerJPanel = new CaretakerWorkspace(caretaker,cardPanel, system, dB4OUtil);
-//                    CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
-//                    cardPanel.add("caretakerJPanel",caretakerJPanel);
-//                    cardLayout.next(cardPanel);
-//                }
-//            }
+            else if(role.equals("Principal")){
+                if(username.equals(principal.getUsername()) && password.equals(principal.getPassword())){
+                    PrincipalWorkspace principalJPanel = new PrincipalWorkspace(principal,cardPanel, system, dB4OUtil);
+                    CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
+                    cardPanel.add("ngoManagerJPanel",principalJPanel);
+                    cardLayout.next(cardPanel);
+                }
+            }
+            else if(role.equals("Teacher")){
+                if(username.equals(teacher.getUsername()) && password.equals(teacher.getPassword())){
+                    TeacherWorkspace caretakerJPanel = new TeacherWorkspace(teacher,cardPanel, system, dB4OUtil);
+                    CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
+                    cardPanel.add("caretakerJPanel",caretakerJPanel);
+                    cardLayout.next(cardPanel);
+                }
+            }
             else{
                 JOptionPane.showMessageDialog(this, "Please enter the correct username and password and role.");
             }

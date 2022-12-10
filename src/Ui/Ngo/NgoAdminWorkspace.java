@@ -183,9 +183,22 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
         tableChildrenEducation = new javax.swing.JTable();
         lblChildName = new javax.swing.JLabel();
         txtChildName = new javax.swing.JTextField();
-        lblEducationDate = new javax.swing.JLabel();
-        txtEducationDate = new javax.swing.JTextField();
         btnApply = new javax.swing.JButton();
+        lblApplicationNo = new javax.swing.JLabel();
+        txtApplicationNo = new javax.swing.JTextField();
+        txtChildAge = new javax.swing.JTextField();
+        lblChildAge = new javax.swing.JLabel();
+        lblChildName2 = new javax.swing.JLabel();
+        txtChildDOB = new javax.swing.JTextField();
+        lblChildName3 = new javax.swing.JLabel();
+        lblChildName4 = new javax.swing.JLabel();
+        txtChildName4 = new javax.swing.JTextField();
+        cmbChildGender = new javax.swing.JComboBox<>();
+        lblChildName5 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        lblStatus = new javax.swing.JLabel();
+        txtStatus = new javax.swing.JTextField();
         panelBudget = new javax.swing.JPanel();
         lblTitle8 = new javax.swing.JLabel();
         lblTotal = new javax.swing.JLabel();
@@ -1231,7 +1244,7 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Children Id", "Name", "Age", "DOB", "Gender"
+                "Children Id", "Name", "Age", "Gender", "Status"
             }
         ) {
             Class[] types = new Class [] {
@@ -1246,34 +1259,89 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
 
         lblChildName.setText("Name:");
 
-        lblEducationDate.setText("Date:");
-
         btnApply.setText("Apply");
+
+        lblApplicationNo.setText("Application No:");
+
+        lblChildAge.setText("Age:");
+
+        lblChildName2.setText("DOB:");
+
+        lblChildName3.setText("Gender:");
+
+        lblChildName4.setText("School:");
+
+        txtChildName4.setEditable(false);
+        txtChildName4.setText("School");
+
+        cmbChildGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Others" }));
+
+        lblChildName5.setText("Comment:");
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        lblStatus.setText("Status:");
+
+        txtStatus.setText("Pending");
 
         javax.swing.GroupLayout panelEducationLayout = new javax.swing.GroupLayout(panelEducation);
         panelEducation.setLayout(panelEducationLayout);
         panelEducationLayout.setHorizontalGroup(
             panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblTitle7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(panelEducationLayout.createSequentialGroup()
-                .addGap(114, 114, 114)
-                .addGroup(panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblChildName)
-                    .addComponent(lblEducationDate))
-                .addGap(18, 18, 18)
-                .addGroup(panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtEducationDate, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtChildName, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(369, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEducationLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(34, Short.MAX_VALUE)
                 .addGroup(panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEducationLayout.createSequentialGroup()
-                        .addComponent(btnApply)
-                        .addGap(256, 256, 256))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEducationLayout.createSequentialGroup()
                         .addComponent(ScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 696, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24))))
+                        .addGap(24, 24, 24))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEducationLayout.createSequentialGroup()
+                        .addComponent(lblChildName2)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelEducationLayout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtChildName4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())
+                    .addGroup(panelEducationLayout.createSequentialGroup()
+                        .addGroup(panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(panelEducationLayout.createSequentialGroup()
+                                .addComponent(lblChildName3)
+                                .addGap(59, 59, 59)
+                                .addComponent(cmbChildGender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txtChildDOB, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelEducationLayout.createSequentialGroup()
+                                .addComponent(lblChildAge)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtChildAge, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(panelEducationLayout.createSequentialGroup()
+                                    .addComponent(lblChildName)
+                                    .addGap(66, 66, 66)
+                                    .addComponent(txtChildName, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(panelEducationLayout.createSequentialGroup()
+                                    .addComponent(lblApplicationNo)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txtApplicationNo, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(panelEducationLayout.createSequentialGroup()
+                                .addGroup(panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblChildName4)
+                                    .addComponent(lblChildName5))
+                                .addGap(270, 270, 270))
+                            .addGroup(panelEducationLayout.createSequentialGroup()
+                                .addComponent(lblStatus)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEducationLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnApply)
+                .addGap(330, 330, 330))
         );
         panelEducationLayout.setVerticalGroup(
             panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1282,17 +1350,39 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
                 .addComponent(lblTitle7)
                 .addGap(85, 85, 85)
                 .addComponent(ScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
-                .addGroup(panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblChildName)
-                    .addComponent(txtChildName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(95, 95, 95)
+                .addGroup(panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblStatus))
+                    .addGroup(panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblApplicationNo)
+                        .addComponent(txtApplicationNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEducationDate)
-                    .addComponent(txtEducationDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(159, 159, 159)
+                    .addComponent(lblChildName)
+                    .addComponent(txtChildName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtChildName4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblChildName4))
+                .addGap(18, 18, 18)
+                .addGroup(panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelEducationLayout.createSequentialGroup()
+                        .addGroup(panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblChildAge)
+                            .addComponent(txtChildAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblChildName5))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblChildName2)
+                            .addComponent(txtChildDOB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(33, 33, 33)
+                        .addGroup(panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblChildName3)
+                            .addComponent(cmbChildGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(btnApply)
-                .addGap(29, 29, 29))
+                .addContainerGap())
         );
 
         panelAdminWork.add(panelEducation, "card8");
@@ -2299,10 +2389,14 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
     private javax.swing.JButton btnNgoMangerUpdate;
     private javax.swing.JButton btnPerson;
     private javax.swing.JComboBox<String> cmbCaretakerGender;
+    private javax.swing.JComboBox<String> cmbChildGender;
     private javax.swing.JComboBox<String> cmbChildrenGender;
     private javax.swing.JComboBox<String> cmbFundManagerGender;
     private javax.swing.JComboBox<String> cmbNgoManagerGender;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lblAccounts;
+    private javax.swing.JLabel lblApplicationNo;
     private javax.swing.JLabel lblCaretakerAge;
     private javax.swing.JLabel lblCaretakerDOB;
     private javax.swing.JLabel lblCaretakerEmailId;
@@ -2314,7 +2408,12 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
     private javax.swing.JLabel lblCaretakerRole;
     private javax.swing.JLabel lblCaretakerSearch;
     private javax.swing.JLabel lblCaretakerUsername;
+    private javax.swing.JLabel lblChildAge;
     private javax.swing.JLabel lblChildName;
+    private javax.swing.JLabel lblChildName2;
+    private javax.swing.JLabel lblChildName3;
+    private javax.swing.JLabel lblChildName4;
+    private javax.swing.JLabel lblChildName5;
     private javax.swing.JLabel lblChildrenAge;
     private javax.swing.JLabel lblChildrenDob;
     private javax.swing.JLabel lblChildrenGender;
@@ -2323,7 +2422,6 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
     private javax.swing.JLabel lblChildrenRole;
     private javax.swing.JLabel lblChildrenSearch;
     private javax.swing.JLabel lblEducation;
-    private javax.swing.JLabel lblEducationDate;
     private javax.swing.JLabel lblFood;
     private javax.swing.JLabel lblFundManagerAge;
     private javax.swing.JLabel lblFundManagerDOB;
@@ -2353,6 +2451,7 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
     private javax.swing.JLabel lblPersonAge;
     private javax.swing.JLabel lblPersonName;
     private javax.swing.JLabel lblRole;
+    private javax.swing.JLabel lblStatus;
     private javax.swing.JLabel lblTitle1;
     private javax.swing.JLabel lblTitle10;
     private javax.swing.JLabel lblTitle2;
@@ -2383,6 +2482,7 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
     private javax.swing.JTable tableFundManager;
     private javax.swing.JTable tableNgoManager;
     private javax.swing.JTable tablePerson;
+    private javax.swing.JTextField txtApplicationNo;
     private javax.swing.JTextField txtCaretakerAge;
     private javax.swing.JTextField txtCaretakerDOB;
     private javax.swing.JTextField txtCaretakerEmailId;
@@ -2393,7 +2493,10 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
     private javax.swing.JTextField txtCaretakerRole;
     private javax.swing.JTextField txtCaretakerSearch;
     private javax.swing.JTextField txtCaretakerUsername;
+    private javax.swing.JTextField txtChildAge;
+    private javax.swing.JTextField txtChildDOB;
     private javax.swing.JTextField txtChildName;
+    private javax.swing.JTextField txtChildName4;
     private javax.swing.JTextField txtChildrenAge;
     private javax.swing.JTextField txtChildrenDOB;
     private javax.swing.JTextField txtChildrenId;
@@ -2401,7 +2504,6 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
     private javax.swing.JTextField txtChildrenRole;
     private javax.swing.JTextField txtChildrenSearch;
     private javax.swing.JTextField txtEducation;
-    private javax.swing.JTextField txtEducationDate;
     private javax.swing.JTextField txtFood;
     private javax.swing.JTextField txtFundManagerAge;
     private javax.swing.JTextField txtFundManagerDOB;
@@ -2428,6 +2530,7 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
     private javax.swing.JTextField txtPatient;
     private javax.swing.JTextField txtPersonAge;
     private javax.swing.JTextField txtPersonName;
+    private javax.swing.JTextField txtStatus;
     private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }

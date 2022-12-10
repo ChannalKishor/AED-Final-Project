@@ -36,4 +36,14 @@ public class PrincipalDirectory {
     public void deletePrincipal(Principal m){
         principalList.remove(m);
     }
+    
+    public Principal findPrincipal(String username, String password){
+        for(Principal n: principalList){
+            if(n.getUsername().equals(username) && n.getPassword().equals(password)){
+                return n;
+            }
+            
+        }
+        return null;
+    }
 }
