@@ -7,6 +7,7 @@ package Ui.Main;
 import System.Directories.DB4OUtil;
 import System.Directories.MainSystem;
 import Ui.LoginPage.SchoolLoginPage;
+import Ui.LoginPage.TeacherAppLoginPage;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -110,10 +111,10 @@ public class SMS extends javax.swing.JPanel {
 
     private void btnApplicationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApplicationsActionPerformed
         // TODO add your handling code here:
-//        FundingLoginPage fundloginJPanel = new FundingLoginPage(cardPanel, system, dB4OUtil);
-//        CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
-//        cardPanel.add("loginJPanel",fundloginJPanel);
-//        cardLayout.next(cardPanel);
+        TeacherAppLoginPage apploginJPanel = new TeacherAppLoginPage(cardPanel, system, dB4OUtil);
+        CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
+        cardPanel.add("loginJPanel",apploginJPanel);
+        cardLayout.next(cardPanel);
     }//GEN-LAST:event_btnApplicationsActionPerformed
 
 

@@ -6,6 +6,7 @@ package Ui.LoginPage;
 
 import System.Directories.DB4OUtil;
 import System.Directories.MainSystem;
+import Ui.School.ApplicantRegister;
 import Ui.School.SchoolAdminWorkspace;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -50,6 +51,7 @@ public class TeacherAppLoginPage extends javax.swing.JPanel {
         lblRole = new javax.swing.JLabel();
         cmbRole = new javax.swing.JComboBox<>();
         btnLogin = new javax.swing.JButton();
+        btnReg = new javax.swing.JButton();
 
         lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -74,6 +76,13 @@ public class TeacherAppLoginPage extends javax.swing.JPanel {
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginActionPerformed(evt);
+            }
+        });
+
+        btnReg.setText("Register");
+        btnReg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegActionPerformed(evt);
             }
         });
 
@@ -102,10 +111,12 @@ public class TeacherAppLoginPage extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblRole)
                         .addGap(45, 45, 45)
-                        .addComponent(cmbRole, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(57, 57, 57)
+                                .addComponent(btnReg))
+                            .addComponent(cmbRole, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -128,14 +139,14 @@ public class TeacherAppLoginPage extends javax.swing.JPanel {
                         .addComponent(lblPass))
                     .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(lblRole))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblRole)
                     .addComponent(cmbRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(81, 81, 81)
-                .addComponent(btnLogin)
-                .addContainerGap(235, Short.MAX_VALUE))
+                .addGap(61, 61, 61)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLogin)
+                    .addComponent(btnReg))
+                .addContainerGap(255, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -188,10 +199,19 @@ public class TeacherAppLoginPage extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
+    private void btnRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegActionPerformed
+        // TODO add your handling code here:
+        ApplicantRegister appJPanel = new ApplicantRegister(cardPanel, system, dB4OUtil);
+        CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
+        cardPanel.add("ApplicantPanel", appJPanel);
+        cardLayout.next(cardPanel);
+    }//GEN-LAST:event_btnRegActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnLogin;
+    private javax.swing.JButton btnReg;
     private javax.swing.JComboBox<String> cmbRole;
     private javax.swing.JLabel lblPass;
     private javax.swing.JLabel lblRole;

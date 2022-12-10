@@ -4,10 +4,35 @@
  */
 package School.Student;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author chinm
  */
 public class StudentDirectory {
+    private ArrayList<Student> studentList;
+
+    public StudentDirectory() {
+        studentList = new ArrayList<Student>();
+        
+    }
+
+    public ArrayList<Student> getStudentList() {
+        return studentList;
+    }
+
+    public void setStudentList(ArrayList<Student> studentList) {
+        this.studentList = studentList;
+    }
     
+    public Student addStudent(){
+        Student s = new Student();
+        studentList.add(s);
+        return s;
+    }
+    
+    public void deleteStudent(Student m){
+        studentList.remove(m);
+    }
 }
