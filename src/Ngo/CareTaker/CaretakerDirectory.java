@@ -4,6 +4,7 @@
  */
 package Ngo.CareTaker;
 
+
 import java.util.ArrayList;
 
 /**
@@ -34,5 +35,15 @@ public class CaretakerDirectory {
     
     public void deleteCaretaker(Caretaker c){
         caretakerList.remove(c);
+    }
+    
+    public Caretaker findCaretaker(String username, String password){
+        for(Caretaker c: caretakerList){
+            if(c.getUsername().equals(username) && c.getPassword().equals(password)){
+                return c;
+            }
+            
+        }
+        return null;
     }
 }

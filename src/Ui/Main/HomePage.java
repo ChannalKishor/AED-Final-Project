@@ -66,6 +66,11 @@ public class HomePage extends javax.swing.JPanel {
         add(btnHMS, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 209, -1, -1));
 
         btnSMS.setText("School Management System");
+        btnSMS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSMSActionPerformed(evt);
+            }
+        });
         add(btnSMS, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 276, 191, -1));
 
         btnFMS.setText("Food Management System");
@@ -79,6 +84,14 @@ public class HomePage extends javax.swing.JPanel {
         cardPanel.add("NMS", panelNms);
         cardLayout.next(cardPanel);
     }//GEN-LAST:event_btnNMSActionPerformed
+
+    private void btnSMSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSMSActionPerformed
+        // TODO add your handling code here:
+        CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
+        SMS panelSms = new SMS(cardPanel, system, dB4OUtil);
+        cardPanel.add("Sms", panelSms);
+        cardLayout.next(cardPanel);
+    }//GEN-LAST:event_btnSMSActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

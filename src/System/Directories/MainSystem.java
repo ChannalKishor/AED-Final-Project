@@ -9,10 +9,15 @@ import Funding.PublicUser.PublicUserDirectory;
 import Hospital.Doctor.DoctorDirectory;
 import Hospital.Hospital.HospitalDirectory;
 import Hospital.Patient.PatientDirectory;
+import JobApp.Applicant.ApplicantDirectory;
 import Ngo.CareTaker.CaretakerDirectory;
 import Ngo.Children.ChildrenDirectory;
 import Ngo.Ngo.NgoDirectory;
 import Ngo.NgoManager.NgoManagerDirectory;
+import School.Principal.PrincipalDirectory;
+import School.Student.Student;
+import School.Student.StudentDirectory;
+import School.Teacher.TeacherDirectory;
 
 /**
  *
@@ -29,6 +34,10 @@ public class MainSystem {
     private HospitalDirectory hospitalList;
     private NgoDirectory ngoList;
     private ChildrenDirectory childrenList;
+    private TeacherDirectory teacherList;
+    private StudentDirectory studentList;
+    private ApplicantDirectory applicantList;
+    private PrincipalDirectory principalList;
 
     
     public MainSystem(){
@@ -41,6 +50,11 @@ public class MainSystem {
         hospitalList = new HospitalDirectory();
         ngoList = new NgoDirectory();
         childrenList = new ChildrenDirectory();
+        teacherList = new TeacherDirectory();
+        studentList = new StudentDirectory();
+        applicantList = new ApplicantDirectory();
+        principalList = new PrincipalDirectory();
+        
     }
     
    
@@ -124,6 +138,40 @@ public class MainSystem {
     public void setChildrenList(ChildrenDirectory childrenList) {
         this.childrenList = childrenList;
     }
+
+    public static MainSystem getData() {
+        return data;
+    }
+
+    public static void setData(MainSystem data) {
+        MainSystem.data = data;
+    }
+
+    public TeacherDirectory getTeacherList() {
+        return teacherList;
+    }
+
+    public void setTeacherList(TeacherDirectory teacherList) {
+        this.teacherList = teacherList;
+    }
+
+    public StudentDirectory getStudentList() {
+        return studentList;
+    }
+
+    public void setStudentList(StudentDirectory studentList) {
+        this.studentList = studentList;
+    }
+
+    public ApplicantDirectory getApplicantList() {
+        return applicantList;
+    }
+
+    public PrincipalDirectory getPrincipalList() {
+        return principalList;
+    }
+    
+    
     
     
     

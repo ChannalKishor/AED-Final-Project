@@ -4,6 +4,7 @@
  */
 package Ui.Ngo;
 
+import Funding.FundManager.FundManager;
 import System.Directories.DB4OUtil;
 import System.Directories.MainSystem;
 import java.awt.CardLayout;
@@ -19,16 +20,18 @@ public class FundManagerWorkspace extends javax.swing.JPanel {
      * Creates new form FundManagerWorkspace
      */
     private JPanel cardPanel;
+    private FundManager fundManager;
     private MainSystem system;
     private DB4OUtil dB4OUtil;
     private final String FILENAME = "ProjectDataBank.db4o";
     
-    public FundManagerWorkspace() {
+    public FundManagerWorkspace(FundManager fundManager,JPanel cardPanel, MainSystem system,DB4OUtil dB4OUtil ) {
         initComponents();
+        this.fundManager = fundManager;
         this.cardPanel = cardPanel;
         this.system = system;
         this.dB4OUtil = dB4OUtil;
-//        populateTable();
+        
     }
 
     /**

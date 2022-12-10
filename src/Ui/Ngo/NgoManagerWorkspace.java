@@ -26,15 +26,17 @@ public class NgoManagerWorkspace extends javax.swing.JPanel {
      * Creates new form NgoManagerWorkspace
      */
     private JPanel cardPanel;
+    private NgoManager ngoManager;
     private MainSystem system;
     private DB4OUtil dB4OUtil;
     private final String FILENAME = "ProjectDataBank.db4o";
     
-    public NgoManagerWorkspace() {
+    public NgoManagerWorkspace(NgoManager ngoManager, JPanel cardPanel,MainSystem system,DB4OUtil dB4OUtil) {
         initComponents();
         this.cardPanel = cardPanel;
         this.system = system;
         this.dB4OUtil = dB4OUtil;
+        this.ngoManager = ngoManager;
         populateFundManagerTable();
         populateCaretakerTable();
         populateChildrenEducationTable();
@@ -1241,6 +1243,11 @@ public class NgoManagerWorkspace extends javax.swing.JPanel {
 
     private void btnChildrenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChildrenActionPerformed
         // TODO add your handling code here:
+        panelWork.removeAll();
+        panelWork.add(panelChildren);
+        panelWork.repaint();
+        panelWork.revalidate();
+
     }//GEN-LAST:event_btnChildrenActionPerformed
 
     private void btnCaretakerViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaretakerViewActionPerformed

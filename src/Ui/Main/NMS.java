@@ -6,7 +6,8 @@ package Ui.Main;
 
 import System.Directories.DB4OUtil;
 import System.Directories.MainSystem;
-import Ui.LoginPage.NmsLoginPage;
+import Ui.LoginPage.FundingLoginPage;
+import Ui.LoginPage.NgoLoginPage;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -59,6 +60,11 @@ public class NMS extends javax.swing.JPanel {
         add(btnNgo, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 163, 75, -1));
 
         btnFunding.setText("Funding");
+        btnFunding.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFundingActionPerformed(evt);
+            }
+        });
         add(btnFunding, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 274, -1, -1));
 
         btnBack.setText("Back");
@@ -82,11 +88,19 @@ public class NMS extends javax.swing.JPanel {
 
     private void btnNgoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNgoActionPerformed
         // TODO add your handling code here:
-         NmsLoginPage loginJPanel = new NmsLoginPage(cardPanel, system, dB4OUtil);
+         NgoLoginPage ngologinJPanel = new NgoLoginPage(cardPanel, system, dB4OUtil);
          CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
-         cardPanel.add("loginJPanel",loginJPanel);
+         cardPanel.add("loginJPanel",ngologinJPanel);
          cardLayout.next(cardPanel);
     }//GEN-LAST:event_btnNgoActionPerformed
+
+    private void btnFundingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFundingActionPerformed
+        // TODO add your handling code here:
+         FundingLoginPage fundloginJPanel = new FundingLoginPage(cardPanel, system, dB4OUtil);
+         CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
+         cardPanel.add("loginJPanel",fundloginJPanel);
+         cardLayout.next(cardPanel);
+    }//GEN-LAST:event_btnFundingActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

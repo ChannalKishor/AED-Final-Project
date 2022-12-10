@@ -4,6 +4,7 @@
  */
 package Ui.Ngo;
 
+import Ngo.CareTaker.Caretaker;
 import Ngo.Children.Children;
 import System.Directories.DB4OUtil;
 import System.Directories.MainSystem;
@@ -22,11 +23,12 @@ public class CaretakerWorkspace extends javax.swing.JPanel {
      * Creates new form CaretakerWorkspace
      */
     private JPanel cardPanel;
+    private Caretaker caretaker;
     private MainSystem system;
     private DB4OUtil dB4OUtil;
     private final String FILENAME = "ProjectDataBank.db4o";
     
-    public CaretakerWorkspace() {
+    public CaretakerWorkspace(Caretaker caretaker,JPanel cardPanel,MainSystem system,DB4OUtil dB4OUtil ) {
         initComponents();
         this.cardPanel = cardPanel;
         this.system = system;

@@ -35,4 +35,14 @@ public class FundManagerDirectory {
     public void deleteFundManager(FundManager f){
         fundManagerList.remove(f);
     }
+    
+    public FundManager findFundManager(String username, String password){
+        for(FundManager f: fundManagerList){
+            if(f.getUsername().equals(username) && f.getPassword().equals(password)){
+                return f;
+            }
+            
+        }
+        return null;
+    }
 }
