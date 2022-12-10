@@ -4,10 +4,48 @@
  */
 package Hospital.Encounter;
 
+import Ngo.NgoManager.NgoManager;
+import java.util.ArrayList;
+
 /**
  *
  * @author chinm
  */
 public class EncounterDirectory {
+    
+    private ArrayList<Encounter> hospitalEncounterList;
+    
+    public EncounterDirectory() {
+    hospitalEncounterList = new ArrayList<Encounter>();
+    }
+    
+    public ArrayList<Encounter> getHospitalEncounterList() {
+        return hospitalEncounterList;
+    }
+    
+    public void setHospitalEncounterList(ArrayList<Encounter> hospitalEncounterList) {
+        this.hospitalEncounterList = hospitalEncounterList;
+    }
+    
+    public Encounter addHospitalEncounter(){
+        Encounter newEncounter = new Encounter();
+        hospitalEncounterList.add(newEncounter);
+        return newEncounter;
+    }
+    
+    public void deleteHospitalEncounter(Encounter m){
+        hospitalEncounterList.remove(m);
+    }
+    
+//    public Encounter findHospitalEncounter(String username, String password){
+//        for(NgoManager n: ngoManagerList){
+//            if(n.getUsername().equals(username) && n.getPassword().equals(password)){
+//                return n;
+//            }
+//            
+//        }
+//        return null;
+//    }
+    
     
 }
