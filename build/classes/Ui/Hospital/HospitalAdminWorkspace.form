@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <NonVisualComponents>
     <Component class="javax.swing.JTextField" name="jTextField37">
       <Properties>
@@ -55,7 +55,7 @@
                           <Component id="btnPatient" linkSize="1" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="btnEncounter" linkSize="1" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="btnHospital" linkSize="1" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnPharmacy" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnpharmacist" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -75,7 +75,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnHospital" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnPharmacy" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnpharmacist" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="520" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -94,6 +94,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Doctor"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDoctorActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnPatient">
               <Properties>
@@ -116,9 +119,9 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHospitalActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnPharmacy">
+            <Component class="javax.swing.JButton" name="btnpharmacist">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Pharmacy"/>
+                <Property name="text" type="java.lang.String" value="Pharmacist"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -1360,15 +1363,15 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel4" max="32767" attributes="0"/>
+                                  <Component id="lblTitleHaHospital" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jButton13" linkSize="10" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jButton14" linkSize="10" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jButton15" linkSize="10" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jButton16" linkSize="10" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnHospitalCreate" linkSize="10" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnHospitalView" linkSize="10" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnHospitalEdit" linkSize="10" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnHospitalDelete" linkSize="10" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace pref="89" max="32767" attributes="0"/>
                                   <Component id="jScrollPane4" min="-2" max="-2" attributes="0"/>
@@ -1379,43 +1382,43 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel44" linkSize="12" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabel45" linkSize="12" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabel46" linkSize="12" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabel47" linkSize="12" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel48" linkSize="12" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblHospitalID" linkSize="12" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblHospitalName" linkSize="12" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblHospitalEmail" linkSize="12" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblHospitalPhone" linkSize="12" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblHospitalCity" linkSize="12" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jTextField42" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
-                                      <Component id="jTextField41" min="-2" pref="83" max="-2" attributes="0"/>
-                                      <Component id="jTextField40" min="-2" pref="83" max="-2" attributes="0"/>
-                                      <Component id="jTextField39" min="-2" pref="83" max="-2" attributes="0"/>
+                                      <Component id="txtHospitalPhone" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
+                                      <Component id="txtHospitalEmail" min="-2" pref="83" max="-2" attributes="0"/>
+                                      <Component id="txtHospitalName" min="-2" pref="83" max="-2" attributes="0"/>
+                                      <Component id="txtlblHospitalID" min="-2" pref="83" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel49" linkSize="13" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel50" linkSize="13" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel51" linkSize="13" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel52" linkSize="13" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jButton19" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblHospitalCommunity" linkSize="13" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblHospitalState" linkSize="13" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblHospitalZip" linkSize="13" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblHospitalCountry" linkSize="13" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnHospitalClear" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jButton20" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnHospitalSave" min="-2" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jTextField44" max="32767" attributes="0"/>
-                                          <Component id="jTextField45" max="32767" attributes="0"/>
-                                          <Component id="jTextField46" max="32767" attributes="0"/>
-                                          <Component id="jTextField47" pref="99" max="32767" attributes="0"/>
+                                          <Component id="txtHospitalCommunity" max="32767" attributes="0"/>
+                                          <Component id="txtHospitalState" max="32767" attributes="0"/>
+                                          <Component id="txtHospitalZip" max="32767" attributes="0"/>
+                                          <Component id="txtHospitalCountry" pref="99" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace min="-2" pref="143" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Component id="jTextField43" min="-2" pref="87" max="-2" attributes="0"/>
+                                  <Component id="txtHospitalCity" min="-2" pref="87" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -1426,57 +1429,57 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel4" min="-2" pref="68" max="-2" attributes="0"/>
+                          <Component id="lblTitleHaHospital" min="-2" pref="68" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jScrollPane4" min="-2" pref="113" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Component id="jButton13" linkSize="11" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnHospitalCreate" linkSize="11" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jButton14" linkSize="11" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnHospitalView" linkSize="11" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jButton15" linkSize="11" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnHospitalEdit" linkSize="11" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jButton16" linkSize="11" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnHospitalDelete" linkSize="11" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel44" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel49" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField39" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField44" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblHospitalID" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblHospitalCommunity" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtlblHospitalID" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtHospitalCommunity" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel45" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel50" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField40" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField45" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblHospitalName" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblHospitalState" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtHospitalName" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtHospitalState" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel46" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel51" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField41" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField46" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblHospitalEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblHospitalZip" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtHospitalEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtHospitalZip" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel52" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel47" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField42" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField47" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblHospitalCountry" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblHospitalPhone" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtHospitalPhone" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtHospitalCountry" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel48" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField43" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblHospitalCity" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtHospitalCity" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jButton19" linkSize="14" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton20" linkSize="14" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnHospitalClear" linkSize="14" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnHospitalSave" linkSize="14" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="272" max="32767" attributes="0"/>
                       </Group>
@@ -1484,7 +1487,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel4">
+                <Component class="javax.swing.JLabel" name="lblTitleHaHospital">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="36" style="0"/>
@@ -1500,7 +1503,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="jTable4">
+                    <Component class="javax.swing.JTable" name="tableHospital">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="4" rowCount="4">
@@ -1541,98 +1544,101 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JButton" name="jButton13">
+                <Component class="javax.swing.JButton" name="btnHospitalCreate">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Create"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton14">
+                <Component class="javax.swing.JButton" name="btnHospitalView">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="View"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton15">
+                <Component class="javax.swing.JButton" name="btnHospitalEdit">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Edit"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton16">
+                <Component class="javax.swing.JButton" name="btnHospitalDelete">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Delete"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel44">
+                <Component class="javax.swing.JLabel" name="lblHospitalID">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Hospital ID"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel45">
+                <Component class="javax.swing.JLabel" name="lblHospitalName">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Hospital Name"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel46">
+                <Component class="javax.swing.JLabel" name="lblHospitalEmail">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Hospital Email"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel47">
+                <Component class="javax.swing.JLabel" name="lblHospitalPhone">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Phone No"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel48">
+                <Component class="javax.swing.JLabel" name="lblHospitalCity">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="City"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel49">
+                <Component class="javax.swing.JLabel" name="lblHospitalCommunity">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Community"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel50">
+                <Component class="javax.swing.JLabel" name="lblHospitalState">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="State"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel51">
+                <Component class="javax.swing.JLabel" name="lblHospitalZip">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Zip Code"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel52">
+                <Component class="javax.swing.JLabel" name="lblHospitalCountry">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Country"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField39">
+                <Component class="javax.swing.JTextField" name="txtlblHospitalID">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField40">
+                <Component class="javax.swing.JTextField" name="txtHospitalName">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField41">
+                <Component class="javax.swing.JTextField" name="txtHospitalEmail">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField42">
+                <Component class="javax.swing.JTextField" name="txtHospitalPhone">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField43">
+                <Component class="javax.swing.JTextField" name="txtHospitalCity">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField44">
+                <Component class="javax.swing.JTextField" name="txtHospitalCommunity">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField45">
+                <Component class="javax.swing.JTextField" name="txtHospitalState">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField46">
+                <Component class="javax.swing.JTextField" name="txtHospitalZip">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField47">
+                <Component class="javax.swing.JTextField" name="txtHospitalCountry">
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton19">
+                <Component class="javax.swing.JButton" name="btnHospitalClear">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Clear"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton20">
+                <Component class="javax.swing.JButton" name="btnHospitalSave">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Save"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHospitalSaveActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
