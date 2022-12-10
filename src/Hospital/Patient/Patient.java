@@ -92,16 +92,7 @@ public class Patient {
         this.password = password;
     }
     
-   
-    
-
-    
-    
-    
-    
-    
-    
-    
+  
     @Override
     public String toString(){
         String n = String.valueOf(name);

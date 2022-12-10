@@ -31,7 +31,7 @@ public class PatientDirectory {
         return newpatient;
     }
     
-    public void deleteHospitalAdmin(Patient m){
+    public void deletePatient(Patient m){
         patientList.remove(m);
     }
     

@@ -1876,7 +1876,6 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
             
           
         }
-       
         
     }//GEN-LAST:event_btnNgoMangerUpdateActionPerformed
 

@@ -17,6 +17,34 @@ public class Encounter {
     private String patientUsername;
     private String comment;
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+    private String date;
+    private String time;
+    
+
+    public String getRoomNumber() {
+        return roomNumber;
+    }
+
+    public void setRoomNumber(String roomNumber) {
+        this.roomNumber = roomNumber;
+    }
+    private String roomNumber; 
+
     public String getEncounterNo() {
         return encounterNo;
     }
