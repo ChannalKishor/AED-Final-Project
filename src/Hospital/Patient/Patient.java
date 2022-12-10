@@ -9,7 +9,17 @@ package Hospital.Patient;
  * @author kishor
  */
 public class Patient {
-
+    
+    private String role;
+    private String patientId;
+    private String username;
+    private String name;
+    private Integer age;
+    private String gender;
+    private String emailId;
+    private Long phno;
+    private String password;
+    
     public String getRole() {
         return role;
     }
@@ -82,15 +92,7 @@ public class Patient {
         this.password = password;
     }
     
-    private String role;
-    private String patientId;
-    private String username;
-    private String name;
-    private Integer age;
-    private String gender;
-    private String emailId;
-    private Long phno;
-    private String password;
+   
     
 
     

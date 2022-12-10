@@ -4,10 +4,37 @@
  */
 package School.Application;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author chinm
  */
 public class ApplicationDirectory {
+    private ArrayList<Application> applicationList;
+
+    public ApplicationDirectory() {
+        applicationList = new ArrayList<Application>();
+        
+    }
+
+    public ArrayList<Application> getApplicationList() {
+        return applicationList;
+    }
+
+    public void setApplicationList(ArrayList<Application> applicationList) {
+        this.applicationList = applicationList;
+    }
+    
+    public Application addApplication(){
+        Application n = new Application();
+        applicationList.add(n);
+        return n;
+    }
+    
+    public void deleteApplication(Application m){
+        applicationList.remove(m);
+    }
+    
     
 }
