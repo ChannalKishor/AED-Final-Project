@@ -15,8 +15,10 @@ public class Application {
     private Integer age;
     private String dob;
     private String gender;
+    private String cls;
     private String status;
     private String school;
+    private String ngo;
     private String comment;
 
     public String getAppNo() {
@@ -82,6 +84,24 @@ public class Application {
     public void setComment(String comment) {
         this.comment = comment;
     }
+
+    public String getCls() {
+        return cls;
+    }
+
+    public void setCls(String cls) {
+        this.cls = cls;
+    }
+
+    public String getNgo() {
+        return ngo;
+    }
+
+    public void setNgo(String ngo) {
+        this.ngo = ngo;
+    }
+    
+    
     
     @Override
     public String toString(){

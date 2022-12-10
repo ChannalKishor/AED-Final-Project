@@ -4,7 +4,6 @@
  */
 package School.Principal;
 
-import School.Teacher.TeacherDirectory;
 import java.util.ArrayList;
 
 /**
@@ -45,5 +44,26 @@ public class PrincipalDirectory {
             
         }
         return null;
+    }
+    
+    public boolean uiquePrincipalId(String id) {
+
+        for (Principal d : principalList) {
+
+            if (id.equals(d.getTeacherId())) {
+                return false;
+            }
+        }
+            return true; 
+    } 
+    
+    public boolean uniquePrincipalUsername(String username){
+        for (Principal d: principalList) {
+
+            if (username.equals(d.getUsername())) {
+                return false;
+            }
+        }
+            return true;
     }
 }
