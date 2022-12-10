@@ -46,4 +46,25 @@ public class TeacherDirectory {
         }
         return null;
     }
+    
+    public boolean uiqueTeacherId(String id) {
+
+        for (Teacher d : teacherList) {
+
+            if (id.equals(d.getTeacherId())) {
+                return false;
+            }
+        }
+            return true; 
+    } 
+    
+    public boolean uniqueTeacherUsername(String username){
+        for (Teacher d: teacherList) {
+
+            if (username.equals(d.getUsername())) {
+                return false;
+            }
+        }
+            return true;
+    }
 }

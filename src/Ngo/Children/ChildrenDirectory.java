@@ -35,4 +35,17 @@ public class ChildrenDirectory {
     public void deleteChildren(Children c){
         childrenList.remove(c);
     }
+    
+    public boolean uiqueChildrenId(String id) {
+
+        for (Children d : childrenList) {
+
+            if (id.equals(d.getChildrenId())) {
+                return false;
+            }
+        }
+            return true; 
+    } 
+    
+    
 }

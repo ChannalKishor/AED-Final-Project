@@ -3,13 +3,27 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Kishor/Desktop/AED%20Final%202/AED-Final-Project/src/Hospital/Encounter/EncounterDirectory.java</file>
             <file>file:/C:/Users/Kishor/Desktop/AED%20Final%202/AED-Final-Project/src/Ui/Ngo/NgoAdminWorkspace.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/C:/Users/chinm/OneDrive/Desktop/AED_projects/NGO_Management_System/AED-Final-Project/src/School/Application/ApplicationDirectory.java</file>
+            <file>file:/C:/Users/chinm/OneDrive/Desktop/AED_projects/NGO_Management_System/AED-Final-Project/src/Ui/School/SchoolAdminWorkspace.java</file>
+            <file>file:/C:/Users/chinm/OneDrive/Desktop/AED_projects/NGO_Management_System/AED-Final-Project/src/Ui/School/PrincipalWorkspace.java</file>
+            <file>file:/C:/Users/chinm/OneDrive/Desktop/AED_projects/NGO_Management_System/AED-Final-Project/src/Ui/Hospital/HospitalAdminWorkspace.java</file>
+=======
+            <file>file:/C:/Users/Kishor/Desktop/AED%20Final%202/AED-Final-Project/src/Hospital/Patient/Patient.java</file>
+>>>>>>> 70d531c0b5a82e31f77d08fbaf9c60ed1fc9105d
             <file>file:/C:/Users/Kishor/Desktop/AED%20Final%202/AED-Final-Project/src/Ngo/NgoManager/NgoManager.java</file>
             <file>file:/C:/Users/Kishor/Desktop/AED%20Final%202/AED-Final-Project/src/Ngo/NgoManager/NgoManagerDirectory.java</file>
             <file>file:/C:/Users/Kishor/Desktop/AED%20Final%202/AED-Final-Project/src/Hospital/Encounter/Encounter.java</file>
             <file>file:/C:/Users/Kishor/Desktop/AED%20Final%202/AED-Final-Project/src/Ui/Hospital/HospitalAdminWorkspace.java</file>
+<<<<<<< HEAD
             <file>file:/C:/Users/Kishor/Desktop/AED%20Final%202/AED-Final-Project/src/System/Directories/MainSystem.java</file>
+=======
+>>>>>>> ea508cb0a1c5602cb43f15711554470b68b7e522
+>>>>>>> 70d531c0b5a82e31f77d08fbaf9c60ed1fc9105d
         </group>
     </open-files>
 </project-private>

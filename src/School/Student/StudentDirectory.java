@@ -35,4 +35,17 @@ public class StudentDirectory {
     public void deleteStudent(Student m){
         studentList.remove(m);
     }
+    
+    public boolean uiqueStudentId(String id) {
+
+        for (Student d : studentList) {
+
+            if (id.equals(d.getStudentId())) {
+                return false;
+            }
+        }
+            return true; 
+    } 
+    
+
 }

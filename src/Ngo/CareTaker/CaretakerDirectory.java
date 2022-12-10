@@ -46,4 +46,25 @@ public class CaretakerDirectory {
         }
         return null;
     }
+    
+    public boolean uiqueCaretakerId(String id) {
+
+        for (Caretaker d : caretakerList) {
+
+            if (id.equals(d.getCaretakerId())) {
+                return false;
+            }
+        }
+            return true; 
+    } 
+    
+    public boolean uniqueCaretakerUsername(String username){
+        for (Caretaker d: caretakerList) {
+
+            if (username.equals(d.getUsername())) {
+                return false;
+            }
+        }
+            return true;
+    }
 }

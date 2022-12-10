@@ -48,7 +48,26 @@ public class NgoManagerDirectory {
         return null;
     }
     
+    public boolean uiqueNgoManagerId(String id) {
+
+        for (NgoManager d : ngoManagerList) {
+
+            if (id.equals(d.getNgoManagerId())) {
+                return false;
+            }
+        }
+            return true; 
+    } 
     
+    public boolean uniqueNgoManagerUsername(String username){
+        for (NgoManager d: ngoManagerList) {
+
+            if (username.equals(d.getUsername())) {
+                return false;
+            }
+        }
+            return true;
+    }
     
     
 }
