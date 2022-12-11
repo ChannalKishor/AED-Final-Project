@@ -4,6 +4,7 @@
  */
 package System.Directories;
 
+import Funding.Donation.DonationDirectory;
 import Funding.FundManager.FundManagerDirectory;
 import Funding.PublicUser.PublicUserDirectory;
 import Hospital.Doctor.DoctorDirectory;
@@ -12,13 +13,15 @@ import Hospital.Hospital.HospitalDirectory;
 import Hospital.Patient.PatientDirectory;
 import Hospital.VitalSigns.VitalSignDirectory;
 import JobApp.Applicant.ApplicantDirectory;
+import JobApp.Applicant.TeacherApplyDirectory;
 import Ngo.CareTaker.CaretakerDirectory;
 import Ngo.Children.ChildrenDirectory;
-import Ngo.Ngo.NgoDirectory;
+
 import Ngo.NgoManager.NgoManagerDirectory;
 import Pharmacy.MedicineDirectory;
 import Pharmacy.Pharmacist.PharmacistDirectory;
 import School.Application.ApplicationDirectory;
+import School.FinalResult.FinalResultDirectory;
 import School.Principal.PrincipalDirectory;
 import School.Student.Student;
 import School.Student.StudentDirectory;
@@ -39,7 +42,7 @@ public class MainSystem {
     private PatientDirectory patientList;
     private HospitalDirectory hospitalList;
     private PharmacistDirectory pharmlist;
-    private NgoDirectory ngoList;
+    private FinalResultDirectory resList;
     private ChildrenDirectory childrenList;
     private TeacherDirectory teacherList;
     private StudentDirectory studentList;
@@ -48,6 +51,8 @@ public class MainSystem {
     private ApplicationDirectory applicationList;
     private VitalSignDirectory vitalSignList;
     private MedicineDirectory medicineList;
+    private DonationDirectory donationList;
+    private TeacherApplyDirectory applist;
 
     
     public MainSystem(){
@@ -60,7 +65,7 @@ public class MainSystem {
         patientList = new PatientDirectory();
         hospitalList = new HospitalDirectory();
         encounterlist = new EncounterDirectory();
-        ngoList = new NgoDirectory();
+        resList = new FinalResultDirectory();
         childrenList = new ChildrenDirectory();
         teacherList = new TeacherDirectory();
         studentList = new StudentDirectory();
@@ -69,6 +74,8 @@ public class MainSystem {
         applicationList = new ApplicationDirectory();
         vitalSignList = new VitalSignDirectory();
         medicineList = new MedicineDirectory();
+        donationList = new DonationDirectory();
+        applist = new TeacherApplyDirectory();
     }
     
    
@@ -137,14 +144,7 @@ public class MainSystem {
         this.hospitalList = hospitalList;
     }
 
-    public NgoDirectory getNgoList() {
-        return ngoList;
-    }
-
-    public void setNgoList(NgoDirectory ngoList) {
-        this.ngoList = ngoList;
-    }
-
+ 
     public ChildrenDirectory getChildrenList() {
         return childrenList;
     }
@@ -204,6 +204,25 @@ public class MainSystem {
     public MedicineDirectory getMedicineList() {
         return medicineList;
     }
+
+    public DonationDirectory getDonationList() {
+        return donationList;
+    }
+
+    public void setDonationList(DonationDirectory donationList) {
+        this.donationList = donationList;
+    }
+
+    public TeacherApplyDirectory getApplist() {
+        return applist;
+    }
+
+    public FinalResultDirectory getResList() {
+        return resList;
+    }
+    
+    
+    
     
     
     

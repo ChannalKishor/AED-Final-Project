@@ -18,6 +18,7 @@ public class Student {
     private Long phno;
     private String cls;
     private String role;
+    private String teachId;
 
     public String getStudentId() {
         return studentId;
@@ -26,9 +27,6 @@ public class Student {
     public void setStudentId(String studentId) {
         this.studentId = studentId;
     }
-
-   
-    
 
     public String getName() {
         return name;
@@ -93,6 +91,15 @@ public class Student {
     public void setRole(String role) {
         this.role = role;
     }
+
+    public String getTeachId() {
+        return teachId;
+    }
+
+    public void setTeachId(String teachId) {
+        this.teachId = teachId;
+    }
+    
     
     @Override
     public String toString(){

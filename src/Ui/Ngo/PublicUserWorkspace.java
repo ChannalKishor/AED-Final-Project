@@ -4,10 +4,12 @@
  */
 package Ui.Ngo;
 
+import Funding.Donation.Donation;
 import Funding.PublicUser.PublicUser;
 import System.Directories.DB4OUtil;
 import System.Directories.MainSystem;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -59,11 +61,16 @@ public class PublicUserWorkspace extends javax.swing.JPanel {
         tableNgo = new javax.swing.JTable();
         panelDonate = new javax.swing.JPanel();
         lblNgo = new javax.swing.JLabel();
-        txtNgo = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
+        lblAmt = new javax.swing.JLabel();
         txtAmount = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        lblTitle = new javax.swing.JLabel();
         btnSend = new javax.swing.JButton();
+        txtNgo = new javax.swing.JTextField();
+        lblName = new javax.swing.JLabel();
+        txtName = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtComm = new javax.swing.JTextArea();
+        lblComm = new javax.swing.JLabel();
 
         btnHome.setText("Home");
         btnHome.addActionListener(new java.awt.event.ActionListener() {
@@ -203,52 +210,89 @@ public class PublicUserWorkspace extends javax.swing.JPanel {
 
         lblNgo.setText("NGO:");
 
-        txtNgo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        lblAmt.setText("Amount:");
 
-        jLabel1.setText("Amount:");
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Donation");
+        lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle.setText("Donation");
 
         btnSend.setText("Send");
+        btnSend.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendActionPerformed(evt);
+            }
+        });
+
+        txtNgo.setEditable(false);
+        txtNgo.setText("NGO");
+
+        lblName.setText("From:");
+
+        txtName.setEditable(false);
+
+        txtComm.setColumns(20);
+        txtComm.setRows(5);
+        jScrollPane1.setViewportView(txtComm);
+
+        lblComm.setText("Comment:");
 
         javax.swing.GroupLayout panelDonateLayout = new javax.swing.GroupLayout(panelDonate);
         panelDonate.setLayout(panelDonateLayout);
         panelDonateLayout.setHorizontalGroup(
             panelDonateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelDonateLayout.createSequentialGroup()
-                .addGap(154, 154, 154)
-                .addGroup(panelDonateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(lblNgo))
-                .addGap(18, 18, 18)
-                .addGroup(panelDonateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtNgo, 0, 186, Short.MAX_VALUE)
-                    .addComponent(txtAmount))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDonateLayout.createSequentialGroup()
-                .addContainerGap(365, Short.MAX_VALUE)
+                .addContainerGap(275, Short.MAX_VALUE)
+                .addGroup(panelDonateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDonateLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(panelDonateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelDonateLayout.createSequentialGroup()
+                                .addGroup(panelDonateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblNgo)
+                                    .addComponent(lblName))
+                                .addGap(437, 437, 437))
+                            .addGroup(panelDonateLayout.createSequentialGroup()
+                                .addComponent(lblAmt)
+                                .addGap(216, 216, 216))))
+                    .addGroup(panelDonateLayout.createSequentialGroup()
+                        .addComponent(lblComm)
+                        .addGap(18, 18, 18)
+                        .addGroup(panelDonateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNgo)
+                            .addComponent(txtAmount)
+                            .addComponent(jScrollPane1)
+                            .addComponent(txtName))
+                        .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDonateLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSend)
-                .addGap(319, 319, 319))
+                .addGap(322, 322, 322))
         );
         panelDonateLayout.setVerticalGroup(
             panelDonateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelDonateLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
-                .addGap(160, 160, 160)
+                .addComponent(lblTitle)
+                .addGap(158, 158, 158)
                 .addGroup(panelDonateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNgo)
                     .addComponent(txtNgo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                .addGap(31, 31, 31)
                 .addGroup(panelDonateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(lblName)
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(panelDonateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAmt)
                     .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(82, 82, 82)
+                .addGap(44, 44, 44)
+                .addGroup(panelDonateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblComm))
+                .addGap(65, 65, 65)
                 .addComponent(btnSend)
-                .addContainerGap(309, Short.MAX_VALUE))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
 
         panelWork.add(panelDonate, "card4");
@@ -302,6 +346,28 @@ public class PublicUserWorkspace extends javax.swing.JPanel {
         panelWork.revalidate();
     }//GEN-LAST:event_btnDonateActionPerformed
 
+    private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
+        // TODO add your handling code here:
+        
+        String ngo = txtNgo.getText();
+        String from = txtName.getText();
+        Integer amt = Integer.valueOf(txtAmount.getText());
+        String comm = txtComm.getText();
+        
+        Donation d = system.getDonationList().addDonation();
+        
+        d.setNgo(ngo);
+        d.setName(from);
+        d.setAmt(amt);
+        d.setComment(comm);
+        
+        JOptionPane.showMessageDialog(this, "Donation sent successfully");
+        
+        txtName.setText("");
+        txtAmount.setText("");
+        txtComm.setText("");
+    }//GEN-LAST:event_btnSendActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane ScrollPane;
@@ -311,10 +377,13 @@ public class PublicUserWorkspace extends javax.swing.JPanel {
     private javax.swing.JButton btnLogOut;
     private javax.swing.JButton btnNgo;
     private javax.swing.JButton btnSend;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblAmt;
+    private javax.swing.JLabel lblComm;
+    private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblNgo;
     private javax.swing.JLabel lblRole;
+    private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblTitle2;
     private javax.swing.JLabel lblTitle3;
     private javax.swing.JPanel panelControl;
@@ -324,6 +393,8 @@ public class PublicUserWorkspace extends javax.swing.JPanel {
     private javax.swing.JPanel panelWork;
     private javax.swing.JTable tableNgo;
     private javax.swing.JTextField txtAmount;
-    private javax.swing.JComboBox<String> txtNgo;
+    private javax.swing.JTextArea txtComm;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtNgo;
     // End of variables declaration//GEN-END:variables
 }

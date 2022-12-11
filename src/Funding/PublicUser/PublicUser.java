@@ -94,7 +94,7 @@ public class PublicUser {
     
     @Override
     public String toString(){
-        String n = String.valueOf(name);
+        String n = String.valueOf(username);
         return n;
     }
     

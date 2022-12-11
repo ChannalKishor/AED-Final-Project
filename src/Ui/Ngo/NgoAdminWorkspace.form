@@ -78,7 +78,7 @@
                       <Component id="btnBudget" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnFoodInv" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="92" max="32767" attributes="0"/>
+                      <EmptySpace pref="117" max="32767" attributes="0"/>
                       <Component id="lblAccounts" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnNgoManager" min="-2" max="-2" attributes="0"/>
@@ -154,7 +154,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnPerson">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Person"/>
+                <Property name="text" type="java.lang.String" value="Public User"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPersonActionPerformed"/>
@@ -219,7 +219,7 @@
                           <Component id="lblRole" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnLogOut" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="550" max="32767" attributes="0"/>
+                          <EmptySpace pref="575" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -429,7 +429,7 @@
                               <Component id="lblNgoManagerRole" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtNgoManagerRole" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="21" max="32767" attributes="0"/>
+                          <EmptySpace pref="46" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnNgoManagerCreate" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnNgoMangerUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -764,7 +764,7 @@
                               <Component id="lblCaretakerPassword" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtCaretakerPassword" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="102" max="32767" attributes="0"/>
+                          <EmptySpace pref="127" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblCaretakerGender" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="cmbCaretakerGender" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -820,7 +820,7 @@
                                   <Component id="txtCaretakerDOB" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblCaretakerDOB" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="180" max="32767" attributes="0"/>
+                              <EmptySpace pref="205" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -1143,7 +1143,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="lblTitle4" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="331" max="32767" attributes="0"/>
+                          <EmptySpace pref="356" max="32767" attributes="0"/>
                           <Component id="txtFundManagerName" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -1215,7 +1215,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="186" max="32767" attributes="0"/>
+                              <EmptySpace pref="211" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -1428,24 +1428,16 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lblTitle5" alignment="0" max="32767" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="143" max="-2" attributes="0"/>
-                          <Component id="ScrollPane4" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="159" max="32767" attributes="0"/>
+                      <Component id="lblTitle5" alignment="0" pref="754" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                          <Component id="ScrollPane4" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="315" max="-2" attributes="0"/>
+                          <Component id="btnDelete" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblPersonName" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblPersonAge" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtPersonAge" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
-                              <Component id="txtPersonName" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="199" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1454,19 +1446,11 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="lblTitle5" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="160" max="-2" attributes="0"/>
-                          <Component id="ScrollPane4" min="-2" pref="93" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblPersonName" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtPersonName" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblPersonAge" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtPersonAge" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="248" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                          <Component id="ScrollPane4" min="-2" pref="182" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                          <Component id="btnDelete" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="346" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1478,7 +1462,7 @@
                       <Font name="Segoe UI" size="24" style="1"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Person (public)"/>
+                    <Property name="text" type="java.lang.String" value="Public User"/>
                   </Properties>
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="ScrollPane4">
@@ -1491,13 +1475,31 @@
                     <Component class="javax.swing.JTable" name="tablePerson">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="2" rowCount="4">
+                          <Table columnCount="5" rowCount="4">
+                            <Column editable="true" title="Username" type="java.lang.String"/>
                             <Column editable="true" title="Name" type="java.lang.String"/>
-                            <Column editable="true" title="Age" type="java.lang.String"/>
+                            <Column editable="true" title="Age" type="java.lang.Integer"/>
+                            <Column editable="true" title="Gender" type="java.lang.String"/>
+                            <Column editable="true" title="Email-Id" type="java.lang.String"/>
                           </Table>
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                           <TableColumnModel selectionModel="0">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
                             <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                               <Title/>
                               <Editor/>
@@ -1517,19 +1519,13 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JLabel" name="lblPersonName">
+                <Component class="javax.swing.JButton" name="btnDelete">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Name:"/>
+                    <Property name="text" type="java.lang.String" value="Delete Account"/>
                   </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtPersonName">
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblPersonAge">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Age:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtPersonAge">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1579,7 +1575,7 @@
                           <Component id="lblTitle6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
                           <Component id="ScrollPane5" min="-2" pref="184" max="-2" attributes="0"/>
-                          <EmptySpace pref="111" max="32767" attributes="0"/>
+                          <EmptySpace pref="136" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblPatient" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtPatient" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1703,80 +1699,89 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
+                              <Component id="lblChildName2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="lblChildAge" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="txtChildAge" min="-2" pref="219" max="-2" attributes="0"/>
+                                  </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="lblChildName2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                                  <Group type="102" attributes="0">
-                                                      <Component id="lblChildName3" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-                                                      <Component id="cmbChildGender" max="32767" attributes="0"/>
-                                                  </Group>
-                                                  <Component id="txtChildDOB" min="-2" pref="219" max="-2" attributes="0"/>
-                                                  <Group type="102" attributes="0">
-                                                      <Component id="lblChildAge" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace max="32767" attributes="0"/>
-                                                      <Component id="txtChildAge" min="-2" pref="219" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="lblChildName" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
-                                                          <Component id="txtChildName" min="-2" pref="219" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="lblApplicationNo" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                          <Component id="txtApplicationNo" min="-2" pref="219" max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
-                                              </Group>
-                                          </Group>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="lblStatus" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="32767" attributes="0"/>
-                                                  <Component id="txtStatus" min="-2" pref="219" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <Component id="lblChildName6" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="32767" attributes="0"/>
-                                                  <Component id="txtChildClass" min="-2" pref="219" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="lblChildName4" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace pref="55" max="32767" attributes="0"/>
-                                                  <Component id="txtChildSchool" min="-2" pref="219" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="lblChildName5" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace max="32767" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                      <Component id="jScrollPane1" pref="219" max="32767" attributes="0"/>
-                                                      <Component id="txtNgo" max="32767" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                          </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="lblChildName" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                                          <Component id="txtChildName" min="-2" pref="219" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="ScrollPane8" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="ScrollPane6" pref="696" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="lblApplicationNo" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="txtApplicationNo" min="-2" pref="219" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
-                                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="lblChildName3" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="txtChildDOB" pref="219" max="32767" attributes="0"/>
+                                          <Component id="cmbChildGender" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
                               </Group>
                           </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="lblStatus" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="txtStatus" min="-2" pref="219" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="lblChildName6" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="txtChildClass" min="-2" pref="219" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="lblChildName4" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="55" max="32767" attributes="0"/>
+                                  <Component id="txtChildSchool" min="-2" pref="219" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lblChildName5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jScrollPane1" pref="219" max="32767" attributes="0"/>
+                                      <Component id="txtNgo" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="583" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="ScrollPane8" alignment="1" pref="730" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="ScrollPane6" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnAutofill" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -1792,15 +1797,17 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="lblTitle7" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="ScrollPane8" min="-2" pref="93" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="btnAutofill" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="ScrollPane6" min="-2" pref="97" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblApplicationNo" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtApplicationNo" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1836,7 +1843,7 @@
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace pref="19" max="32767" attributes="0"/>
+                                  <EmptySpace pref="44" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtNgo" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1858,7 +1865,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="342" max="-2" attributes="0"/>
                               <Component id="lblChildName7" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="342" max="32767" attributes="0"/>
+                              <EmptySpace pref="367" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -1934,6 +1941,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtChildName">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnApply">
                   <Properties>
@@ -1951,6 +1961,9 @@
                 <Component class="javax.swing.JTextField" name="txtApplicationNo">
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtChildAge">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblChildAge">
                   <Properties>
@@ -1963,6 +1976,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtChildDOB">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblChildName3">
                   <Properties>
@@ -1979,20 +1995,6 @@
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="text" type="java.lang.String" value="School"/>
                   </Properties>
-                </Component>
-                <Component class="javax.swing.JComboBox" name="cmbChildGender">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="3">
-                        <StringItem index="0" value="Male"/>
-                        <StringItem index="1" value="Female"/>
-                        <StringItem index="2" value="Others"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblChildName5">
                   <Properties>
@@ -2112,6 +2114,19 @@
                     <Property name="text" type="java.lang.String" value="Yes"/>
                   </Properties>
                 </Component>
+                <Component class="javax.swing.JButton" name="btnAutofill">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Autofill"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAutofillActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JTextField" name="cmbChildGender">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="panelBudget">
@@ -2127,21 +2142,21 @@
                       <Component id="lblTitle8" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
                                   <Component id="lblTotal" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="txtTotal" min="-2" pref="166" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="158" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="217" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Group type="102" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
                                           <Component id="lblHealth" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
                                           <Component id="txtHealth" min="-2" pref="166" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="102" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
                                           <Component id="lblEducation" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="txtEducation" min="-2" pref="166" max="-2" attributes="0"/>
@@ -2151,10 +2166,32 @@
                                           <EmptySpace max="32767" attributes="0"/>
                                           <Component id="txtFood" min="-2" pref="166" max="-2" attributes="0"/>
                                       </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="lblDonation" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="txtDonation" min="-2" pref="166" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="lblOthers" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="txtOther" min="-2" pref="166" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="158" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lblIncome" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblExpenditure" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="357" max="32767" attributes="0"/>
+                          <EmptySpace pref="298" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="btnUpdate" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="332" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2168,7 +2205,9 @@
                               <Component id="lblTotal" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtTotal" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+                          <Component id="lblExpenditure" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblEducation" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtEducation" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -2183,7 +2222,21 @@
                               <Component id="lblFood" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtFood" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="410" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                          <Component id="lblIncome" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblDonation" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtDonation" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblOthers" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtOther" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                          <Component id="btnUpdate" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="116" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2225,6 +2278,35 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtFood">
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblExpenditure">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Expenditure:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblIncome">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Income:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtDonation">
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblDonation">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Donations:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtOther">
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblOthers">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Others:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnUpdate">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Update"/>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
@@ -2347,7 +2429,7 @@
                               <Component id="btnChildrenCreate" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnChildrenUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="56" max="32767" attributes="0"/>
+                          <EmptySpace pref="81" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2533,7 +2615,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="lblTitle10" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="655" max="32767" attributes="0"/>
+                          <EmptySpace pref="680" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

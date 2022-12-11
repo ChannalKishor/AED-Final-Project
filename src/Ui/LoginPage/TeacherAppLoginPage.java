@@ -4,9 +4,11 @@
  */
 package Ui.LoginPage;
 
+import JobApp.Applicant.Applicant;
 import System.Directories.DB4OUtil;
 import System.Directories.MainSystem;
 import Ui.School.ApplicantRegister;
+import Ui.School.ApplicantWorkspace;
 import Ui.School.SchoolAdminWorkspace;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -163,6 +165,7 @@ public class TeacherAppLoginPage extends javax.swing.JPanel {
         String username = txtUsername.getText();
         String password = txtPass.getText();
         String role = String.valueOf(cmbRole.getSelectedItem());
+        Applicant app = system.getApplicantList().findApplicant(username, password);
         //        Principal principal =
 
         try{
@@ -174,14 +177,14 @@ public class TeacherAppLoginPage extends javax.swing.JPanel {
                     cardLayout.next(cardPanel);
                 }
             }
-            //            else if(role.equals("Principal")){
-                //                if(username.equals(.getUsername()) && password.equals(ngoManager.getPassword())){
-                    //                    NgoManagerWorkspace ngoManJPanel = new NgoManagerWorkspace(ngoManager,cardPanel, system, dB4OUtil);
-                    //                    CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
-                    //                    cardPanel.add("ngoManagerJPanel",ngoManJPanel);
-                    //                    cardLayout.next(cardPanel);
-                    //                }
-                //            }
+            else if(role.equals("Applicant")){
+                    if(username.equals(app.getUsername()) && password.equals(app.getPassword())){
+                            ApplicantWorkspace appJPanel = new ApplicantWorkspace(app,cardPanel, system, dB4OUtil);
+                            CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
+                            cardPanel.add("JobAppJPanel",appJPanel);
+                            cardLayout.next(cardPanel);
+                    }
+            }
             //            else if(role.equals("Teacher")){
                 //                if(username.equals(caretaker.getUsername()) && password.equals(caretaker.getPassword())){
                     //                    CaretakerWorkspace caretakerJPanel = new CaretakerWorkspace(caretaker,cardPanel, system, dB4OUtil);

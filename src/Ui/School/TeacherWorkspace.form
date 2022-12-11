@@ -480,8 +480,89 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="lblTitle4" alignment="0" pref="753" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" pref="706" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="lblStudentIdRes1" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="txtteacherIdRes" min="-2" pref="208" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="lblStudentIdRes" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="txtStudentIdRes" min="-2" pref="208" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Component id="lblScience" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblEnglish" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblMaths" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="txtScience" alignment="1" max="32767" attributes="0"/>
+                                              <Component id="txtEnglish" alignment="1" pref="208" max="32767" attributes="0"/>
+                                              <Component id="txtMaths" alignment="1" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="lblPer" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="txtPer" min="-2" pref="208" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="txtStudentClassRes" alignment="1" min="-2" pref="208" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lblStudentNameRes" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="txtStudentNameRes" min="-2" pref="208" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="lblResult" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Component id="cmbResult" min="-2" pref="148" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
+                                  <Component id="btnCreateRes" min="-2" pref="88" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnUpdateRes" min="-2" pref="79" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnDeleteRes" min="-2" pref="79" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="btnAutofill" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jScrollPane1" pref="706" max="32767" attributes="0"/>
+                                          <Component id="ScrollPaneNgoManager2" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lblStudentClassRes" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -491,9 +572,67 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="lblTitle4" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" pref="168" max="-2" attributes="0"/>
-                          <EmptySpace pref="437" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                          <Component id="ScrollPaneNgoManager2" min="-2" pref="75" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="btnAutofill" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="93" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="btnCreateRes" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnUpdateRes" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnDeleteRes" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="lblStudentIdRes" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtStudentIdRes" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cmbResult" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblResult" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="lblStudentIdRes1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtteacherIdRes" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="lblStudentNameRes" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtStudentNameRes" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblStudentClassRes" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtStudentClassRes" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="txtMaths" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblMaths" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="txtScience" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblScience" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="txtEnglish" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblEnglish" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="txtPer" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblPer" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="29" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -515,17 +654,17 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="jTable1">
+                    <Component class="javax.swing.JTable" name="tableResult">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="8" rowCount="4">
                             <Column editable="true" title="Student Id" type="java.lang.String"/>
                             <Column editable="true" title="Student Name" type="java.lang.String"/>
+                            <Column editable="true" title="Class" type="java.lang.String"/>
                             <Column editable="true" title="Maths" type="java.lang.Integer"/>
                             <Column editable="true" title="Science" type="java.lang.Integer"/>
                             <Column editable="true" title="English" type="java.lang.Integer"/>
-                            <Column editable="true" title="Social Science" type="java.lang.Integer"/>
-                            <Column editable="true" title="Percentage" type="java.lang.Float"/>
+                            <Column editable="true" title="Percentage" type="java.lang.Integer"/>
                             <Column editable="true" title="Result" type="java.lang.String"/>
                           </Table>
                         </Property>
@@ -580,6 +719,176 @@
                     </Component>
                   </SubComponents>
                 </Container>
+                <Container class="javax.swing.JScrollPane" name="ScrollPaneNgoManager2">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTable" name="tableStudentRes">
+                      <Properties>
+                        <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                          <Table columnCount="5" rowCount="4">
+                            <Column editable="true" title="ID" type="java.lang.String"/>
+                            <Column editable="true" title="Name" type="java.lang.String"/>
+                            <Column editable="true" title="Class" type="java.lang.String"/>
+                            <Column editable="true" title="Age" type="java.lang.Integer"/>
+                            <Column editable="true" title="Email-Id" type="java.lang.String"/>
+                          </Table>
+                        </Property>
+                        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                          <Color id="Default Cursor"/>
+                        </Property>
+                        <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                          <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Component class="javax.swing.JButton" name="btnAutofill">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Autofill"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAutofillActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblStudentIdRes">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Student Id:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtStudentIdRes">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtStudentIdResActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblStudentIdRes1">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Teacher Id:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtteacherIdRes">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtteacherIdResActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblStudentNameRes">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Student Name:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtStudentNameRes">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtStudentNameResActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtMaths">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMathsActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblMaths">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Maths:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtScience">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtScienceActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblScience">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Science:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtEnglish">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEnglishActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblEnglish">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="English:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtPer">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPerActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblPer">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Percentage:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cmbResult">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="2">
+                        <StringItem index="0" value="Pass"/>
+                        <StringItem index="1" value="Fail"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblResult">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Result:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnCreateRes">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Create"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateResActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblStudentClassRes">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Class:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtStudentClassRes">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtStudentClassResActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnUpdateRes">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Update"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateResActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnDeleteRes">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Delete"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteResActionPerformed"/>
+                  </Events>
+                </Component>
               </SubComponents>
             </Container>
           </SubComponents>

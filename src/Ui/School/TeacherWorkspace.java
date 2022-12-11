@@ -4,6 +4,7 @@
  */
 package Ui.School;
 
+import School.FinalResult.FinalResult;
 import School.Student.Student;
 import School.Teacher.Teacher;
 import System.Directories.DB4OUtil;
@@ -35,6 +36,8 @@ public class TeacherWorkspace extends javax.swing.JPanel {
         this.system = system;
         this.dB4OUtil = dB4OUtil;
         populateStudentTable();
+        populateStudentResTable();
+        populateResultTable();
     }
 
     /**
@@ -84,7 +87,31 @@ public class TeacherWorkspace extends javax.swing.JPanel {
         panelMarks = new javax.swing.JPanel();
         lblTitle4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableResult = new javax.swing.JTable();
+        ScrollPaneNgoManager2 = new javax.swing.JScrollPane();
+        tableStudentRes = new javax.swing.JTable();
+        btnAutofill = new javax.swing.JButton();
+        lblStudentIdRes = new javax.swing.JLabel();
+        txtStudentIdRes = new javax.swing.JTextField();
+        lblStudentIdRes1 = new javax.swing.JLabel();
+        txtteacherIdRes = new javax.swing.JTextField();
+        lblStudentNameRes = new javax.swing.JLabel();
+        txtStudentNameRes = new javax.swing.JTextField();
+        txtMaths = new javax.swing.JTextField();
+        lblMaths = new javax.swing.JLabel();
+        txtScience = new javax.swing.JTextField();
+        lblScience = new javax.swing.JLabel();
+        txtEnglish = new javax.swing.JTextField();
+        lblEnglish = new javax.swing.JLabel();
+        txtPer = new javax.swing.JTextField();
+        lblPer = new javax.swing.JLabel();
+        cmbResult = new javax.swing.JComboBox<>();
+        lblResult = new javax.swing.JLabel();
+        btnCreateRes = new javax.swing.JButton();
+        lblStudentClassRes = new javax.swing.JLabel();
+        txtStudentClassRes = new javax.swing.JTextField();
+        btnUpdateRes = new javax.swing.JButton();
+        btnDeleteRes = new javax.swing.JButton();
 
         btnHome.setText("Home");
         btnHome.addActionListener(new java.awt.event.ActionListener() {
@@ -362,7 +389,7 @@ public class TeacherWorkspace extends javax.swing.JPanel {
         lblTitle4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle4.setText("Final Result");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableResult.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -370,18 +397,140 @@ public class TeacherWorkspace extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Student Id", "Student Name", "Maths", "Science", "English", "Social Science", "Percentage", "Result"
+                "Student Id", "Student Name", "Class", "Maths", "Science", "English", "Percentage", "Result"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Float.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tableResult);
+
+        tableStudentRes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Name", "Class", "Age", "Email-Id"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tableStudentRes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ScrollPaneNgoManager2.setViewportView(tableStudentRes);
+
+        btnAutofill.setText("Autofill");
+        btnAutofill.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAutofillActionPerformed(evt);
+            }
+        });
+
+        lblStudentIdRes.setText("Student Id:");
+
+        txtStudentIdRes.setEditable(false);
+        txtStudentIdRes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtStudentIdResActionPerformed(evt);
+            }
+        });
+
+        lblStudentIdRes1.setText("Teacher Id:");
+
+        txtteacherIdRes.setEditable(false);
+        txtteacherIdRes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtteacherIdResActionPerformed(evt);
+            }
+        });
+
+        lblStudentNameRes.setText("Student Name:");
+
+        txtStudentNameRes.setEditable(false);
+        txtStudentNameRes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtStudentNameResActionPerformed(evt);
+            }
+        });
+
+        txtMaths.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMathsActionPerformed(evt);
+            }
+        });
+
+        lblMaths.setText("Maths:");
+
+        txtScience.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtScienceActionPerformed(evt);
+            }
+        });
+
+        lblScience.setText("Science:");
+
+        txtEnglish.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEnglishActionPerformed(evt);
+            }
+        });
+
+        lblEnglish.setText("English:");
+
+        txtPer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPerActionPerformed(evt);
+            }
+        });
+
+        lblPer.setText("Percentage:");
+
+        cmbResult.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pass", "Fail" }));
+
+        lblResult.setText("Result:");
+
+        btnCreateRes.setText("Create");
+        btnCreateRes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateResActionPerformed(evt);
+            }
+        });
+
+        lblStudentClassRes.setText("Class:");
+
+        txtStudentClassRes.setEditable(false);
+        txtStudentClassRes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtStudentClassResActionPerformed(evt);
+            }
+        });
+
+        btnUpdateRes.setText("Update");
+        btnUpdateRes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateResActionPerformed(evt);
+            }
+        });
+
+        btnDeleteRes.setText("Delete");
+        btnDeleteRes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteResActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelMarksLayout = new javax.swing.GroupLayout(panelMarks);
         panelMarks.setLayout(panelMarksLayout);
@@ -389,8 +538,68 @@ public class TeacherWorkspace extends javax.swing.JPanel {
             panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblTitle4, javax.swing.GroupLayout.DEFAULT_SIZE, 753, Short.MAX_VALUE)
             .addGroup(panelMarksLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 706, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelMarksLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelMarksLayout.createSequentialGroup()
+                                .addComponent(lblStudentIdRes1)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtteacherIdRes, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelMarksLayout.createSequentialGroup()
+                                .addComponent(lblStudentIdRes)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtStudentIdRes, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(panelMarksLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(panelMarksLayout.createSequentialGroup()
+                                .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblScience)
+                                    .addComponent(lblEnglish)
+                                    .addComponent(lblMaths))
+                                .addGap(18, 18, 18)
+                                .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtScience, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtEnglish, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
+                                    .addComponent(txtMaths, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addGroup(panelMarksLayout.createSequentialGroup()
+                                .addComponent(lblPer)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtPer, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtStudentClassRes, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelMarksLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblStudentNameRes)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtStudentNameRes, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelMarksLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblResult)
+                        .addGap(32, 32, 32)
+                        .addComponent(cmbResult, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(75, 75, 75))
+                    .addGroup(panelMarksLayout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(btnCreateRes, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnUpdateRes, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDeleteRes, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(panelMarksLayout.createSequentialGroup()
+                .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelMarksLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnAutofill)
+                            .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
+                                .addComponent(ScrollPaneNgoManager2))))
+                    .addGroup(panelMarksLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblStudentClassRes)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelMarksLayout.setVerticalGroup(
@@ -398,9 +607,55 @@ public class TeacherWorkspace extends javax.swing.JPanel {
             .addGroup(panelMarksLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblTitle4)
-                .addGap(48, 48, 48)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(437, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addComponent(ScrollPaneNgoManager2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnAutofill)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelMarksLayout.createSequentialGroup()
+                        .addGap(107, 107, 107)
+                        .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnCreateRes)
+                            .addComponent(btnUpdateRes)
+                            .addComponent(btnDeleteRes)))
+                    .addGroup(panelMarksLayout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblStudentIdRes)
+                            .addComponent(txtStudentIdRes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbResult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblResult))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblStudentIdRes1)
+                            .addComponent(txtteacherIdRes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblStudentNameRes)
+                            .addComponent(txtStudentNameRes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblStudentClassRes)
+                    .addComponent(txtStudentClassRes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
+                .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtMaths, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMaths))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtScience, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblScience))
+                .addGap(58, 58, 58)
+                .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtEnglish, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblEnglish))
+                .addGap(18, 18, 18)
+                .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPer))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         panelWork.add(panelMarks, "card4");
@@ -473,8 +728,146 @@ public class TeacherWorkspace extends javax.swing.JPanel {
 
     private void btnMarksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMarksActionPerformed
         // TODO add your handling code here:
+        panelWork.removeAll();
+        panelWork.add(panelMarks);
+        panelWork.repaint();
+        panelWork.revalidate();
         
     }//GEN-LAST:event_btnMarksActionPerformed
+
+    private void btnAutofillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAutofillActionPerformed
+        // TODO add your handling code here
+        Integer selectedRowIndex = tableStudentRes.getSelectedRow();
+
+        if (selectedRowIndex<0){
+
+            JOptionPane.showMessageDialog(this, "Please select a row to view.");
+            return;
+        }
+
+        else{
+            DefaultTableModel model = (DefaultTableModel) tableStudentRes.getModel();
+            Student selApp = (Student) model.getValueAt(selectedRowIndex,0);
+
+            //            txtApplicationNo.setText(selApp.getAppNo());
+            txtStudentIdRes.setText(selApp.getStudentId());
+            txtStudentNameRes.setText(selApp.getName());
+            txtteacherIdRes.setText(selApp.getTeachId());
+            txtStudentClassRes.setText(selApp.getCls());
+           
+            //            txtChildClass.setText(selApp.getCls());
+            //            txtStatus.setText(selApp.getStatus());
+            //            txtChildComment.setText(selApp.getComment());
+        }
+    }//GEN-LAST:event_btnAutofillActionPerformed
+
+    private void txtStudentIdResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStudentIdResActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtStudentIdResActionPerformed
+
+    private void txtteacherIdResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtteacherIdResActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtteacherIdResActionPerformed
+
+    private void txtStudentNameResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStudentNameResActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtStudentNameResActionPerformed
+
+    private void txtMathsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMathsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMathsActionPerformed
+
+    private void txtScienceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtScienceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtScienceActionPerformed
+
+    private void txtEnglishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnglishActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEnglishActionPerformed
+
+    private void txtPerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPerActionPerformed
+
+    private void txtStudentClassResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStudentClassResActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtStudentClassResActionPerformed
+
+    private void btnCreateResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateResActionPerformed
+        // TODO add your handling code here:
+        String stId = txtStudentIdRes.getText();
+        String name = txtStudentNameRes.getText();
+        String teId = txtteacherIdRes.getText();
+        String cls = txtStudentClassRes.getText();
+        Integer math = Integer.valueOf(txtMaths.getText());
+        Integer sci = Integer.valueOf(txtScience.getText());
+        Integer eng = Integer.valueOf(txtEnglish.getText());
+        Integer percent = Integer.valueOf(txtPer.getText());
+        String res = String.valueOf(cmbResult.getSelectedItem());
+        
+        FinalResult newRes = system.getResList().addFinalResult();
+        
+        newRes.setStudentId(stId);
+        newRes.setName(name);
+        newRes.setTeachId(teId);
+        newRes.setCls(cls);
+        newRes.setMath(math);
+        newRes.setScience(sci);
+        newRes.setEnglish(eng);
+        newRes.setPercent(percent);
+        newRes.setResult(res);
+        
+        populateResultTable();
+    }//GEN-LAST:event_btnCreateResActionPerformed
+
+    private void btnUpdateResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateResActionPerformed
+        // TODO add your handling code here:
+        Integer selectedRowIndex = tableResult.getSelectedRow();
+
+        if (selectedRowIndex<0){
+
+            JOptionPane.showMessageDialog(this, "Please select a row to view.");
+            return;
+        }
+
+        else{
+            DefaultTableModel model = (DefaultTableModel) tableResult.getModel();
+            FinalResult selRes = (FinalResult) model.getValueAt(selectedRowIndex,0);
+            
+            selRes.setMath(Integer.valueOf(txtMaths.getText()));
+            selRes.setScience(Integer.valueOf(txtScience.getText()));
+            selRes.setEnglish(Integer.valueOf(txtEnglish.getText()));
+            selRes.setPercent(Integer.valueOf(txtPer.getText()));
+            selRes.setResult(String.valueOf(cmbResult.getSelectedItem()));
+            
+            populateResultTable();
+        }
+            
+        
+    }//GEN-LAST:event_btnUpdateResActionPerformed
+
+    private void btnDeleteResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteResActionPerformed
+        // TODO add your handling code here:
+        Integer selectedRowIndex = tableResult.getSelectedRow();
+
+        if (selectedRowIndex<0){
+
+            JOptionPane.showMessageDialog(this, "Please select a row to delete.");
+            return;
+        }
+
+        else{
+            DefaultTableModel model = (DefaultTableModel) tableResult.getModel();
+            FinalResult selectedMan = (FinalResult) model.getValueAt(selectedRowIndex,0);
+
+            system.getResList().deleteFinalResult(selectedMan);
+
+            JOptionPane.showMessageDialog(this, "Result record deleted successfully.");
+            
+//            dB4OUtil.storeSystem(system);
+            populateResultTable();
+        }
+    }//GEN-LAST:event_btnDeleteResActionPerformed
 
     private void populateStudentTable(){
         DefaultTableModel model = (DefaultTableModel) tableStudent.getModel();
@@ -492,25 +885,77 @@ public class TeacherWorkspace extends javax.swing.JPanel {
                 model.addRow(row);
             }
     }
+    
+    private void populateStudentResTable(){
+        DefaultTableModel model = (DefaultTableModel) tableStudentRes.getModel();
+        model.setRowCount(0);
+        
+//        
+            for(Student man: system.getStudentList().getStudentList()){
+
+                Object[] row = new Object[5];
+                row[0] = man; 
+                row[1] = man.getName();
+                row[2] = man.getCls();
+                row[3] = man.getAge();
+                row[4] = man.getEmailId();
+                model.addRow(row);
+            }
+    }
+    
+    private void populateResultTable(){
+        DefaultTableModel model = (DefaultTableModel) tableResult.getModel();
+        model.setRowCount(0);
+        
+//        
+            for(FinalResult man: system.getResList().getResultList()){
+
+                Object[] row = new Object[8];
+                row[0] = man; 
+                row[1] = man.getName();
+                row[2] = man.getCls();
+                row[3] = man.getMath();
+                row[4] = man.getScience();
+                row[5] = man.getEnglish();
+                row[6] = man.getPercent();
+                row[7] = man.getResult();
+                model.addRow(row);
+            }
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane ScrollPaneNgoManager1;
+    private javax.swing.JScrollPane ScrollPaneNgoManager2;
     private javax.swing.JSplitPane SplitPaneTeacher;
+    private javax.swing.JButton btnAutofill;
+    private javax.swing.JButton btnCreateRes;
+    private javax.swing.JButton btnDeleteRes;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnLogOut;
     private javax.swing.JButton btnMarks;
     private javax.swing.JButton btnStudent;
     private javax.swing.JButton btnStudentView;
+    private javax.swing.JButton btnUpdateRes;
+    private javax.swing.JComboBox<String> cmbResult;
     private javax.swing.JComboBox<String> cmbStudentGender;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblEnglish;
+    private javax.swing.JLabel lblMaths;
+    private javax.swing.JLabel lblPer;
+    private javax.swing.JLabel lblResult;
     private javax.swing.JLabel lblRole;
+    private javax.swing.JLabel lblScience;
     private javax.swing.JLabel lblStudentAge;
     private javax.swing.JLabel lblStudentClass;
+    private javax.swing.JLabel lblStudentClassRes;
     private javax.swing.JLabel lblStudentEmailId;
     private javax.swing.JLabel lblStudentGender;
     private javax.swing.JLabel lblStudentId;
+    private javax.swing.JLabel lblStudentIdRes;
+    private javax.swing.JLabel lblStudentIdRes1;
     private javax.swing.JLabel lblStudentName;
+    private javax.swing.JLabel lblStudentNameRes;
     private javax.swing.JLabel lblStudentPhno;
     private javax.swing.JLabel lblStudentRole;
     private javax.swing.JLabel lblStudentSearch;
@@ -523,15 +968,25 @@ public class TeacherWorkspace extends javax.swing.JPanel {
     private javax.swing.JPanel panelMarks;
     private javax.swing.JPanel panelStudent;
     private javax.swing.JPanel panelWork;
+    private javax.swing.JTable tableResult;
     private javax.swing.JTable tableStudent;
+    private javax.swing.JTable tableStudentRes;
+    private javax.swing.JTextField txtEnglish;
+    private javax.swing.JTextField txtMaths;
+    private javax.swing.JTextField txtPer;
+    private javax.swing.JTextField txtScience;
     private javax.swing.JTextField txtStudentAge;
     private javax.swing.JTextField txtStudentClass;
+    private javax.swing.JTextField txtStudentClassRes;
     private javax.swing.JTextField txtStudentDOB;
     private javax.swing.JTextField txtStudentEmailId;
     private javax.swing.JTextField txtStudentId;
+    private javax.swing.JTextField txtStudentIdRes;
     private javax.swing.JTextField txtStudentName;
+    private javax.swing.JTextField txtStudentNameRes;
     private javax.swing.JTextField txtStudentPhno;
     private javax.swing.JTextField txtStudentRole;
     private javax.swing.JTextField txtStudentSearch;
+    private javax.swing.JTextField txtteacherIdRes;
     // End of variables declaration//GEN-END:variables
 }

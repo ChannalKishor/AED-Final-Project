@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @author chinm
  */
 public class FundManagerDirectory {
-     private ArrayList<FundManager> fundManagerList;
+    private ArrayList<FundManager> fundManagerList;
 
     public FundManagerDirectory() {
         fundManagerList = new ArrayList<FundManager>();
