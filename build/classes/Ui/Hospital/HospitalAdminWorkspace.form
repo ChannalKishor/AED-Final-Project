@@ -476,6 +476,10 @@
                   </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtDoctorRole">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                    <Property name="text" type="java.lang.String" value="Doctor"/>
+                  </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDoctorRoleActionPerformed"/>
                   </Events>
@@ -497,7 +501,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblDoctorUsername">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="User Name"/>
+                    <Property name="text" type="java.lang.String" value="Username"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtDoctorUsername">
@@ -550,6 +554,10 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtDoctorHospital">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                    <Property name="text" type="java.lang.String" value="Hospital"/>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblDoctorSpecialization">
                   <Properties>
@@ -575,11 +583,10 @@
                 <Component class="javax.swing.JComboBox" name="cbDoctorGender">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
+                      <StringArray count="3">
+                        <StringItem index="0" value="Male"/>
+                        <StringItem index="1" value="Female"/>
+                        <StringItem index="2" value="Others"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -1208,237 +1215,6 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMedicineQuantityActionPerformed"/>
                   </Events>
-                </Component>
-              </SubComponents>
-            </Container>
-            <Container class="javax.swing.JPanel" name="panelHospital">
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-                  <CardConstraints cardName="card6"/>
-                </Constraint>
-              </Constraints>
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblTitleHaHospital" alignment="0" max="32767" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="btnHospitalView" linkSize="10" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnHospitalEdit" linkSize="10" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnHospitalDelete" linkSize="10" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" attributes="0">
-                                          <Component id="btnHospitalCreate" linkSize="10" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="209" max="-2" attributes="0"/>
-                                          <Component id="lblHospitalSearch" min="-2" pref="71" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="txtHospitalSearch" min="-2" pref="192" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblHospitalID" linkSize="12" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lblHospitalName" linkSize="12" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lblHospitalEmail" linkSize="12" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lblHospitalPhone" linkSize="12" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtHospitalPhone" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
-                              <Component id="txtHospitalEmail" min="-2" pref="83" max="-2" attributes="0"/>
-                              <Component id="txtHospitalName" min="-2" pref="83" max="-2" attributes="0"/>
-                              <Component id="txtlblHospitalID" min="-2" pref="83" max="-2" attributes="0"/>
-                              <Component id="jScrollPane4" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="198" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lblTitleHaHospital" min="-2" pref="68" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btnHospitalCreate" linkSize="11" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lblHospitalSearch" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtHospitalSearch" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="btnHospitalView" linkSize="11" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnHospitalEdit" linkSize="11" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="btnHospitalDelete" linkSize="11" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="lblHospitalID" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtlblHospitalID" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="lblHospitalName" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtHospitalName" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="lblHospitalEmail" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtHospitalEmail" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="lblHospitalPhone" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtHospitalPhone" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Component id="jScrollPane4" min="-2" pref="113" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="417" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
-              <SubComponents>
-                <Component class="javax.swing.JLabel" name="lblTitleHaHospital">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="36" style="0"/>
-                    </Property>
-                    <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="HOSPITAL ADMIN: HOSPITAL"/>
-                  </Properties>
-                </Component>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane4">
-                  <AuxValues>
-                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                  </AuxValues>
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                  <SubComponents>
-                    <Component class="javax.swing.JTable" name="tableHospital">
-                      <Properties>
-                        <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="4" rowCount="4">
-                            <Column editable="true" title="Hospital ID" type="java.lang.Object"/>
-                            <Column editable="true" title="Hospital Name" type="java.lang.Object"/>
-                            <Column editable="true" title="Email" type="java.lang.Object"/>
-                            <Column editable="true" title="Phone" type="java.lang.Object"/>
-                          </Table>
-                        </Property>
-                        <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-                          <TableColumnModel selectionModel="0">
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                          </TableColumnModel>
-                        </Property>
-                        <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                          <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
-                        </Property>
-                      </Properties>
-                    </Component>
-                  </SubComponents>
-                </Container>
-                <Component class="javax.swing.JButton" name="btnHospitalCreate">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Create"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHospitalCreateActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JButton" name="btnHospitalView">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="View"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHospitalViewActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JButton" name="btnHospitalEdit">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Update"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHospitalEditActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JButton" name="btnHospitalDelete">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Delete"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHospitalDeleteActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblHospitalID">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Hospital ID"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblHospitalName">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Hospital Name"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblHospitalEmail">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Hospital Email"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblHospitalPhone">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Phone No"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtlblHospitalID">
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtHospitalName">
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtHospitalNameActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtHospitalEmail">
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtHospitalPhone">
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblHospitalSearch">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Search"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtHospitalSearch">
                 </Component>
               </SubComponents>
             </Container>
