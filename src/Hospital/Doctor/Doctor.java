@@ -120,7 +120,7 @@ public class Doctor {
     
     @Override
     public String toString(){
-        String n = String.valueOf(name);
+        String n = String.valueOf(doctorId);
         return n;
     }
     
