@@ -2541,35 +2541,43 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblChildrenRole" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblChildrenGender" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lblChildrenId" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="txtChildrenId" min="-2" pref="230" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lblChildrenName" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblChildrenAge" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblChildrenDob" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                  <Component id="lblChildrenRole" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblChildrenGender" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="lblChildrenId" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="txtChildrenId" min="-2" pref="230" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="txtChildrenAge" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
-                                          <Component id="txtChildrenName" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
-                                          <Component id="txtChildrenDOB" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
-                                          <Component id="cmbChildrenGender" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="btnChildrenCreate" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="btnChildrenUpdate" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="lblChildrenName" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblChildrenAge" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblChildrenDob" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="txtChildrenRole" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="txtChildrenAge" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
+                                              <Component id="txtChildrenName" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
+                                              <Component id="txtChildrenDOB" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
+                                              <Component id="cmbChildrenGender" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
+                                              <Component id="txtChildrenRole" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                                  <Component id="btnChildrenCreate" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="btnChildrenUpdate" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="txtChildrenCaretaker" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                   </Group>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="lblChildrenCaretaker" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="282" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="199" max="-2" attributes="0"/>
@@ -2623,12 +2631,17 @@
                               <Component id="lblChildrenRole" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtChildrenRole" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="txtChildrenCaretaker" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblChildrenCaretaker" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="43" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnChildrenCreate" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnChildrenUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="81" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2793,6 +2806,13 @@
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="text" type="java.lang.String" value="Child"/>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblChildrenCaretaker">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Caretaker:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtChildrenCaretaker">
                 </Component>
               </SubComponents>
             </Container>

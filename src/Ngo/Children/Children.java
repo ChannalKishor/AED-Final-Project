@@ -15,6 +15,7 @@ public class Children {
     private String dob;
     private String gender;
     private String role;
+    private String caretaker;
 
     public String getChildrenId() {
         return childrenId;
@@ -63,6 +64,15 @@ public class Children {
     public void setRole(String role) {
         this.role = role;
     }
+
+    public String getCaretaker() {
+        return caretaker;
+    }
+
+    public void setCaretaker(String caretaker) {
+        this.caretaker = caretaker;
+    }
+    
     
     
     
