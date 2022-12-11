@@ -2489,26 +2489,26 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
             }
 //            selMan.setUsername(txtCaretakerUsername.getText());
             
-            if(data.numcheck(txtCaretakerAge.getText())){
+            if(!data.numcheck(txtCaretakerAge.getText())){
                 JOptionPane.showMessageDialog(this, "Enter valid age");
                 return;
             }
             selMan.setAge(Integer.valueOf(txtCaretakerAge.getText()));
             
             selMan.setDob(txtCaretakerDOB.getText());
-            if(data.dateCheck(txtCaretakerDOB.getText())){
+            if(!data.dateCheck(txtCaretakerDOB.getText())){
                 JOptionPane.showMessageDialog(this, "Enter valid date");
                 return;
             }
             selMan.setGender(String.valueOf(cmbCaretakerGender.getSelectedItem()));
             selMan.setRole(txtCaretakerRole.getText());
             selMan.setEmailId(txtCaretakerEmailId.getText());
-            if(data.emailCheck(txtCaretakerEmailId.getText())){
+            if(!data.emailCheck(txtCaretakerEmailId.getText())){
                 JOptionPane.showMessageDialog(this, "Enter valid emailid");
                 return;
             }
             
-            if(data.phnocheck(txtCaretakerPhno.getText())){
+            if(!data.phnocheck(txtCaretakerPhno.getText())){
                 JOptionPane.showMessageDialog(this, "Enter valid phone no");
                 return;
             }
