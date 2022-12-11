@@ -309,7 +309,15 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
             new String [] {
                 "Doctor ID", "Doctor Name", "Specilization", "Doctor Age", "Doctor Gender", "Doctor Phone"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Long.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tableDoctor);
 
         btnCreate.setText("Create");
@@ -553,7 +561,15 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
             new String [] {
                 "Patient ID", "Patient Name", "Patient Age", "Patient Gender", "Patient Phone"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Long.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(tablePatient);
 
         btnPatientCreate.setText("Create");

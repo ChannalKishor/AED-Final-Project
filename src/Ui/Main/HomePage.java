@@ -78,6 +78,11 @@ public class HomePage extends javax.swing.JPanel {
         jTabbedPane2.addTab("Hospital", btnHMS);
 
         btnPMS.setText("Medical Store Management System");
+        btnPMS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPMSActionPerformed(evt);
+            }
+        });
         jTabbedPane2.addTab("Pharmacy", btnPMS);
 
         btnSMS.setText("School Management System");
@@ -90,7 +95,6 @@ public class HomePage extends javax.swing.JPanel {
 
         add(jTabbedPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 520, 90));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\kuchi\\Downloads\\NGOhome.jpg")); // NOI18N
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -50, 1370, 1080));
     }// </editor-fold>//GEN-END:initComponents
@@ -118,6 +122,14 @@ public class HomePage extends javax.swing.JPanel {
         cardPanel.add("Sms", panelHms);
         cardLayout.next(cardPanel);
     }//GEN-LAST:event_btnHMSActionPerformed
+
+    private void btnPMSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPMSActionPerformed
+        // TODO add your handling code here:
+        CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
+        PMS panelPms = new PMS(cardPanel, system, dB4OUtil);
+        cardPanel.add("Pms", panelPms);
+        cardLayout.next(cardPanel);
+    }//GEN-LAST:event_btnPMSActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

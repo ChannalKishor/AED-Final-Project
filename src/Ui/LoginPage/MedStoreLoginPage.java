@@ -153,7 +153,7 @@ public class MedStoreLoginPage extends javax.swing.JPanel {
 //        NgoManager ngoManager = system.getNgoManagerList().findNgoManager(username, password);
 //        Caretaker caretaker = system.getCareTakerList().findCaretaker(username, password);
 
-        try{
+//        try{
             if(role.equals("MedStore Admin")){
                 if(username.equals("Admin") && password.equals("pass")){
                     MedAdminWorkspace adminJPanel = new MedAdminWorkspace(cardPanel, system, dB4OUtil);
@@ -181,10 +181,10 @@ public class MedStoreLoginPage extends javax.swing.JPanel {
             else{
                 JOptionPane.showMessageDialog(this, "Please enter the correct username and password and role.");
             }
-        }
-        catch(NullPointerException n){
-            JOptionPane.showMessageDialog(this, "Please enter the correct username and password and role.");
-        }
+//        }
+//        catch(NullPointerException n){
+//            JOptionPane.showMessageDialog(this, "Please enter the correct username and password and role.");
+//        }
     }//GEN-LAST:event_btnLoginActionPerformed
 
 
