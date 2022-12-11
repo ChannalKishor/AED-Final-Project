@@ -38,7 +38,12 @@ public class BudgetDirectory {
     
     public Budget getMoney(){
         for(Budget b: budgetList){
-            return b;
+            if(b.getDonation()!=null){
+                return b;
+            }
+            else{
+                return null;
+            }
         }
         return null;
     }

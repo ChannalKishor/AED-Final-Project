@@ -11,14 +11,12 @@ package Hospital.Encounter;
 public class Encounter {
     private String encounterNo;
     private String hospital;
-    private String doctorName;
     private String doctorUserName;
-    private String patientName;
+    private String status;
     private String patientUsername;
     private String comment;
     private String date;
-    private String time;
-        
+    private String ngo;  
     private String BP;
     private String temperature;
     private String medicine;
@@ -67,13 +65,7 @@ public class Encounter {
         this.date = date;
     }
 
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
+   
 
     public String getRoomNumber() {
         return roomNumber;
@@ -100,13 +92,7 @@ public class Encounter {
         this.hospital = hospital;
     }
 
-    public String getDoctorName() {
-        return doctorName;
-    }
-
-    public void setDoctorName(String doctorName) {
-        this.doctorName = doctorName;
-    }
+   
 
     public String getDoctorUserName() {
         return doctorUserName;
@@ -116,13 +102,7 @@ public class Encounter {
         this.doctorUserName = doctorUserName;
     }
 
-    public String getPatientName() {
-        return patientName;
-    }
-
-    public void setPatientName(String patientName) {
-        this.patientName = patientName;
-    }
+    
 
     public String getPatientUsername() {
         return patientUsername;
@@ -132,6 +112,23 @@ public class Encounter {
         this.patientUsername = patientUsername;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getNgo() {
+        return ngo;
+    }
+
+    public void setNgo(String ngo) {
+        this.ngo = ngo;
+    }
+
+    
     public String getComment() {
         return comment;
     }
@@ -140,6 +137,11 @@ public class Encounter {
         this.comment = comment;
     }
 
+    @Override
+    public String toString(){
+        String n = String.valueOf(encounterNo);
+        return n;
+    }
 }
 
 

@@ -45,7 +45,7 @@ public class HomePage extends javax.swing.JPanel {
         btnNMS = new javax.swing.JButton();
         btnHMS = new javax.swing.JButton();
         btnSMS = new javax.swing.JButton();
-        btnFMS = new javax.swing.JButton();
+        btnPMS = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -78,8 +78,8 @@ public class HomePage extends javax.swing.JPanel {
         });
         add(btnSMS, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 276, 191, -1));
 
-        btnFMS.setText("Food Management System");
-        add(btnFMS, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 346, 191, -1));
+        btnPMS.setText("Medical Store Management System");
+        add(btnPMS, new org.netbeans.lib.awtextra.AbsoluteConstraints(296, 346, 240, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNMSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNMSActionPerformed
@@ -108,9 +108,9 @@ public class HomePage extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnFMS;
     private javax.swing.JButton btnHMS;
     private javax.swing.JButton btnNMS;
+    private javax.swing.JButton btnPMS;
     private javax.swing.JButton btnSMS;
     private javax.swing.JLabel lblTitle;
     // End of variables declaration//GEN-END:variables

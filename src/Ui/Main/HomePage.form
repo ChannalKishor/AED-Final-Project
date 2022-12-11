@@ -71,13 +71,13 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JButton" name="btnFMS">
+    <Component class="javax.swing.JButton" name="btnPMS">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Food Management System"/>
+        <Property name="text" type="java.lang.String" value="Medical Store Management System"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="316" y="346" width="191" height="-1"/>
+          <AbsoluteConstraints x="296" y="346" width="240" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

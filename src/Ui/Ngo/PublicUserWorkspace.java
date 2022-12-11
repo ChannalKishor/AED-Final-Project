@@ -34,6 +34,7 @@ public class PublicUserWorkspace extends javax.swing.JPanel {
         this.cardPanel = cardPanel;
         this.system = system;
         this.dB4OUtil = dB4OUtil;
+        txtName.setText(user.getName());
 //        populateTable();
     }
 
@@ -241,21 +242,20 @@ public class PublicUserWorkspace extends javax.swing.JPanel {
         panelDonate.setLayout(panelDonateLayout);
         panelDonateLayout.setHorizontalGroup(
             panelDonateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(panelDonateLayout.createSequentialGroup()
+                .addGap(117, 117, 117)
+                .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDonateLayout.createSequentialGroup()
                 .addContainerGap(275, Short.MAX_VALUE)
                 .addGroup(panelDonateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDonateLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(panelDonateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelDonateLayout.createSequentialGroup()
-                                .addGroup(panelDonateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblNgo)
-                                    .addComponent(lblName))
-                                .addGap(437, 437, 437))
-                            .addGroup(panelDonateLayout.createSequentialGroup()
-                                .addComponent(lblAmt)
-                                .addGap(216, 216, 216))))
+                            .addGroup(panelDonateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lblNgo)
+                                .addComponent(lblName))
+                            .addComponent(lblAmt))
+                        .addGap(422, 422, 422))
                     .addGroup(panelDonateLayout.createSequentialGroup()
                         .addComponent(lblComm)
                         .addGap(18, 18, 18)
@@ -264,7 +264,7 @@ public class PublicUserWorkspace extends javax.swing.JPanel {
                             .addComponent(txtAmount)
                             .addComponent(jScrollPane1)
                             .addComponent(txtName))
-                        .addContainerGap())))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDonateLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSend)
