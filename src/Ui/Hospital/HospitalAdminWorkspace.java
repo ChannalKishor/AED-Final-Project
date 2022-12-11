@@ -7,6 +7,7 @@ package Ui.Hospital;
 import Funding.FundManager.FundManager;
 import Hospital.Doctor.Doctor;
 import Hospital.Encounter.Encounter;
+import Hospital.Hospital.Hospital;
 import Hospital.Patient.Patient;
 import Ngo.CareTaker.Caretaker;
 import Ngo.NgoManager.NgoManager;
@@ -171,6 +172,8 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
         txtHospitalName = new javax.swing.JTextField();
         txtHospitalEmail = new javax.swing.JTextField();
         txtHospitalPhone = new javax.swing.JTextField();
+        lblHospitalSearch = new javax.swing.JLabel();
+        txtHospitalSearch = new javax.swing.JTextField();
 
         jTextField37.setText("jTextField37");
 
@@ -264,7 +267,7 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
         panelHomeLayout.setHorizontalGroup(
             panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHomeLayout.createSequentialGroup()
-                .addContainerGap(578, Short.MAX_VALUE)
+                .addContainerGap(580, Short.MAX_VALUE)
                 .addGroup(panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblRole, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
                     .addComponent(btnLogOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -403,7 +406,7 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
                     .addGroup(panelDoctorLayout.createSequentialGroup()
                         .addGroup(panelDoctorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelDoctorLayout.createSequentialGroup()
-                                .addComponent(lblDoctorRole, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                                .addComponent(lblDoctorRole, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtDoctorRole, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(113, 113, 113))
@@ -637,7 +640,7 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
                                     .addComponent(btnPatientCreate)
                                     .addComponent(btnPatientView)
                                     .addComponent(btnPatientUpdate))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(139, 139, 139))))
         );
@@ -661,12 +664,13 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(btnPatientDelete)
                 .addGap(48, 48, 48)
-                .addGroup(panelPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPatientRole)
-                    .addComponent(txtPatientRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblPatientPassword)
-                        .addComponent(txtPatientPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtPatientPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblPatientRole)
+                        .addComponent(txtPatientRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(31, 31, 31)
                 .addGroup(panelPatientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPatientID)
@@ -790,7 +794,7 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
                             .addComponent(btnEncounterCreate)
                             .addComponent(btnEncounterView)
                             .addComponent(btnEncounterUpdate))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(86, 86, 86))
                     .addGroup(panelEncounterLayout.createSequentialGroup()
@@ -910,7 +914,7 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Hospital ID", "Hospital Name", "Contact", "City"
+                "Hospital ID", "Hospital Name", "Email", "Phone"
             }
         ));
         jScrollPane4.setViewportView(tableHospital);
@@ -951,6 +955,14 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
 
         lblHospitalPhone.setText("Phone No");
 
+        txtHospitalName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtHospitalNameActionPerformed(evt);
+            }
+        });
+
+        lblHospitalSearch.setText("Search");
+
         javax.swing.GroupLayout panelHospitalLayout = new javax.swing.GroupLayout(panelHospital);
         panelHospital.setLayout(panelHospitalLayout);
         panelHospitalLayout.setHorizontalGroup(
@@ -958,18 +970,20 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
             .addGroup(panelHospitalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelHospitalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTitleHaHospital, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panelHospitalLayout.createSequentialGroup()
-                        .addComponent(lblTitleHaHospital, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHospitalLayout.createSequentialGroup()
                         .addGroup(panelHospitalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnHospitalCreate)
                             .addComponent(btnHospitalView)
                             .addComponent(btnHospitalEdit)
-                            .addComponent(btnHospitalDelete))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(143, 143, 143))))
+                            .addComponent(btnHospitalDelete)
+                            .addGroup(panelHospitalLayout.createSequentialGroup()
+                                .addComponent(btnHospitalCreate)
+                                .addGap(209, 209, 209)
+                                .addComponent(lblHospitalSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtHospitalSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHospitalLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(panelHospitalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -982,8 +996,9 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
                     .addComponent(txtHospitalPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtHospitalEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtHospitalName, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtlblHospitalID, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtlblHospitalID, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(198, Short.MAX_VALUE))
         );
 
         panelHospitalLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnHospitalCreate, btnHospitalDelete, btnHospitalEdit, btnHospitalView});
@@ -997,31 +1012,35 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
                 .addComponent(lblTitleHaHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelHospitalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnHospitalCreate)
+                    .addGroup(panelHospitalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblHospitalSearch)
+                        .addComponent(txtHospitalSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelHospitalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelHospitalLayout.createSequentialGroup()
-                        .addComponent(btnHospitalCreate)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnHospitalView)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnHospitalEdit)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnHospitalDelete)))
-                .addGap(49, 49, 49)
-                .addGroup(panelHospitalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblHospitalID)
-                    .addComponent(txtlblHospitalID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(panelHospitalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblHospitalName)
-                    .addComponent(txtHospitalName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(panelHospitalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblHospitalEmail)
-                    .addComponent(txtHospitalEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(panelHospitalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblHospitalPhone)
-                    .addComponent(txtHospitalPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnHospitalDelete)
+                        .addGap(49, 49, 49)
+                        .addGroup(panelHospitalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblHospitalID)
+                            .addComponent(txtlblHospitalID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(23, 23, 23)
+                        .addGroup(panelHospitalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblHospitalName)
+                            .addComponent(txtHospitalName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(23, 23, 23)
+                        .addGroup(panelHospitalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblHospitalEmail)
+                            .addComponent(txtHospitalEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(panelHospitalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblHospitalPhone)
+                            .addComponent(txtHospitalPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(417, Short.MAX_VALUE))
         );
 
@@ -1481,84 +1500,95 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
 
     private void btnHospitalCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalCreateActionPerformed
         // TODO add your handling code here:
-//        String hospitalId;
-//        String hospitalName;
-//        String hospitalEmail;
-//        String hospitalPhone;
-//        String
+        String hospitalId = txtlblHospitalID.getText();
+        String hospitalName = txtHospitalName.getText();
+        String hospitalEmail = txtHospitalEmail.getText();
+        String hospitalPhone = txtHospitalPhone.getText();
         
+        Hospital newHospital = system.getHospitalList().addHospitalHospital();
+                
+        newHospital.setHospitalID(hospitalId);
+        newHospital.setHospitalName(hospitalName);
+        newHospital.setHospitalPhone(hospitalPhone);
+        newHospital.setHospitalEmail(hospitalEmail);
         
+        JOptionPane.showMessageDialog(this, "Hospital created successfully");
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        txtlblHospitalID.setText("");
+        txtHospitalName.setText("");
+        txtHospitalEmail.setText("");
+        txtHospitalPhone.setText("");
+     
+        populateHospitalHospitalTable();
         
     }//GEN-LAST:event_btnHospitalCreateActionPerformed
 
     private void btnHospitalViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalViewActionPerformed
         // TODO add your handling code here:
+        Integer selectedRowIndex = tableHospital.getSelectedRow();
+
+        if (selectedRowIndex<0){
+
+            JOptionPane.showMessageDialog(this, "Please select a row to view.");
+            return;
+        }
+        else{
+            DefaultTableModel model = (DefaultTableModel) tableHospital.getModel();
+            Hospital hos = (Hospital) model.getValueAt(selectedRowIndex,0);
+            
+            txtlblHospitalID.setText(hos.getHospitalID());
+            txtHospitalName.setText(hos.getHospitalName());
+            txtHospitalEmail.setText(hos.getHospitalEmail());
+            txtHospitalPhone.setText(hos.getHospitalPhone());
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        }
     }//GEN-LAST:event_btnHospitalViewActionPerformed
 
     private void btnHospitalEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalEditActionPerformed
         // TODO add your handling code here:
+        Integer selectedRowIndex = tableHospital.getSelectedRow();
+        
+        if (selectedRowIndex<0){
+
+            JOptionPane.showMessageDialog(this, "Please select a row to view.");
+            return;
+        }
+        else{
+            DefaultTableModel model = (DefaultTableModel) tableHospital.getModel();
+            Hospital hos = (Hospital) model.getValueAt(selectedRowIndex,0);
+        
+            hos.setHospitalID(txtlblHospitalID.getText());
+            hos.setHospitalName(txtHospitalName.getText());
+            hos.setHospitalEmail(txtHospitalEmail.getText());
+            hos.setHospitalPhone(txtHospitalPhone.getText());
+        }
+        
+        JOptionPane.showMessageDialog(this, "Hospital updated successfully");
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        populateHospitalHospitalTable();
+
     }//GEN-LAST:event_btnHospitalEditActionPerformed
 
     private void btnHospitalDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalDeleteActionPerformed
         // TODO add your handling code here:
+        Integer selectedRowIndex = tableHospital.getSelectedRow();
         
-        
+        if (selectedRowIndex<0){
+
+            JOptionPane.showMessageDialog(this, "Please select a row to delete.");
+            return;
+        }
+        else{
+            DefaultTableModel model = (DefaultTableModel) tableHospital.getModel();
+            Hospital hos = (Hospital) model.getValueAt(selectedRowIndex,0);
+            
+            system.getHospitalList().deleteHospitalHospital(hos);
+            
+            JOptionPane.showMessageDialog(this, "Hospital deleted successfully.");
+            
+            populateHospitalHospitalTable();
+        }
         
         
         
@@ -1578,6 +1608,10 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
         
         
     }//GEN-LAST:event_btnHospitalDeleteActionPerformed
+
+    private void txtHospitalNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHospitalNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtHospitalNameActionPerformed
 
         private void populateDoctorTable(){
         DefaultTableModel model = (DefaultTableModel) tableDoctor.getModel();
@@ -1636,7 +1670,24 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
                 model.addRow(row);
             }
     }    
+     
+        private void populateHospitalHospitalTable(){
+        DefaultTableModel model = (DefaultTableModel) tableHospital.getModel();
+        model.setRowCount(0);
         
+//            for(Hospital h: system.getEncounterlist().getHospitalEncounterList())
+            for(Hospital h: system.getHospitalList().getHospitalHospitalList()){
+                  
+                Object[] row = new Object[5];
+                row[0] = h;
+                row[1] = h.getHospitalID();
+                row[2] = h.getHospitalName();
+                row[3] = h.getHospitalEmail();
+                row[4] = h.getHospitalPhone();
+                
+                model.addRow(row);
+            }
+    } 
         
         
         
@@ -1701,6 +1752,7 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
     private javax.swing.JLabel lblHospitalID;
     private javax.swing.JLabel lblHospitalName;
     private javax.swing.JLabel lblHospitalPhone;
+    private javax.swing.JLabel lblHospitalSearch;
     private javax.swing.JLabel lblPatientAge;
     private javax.swing.JLabel lblPatientEmail;
     private javax.swing.JLabel lblPatientGender;
@@ -1752,6 +1804,7 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
     private javax.swing.JTextField txtHospitalEmail;
     private javax.swing.JTextField txtHospitalName;
     private javax.swing.JTextField txtHospitalPhone;
+    private javax.swing.JTextField txtHospitalSearch;
     private javax.swing.JTextField txtPatientAge;
     private javax.swing.JTextField txtPatientEmail;
     private javax.swing.JTextField txtPatientID;
