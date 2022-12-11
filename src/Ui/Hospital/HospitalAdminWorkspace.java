@@ -13,6 +13,7 @@ import Ngo.CareTaker.Caretaker;
 import Ngo.NgoManager.NgoManager;
 import System.Directories.DB4OUtil;
 import System.Directories.MainSystem;
+import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -55,14 +56,14 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
 
         jTextField37 = new javax.swing.JTextField();
         SplitPaneDoctor = new javax.swing.JSplitPane();
-        panelControlHospital = new javax.swing.JPanel();
+        panelControl = new javax.swing.JPanel();
         btnHome = new javax.swing.JButton();
         btnDoctor = new javax.swing.JButton();
         btnPatient = new javax.swing.JButton();
         btnEncounter = new javax.swing.JButton();
         btnHospital = new javax.swing.JButton();
         btnVitalSigns = new javax.swing.JButton();
-        panelWorkHospital = new javax.swing.JPanel();
+        panelWork = new javax.swing.JPanel();
         panelHome = new javax.swing.JPanel();
         lblRole = new javax.swing.JLabel();
         btnLogOut = new javax.swing.JButton();
@@ -189,6 +190,11 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
         });
 
         btnPatient.setText("Patient");
+        btnPatient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPatientActionPerformed(evt);
+            }
+        });
 
         btnEncounter.setText("Encounter");
         btnEncounter.addActionListener(new java.awt.event.ActionListener() {
@@ -206,13 +212,13 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
 
         btnVitalSigns.setText("Vital Signs");
 
-        javax.swing.GroupLayout panelControlHospitalLayout = new javax.swing.GroupLayout(panelControlHospital);
-        panelControlHospital.setLayout(panelControlHospitalLayout);
-        panelControlHospitalLayout.setHorizontalGroup(
-            panelControlHospitalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelControlHospitalLayout.createSequentialGroup()
+        javax.swing.GroupLayout panelControlLayout = new javax.swing.GroupLayout(panelControl);
+        panelControl.setLayout(panelControlLayout);
+        panelControlLayout.setHorizontalGroup(
+            panelControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelControlLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelControlHospitalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnHome, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnDoctor, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnPatient, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -222,11 +228,11 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        panelControlHospitalLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnDoctor, btnEncounter, btnHome, btnHospital, btnPatient});
+        panelControlLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnDoctor, btnEncounter, btnHome, btnHospital, btnPatient});
 
-        panelControlHospitalLayout.setVerticalGroup(
-            panelControlHospitalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelControlHospitalLayout.createSequentialGroup()
+        panelControlLayout.setVerticalGroup(
+            panelControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelControlLayout.createSequentialGroup()
                 .addGap(91, 91, 91)
                 .addComponent(btnHome)
                 .addGap(18, 18, 18)
@@ -242,9 +248,9 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
                 .addContainerGap(520, Short.MAX_VALUE))
         );
 
-        SplitPaneDoctor.setLeftComponent(panelControlHospital);
+        SplitPaneDoctor.setLeftComponent(panelControl);
 
-        panelWorkHospital.setLayout(new java.awt.CardLayout());
+        panelWork.setLayout(new java.awt.CardLayout());
 
         lblRole.setText("Role:  Hospital Admin");
 
@@ -286,7 +292,7 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
                 .addContainerGap(701, Short.MAX_VALUE))
         );
 
-        panelWorkHospital.add(panelHome, "card2");
+        panelWork.add(panelHome, "card2");
 
         lblTitleDoctor.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         lblTitleDoctor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -525,7 +531,7 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
                 .addContainerGap(174, Short.MAX_VALUE))
         );
 
-        panelWorkHospital.add(panelDoctor, "card3");
+        panelWork.add(panelDoctor, "card3");
 
         lblTitlePatient.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         lblTitlePatient.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -701,7 +707,7 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
 
         panelPatientLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnPatientCreate, btnPatientDelete, btnPatientUpdate, btnPatientView});
 
-        panelWorkHospital.add(panelPatient, "card4");
+        panelWork.add(panelPatient, "card4");
 
         lblTitleEncounter.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         lblTitleEncounter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -891,7 +897,7 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
 
         panelEncounterLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnEncounterCreate, btnEncounterDelete, btnEncounterUpdate, btnEncounterView});
 
-        panelWorkHospital.add(panelEncounter, "card5");
+        panelWork.add(panelEncounter, "card5");
 
         lblTitleHaHospital.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         lblTitleHaHospital.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1037,9 +1043,9 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
 
         panelHospitalLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnHospitalCreate, btnHospitalDelete, btnHospitalEdit, btnHospitalView});
 
-        panelWorkHospital.add(panelHospital, "card6");
+        panelWork.add(panelHospital, "card6");
 
-        SplitPaneDoctor.setRightComponent(panelWorkHospital);
+        SplitPaneDoctor.setRightComponent(panelWork);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -1059,10 +1065,18 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
 
     private void btnEncounterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEncounterActionPerformed
         // TODO add your handling code here:
+        panelWork.removeAll();
+        panelWork.add(panelEncounter);
+        panelWork.repaint();
+        panelWork.revalidate();
     }//GEN-LAST:event_btnEncounterActionPerformed
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         // TODO add your handling code here:
+        panelWork.removeAll();
+        panelWork.add(panelHome);
+        panelWork.repaint();
+        panelWork.revalidate();
     }//GEN-LAST:event_btnHomeActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
@@ -1167,6 +1181,10 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
 
     private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
         // TODO add your handling code here:
+        dB4OUtil.storeSystem(system);
+        CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
+        cardPanel.remove(this);
+        cardLayout.previous(cardPanel);
     }//GEN-LAST:event_btnLogOutActionPerformed
 
     private void txtDoctorRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDoctorRoleActionPerformed
@@ -1187,6 +1205,10 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
 
     private void btnDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoctorActionPerformed
         // TODO add your handling code here:
+        panelWork.removeAll();
+        panelWork.add(panelDoctor);
+        panelWork.repaint();
+        panelWork.revalidate();
     }//GEN-LAST:event_btnDoctorActionPerformed
 
     private void txtDoctorEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDoctorEmailActionPerformed
@@ -1612,6 +1634,14 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMedicineQuantityActionPerformed
 
+    private void btnPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPatientActionPerformed
+        // TODO add your handling code here:
+        panelWork.removeAll();
+        panelWork.add(panelPatient);
+        panelWork.repaint();
+        panelWork.revalidate();
+    }//GEN-LAST:event_btnPatientActionPerformed
+
         private void populateDoctorTable(){
         DefaultTableModel model = (DefaultTableModel) tableDoctor.getModel();
         model.setRowCount(0);
@@ -1764,13 +1794,13 @@ public class HospitalAdminWorkspace extends javax.swing.JPanel {
     private javax.swing.JLabel lblTitleHaHospital;
     private javax.swing.JLabel lblTitleHospital;
     private javax.swing.JLabel lblTitlePatient;
-    private javax.swing.JPanel panelControlHospital;
+    private javax.swing.JPanel panelControl;
     private javax.swing.JPanel panelDoctor;
     private javax.swing.JPanel panelEncounter;
     private javax.swing.JPanel panelHome;
     private javax.swing.JPanel panelHospital;
     private javax.swing.JPanel panelPatient;
-    private javax.swing.JPanel panelWorkHospital;
+    private javax.swing.JPanel panelWork;
     private javax.swing.JTable tableDoctor;
     private javax.swing.JTable tableEncounter;
     private javax.swing.JTable tableHospital;
