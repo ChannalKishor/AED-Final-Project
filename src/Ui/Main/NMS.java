@@ -45,11 +45,27 @@ public class NMS extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnBack = new javax.swing.JButton();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         btnNgo = new javax.swing.JButton();
         btnFunding = new javax.swing.JButton();
-        btnBack = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnBack.setBackground(new java.awt.Color(204, 204, 204));
+        btnBack.setText("Back");
+        btnBack.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 2, true));
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 60, 20));
+
+        jTabbedPane1.setBackground(new java.awt.Color(204, 204, 204));
+        jTabbedPane1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
 
         btnNgo.setText("NGOs");
         btnNgo.addActionListener(new java.awt.event.ActionListener() {
@@ -57,7 +73,7 @@ public class NMS extends javax.swing.JPanel {
                 btnNgoActionPerformed(evt);
             }
         });
-        add(btnNgo, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 163, 75, -1));
+        jTabbedPane1.addTab("NGOs", btnNgo);
 
         btnFunding.setText("Funding");
         btnFunding.addActionListener(new java.awt.event.ActionListener() {
@@ -65,15 +81,12 @@ public class NMS extends javax.swing.JPanel {
                 btnFundingActionPerformed(evt);
             }
         });
-        add(btnFunding, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 274, -1, -1));
+        jTabbedPane1.addTab("Funding", btnFunding);
 
-        btnBack.setText("Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(46, 51, -1, -1));
+        add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 610, 60));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\kuchi\\OneDrive\\Desktop\\UI images\\NGO2.jpg")); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 700, 510));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -107,5 +120,7 @@ public class NMS extends javax.swing.JPanel {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnFunding;
     private javax.swing.JButton btnNgo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }

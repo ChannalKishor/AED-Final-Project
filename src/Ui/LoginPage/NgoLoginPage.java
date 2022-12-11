@@ -54,43 +54,55 @@ public class NgoLoginPage extends javax.swing.JPanel {
         cmbRole = new javax.swing.JComboBox<>();
         btnLogin = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Perpetua", 1, 36)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("Login Page");
-        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 13, 800, -1));
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 450, -1));
 
+        lblUsername.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblUsername.setText("Username:");
-        add(lblUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 182, -1, -1));
+        add(lblUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
 
+        lblPass.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblPass.setText("Password:");
-        add(lblPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 244, -1, -1));
-        add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 179, 222, -1));
-        add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 241, 224, -1));
+        add(lblPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
+        add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 222, -1));
+        add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 224, -1));
 
+        lblRole.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblRole.setText("Role:");
-        add(lblRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 303, -1, -1));
+        add(lblRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, -1, -1));
 
         cmbRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NGO Admin", "NGO Manager", "Caretaker" }));
-        add(cmbRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 300, 224, -1));
+        add(cmbRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 224, -1));
 
+        btnLogin.setBackground(new java.awt.Color(204, 204, 204));
         btnLogin.setText("Login");
+        btnLogin.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginActionPerformed(evt);
             }
         });
-        add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 403, -1, -1));
+        add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 60, 20));
 
+        btnBack.setBackground(new java.awt.Color(204, 204, 204));
         btnBack.setText("Back");
+        btnBack.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 82, -1, -1));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 70, 20));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\kuchi\\OneDrive\\Desktop\\UI images\\NGO icon resized.jpg")); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 130, 370, 320));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -149,6 +161,7 @@ public class NgoLoginPage extends javax.swing.JPanel {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnLogin;
     private javax.swing.JComboBox<String> cmbRole;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblPass;
     private javax.swing.JLabel lblRole;
     private javax.swing.JLabel lblTitle;
