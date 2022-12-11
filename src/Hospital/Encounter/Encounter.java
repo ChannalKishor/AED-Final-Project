@@ -16,6 +16,48 @@ public class Encounter {
     private String patientName;
     private String patientUsername;
     private String comment;
+    private String date;
+    private String time;
+        
+    private String BP;
+    private String temperature;
+    private String medicine;
+    private String medicineQuantity;
+    
+    
+    public String getBP() {
+        return BP;
+    }
+
+    public void setBP(String BP) {
+        this.BP = BP;
+    }
+
+    public String getTemperature() {
+        return temperature;
+    }
+
+    public void setTemperature(String temperature) {
+        this.temperature = temperature;
+    }
+
+    public String getMedicine() {
+        return medicine;
+    }
+
+    public void setMedicine(String medicine) {
+        this.medicine = medicine;
+    }
+
+    public String getMedicineQuantity() {
+        return medicineQuantity;
+    }
+
+    public void setMedicineQuantity(String medicineQuantity) {
+        this.medicineQuantity = medicineQuantity;
+    }
+
+    
 
     public String getDate() {
         return date;
@@ -32,9 +74,6 @@ public class Encounter {
     public void setTime(String time) {
         this.time = time;
     }
-    private String date;
-    private String time;
-    
 
     public String getRoomNumber() {
         return roomNumber;
@@ -100,8 +139,7 @@ public class Encounter {
     public void setComment(String comment) {
         this.comment = comment;
     }
-    
-    
+
 }
 
 
