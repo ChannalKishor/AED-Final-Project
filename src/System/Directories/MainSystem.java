@@ -14,6 +14,7 @@ import Hospital.Patient.PatientDirectory;
 import Hospital.VitalSigns.VitalSignDirectory;
 import JobApp.Applicant.ApplicantDirectory;
 import JobApp.Applicant.TeacherApplyDirectory;
+import Ngo.Budget.BudgetDirectory;
 import Ngo.CareTaker.CaretakerDirectory;
 import Ngo.Children.ChildrenDirectory;
 
@@ -53,6 +54,7 @@ public class MainSystem {
     private MedicineDirectory medicineList;
     private DonationDirectory donationList;
     private TeacherApplyDirectory applist;
+    private BudgetDirectory budgetList;
 
     
     public MainSystem(){
@@ -76,6 +78,7 @@ public class MainSystem {
         medicineList = new MedicineDirectory();
         donationList = new DonationDirectory();
         applist = new TeacherApplyDirectory();
+        budgetList = new BudgetDirectory();
     }
     
    
@@ -220,16 +223,13 @@ public class MainSystem {
     public FinalResultDirectory getResList() {
         return resList;
     }
+
+    public BudgetDirectory getBudgetList() {
+        return budgetList;
+    }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
+   
     
     @Override
     public String toString(){

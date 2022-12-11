@@ -26,6 +26,7 @@ public class PublicUserWorkspace extends javax.swing.JPanel {
     private MainSystem system;
     private DB4OUtil dB4OUtil;
     private final String FILENAME = "ProjectDataBank.db4o";
+    private NgoAdminWorkspace ngoAdmin;
     
     public PublicUserWorkspace(PublicUser user, JPanel cardPanel,MainSystem system,DB4OUtil dB4OUtil) {
         initComponents();
@@ -363,6 +364,8 @@ public class PublicUserWorkspace extends javax.swing.JPanel {
         
         JOptionPane.showMessageDialog(this, "Donation sent successfully");
         
+        Integer donation = Integer.valueOf(system.getBudgetList().getMoney().getDonation());
+        system.getBudgetList().getMoney().setDonation(amt+donation);
         txtName.setText("");
         txtAmount.setText("");
         txtComm.setText("");

@@ -6,6 +6,7 @@ package Ui.Ngo;
 
 import Funding.FundManager.FundManager;
 import Funding.PublicUser.PublicUser;
+import Ngo.Budget.Budget;
 import Ngo.CareTaker.Caretaker;
 import Ngo.Children.Children;
 import Ngo.NgoManager.NgoManager;
@@ -45,6 +46,8 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
         populateChildrenEducationTable();
         populateStudentApp();
         populatePublicUser();
+        initializeBud();
+        
     }
 
     /**
@@ -1516,6 +1519,11 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
         lblOthers.setText("Others:");
 
         btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelBudgetLayout = new javax.swing.GroupLayout(panelBudget);
         panelBudget.setLayout(panelBudgetLayout);
@@ -1804,6 +1812,24 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void initializeBud(){
+        if(system.getBudgetList().getBudgetList()!=null){
+            System.out.println("Hello");
+            Integer donation = Integer.valueOf(system.getBudgetList().getMoney().getDonation());
+            Integer other = Integer.valueOf(system.getBudgetList().getMoney().getOthers());
+            Integer total = donation+other;
+            Double edu = 0.3*total;
+            Double hel = 0.3*total;
+            Double ess = 0.4*total;
+            txtDonation.setText(String.valueOf(system.getBudgetList().getMoney().getDonation()));
+            txtOther.setText(String.valueOf(system.getBudgetList().getMoney().getOthers()));
+            txtTotal.setText(String.valueOf(donation+other));
+            txtEducation.setText(String.valueOf(edu));
+            txtHealth.setText(String.valueOf(hel));
+            txtFood.setText(String.valueOf(ess));
+        }
+    }
+   
     private void btnNgoManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNgoManagerActionPerformed
         // TODO add your handling code here:
 //        CardLayout cardLayout = (CardLayout) panelAdminWork.getLayout();
@@ -2581,6 +2607,23 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
             populatePublicUser();
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+        if(system.getBudgetList()==null){
+            Budget b = system.getBudgetList().addBudget();
+            b.setDonation(Integer.valueOf(txtDonation.getText()));
+            b.setOthers(Integer.valueOf(txtOther.getText()));
+        }
+        else{
+            system.getBudgetList().getBudgetList().clear();
+            Budget b = system.getBudgetList().addBudget();
+            b.setDonation(Integer.valueOf(txtDonation.getText()));
+            b.setOthers(Integer.valueOf(txtOther.getText()));
+        }
+        JOptionPane.showMessageDialog(this, "Budget updated succefully");
+            
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
 
     private void populateNgoManagerTable(){

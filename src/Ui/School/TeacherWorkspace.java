@@ -10,6 +10,9 @@ import School.Teacher.Teacher;
 import System.Directories.DB4OUtil;
 import System.Directories.MainSystem;
 import java.awt.CardLayout;
+import java.awt.print.PrinterException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -112,6 +115,9 @@ public class TeacherWorkspace extends javax.swing.JPanel {
         txtStudentClassRes = new javax.swing.JTextField();
         btnUpdateRes = new javax.swing.JButton();
         btnDeleteRes = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtMarksCard = new javax.swing.JTextArea();
+        btnPrint = new javax.swing.JButton();
 
         btnHome.setText("Home");
         btnHome.addActionListener(new java.awt.event.ActionListener() {
@@ -155,7 +161,7 @@ public class TeacherWorkspace extends javax.swing.JPanel {
                 .addComponent(btnStudent)
                 .addGap(18, 18, 18)
                 .addComponent(btnMarks)
-                .addContainerGap(438, Short.MAX_VALUE))
+                .addContainerGap(441, Short.MAX_VALUE))
         );
 
         SplitPaneTeacher.setLeftComponent(panelControl);
@@ -197,7 +203,7 @@ public class TeacherWorkspace extends javax.swing.JPanel {
                 .addComponent(lblRole)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLogOut)
-                .addContainerGap(548, Short.MAX_VALUE))
+                .addContainerGap(551, Short.MAX_VALUE))
         );
 
         panelWork.add(panelHome, "card2");
@@ -380,7 +386,7 @@ public class TeacherWorkspace extends javax.swing.JPanel {
                 .addGroup(panelStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtStudentClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblStudentClass))
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
 
         panelWork.add(panelStudent, "card2");
@@ -532,6 +538,18 @@ public class TeacherWorkspace extends javax.swing.JPanel {
             }
         });
 
+        txtMarksCard.setColumns(20);
+        txtMarksCard.setRows(5);
+        txtMarksCard.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jScrollPane2.setViewportView(txtMarksCard);
+
+        btnPrint.setText("Print");
+        btnPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrintActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelMarksLayout = new javax.swing.GroupLayout(panelMarks);
         panelMarks.setLayout(panelMarksLayout);
         panelMarksLayout.setHorizontalGroup(
@@ -580,13 +598,17 @@ public class TeacherWorkspace extends javax.swing.JPanel {
                         .addGap(32, 32, 32)
                         .addComponent(cmbResult, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(75, 75, 75))
-                    .addGroup(panelMarksLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelMarksLayout.createSequentialGroup()
                         .addGap(94, 94, 94)
-                        .addComponent(btnCreateRes, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnUpdateRes, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnDeleteRes, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelMarksLayout.createSequentialGroup()
+                                .addComponent(btnCreateRes, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnUpdateRes, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnDeleteRes, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnPrint))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(panelMarksLayout.createSequentialGroup()
                 .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -613,15 +635,9 @@ public class TeacherWorkspace extends javax.swing.JPanel {
                 .addComponent(btnAutofill)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(55, 55, 55)
+                .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelMarksLayout.createSequentialGroup()
-                        .addGap(107, 107, 107)
-                        .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnCreateRes)
-                            .addComponent(btnUpdateRes)
-                            .addComponent(btnDeleteRes)))
-                    .addGroup(panelMarksLayout.createSequentialGroup()
-                        .addGap(55, 55, 55)
                         .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblStudentIdRes)
                             .addComponent(txtStudentIdRes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -634,28 +650,36 @@ public class TeacherWorkspace extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblStudentNameRes)
-                            .addComponent(txtStudentNameRes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblStudentClassRes)
-                    .addComponent(txtStudentClassRes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
-                .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtMaths, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblMaths))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtScience, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblScience))
-                .addGap(58, 58, 58)
-                .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtEnglish, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblEnglish))
-                .addGap(18, 18, 18)
-                .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPer))
-                .addContainerGap(29, Short.MAX_VALUE))
+                            .addComponent(txtStudentNameRes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtStudentClassRes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblStudentClassRes))
+                        .addGap(9, 9, 9)
+                        .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtMaths, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblMaths))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtScience, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblScience))
+                        .addGap(58, 58, 58)
+                        .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtEnglish, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblEnglish))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtPer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPer)))
+                    .addGroup(panelMarksLayout.createSequentialGroup()
+                        .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnCreateRes)
+                            .addComponent(btnUpdateRes)
+                            .addComponent(btnDeleteRes))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnPrint))
         );
 
         panelWork.add(panelMarks, "card4");
@@ -818,6 +842,22 @@ public class TeacherWorkspace extends javax.swing.JPanel {
         newRes.setResult(res);
         
         populateResultTable();
+        
+        
+        txtMarksCard.append("\t\t Report Card \n\n"+
+                "Student Id: \t\t\t" + txtStudentIdRes.getText()+ "\n\n"+
+                "Student Name: \t\t\t"+ txtStudentNameRes.getText()+ "\n\n"+
+                "Class: \t\t\t"+ txtStudentClassRes.getText()+ "\n\n"+
+                "\n==============================================================\n"+
+                "Maths: \t\t\t"+ txtMaths.getText()+ "\n\n"+
+                "Science: \t\t\t"+ txtScience.getText()+ "\n\n"+
+                "English: \t\t\t"+ txtEnglish.getText()+ "\n\n"+
+                "\n--------------------------------------------------------------\n"+
+                "Percentage: \t\t\t"+ txtPer.getText()+ "%\n\n"+
+                "Result: \t\t\t"+ cmbResult.getSelectedItem()+ "\n\n"+
+                "\n=========================================================\n"
+        );
+                
     }//GEN-LAST:event_btnCreateResActionPerformed
 
     private void btnUpdateResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateResActionPerformed
@@ -868,6 +908,15 @@ public class TeacherWorkspace extends javax.swing.JPanel {
             populateResultTable();
         }
     }//GEN-LAST:event_btnDeleteResActionPerformed
+
+    private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
+        try {
+            // TODO add your handling code here:
+            txtMarksCard.print();
+        } catch (PrinterException ex) {
+            Logger.getLogger(TeacherWorkspace.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnPrintActionPerformed
 
     private void populateStudentTable(){
         DefaultTableModel model = (DefaultTableModel) tableStudent.getModel();
@@ -934,12 +983,14 @@ public class TeacherWorkspace extends javax.swing.JPanel {
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnLogOut;
     private javax.swing.JButton btnMarks;
+    private javax.swing.JButton btnPrint;
     private javax.swing.JButton btnStudent;
     private javax.swing.JButton btnStudentView;
     private javax.swing.JButton btnUpdateRes;
     private javax.swing.JComboBox<String> cmbResult;
     private javax.swing.JComboBox<String> cmbStudentGender;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblEnglish;
     private javax.swing.JLabel lblMaths;
     private javax.swing.JLabel lblPer;
@@ -972,6 +1023,7 @@ public class TeacherWorkspace extends javax.swing.JPanel {
     private javax.swing.JTable tableStudent;
     private javax.swing.JTable tableStudentRes;
     private javax.swing.JTextField txtEnglish;
+    private javax.swing.JTextArea txtMarksCard;
     private javax.swing.JTextField txtMaths;
     private javax.swing.JTextField txtPer;
     private javax.swing.JTextField txtScience;

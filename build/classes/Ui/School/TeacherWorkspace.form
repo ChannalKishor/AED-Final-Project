@@ -60,7 +60,7 @@
                       <Component id="btnStudent" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnMarks" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="438" max="32767" attributes="0"/>
+                      <EmptySpace pref="441" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -131,7 +131,7 @@
                           <Component id="lblRole" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnLogOut" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="548" max="32767" attributes="0"/>
+                          <EmptySpace pref="551" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -329,7 +329,7 @@
                               <Component id="txtStudentClass" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lblStudentClass" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="85" max="32767" attributes="0"/>
+                          <EmptySpace pref="88" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -535,13 +535,19 @@
                                   <Component id="cmbResult" min="-2" pref="148" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="1" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
-                                  <Component id="btnCreateRes" min="-2" pref="88" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnUpdateRes" min="-2" pref="79" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnDeleteRes" min="-2" pref="79" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jScrollPane2" min="-2" pref="299" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="btnCreateRes" min="-2" pref="88" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="btnUpdateRes" min="-2" pref="79" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="btnDeleteRes" min="-2" pref="79" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="btnPrint" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -578,17 +584,9 @@
                           <Component id="btnAutofill" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="93" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="btnCreateRes" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnUpdateRes" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnDeleteRes" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="lblStudentIdRes" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtStudentIdRes" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -605,34 +603,44 @@
                                       <Component id="lblStudentNameRes" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtStudentNameRes" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="txtStudentClassRes" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblStudentClassRes" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="txtMaths" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblMaths" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="txtScience" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblScience" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="txtEnglish" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblEnglish" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="txtPer" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblPer" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="btnCreateRes" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnUpdateRes" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnDeleteRes" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane2" min="-2" pref="216" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblStudentClassRes" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtStudentClassRes" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtMaths" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblMaths" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtScience" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblScience" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtEnglish" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblEnglish" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtPer" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblPer" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="29" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="btnPrint" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -887,6 +895,34 @@
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteResActionPerformed"/>
+                  </Events>
+                </Component>
+                <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTextArea" name="txtMarksCard">
+                      <Properties>
+                        <Property name="columns" type="int" value="20"/>
+                        <Property name="rows" type="int" value="5"/>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                            <LineBorder/>
+                          </Border>
+                        </Property>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Component class="javax.swing.JButton" name="btnPrint">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Print"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPrintActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
