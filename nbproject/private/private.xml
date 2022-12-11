@@ -3,16 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/kuchi/OneDrive/Desktop/AED%20Final%20project/AED-Final-Project/src/Ngo/NgoManager/NgoManager.java</file>
-            <file>file:/C:/Users/kuchi/OneDrive/Desktop/AED%20Final%20project/AED-Final-Project/src/Ui/Main/NMS.java</file>
-            <file>file:/C:/Users/kuchi/OneDrive/Desktop/AED%20Final%20project/AED-Final-Project/src/Ui/Main/HomePage.java</file>
-            <file>file:/C:/Users/kuchi/OneDrive/Desktop/AED%20Final%20project/AED-Final-Project/src/Ui/Main/MainJFrame.java</file>
-            <file>file:/C:/Users/kuchi/OneDrive/Desktop/AED%20Final%20project/AED-Final-Project/src/Ngo/CareTaker/CaretakerDirectory.java</file>
-            <file>file:/C:/Users/kuchi/OneDrive/Desktop/AED%20Final%20project/AED-Final-Project/src/Funding/FundManager/FundManager.java</file>
-            <file>file:/C:/Users/kuchi/OneDrive/Desktop/AED%20Final%20project/AED-Final-Project/src/Ui/LoginPage/NgoLoginPage.java</file>
-            <file>file:/C:/Users/kuchi/OneDrive/Desktop/AED%20Final%20project/AED-Final-Project/src/Ui/Ngo/NgoAdminWorkspace.java</file>
-            <file>file:/C:/Users/kuchi/OneDrive/Desktop/AED%20Final%20project/AED-Final-Project/src/Ui/Hospital/HospitalAdminWorkspace.java</file>
-            <file>file:/C:/Users/kuchi/OneDrive/Desktop/AED%20Final%20project/AED-Final-Project/src/Ngo/CareTaker/Caretaker.java</file>
+            <file>file:/C:/Users/chinm/OneDrive/Desktop/AED_projects/NGO_Management_System/AED-Final-Project/src/Ui/Ngo/NgoAdminWorkspace.java</file>
+            <file>file:/C:/Users/chinm/OneDrive/Desktop/AED_projects/NGO_Management_System/AED-Final-Project/src/Hospital/Doctor/Doctor.java</file>
+            <file>file:/C:/Users/chinm/OneDrive/Desktop/AED_projects/NGO_Management_System/AED-Final-Project/src/System/Directories/DataValidation.java</file>
+            <file>file:/C:/Users/chinm/OneDrive/Desktop/AED_projects/NGO_Management_System/AED-Final-Project/src/Ui/MedStore/MedAdminWorkspace.java</file>
         </group>
     </open-files>
 </project-private>
