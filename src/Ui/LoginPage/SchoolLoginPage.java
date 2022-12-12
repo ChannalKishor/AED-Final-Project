@@ -191,6 +191,9 @@ public class SchoolLoginPage extends javax.swing.JPanel {
         catch(NullPointerException n){
             JOptionPane.showMessageDialog(this, "Please enter the correct username and password and role.");
         }
+        
+        txtUsername.setText("");
+        txtPass.setText("");
     }//GEN-LAST:event_btnLoginActionPerformed
 
 

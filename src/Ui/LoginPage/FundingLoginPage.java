@@ -187,6 +187,9 @@ public class FundingLoginPage extends javax.swing.JPanel {
         catch(NullPointerException n){
             JOptionPane.showMessageDialog(this, "Please enter the correct username and password and role.");
         }
+        
+        txtUsername.setText("");
+        txtPass.setText("");
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegActionPerformed

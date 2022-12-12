@@ -39,6 +39,7 @@ public class CaretakerWorkspace extends javax.swing.JPanel {
         this.data = new DataValidation();
         populateChildrenCreateTable();
         populateChildrenHealthTable();
+        populateAppoinmentTable();
     }
 
     /**

@@ -101,7 +101,6 @@ public class ApplicantWorkspace extends javax.swing.JPanel {
         lblEmailid = new javax.swing.JLabel();
         txtEmailId = new javax.swing.JTextField();
         panelMail = new javax.swing.JPanel();
-        lblSendMail = new javax.swing.JLabel();
         lblTo = new javax.swing.JLabel();
         lblSub1 = new javax.swing.JLabel();
         lblMes = new javax.swing.JLabel();
@@ -110,6 +109,7 @@ public class ApplicantWorkspace extends javax.swing.JPanel {
         jScrollPane4 = new javax.swing.JScrollPane();
         txtMess = new javax.swing.JTextArea();
         btnSend = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         btnSendmail.setText("Send Mail");
         btnSendmail.addActionListener(new java.awt.event.ActionListener() {
@@ -404,8 +404,6 @@ public class ApplicantWorkspace extends javax.swing.JPanel {
 
         panelWork.add(panelJobApply, "card3");
 
-        lblSendMail.setText("Send Email");
-
         lblTo.setText("To:");
 
         lblSub1.setText("Subject:");
@@ -437,39 +435,39 @@ public class ApplicantWorkspace extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Contact Via Mail");
+
         javax.swing.GroupLayout panelMailLayout = new javax.swing.GroupLayout(panelMail);
         panelMail.setLayout(panelMailLayout);
         panelMailLayout.setHorizontalGroup(
             panelMailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelMailLayout.createSequentialGroup()
-                .addGroup(panelMailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelMailLayout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addComponent(lblSendMail))
-                    .addGroup(panelMailLayout.createSequentialGroup()
-                        .addGap(215, 215, 215)
-                        .addGroup(panelMailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblMes)
-                            .addGroup(panelMailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblSub1)
-                                .addComponent(lblTo)))
-                        .addGap(42, 42, 42)
-                        .addGroup(panelMailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtTo, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtSub, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(216, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMailLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnSend)
                 .addGap(318, 318, 318))
+            .addGroup(panelMailLayout.createSequentialGroup()
+                .addGap(215, 215, 215)
+                .addGroup(panelMailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblMes)
+                    .addGroup(panelMailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblSub1)
+                        .addComponent(lblTo)))
+                .addGap(42, 42, 42)
+                .addGroup(panelMailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtTo, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSub, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(216, Short.MAX_VALUE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panelMailLayout.setVerticalGroup(
             panelMailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMailLayout.createSequentialGroup()
-                .addGap(91, 91, 91)
-                .addComponent(lblSendMail)
-                .addGap(63, 63, 63)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(141, 141, 141)
                 .addGroup(panelMailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTo)
                     .addComponent(txtTo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -481,7 +479,7 @@ public class ApplicantWorkspace extends javax.swing.JPanel {
                 .addGroup(panelMailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblMes)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 204, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
                 .addComponent(btnSend)
                 .addGap(105, 105, 105))
         );
@@ -656,6 +654,7 @@ public class ApplicantWorkspace extends javax.swing.JPanel {
     private javax.swing.JButton btnLogOut;
     private javax.swing.JButton btnSend;
     private javax.swing.JButton btnSendmail;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -670,7 +669,6 @@ public class ApplicantWorkspace extends javax.swing.JPanel {
     private javax.swing.JLabel lblQua2;
     private javax.swing.JLabel lblRole;
     private javax.swing.JLabel lblSchool;
-    private javax.swing.JLabel lblSendMail;
     private javax.swing.JLabel lblStatus;
     private javax.swing.JLabel lblSub;
     private javax.swing.JLabel lblSub1;

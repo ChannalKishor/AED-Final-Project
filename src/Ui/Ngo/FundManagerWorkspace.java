@@ -4,6 +4,7 @@
  */
 package Ui.Ngo;
 
+import Funding.Donation.Donation;
 import Funding.FundManager.FundManager;
 import Ngo.Budget.Budget;
 import System.Directories.DB4OUtil;
@@ -11,6 +12,7 @@ import System.Directories.MainSystem;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -33,6 +35,7 @@ public class FundManagerWorkspace extends javax.swing.JPanel {
         this.cardPanel = cardPanel;
         this.system = system;
         this.dB4OUtil = dB4OUtil;
+        populatePublicFund();
         initializeBud();
         
     }
@@ -175,7 +178,7 @@ public class FundManagerWorkspace extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "Name", "Place", "Amount"
+                "Name", "Message", "Amount"
             }
         ) {
             Class[] types = new Class [] {
@@ -379,6 +382,10 @@ public class FundManagerWorkspace extends javax.swing.JPanel {
 
     private void btnFundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFundActionPerformed
         // TODO add your handling code here:
+        panelWork.removeAll();
+        panelWork.add(panelPublicFund);
+        panelWork.repaint();
+        panelWork.revalidate();
     }//GEN-LAST:event_btnFundActionPerformed
 
     private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
@@ -431,6 +438,22 @@ public class FundManagerWorkspace extends javax.swing.JPanel {
     }//GEN-LAST:event_btnUpdateActionPerformed
 
 
+    private void populatePublicFund(){
+    
+        DefaultTableModel model = (DefaultTableModel) tablePublicFund.getModel();
+        model.setRowCount(0);
+        
+//        
+            for(Donation man: system.getDonationList().getDonationList()){
+
+                Object[] row = new Object[5];
+                row[0] = man; 
+                row[1] = man.getComment();
+                row[2] = man.getAmt();
+                model.addRow(row);
+            }
+            
+        }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane ScrollPane;
     private javax.swing.JSplitPane SplitPaneFundManager;
