@@ -12,6 +12,7 @@ public class Patient {
     
     private String role;
     private String patientId;
+    private String docId;
     private String username;
     private String name;
     private Integer age;
@@ -91,6 +92,15 @@ public class Patient {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getDocId() {
+        return docId;
+    }
+
+    public void setDocId(String docId) {
+        this.docId = docId;
+    }
+    
     
   
     @Override

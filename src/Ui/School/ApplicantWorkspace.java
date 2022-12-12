@@ -10,6 +10,15 @@ import School.Application.Application;
 import System.Directories.DB4OUtil;
 import System.Directories.MainSystem;
 import java.awt.CardLayout;
+import java.util.Date;
+import java.util.Properties;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -91,8 +100,23 @@ public class ApplicantWorkspace extends javax.swing.JPanel {
         txtStatus = new javax.swing.JTextField();
         lblEmailid = new javax.swing.JLabel();
         txtEmailId = new javax.swing.JTextField();
+        panelMail = new javax.swing.JPanel();
+        lblSendMail = new javax.swing.JLabel();
+        lblTo = new javax.swing.JLabel();
+        lblSub1 = new javax.swing.JLabel();
+        lblMes = new javax.swing.JLabel();
+        txtTo = new javax.swing.JTextField();
+        txtSub = new javax.swing.JTextField();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        txtMess = new javax.swing.JTextArea();
+        btnSend = new javax.swing.JButton();
 
         btnSendmail.setText("Send Mail");
+        btnSendmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendmailActionPerformed(evt);
+            }
+        });
 
         btnHome.setText("Home");
         btnHome.addActionListener(new java.awt.event.ActionListener() {
@@ -154,7 +178,7 @@ public class ApplicantWorkspace extends javax.swing.JPanel {
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
-        jTextArea2.setText("Job Description:\n\n\n");
+        jTextArea2.setText("Job Description:\n\n");
         jScrollPane3.setViewportView(jTextArea2);
 
         javax.swing.GroupLayout panelHomeLayout = new javax.swing.GroupLayout(panelHome);
@@ -367,9 +391,7 @@ public class ApplicantWorkspace extends javax.swing.JPanel {
                             .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelJobApplyLayout.createSequentialGroup()
-                                .addComponent(lblQua2)
-                                .addGap(64, 64, 64))
+                            .addComponent(lblQua2)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -381,6 +403,90 @@ public class ApplicantWorkspace extends javax.swing.JPanel {
         );
 
         panelWork.add(panelJobApply, "card3");
+
+        lblSendMail.setText("Send Email");
+
+        lblTo.setText("To:");
+
+        lblSub1.setText("Subject:");
+
+        lblMes.setText("Message:");
+
+        txtTo.setEditable(false);
+        txtTo.setText("chinmaydharwad21@gmail.com");
+        txtTo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtToActionPerformed(evt);
+            }
+        });
+
+        txtSub.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSubActionPerformed(evt);
+            }
+        });
+
+        txtMess.setColumns(20);
+        txtMess.setRows(5);
+        jScrollPane4.setViewportView(txtMess);
+
+        btnSend.setText("Send");
+        btnSend.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelMailLayout = new javax.swing.GroupLayout(panelMail);
+        panelMail.setLayout(panelMailLayout);
+        panelMailLayout.setHorizontalGroup(
+            panelMailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMailLayout.createSequentialGroup()
+                .addGroup(panelMailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelMailLayout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addComponent(lblSendMail))
+                    .addGroup(panelMailLayout.createSequentialGroup()
+                        .addGap(215, 215, 215)
+                        .addGroup(panelMailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblMes)
+                            .addGroup(panelMailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblSub1)
+                                .addComponent(lblTo)))
+                        .addGap(42, 42, 42)
+                        .addGroup(panelMailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtTo, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtSub, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(216, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMailLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnSend)
+                .addGap(318, 318, 318))
+        );
+        panelMailLayout.setVerticalGroup(
+            panelMailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMailLayout.createSequentialGroup()
+                .addGap(91, 91, 91)
+                .addComponent(lblSendMail)
+                .addGap(63, 63, 63)
+                .addGroup(panelMailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTo)
+                    .addComponent(txtTo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(panelMailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSub1)
+                    .addComponent(txtSub, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(panelMailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMes)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 204, Short.MAX_VALUE)
+                .addComponent(btnSend)
+                .addGap(105, 105, 105))
+        );
+
+        panelWork.add(panelMail, "card6");
 
         SplitPaneApplicant.setRightComponent(panelWork);
 
@@ -468,6 +574,55 @@ public class ApplicantWorkspace extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnApplyActionPerformed
 
+    private void btnSendmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSendmailActionPerformed
+
+    private void txtToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtToActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtToActionPerformed
+
+    private void txtSubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSubActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSubActionPerformed
+
+    private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
+        // TODO add your handling code here:
+        try{
+            Properties properties = new Properties();
+
+            properties.put("mail.smtp.auth", "true");
+            properties.put("mail.smtp.starttls.enable", "true");
+            properties.put("mail.smtp.host", "smtp.gmail.com");
+            properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+            properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
+            properties.put("mail.smtp.port", "587");
+
+            Session session = Session.getDefaultInstance(properties, new Authenticator() {
+                @Override
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication("cvshetter@gmail.com","uvflnegrkfxzprmu");
+
+                }
+
+            });
+
+            Message message = new MimeMessage(session);
+            message.setSubject(txtSub.getText());
+            message.setContent(txtMess.getText(), "text/plain");
+            message.setFrom(new InternetAddress("cvshetter@gmail.com"));
+            message.setRecipient(Message.RecipientType.TO , new InternetAddress(txtTo.getText()));
+            message.setSentDate(new Date());
+
+            Transport.send(message);
+
+            JOptionPane.showMessageDialog(null, "Sent");
+
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_btnSendActionPerformed
+
 
     private void populateAppTable(){
         DefaultTableModel model = (DefaultTableModel) tableJobApp.getModel();
@@ -499,29 +654,36 @@ public class ApplicantWorkspace extends javax.swing.JPanel {
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnJobApply;
     private javax.swing.JButton btnLogOut;
+    private javax.swing.JButton btnSend;
     private javax.swing.JButton btnSendmail;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JLabel lblAge;
     private javax.swing.JLabel lblAge1;
     private javax.swing.JLabel lblEmailid;
+    private javax.swing.JLabel lblMes;
     private javax.swing.JLabel lblQua;
     private javax.swing.JLabel lblQua1;
     private javax.swing.JLabel lblQua2;
     private javax.swing.JLabel lblRole;
     private javax.swing.JLabel lblSchool;
+    private javax.swing.JLabel lblSendMail;
     private javax.swing.JLabel lblStatus;
     private javax.swing.JLabel lblSub;
+    private javax.swing.JLabel lblSub1;
     private javax.swing.JLabel lblTitle2;
     private javax.swing.JLabel lblTitle3;
+    private javax.swing.JLabel lblTo;
     private javax.swing.JLabel lblUsername;
     private javax.swing.JLabel lblUsername1;
     private javax.swing.JLabel lblUsername2;
     private javax.swing.JPanel panelControl;
     private javax.swing.JPanel panelHome;
     private javax.swing.JPanel panelJobApply;
+    private javax.swing.JPanel panelMail;
     private javax.swing.JPanel panelWork;
     private javax.swing.JTable tableJobApp;
     private javax.swing.JTextField txtAge;
@@ -530,11 +692,14 @@ public class ApplicantWorkspace extends javax.swing.JPanel {
     private javax.swing.JTextField txtEmailId;
     private javax.swing.JTextField txtEx;
     private javax.swing.JTextField txtGender;
+    private javax.swing.JTextArea txtMess;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtQua;
     private javax.swing.JTextField txtSchool;
     private javax.swing.JTextField txtStatus;
+    private javax.swing.JTextField txtSub;
     private javax.swing.JTextField txtSubject;
+    private javax.swing.JTextField txtTo;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }

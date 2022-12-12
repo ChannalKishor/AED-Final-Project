@@ -5,9 +5,11 @@
 package Ui.Ngo;
 
 import Funding.FundManager.FundManager;
+import Ngo.Budget.Budget;
 import System.Directories.DB4OUtil;
 import System.Directories.MainSystem;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -31,6 +33,7 @@ public class FundManagerWorkspace extends javax.swing.JPanel {
         this.cardPanel = cardPanel;
         this.system = system;
         this.dB4OUtil = dB4OUtil;
+        initializeBud();
         
     }
 
@@ -53,20 +56,27 @@ public class FundManagerWorkspace extends javax.swing.JPanel {
         lblTitle2 = new javax.swing.JLabel();
         lblRole = new javax.swing.JLabel();
         btnLogOut = new javax.swing.JButton();
+        panelPublicFund = new javax.swing.JPanel();
+        ScrollPane = new javax.swing.JScrollPane();
+        tablePublicFund = new javax.swing.JTable();
+        lblTitle3 = new javax.swing.JLabel();
         panelBudget = new javax.swing.JPanel();
         lblTitle8 = new javax.swing.JLabel();
-        txtTotal = new javax.swing.JTextField();
         lblTotal = new javax.swing.JLabel();
+        txtTotal = new javax.swing.JTextField();
         lblEducation = new javax.swing.JLabel();
         txtEducation = new javax.swing.JTextField();
         lblHealth = new javax.swing.JLabel();
         txtHealth = new javax.swing.JTextField();
         lblFood = new javax.swing.JLabel();
         txtFood = new javax.swing.JTextField();
-        panelPublicFund = new javax.swing.JPanel();
-        ScrollPane = new javax.swing.JScrollPane();
-        tablePublicFund = new javax.swing.JTable();
-        lblTitle3 = new javax.swing.JLabel();
+        lblExpenditure = new javax.swing.JLabel();
+        lblIncome = new javax.swing.JLabel();
+        txtDonation = new javax.swing.JTextField();
+        lblDonation = new javax.swing.JLabel();
+        txtOther = new javax.swing.JTextField();
+        lblOthers = new javax.swing.JLabel();
+        btnUpdate = new javax.swing.JButton();
 
         btnHome.setText("Home");
         btnHome.addActionListener(new java.awt.event.ActionListener() {
@@ -157,73 +167,6 @@ public class FundManagerWorkspace extends javax.swing.JPanel {
 
         panelWork.add(panelHome, "card2");
 
-        lblTitle8.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblTitle8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitle8.setText("Budget");
-
-        lblTotal.setText("Total:");
-
-        lblEducation.setText("Education:");
-
-        lblHealth.setText("Health:");
-
-        lblFood.setText("Food:");
-
-        javax.swing.GroupLayout panelBudgetLayout = new javax.swing.GroupLayout(panelBudget);
-        panelBudget.setLayout(panelBudgetLayout);
-        panelBudgetLayout.setHorizontalGroup(
-            panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblTitle8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(panelBudgetLayout.createSequentialGroup()
-                .addGroup(panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelBudgetLayout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addComponent(lblTotal)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelBudgetLayout.createSequentialGroup()
-                        .addGap(158, 158, 158)
-                        .addGroup(panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(panelBudgetLayout.createSequentialGroup()
-                                .addComponent(lblHealth)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtHealth, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelBudgetLayout.createSequentialGroup()
-                                .addComponent(lblEducation)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtEducation, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelBudgetLayout.createSequentialGroup()
-                                .addComponent(lblFood)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtFood, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(329, Short.MAX_VALUE))
-        );
-        panelBudgetLayout.setVerticalGroup(
-            panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBudgetLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTitle8)
-                .addGap(67, 67, 67)
-                .addGroup(panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTotal)
-                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54)
-                .addGroup(panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEducation)
-                    .addComponent(txtEducation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblHealth)
-                    .addComponent(txtHealth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFood)
-                    .addComponent(txtFood, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(408, Short.MAX_VALUE))
-        );
-
-        panelWork.add(panelBudget, "card3");
-
         tablePublicFund.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -271,6 +214,119 @@ public class FundManagerWorkspace extends javax.swing.JPanel {
 
         panelWork.add(panelPublicFund, "card4");
 
+        lblTitle8.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTitle8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle8.setText("Budget");
+
+        lblTotal.setText("Total:");
+
+        lblEducation.setText("Education:");
+
+        lblHealth.setText("Health:");
+
+        lblFood.setText("Essential Items:");
+
+        lblExpenditure.setText("Expenditure:");
+
+        lblIncome.setText("Income:");
+
+        lblDonation.setText("Donations:");
+
+        lblOthers.setText("Others:");
+
+        btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelBudgetLayout = new javax.swing.GroupLayout(panelBudget);
+        panelBudget.setLayout(panelBudgetLayout);
+        panelBudgetLayout.setHorizontalGroup(
+            panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblTitle8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(panelBudgetLayout.createSequentialGroup()
+                .addGroup(panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelBudgetLayout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addComponent(lblTotal)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelBudgetLayout.createSequentialGroup()
+                        .addGap(217, 217, 217)
+                        .addGroup(panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(panelBudgetLayout.createSequentialGroup()
+                                .addComponent(lblHealth)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtHealth, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelBudgetLayout.createSequentialGroup()
+                                .addComponent(lblEducation)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtEducation, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelBudgetLayout.createSequentialGroup()
+                                .addComponent(lblFood)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtFood, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBudgetLayout.createSequentialGroup()
+                                .addComponent(lblDonation)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtDonation, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelBudgetLayout.createSequentialGroup()
+                                .addComponent(lblOthers)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtOther, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(panelBudgetLayout.createSequentialGroup()
+                        .addGap(158, 158, 158)
+                        .addGroup(panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblIncome)
+                            .addComponent(lblExpenditure))))
+                .addContainerGap(258, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBudgetLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnUpdate)
+                .addGap(332, 332, 332))
+        );
+        panelBudgetLayout.setVerticalGroup(
+            panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBudgetLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTitle8)
+                .addGap(67, 67, 67)
+                .addGroup(panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTotal)
+                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(81, 81, 81)
+                .addComponent(lblExpenditure)
+                .addGap(30, 30, 30)
+                .addGroup(panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblEducation)
+                    .addComponent(txtEducation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblHealth)
+                    .addComponent(txtHealth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFood)
+                    .addComponent(txtFood, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(49, 49, 49)
+                .addComponent(lblIncome)
+                .addGap(29, 29, 29)
+                .addGroup(panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDonation)
+                    .addComponent(txtDonation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblOthers)
+                    .addComponent(txtOther, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(65, 65, 65)
+                .addComponent(btnUpdate)
+                .addContainerGap(89, Short.MAX_VALUE))
+        );
+
+        panelWork.add(panelBudget, "card9");
+
         SplitPaneFundManager.setRightComponent(panelWork);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -285,6 +341,23 @@ public class FundManagerWorkspace extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void initializeBud(){
+        if(system.getBudgetList().getMoney()!=null){
+            System.out.println("Hello");
+            Integer donation = Integer.valueOf(system.getBudgetList().getMoney().getDonation());
+            Integer other = Integer.valueOf(system.getBudgetList().getMoney().getOthers());
+            Integer total = donation+other;
+            Double edu = 0.3*total;
+            Double hel = 0.3*total;
+            Double ess = 0.4*total;
+            txtDonation.setText(String.valueOf(system.getBudgetList().getMoney().getDonation()));
+            txtOther.setText(String.valueOf(system.getBudgetList().getMoney().getOthers()));
+            txtTotal.setText(String.valueOf(donation+other));
+            txtEducation.setText(String.valueOf(edu));
+            txtHealth.setText(String.valueOf(hel));
+            txtFood.setText(String.valueOf(ess));
+        }
+    }
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         // TODO add your handling code here:
         //        CardLayout cardLayout = (CardLayout) panelWork.getLayout();
@@ -316,6 +389,47 @@ public class FundManagerWorkspace extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnLogOutActionPerformed
 
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+        if(system.getBudgetList()==null){
+            Budget b = system.getBudgetList().addBudget();
+
+            b.setDonation(Integer.valueOf(txtDonation.getText()));
+            b.setOthers(Integer.valueOf(txtOther.getText()));
+
+            Integer donation = b.getDonation();
+            Integer other = b.getOthers();
+            Integer total = donation+other;
+            Double edu = 0.3*total;
+            Double hel = 0.3*total;
+            Double ess = 0.4*total;
+            txtTotal.setText(String.valueOf(total));
+            txtEducation.setText(String.valueOf(edu));
+            txtHealth.setText(String.valueOf(hel));
+            txtFood.setText(String.valueOf(ess));
+
+        }
+        else{
+            system.getBudgetList().getBudgetList().clear();
+            Budget b = system.getBudgetList().addBudget();
+            b.setDonation(Integer.valueOf(txtDonation.getText()));
+            b.setOthers(Integer.valueOf(txtOther.getText()));
+
+            Integer donation = b.getDonation();
+            Integer other = b.getOthers();
+            Integer total = donation+other;
+            Double edu = 0.3*total;
+            Double hel = 0.3*total;
+            Double ess = 0.4*total;
+            txtTotal.setText(String.valueOf(total));
+            txtEducation.setText(String.valueOf(edu));
+            txtHealth.setText(String.valueOf(hel));
+            txtFood.setText(String.valueOf(ess));
+        }
+        JOptionPane.showMessageDialog(this, "Budget updated succefully");
+
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane ScrollPane;
@@ -324,9 +438,14 @@ public class FundManagerWorkspace extends javax.swing.JPanel {
     private javax.swing.JButton btnFund;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnLogOut;
+    private javax.swing.JButton btnUpdate;
+    private javax.swing.JLabel lblDonation;
     private javax.swing.JLabel lblEducation;
+    private javax.swing.JLabel lblExpenditure;
     private javax.swing.JLabel lblFood;
     private javax.swing.JLabel lblHealth;
+    private javax.swing.JLabel lblIncome;
+    private javax.swing.JLabel lblOthers;
     private javax.swing.JLabel lblRole;
     private javax.swing.JLabel lblTitle2;
     private javax.swing.JLabel lblTitle3;
@@ -338,9 +457,11 @@ public class FundManagerWorkspace extends javax.swing.JPanel {
     private javax.swing.JPanel panelPublicFund;
     private javax.swing.JPanel panelWork;
     private javax.swing.JTable tablePublicFund;
+    private javax.swing.JTextField txtDonation;
     private javax.swing.JTextField txtEducation;
     private javax.swing.JTextField txtFood;
     private javax.swing.JTextField txtHealth;
+    private javax.swing.JTextField txtOther;
     private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }

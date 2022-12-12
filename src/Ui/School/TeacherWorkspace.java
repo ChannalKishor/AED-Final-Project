@@ -161,7 +161,7 @@ public class TeacherWorkspace extends javax.swing.JPanel {
                 .addComponent(btnStudent)
                 .addGap(18, 18, 18)
                 .addComponent(btnMarks)
-                .addContainerGap(441, Short.MAX_VALUE))
+                .addContainerGap(465, Short.MAX_VALUE))
         );
 
         SplitPaneTeacher.setLeftComponent(panelControl);
@@ -203,7 +203,7 @@ public class TeacherWorkspace extends javax.swing.JPanel {
                 .addComponent(lblRole)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLogOut)
-                .addContainerGap(551, Short.MAX_VALUE))
+                .addContainerGap(575, Short.MAX_VALUE))
         );
 
         panelWork.add(panelHome, "card2");
@@ -386,7 +386,7 @@ public class TeacherWorkspace extends javax.swing.JPanel {
                 .addGroup(panelStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtStudentClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblStudentClass))
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
 
         panelWork.add(panelStudent, "card2");
@@ -562,7 +562,7 @@ public class TeacherWorkspace extends javax.swing.JPanel {
                         .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelMarksLayout.createSequentialGroup()
                                 .addComponent(lblStudentIdRes1)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtteacherIdRes, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(panelMarksLayout.createSequentialGroup()
                                 .addComponent(lblStudentIdRes)
@@ -572,24 +572,26 @@ public class TeacherWorkspace extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(panelMarksLayout.createSequentialGroup()
-                                .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblScience)
-                                    .addComponent(lblEnglish)
-                                    .addComponent(lblMaths))
-                                .addGap(18, 18, 18)
-                                .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtScience, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtEnglish, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
-                                    .addComponent(txtMaths, javax.swing.GroupLayout.Alignment.TRAILING)))
-                            .addGroup(panelMarksLayout.createSequentialGroup()
                                 .addComponent(lblPer)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtPer, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtStudentClassRes, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtStudentClassRes, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelMarksLayout.createSequentialGroup()
+                                .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblEnglish)
+                                    .addComponent(lblScience)
+                                    .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblStudentClassRes)
+                                        .addComponent(lblMaths)))
+                                .addGap(18, 18, 18)
+                                .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtEnglish, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
+                                    .addComponent(txtScience, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtMaths, javax.swing.GroupLayout.Alignment.TRAILING)))))
                     .addGroup(panelMarksLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lblStudentNameRes)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtStudentNameRes, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelMarksLayout.createSequentialGroup()
@@ -599,29 +601,27 @@ public class TeacherWorkspace extends javax.swing.JPanel {
                         .addComponent(cmbResult, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(75, 75, 75))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelMarksLayout.createSequentialGroup()
-                        .addGap(94, 94, 94)
-                        .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelMarksLayout.createSequentialGroup()
+                        .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelMarksLayout.createSequentialGroup()
+                                .addGap(94, 94, 94)
                                 .addComponent(btnCreateRes, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnUpdateRes, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnDeleteRes, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnPrint))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelMarksLayout.createSequentialGroup()
+                                .addGap(47, 47, 47)
+                                .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnPrint)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(panelMarksLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
                 .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelMarksLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnAutofill)
-                            .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
-                                .addComponent(ScrollPaneNgoManager2))))
-                    .addGroup(panelMarksLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblStudentClassRes)))
+                    .addComponent(btnAutofill)
+                    .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
+                        .addComponent(ScrollPaneNgoManager2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelMarksLayout.setVerticalGroup(
@@ -647,23 +647,23 @@ public class TeacherWorkspace extends javax.swing.JPanel {
                         .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblStudentIdRes1)
                             .addComponent(txtteacherIdRes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(19, 19, 19)
                         .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblStudentNameRes)
-                            .addComponent(txtStudentNameRes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtStudentNameRes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblStudentNameRes))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtStudentClassRes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblStudentClassRes))
-                        .addGap(9, 9, 9)
+                        .addGap(18, 18, 18)
                         .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtMaths, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblMaths))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtScience, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtScience, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblScience))
-                        .addGap(58, 58, 58)
+                        .addGap(18, 18, 18)
                         .addGroup(panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtEnglish, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblEnglish))
@@ -678,8 +678,9 @@ public class TeacherWorkspace extends javax.swing.JPanel {
                             .addComponent(btnDeleteRes))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnPrint))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnPrint)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panelWork.add(panelMarks, "card4");
@@ -924,14 +925,15 @@ public class TeacherWorkspace extends javax.swing.JPanel {
         
 //        
             for(Student man: system.getStudentList().getStudentList()){
-
-                Object[] row = new Object[5];
-                row[0] = man; 
-                row[1] = man.getName();
-                row[2] = man.getCls();
-                row[3] = man.getAge();
-                row[4] = man.getEmailId();
-                model.addRow(row);
+                if(man.getTeachId().equals(teacher.getTeacherId())){
+                    Object[] row = new Object[5];
+                    row[0] = man; 
+                    row[1] = man.getName();
+                    row[2] = man.getCls();
+                    row[3] = man.getAge();
+                    row[4] = man.getEmailId();
+                    model.addRow(row);
+                }
             }
     }
     
@@ -941,14 +943,15 @@ public class TeacherWorkspace extends javax.swing.JPanel {
         
 //        
             for(Student man: system.getStudentList().getStudentList()){
-
-                Object[] row = new Object[5];
-                row[0] = man; 
-                row[1] = man.getName();
-                row[2] = man.getCls();
-                row[3] = man.getAge();
-                row[4] = man.getEmailId();
-                model.addRow(row);
+                if(man.getTeachId().equals(teacher.getTeacherId())){
+                    Object[] row = new Object[5];
+                    row[0] = man; 
+                    row[1] = man.getName();
+                    row[2] = man.getCls();
+                    row[3] = man.getAge();
+                    row[4] = man.getEmailId();
+                    model.addRow(row);
+                }
             }
     }
     

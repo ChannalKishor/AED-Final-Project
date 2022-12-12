@@ -4,6 +4,8 @@
  */
 package Ui.School;
 
+import JobApp.Applicant.TeacherApply;
+import School.Application.Application;
 import School.Principal.Principal;
 import School.Student.Student;
 import School.Teacher.Teacher;
@@ -37,6 +39,8 @@ public class PrincipalWorkspace extends javax.swing.JPanel {
         this.dB4OUtil = dB4OUtil;
         populateTeacherTable();
         populateStudentTable();
+        populateAppTable();
+        populateApplicationTable();
     }
 
     /**
@@ -54,11 +58,76 @@ public class PrincipalWorkspace extends javax.swing.JPanel {
         btnTeacher = new javax.swing.JButton();
         btnStudent = new javax.swing.JButton();
         btnApplication = new javax.swing.JButton();
+        btnJobApp = new javax.swing.JButton();
         panelWork = new javax.swing.JPanel();
         panelHome = new javax.swing.JPanel();
         lblTitle2 = new javax.swing.JLabel();
         lblRole = new javax.swing.JLabel();
         btnLogOut = new javax.swing.JButton();
+        panelMarks = new javax.swing.JPanel();
+        panelApplications = new javax.swing.JPanel();
+        ScrollPane6 = new javax.swing.JScrollPane();
+        tableApplication = new javax.swing.JTable();
+        lblApplicationNo = new javax.swing.JLabel();
+        txtApplicationNo = new javax.swing.JTextField();
+        lblChildName = new javax.swing.JLabel();
+        txtChildName = new javax.swing.JTextField();
+        lblChildAge = new javax.swing.JLabel();
+        txtChildAge = new javax.swing.JTextField();
+        lblChildName2 = new javax.swing.JLabel();
+        txtChildDOB = new javax.swing.JTextField();
+        lblChildName3 = new javax.swing.JLabel();
+        cmbChildGender = new javax.swing.JComboBox<>();
+        lblChildName4 = new javax.swing.JLabel();
+        txtChildSchool = new javax.swing.JTextField();
+        lblChildName5 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtChildComment = new javax.swing.JTextArea();
+        lblStatus = new javax.swing.JLabel();
+        txtStatus = new javax.swing.JTextField();
+        btnAccept = new javax.swing.JButton();
+        btnReject = new javax.swing.JButton();
+        btnCreate = new javax.swing.JButton();
+        lblTitle7 = new javax.swing.JLabel();
+        btnView = new javax.swing.JButton();
+        lblChildName6 = new javax.swing.JLabel();
+        txtChildClass = new javax.swing.JTextField();
+        btnClear = new javax.swing.JButton();
+        lblChildName7 = new javax.swing.JLabel();
+        txtNgo = new javax.swing.JComboBox<>();
+        panelJobApply = new javax.swing.JPanel();
+        lblTitle5 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tableJobApp = new javax.swing.JTable();
+        lblUsername = new javax.swing.JLabel();
+        txtUsername = new javax.swing.JTextField();
+        lblUsername1 = new javax.swing.JLabel();
+        txtAppId = new javax.swing.JTextField();
+        lblUsername2 = new javax.swing.JLabel();
+        txtName = new javax.swing.JTextField();
+        txtQua = new javax.swing.JTextField();
+        lblQua = new javax.swing.JLabel();
+        lblAge = new javax.swing.JLabel();
+        txtAge = new javax.swing.JTextField();
+        lblAge1 = new javax.swing.JLabel();
+        txtGender = new javax.swing.JTextField();
+        lblQua1 = new javax.swing.JLabel();
+        txtEx = new javax.swing.JTextField();
+        lblQua2 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtComm = new javax.swing.JTextArea();
+        lblSub = new javax.swing.JLabel();
+        txtSubject = new javax.swing.JTextField();
+        lblSchool = new javax.swing.JLabel();
+        txtSchool = new javax.swing.JTextField();
+        lblStatus1 = new javax.swing.JLabel();
+        txtStatus1 = new javax.swing.JTextField();
+        lblEmailid = new javax.swing.JLabel();
+        txtEmailId = new javax.swing.JTextField();
+        btnClear1 = new javax.swing.JButton();
+        btnAccept1 = new javax.swing.JButton();
+        btnReject1 = new javax.swing.JButton();
+        btnView1 = new javax.swing.JButton();
         panelTeacher = new javax.swing.JPanel();
         lblTitle1 = new javax.swing.JLabel();
         lblTeacherName = new javax.swing.JLabel();
@@ -119,7 +188,8 @@ public class PrincipalWorkspace extends javax.swing.JPanel {
         txtStudentRole = new javax.swing.JTextField();
         lblStudentClass = new javax.swing.JLabel();
         txtStudentClass = new javax.swing.JTextField();
-        panelMarks = new javax.swing.JPanel();
+        txtStudentTeacherId = new javax.swing.JTextField();
+        lblStudentPhno1 = new javax.swing.JLabel();
 
         btnHome.setText("Home");
         btnHome.addActionListener(new java.awt.event.ActionListener() {
@@ -143,6 +213,18 @@ public class PrincipalWorkspace extends javax.swing.JPanel {
         });
 
         btnApplication.setText("Applications");
+        btnApplication.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnApplicationActionPerformed(evt);
+            }
+        });
+
+        btnJobApp.setText("Job Applications");
+        btnJobApp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJobAppActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelControlLayout = new javax.swing.GroupLayout(panelControl);
         panelControl.setLayout(panelControlLayout);
@@ -152,9 +234,13 @@ public class PrincipalWorkspace extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(panelControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnStudent, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnApplication, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnTeacher, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnTeacher, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panelControlLayout.createSequentialGroup()
+                        .addGroup(panelControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnApplication, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnJobApp))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panelControlLayout.setVerticalGroup(
@@ -162,9 +248,11 @@ public class PrincipalWorkspace extends javax.swing.JPanel {
             .addGroup(panelControlLayout.createSequentialGroup()
                 .addGap(97, 97, 97)
                 .addComponent(btnHome)
-                .addGap(18, 18, 18)
+                .addGap(28, 28, 28)
                 .addComponent(btnApplication)
-                .addGap(187, 187, 187)
+                .addGap(18, 18, 18)
+                .addComponent(btnJobApp)
+                .addGap(134, 134, 134)
                 .addComponent(btnTeacher)
                 .addGap(18, 18, 18)
                 .addComponent(btnStudent)
@@ -195,7 +283,7 @@ public class PrincipalWorkspace extends javax.swing.JPanel {
             panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblTitle2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHomeLayout.createSequentialGroup()
-                .addContainerGap(545, Short.MAX_VALUE)
+                .addContainerGap(546, Short.MAX_VALUE)
                 .addGroup(panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnLogOut)
                     .addComponent(lblRole, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -214,6 +302,476 @@ public class PrincipalWorkspace extends javax.swing.JPanel {
         );
 
         panelWork.add(panelHome, "card2");
+
+        javax.swing.GroupLayout panelMarksLayout = new javax.swing.GroupLayout(panelMarks);
+        panelMarks.setLayout(panelMarksLayout);
+        panelMarksLayout.setHorizontalGroup(
+            panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 755, Short.MAX_VALUE)
+        );
+        panelMarksLayout.setVerticalGroup(
+            panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 698, Short.MAX_VALUE)
+        );
+
+        panelWork.add(panelMarks, "card4");
+
+        tableApplication.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Application Id", "Name", "Age", "Gender", "NGO", "Status"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        ScrollPane6.setViewportView(tableApplication);
+
+        lblApplicationNo.setText("Application No:");
+
+        lblChildName.setText("Name:");
+
+        lblChildAge.setText("Age:");
+
+        lblChildName2.setText("DOB:");
+
+        lblChildName3.setText("Gender:");
+
+        cmbChildGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Others" }));
+
+        lblChildName4.setText("School:");
+
+        txtChildSchool.setEditable(false);
+        txtChildSchool.setText("School");
+
+        lblChildName5.setText("Comment:");
+
+        txtChildComment.setColumns(20);
+        txtChildComment.setRows(5);
+        jScrollPane1.setViewportView(txtChildComment);
+
+        lblStatus.setText("Status:");
+
+        txtStatus.setEditable(false);
+        txtStatus.setText("Pending");
+
+        btnAccept.setText("Accept");
+        btnAccept.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAcceptActionPerformed(evt);
+            }
+        });
+
+        btnReject.setText("Reject");
+        btnReject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRejectActionPerformed(evt);
+            }
+        });
+
+        btnCreate.setText("Create");
+        btnCreate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateActionPerformed(evt);
+            }
+        });
+
+        lblTitle7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTitle7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle7.setText("Applications");
+
+        btnView.setText("View");
+        btnView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewActionPerformed(evt);
+            }
+        });
+
+        lblChildName6.setText("Class:");
+
+        btnClear.setText("Clear");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
+
+        lblChildName7.setText("NGO:");
+
+        txtNgo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
+
+        javax.swing.GroupLayout panelApplicationsLayout = new javax.swing.GroupLayout(panelApplications);
+        panelApplications.setLayout(panelApplicationsLayout);
+        panelApplicationsLayout.setHorizontalGroup(
+            panelApplicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblTitle7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(panelApplicationsLayout.createSequentialGroup()
+                .addContainerGap(27, Short.MAX_VALUE)
+                .addGroup(panelApplicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelApplicationsLayout.createSequentialGroup()
+                        .addGroup(panelApplicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblChildName2)
+                            .addGroup(panelApplicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(panelApplicationsLayout.createSequentialGroup()
+                                    .addComponent(lblChildName3)
+                                    .addGap(59, 59, 59)
+                                    .addComponent(cmbChildGender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(txtChildDOB, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(panelApplicationsLayout.createSequentialGroup()
+                                    .addComponent(lblChildAge)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtChildAge, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(panelApplicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelApplicationsLayout.createSequentialGroup()
+                                        .addComponent(lblChildName)
+                                        .addGap(66, 66, 66)
+                                        .addComponent(txtChildName, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(panelApplicationsLayout.createSequentialGroup()
+                                        .addComponent(lblApplicationNo)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtApplicationNo, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(panelApplicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelApplicationsLayout.createSequentialGroup()
+                                .addComponent(lblChildName6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtChildClass, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelApplicationsLayout.createSequentialGroup()
+                                .addComponent(lblStatus)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                                .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelApplicationsLayout.createSequentialGroup()
+                                .addGroup(panelApplicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelApplicationsLayout.createSequentialGroup()
+                                        .addGroup(panelApplicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblChildName4)
+                                            .addComponent(lblChildName5))
+                                        .addGap(27, 27, 27))
+                                    .addGroup(panelApplicationsLayout.createSequentialGroup()
+                                        .addComponent(lblChildName7)
+                                        .addGap(53, 53, 53)))
+                                .addGroup(panelApplicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtChildSchool)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
+                                    .addComponent(txtNgo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelApplicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnView)
+                        .addComponent(ScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 716, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelApplicationsLayout.createSequentialGroup()
+                        .addComponent(btnClear)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCreate)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAccept)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnReject)
+                        .addGap(154, 154, 154)))
+                .addContainerGap())
+        );
+        panelApplicationsLayout.setVerticalGroup(
+            panelApplicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelApplicationsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTitle7)
+                .addGap(54, 54, 54)
+                .addComponent(ScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnView)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addGroup(panelApplicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelApplicationsLayout.createSequentialGroup()
+                        .addGroup(panelApplicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblApplicationNo)
+                            .addComponent(txtApplicationNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelApplicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblChildName)
+                            .addComponent(txtChildName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelApplicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblChildAge)
+                            .addComponent(txtChildAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelApplicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblChildName2)
+                            .addComponent(txtChildDOB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelApplicationsLayout.createSequentialGroup()
+                        .addGroup(panelApplicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblChildName6)
+                            .addComponent(txtChildClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelApplicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblStatus))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelApplicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblChildName4)
+                            .addComponent(txtChildSchool, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelApplicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblChildName7)
+                            .addComponent(txtNgo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(33, 33, 33)
+                .addGroup(panelApplicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelApplicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblChildName3)
+                        .addComponent(cmbChildGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblChildName5)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(panelApplicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnReject)
+                    .addGroup(panelApplicationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnCreate)
+                        .addComponent(btnAccept)
+                        .addComponent(btnClear)))
+                .addGap(32, 32, 32))
+        );
+
+        panelWork.add(panelApplications, "card6");
+
+        lblTitle5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTitle5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle5.setText("Job Application");
+
+        tableJobApp.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Applicant Id", "Name", "Subject", "Email-Id", "Status"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tableJobApp);
+
+        lblUsername.setText("Username:");
+
+        txtUsername.setEditable(false);
+
+        lblUsername1.setText("Application Id:");
+
+        txtAppId.setEditable(false);
+
+        lblUsername2.setText("Name:");
+
+        txtName.setEditable(false);
+
+        txtQua.setEditable(false);
+
+        lblQua.setText("Qualification:");
+
+        lblAge.setText("Age:");
+
+        txtAge.setEditable(false);
+
+        lblAge1.setText("Gender:");
+
+        txtGender.setEditable(false);
+
+        lblQua1.setText("Experience:");
+
+        txtEx.setEditable(false);
+
+        lblQua2.setText("Comment:");
+
+        txtComm.setColumns(20);
+        txtComm.setRows(5);
+        jScrollPane3.setViewportView(txtComm);
+
+        lblSub.setText("Subject:");
+
+        txtSubject.setEditable(false);
+
+        lblSchool.setText("School:");
+
+        txtSchool.setEditable(false);
+        txtSchool.setText("School");
+
+        lblStatus1.setText("Status:");
+
+        txtStatus1.setEditable(false);
+        txtStatus1.setText("Pending");
+
+        lblEmailid.setText("Email-Id:");
+
+        txtEmailId.setEditable(false);
+
+        btnClear1.setText("Clear");
+        btnClear1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClear1ActionPerformed(evt);
+            }
+        });
+
+        btnAccept1.setText("Accept");
+        btnAccept1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAccept1ActionPerformed(evt);
+            }
+        });
+
+        btnReject1.setText("Reject");
+        btnReject1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReject1ActionPerformed(evt);
+            }
+        });
+
+        btnView1.setText("View");
+        btnView1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnView1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelJobApplyLayout = new javax.swing.GroupLayout(panelJobApply);
+        panelJobApply.setLayout(panelJobApplyLayout);
+        panelJobApplyLayout.setHorizontalGroup(
+            panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblTitle5, javax.swing.GroupLayout.DEFAULT_SIZE, 755, Short.MAX_VALUE)
+            .addGroup(panelJobApplyLayout.createSequentialGroup()
+                .addGap(89, 89, 89)
+                .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblUsername1)
+                    .addComponent(lblUsername)
+                    .addComponent(lblUsername2)
+                    .addComponent(lblQua)
+                    .addComponent(lblAge)
+                    .addComponent(lblAge1)
+                    .addComponent(lblQua1))
+                .addGap(27, 27, 27)
+                .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtEx, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                    .addComponent(txtGender)
+                    .addComponent(txtAge)
+                    .addComponent(txtQua)
+                    .addComponent(txtName)
+                    .addComponent(txtUsername)
+                    .addComponent(txtAppId))
+                .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelJobApplyLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblQua2)
+                        .addGap(27, 27, 27))
+                    .addGroup(panelJobApplyLayout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblSchool)
+                            .addComponent(lblStatus1)
+                            .addComponent(lblSub)
+                            .addComponent(lblEmailid))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtEmailId)
+                    .addComponent(txtStatus1)
+                    .addComponent(txtSchool)
+                    .addComponent(txtSubject)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelJobApplyLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnClear1)
+                .addGap(56, 56, 56)
+                .addComponent(btnAccept1)
+                .addGap(34, 34, 34)
+                .addComponent(btnReject1)
+                .addGap(194, 194, 194))
+            .addGroup(panelJobApplyLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelJobApplyLayout.createSequentialGroup()
+                        .addComponent(btnView1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2))
+                .addContainerGap())
+        );
+        panelJobApplyLayout.setVerticalGroup(
+            panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelJobApplyLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTitle5)
+                .addGap(40, 40, 40)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnView1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblUsername1)
+                    .addComponent(txtAppId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblEmailid)
+                    .addComponent(txtEmailId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelJobApplyLayout.createSequentialGroup()
+                        .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblUsername)
+                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblUsername2)
+                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblQua)
+                            .addComponent(txtQua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblAge)
+                            .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
+                        .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblAge1)
+                            .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelJobApplyLayout.createSequentialGroup()
+                        .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblSub)
+                            .addComponent(txtSubject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblSchool)
+                            .addComponent(txtSchool, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblStatus1)
+                            .addComponent(txtStatus1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblQua2)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblQua1)
+                    .addComponent(txtEx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47)
+                .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAccept1)
+                    .addComponent(btnClear1)
+                    .addComponent(btnReject1))
+                .addGap(81, 81, 81))
+        );
+
+        panelWork.add(panelJobApply, "card3");
 
         lblTitle1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblTitle1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -521,6 +1079,14 @@ public class PrincipalWorkspace extends javax.swing.JPanel {
 
         lblStudentClass.setText("Class:");
 
+        txtStudentTeacherId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtStudentTeacherIdActionPerformed(evt);
+            }
+        });
+
+        lblStudentPhno1.setText("Teacher Id:");
+
         javax.swing.GroupLayout panelStudentLayout = new javax.swing.GroupLayout(panelStudent);
         panelStudent.setLayout(panelStudentLayout);
         panelStudentLayout.setHorizontalGroup(
@@ -588,10 +1154,6 @@ public class PrincipalWorkspace extends javax.swing.JPanel {
                                     .addComponent(lblTeacherDOB1))
                                 .addGap(332, 332, 332)))
                         .addGroup(panelStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelStudentLayout.createSequentialGroup()
-                                .addComponent(lblStudentPhno)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
-                                .addComponent(txtStudentPhno, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelStudentLayout.createSequentialGroup()
                                 .addGroup(panelStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblStudentEmailId)
@@ -599,7 +1161,17 @@ public class PrincipalWorkspace extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(panelStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(cmbStudentGender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtStudentEmailId, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))))))
+                                    .addComponent(txtStudentEmailId, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelStudentLayout.createSequentialGroup()
+                                .addGroup(panelStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelStudentLayout.createSequentialGroup()
+                                        .addComponent(lblStudentPhno)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(lblStudentPhno1, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(panelStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtStudentTeacherId)
+                                    .addComponent(txtStudentPhno, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))))))
                 .addGap(77, 77, 77))
         );
         panelStudentLayout.setVerticalGroup(
@@ -644,7 +1216,9 @@ public class PrincipalWorkspace extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(panelStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtStudentDOB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblTeacherDOB1))))
+                            .addComponent(lblTeacherDOB1)
+                            .addComponent(txtStudentTeacherId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblStudentPhno1))))
                 .addGap(20, 20, 20)
                 .addGroup(panelStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtStudentRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -662,19 +1236,6 @@ public class PrincipalWorkspace extends javax.swing.JPanel {
 
         panelWork.add(panelStudent, "card2");
 
-        javax.swing.GroupLayout panelMarksLayout = new javax.swing.GroupLayout(panelMarks);
-        panelMarks.setLayout(panelMarksLayout);
-        panelMarksLayout.setHorizontalGroup(
-            panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 754, Short.MAX_VALUE)
-        );
-        panelMarksLayout.setVerticalGroup(
-            panelMarksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 698, Short.MAX_VALUE)
-        );
-
-        panelWork.add(panelMarks, "card4");
-
         SplitPanePrincipal.setRightComponent(panelWork);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -688,6 +1249,257 @@ public class PrincipalWorkspace extends javax.swing.JPanel {
             .addComponent(SplitPanePrincipal)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+        // TODO add your handling code here:
+        panelWork.removeAll();
+        panelWork.add(panelHome);
+        panelWork.repaint();
+        panelWork.revalidate();
+    }//GEN-LAST:event_btnHomeActionPerformed
+
+    private void btnTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTeacherActionPerformed
+        // TODO add your handling code here:
+        panelWork.removeAll();
+        panelWork.add(panelTeacher);
+        panelWork.repaint();
+        panelWork.revalidate();
+    }//GEN-LAST:event_btnTeacherActionPerformed
+
+    private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
+        // TODO add your handling code here:
+        dB4OUtil.storeSystem(system);
+        CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
+        cardPanel.remove(this);
+        cardLayout.previous(cardPanel);
+    }//GEN-LAST:event_btnLogOutActionPerformed
+
+    private void btnStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentActionPerformed
+        // TODO add your handling code here:
+        panelWork.removeAll();
+        panelWork.add(panelStudent);
+        panelWork.repaint();
+        panelWork.revalidate();
+    }//GEN-LAST:event_btnStudentActionPerformed
+
+    private void btnApplicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApplicationActionPerformed
+        // TODO add your handling code here:
+        panelWork.removeAll();
+        panelWork.add(panelApplications);
+        panelWork.repaint();
+        panelWork.revalidate();
+    }//GEN-LAST:event_btnApplicationActionPerformed
+
+    private void btnJobAppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJobAppActionPerformed
+        // TODO add your handling code here:
+        panelWork.removeAll();
+        panelWork.add(panelJobApply);
+        panelWork.repaint();
+        panelWork.revalidate();
+    }//GEN-LAST:event_btnJobAppActionPerformed
+
+    private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
+        // TODO add your handling code here:
+        Integer selectedRowIndex = tableApplication.getSelectedRow();
+
+        if (selectedRowIndex<0){
+
+            JOptionPane.showMessageDialog(this, "Please select a row to view.");
+            return;
+        }
+        else if(system.getApplicationList().getApplicationList().get(selectedRowIndex).getStatus().equals("Rejected")){
+            JOptionPane.showMessageDialog(this, "The application is Rejected and cannot be Accepted");
+            return;
+        }
+        else{
+            DefaultTableModel model = (DefaultTableModel) tableApplication.getModel();
+            Application selApp = (Application) model.getValueAt(selectedRowIndex,0);
+            selApp.setStatus("Accepted");
+
+            populateApplicationTable();
+        }
+    }//GEN-LAST:event_btnAcceptActionPerformed
+
+    private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
+        // TODO add your handling code here:
+        Integer selectedRowIndex = tableApplication.getSelectedRow();
+
+        if (selectedRowIndex<0){
+
+            JOptionPane.showMessageDialog(this, "Please select a row to view.");
+            return;
+        }
+        else if(system.getApplicationList().getApplicationList().get(selectedRowIndex).getStatus().equals("Accepted")){
+
+            JOptionPane.showMessageDialog(this, "The application is Accepted and cannot be Rejected");
+            return;
+        }
+        else{
+            //            System.out.println(a.getStatus());
+            DefaultTableModel model = (DefaultTableModel) tableApplication.getModel();
+            Application selApp = (Application) model.getValueAt(selectedRowIndex,0);
+
+            selApp.setStatus("Rejected");
+
+            populateApplicationTable();
+        }
+    }//GEN-LAST:event_btnRejectActionPerformed
+
+    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
+        // TODO add your handling code here:
+        String appNo = txtApplicationNo.getText();
+        String name = txtChildName.getText();
+        Integer age = Integer.valueOf(txtChildAge.getText());
+        String dob = txtChildDOB.getText();
+        String gender = String.valueOf(cmbChildGender.getSelectedItem());
+        String cls = txtChildClass.getText();
+        String status = txtStatus.getText();
+        String school = txtChildSchool.getText();
+        String ngo = String.valueOf(txtNgo.getSelectedItem());
+        String comm = txtChildComment.getText();
+
+        Application newApp = system.getApplicationList().addApplication();
+
+        newApp.setAppNo(appNo);
+        newApp.setName(name);
+        newApp.setAge(age);
+        newApp.setDob(dob);
+        newApp.setGender(gender);
+        newApp.setCls(cls);
+        newApp.setStatus(status);
+        newApp.setSchool(school);
+        newApp.setNgo(ngo);
+        newApp.setComment(comm);
+
+        JOptionPane.showMessageDialog(this, "Application created successfully");
+
+        txtApplicationNo.setText("");
+        txtChildName.setText("");
+        txtChildAge.setText("");
+        txtChildDOB.setText("");
+        txtChildClass.setText("");
+        txtChildComment.setText("");
+
+        populateApplicationTable();
+
+    }//GEN-LAST:event_btnCreateActionPerformed
+
+    private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
+        // TODO add your handling code here:
+        Integer selectedRowIndex = tableApplication.getSelectedRow();
+
+        if (selectedRowIndex<0){
+
+            JOptionPane.showMessageDialog(this, "Please select a row to view.");
+            return;
+        }
+
+        Application a = system.getApplicationList().getApplicationList().get(selectedRowIndex);
+        if(a.getStatus().equals("Rejected") || a.getStatus().equals("Accepted") ){
+            JOptionPane.showMessageDialog(this, "Only Pending status applications can be viewed");
+        }
+
+        else{
+            DefaultTableModel model = (DefaultTableModel) tableApplication.getModel();
+            Application selApp = (Application) model.getValueAt(selectedRowIndex,0);
+
+            txtApplicationNo.setText(selApp.getAppNo());
+            txtChildName.setText(selApp.getName());
+            txtChildAge.setText(String.valueOf(selApp.getAge()));
+            txtChildDOB.setText(selApp.getDob());
+            cmbChildGender.setSelectedItem(selApp.getGender());
+            txtChildClass.setText(selApp.getCls());
+            txtStatus.setText(selApp.getStatus());
+            txtNgo.setSelectedItem(selApp.getNgo());
+            txtChildComment.setText(selApp.getComment());
+        }
+    }//GEN-LAST:event_btnViewActionPerformed
+
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnClearActionPerformed
+
+    private void btnClear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClear1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnClear1ActionPerformed
+
+    private void btnAccept1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccept1ActionPerformed
+        // TODO add your handling code here:
+        Integer selectedRowIndex = tableJobApp.getSelectedRow();
+
+        if (selectedRowIndex<0){
+
+            JOptionPane.showMessageDialog(this, "Please select a row to view.");
+            return;
+        }
+        else if(system.getApplist().getAppList().get(selectedRowIndex).getStatus().equals("Rejected")){
+            JOptionPane.showMessageDialog(this, "The application is Rejected and cannot be Accepted");
+            return;
+        }
+        else{
+            DefaultTableModel model = (DefaultTableModel) tableJobApp.getModel();
+            TeacherApply selApp = (TeacherApply) model.getValueAt(selectedRowIndex,0);
+            selApp.setStatus("Accepted");
+
+            populateAppTable();
+        }
+
+    }//GEN-LAST:event_btnAccept1ActionPerformed
+
+    private void btnReject1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReject1ActionPerformed
+        // TODO add your handling code here:
+        Integer selectedRowIndex = tableJobApp.getSelectedRow();
+
+        if (selectedRowIndex<0){
+
+            JOptionPane.showMessageDialog(this, "Please select a row to view.");
+            return;
+        }
+        else if(system.getApplist().getAppList().get(selectedRowIndex).getStatus().equals("Accepted")){
+            JOptionPane.showMessageDialog(this, "The application is Rejected and cannot be Accepted");
+            return;
+        }
+        else{
+            DefaultTableModel model = (DefaultTableModel) tableJobApp.getModel();
+            TeacherApply selApp = (TeacherApply) model.getValueAt(selectedRowIndex,0);
+            selApp.setStatus("Rejected");
+
+            populateAppTable();
+        }
+    }//GEN-LAST:event_btnReject1ActionPerformed
+
+    private void btnView1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnView1ActionPerformed
+        // TODO add your handling code here:
+        Integer selectedRowIndex = tableJobApp.getSelectedRow();
+
+        if (selectedRowIndex<0){
+
+            JOptionPane.showMessageDialog(this, "Please select a row to view.");
+            return;
+        }
+
+        TeacherApply a = system.getApplist().getAppList().get(selectedRowIndex);
+        if(a.getStatus().equals("Rejected") || a.getStatus().equals("Accepted") ){
+            JOptionPane.showMessageDialog(this, "Only Pending status applications can be viewed");
+        }
+
+        else{
+            DefaultTableModel model = (DefaultTableModel) tableJobApp.getModel();
+            TeacherApply selApp = (TeacherApply) model.getValueAt(selectedRowIndex,0);
+
+            txtAppId.setText(selApp.getAppId());
+            txtUsername.setText(selApp.getUsername());
+            txtName.setText(selApp.getName());
+            txtAge.setText(String.valueOf(selApp.getAge()));
+            txtGender.setText(selApp.getGender());
+            txtEx.setText(String.valueOf(selApp.getExperience()));
+            txtQua.setText(selApp.getQualification());
+            txtComm.setText(selApp.getComment());
+            txtSubject.setText(selApp.getSubject());
+            txtEmailId.setText(selApp.getEmailId());
+        }
+
+    }//GEN-LAST:event_btnView1ActionPerformed
 
     private void btnTeacherCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTeacherCreateActionPerformed
         // TODO add your handling code here:
@@ -820,38 +1632,7 @@ public class PrincipalWorkspace extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnTeacherUpdateActionPerformed
 
-    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
-        // TODO add your handling code here:
-        panelWork.removeAll();
-        panelWork.add(panelHome);
-        panelWork.repaint();
-        panelWork.revalidate();
-    }//GEN-LAST:event_btnHomeActionPerformed
-
-    private void btnTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTeacherActionPerformed
-        // TODO add your handling code here:
-        panelWork.removeAll();
-        panelWork.add(panelTeacher);
-        panelWork.repaint();
-        panelWork.revalidate();
-    }//GEN-LAST:event_btnTeacherActionPerformed
-
-    private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
-        // TODO add your handling code here:
-        dB4OUtil.storeSystem(system);
-        CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
-        cardPanel.remove(this);
-        cardLayout.previous(cardPanel);
-    }//GEN-LAST:event_btnLogOutActionPerformed
-
-    private void btnStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentActionPerformed
-        // TODO add your handling code here:
-        panelWork.removeAll();
-        panelWork.add(panelStudent);
-        panelWork.repaint();
-        panelWork.revalidate();
-    }//GEN-LAST:event_btnStudentActionPerformed
-
+    
     private void btnStudentCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStudentCreateActionPerformed
         // TODO add your handling code here:
         String id = txtStudentId.getText();
@@ -863,6 +1644,7 @@ public class PrincipalWorkspace extends javax.swing.JPanel {
         String cls = txtStudentClass.getText();
         String emailid= txtStudentEmailId.getText();
         Long phno = Long.valueOf(txtStudentPhno.getText());
+        String teacherid = txtStudentTeacherId.getText();
 
         Student newStudent = system.getStudentList().addStudent();
 
@@ -875,6 +1657,7 @@ public class PrincipalWorkspace extends javax.swing.JPanel {
         newStudent.setCls(cls);
         newStudent.setEmailId(emailid);
         newStudent.setPhno(phno);
+        newStudent.setTeachId(teacherid);
 
         JOptionPane.showMessageDialog(this, "Student created successfully");
 
@@ -915,6 +1698,7 @@ public class PrincipalWorkspace extends javax.swing.JPanel {
             txtStudentClass.setText(selMan.getCls());
             txtStudentEmailId.setText(selMan.getEmailId());
             txtStudentPhno.setText(String.valueOf(selMan.getPhno()));
+            txtStudentTeacherId.setText(selMan.getTeachId());
 
         }
     }//GEN-LAST:event_btnStudentViewActionPerformed
@@ -966,6 +1750,7 @@ public class PrincipalWorkspace extends javax.swing.JPanel {
             selMan.setCls(txtStudentClass.getText());
             selMan.setEmailId(txtStudentEmailId.getText());
             selMan.setPhno(Long.valueOf(txtStudentPhno.getText()));
+            selMan.setTeachId(txtStudentTeacherId.getText());
 
             JOptionPane.showMessageDialog(this, "Student updated successfully");
 
@@ -973,6 +1758,10 @@ public class PrincipalWorkspace extends javax.swing.JPanel {
             populateTeacherTable();
         }
     }//GEN-LAST:event_btnStudentUpdateActionPerformed
+
+    private void txtStudentTeacherIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStudentTeacherIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtStudentTeacherIdActionPerformed
 
        private void populateTeacherTable(){
         DefaultTableModel model = (DefaultTableModel) tableTeacher.getModel();
@@ -1008,13 +1797,56 @@ public class PrincipalWorkspace extends javax.swing.JPanel {
             }
     }
 
+    public void populateApplicationTable(){
+        DefaultTableModel model = (DefaultTableModel) tableApplication.getModel();
+        model.setRowCount(0);
+        
+//        
+            for(Application man: system.getApplicationList().getApplicationList()){
+
+                Object[] row = new Object[6];
+                row[0] = man; 
+                row[1] = man.getName();
+                row[2] = man.getAge();
+                row[3] = man.getGender();
+                row[4] = man.getNgo();
+                row[5] = man.getStatus();
+                model.addRow(row);
+            }
+    }
+
+     private void populateAppTable(){
+        DefaultTableModel model = (DefaultTableModel) tableJobApp.getModel();
+        model.setRowCount(0);
+        
+//        
+            for(TeacherApply man: system.getApplist().getAppList()){
+
+                Object[] row = new Object[5];
+                row[0] = man; 
+                row[1] = man.getName();
+                row[2] = man.getSubject();
+                row[3] = man.getEmailId();
+                row[4] = man.getStatus();
+                model.addRow(row);
+            }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane ScrollPane6;
     private javax.swing.JScrollPane ScrollPaneNgoManager;
     private javax.swing.JScrollPane ScrollPaneNgoManager1;
     private javax.swing.JSplitPane SplitPanePrincipal;
+    private javax.swing.JButton btnAccept;
+    private javax.swing.JButton btnAccept1;
     private javax.swing.JButton btnApplication;
+    private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnClear1;
+    private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnHome;
+    private javax.swing.JButton btnJobApp;
     private javax.swing.JButton btnLogOut;
+    private javax.swing.JButton btnReject;
+    private javax.swing.JButton btnReject1;
     private javax.swing.JButton btnStudent;
     private javax.swing.JButton btnStudentCreate;
     private javax.swing.JButton btnStudentDelete;
@@ -1025,18 +1857,44 @@ public class PrincipalWorkspace extends javax.swing.JPanel {
     private javax.swing.JButton btnTeacherDelete;
     private javax.swing.JButton btnTeacherUpdate;
     private javax.swing.JButton btnTeacherView;
+    private javax.swing.JButton btnView;
+    private javax.swing.JButton btnView1;
+    private javax.swing.JComboBox<String> cmbChildGender;
     private javax.swing.JComboBox<String> cmbStudentGender;
     private javax.swing.JComboBox<String> cmbTeacherGender;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel lblAge;
+    private javax.swing.JLabel lblAge1;
+    private javax.swing.JLabel lblApplicationNo;
+    private javax.swing.JLabel lblChildAge;
+    private javax.swing.JLabel lblChildName;
+    private javax.swing.JLabel lblChildName2;
+    private javax.swing.JLabel lblChildName3;
+    private javax.swing.JLabel lblChildName4;
+    private javax.swing.JLabel lblChildName5;
+    private javax.swing.JLabel lblChildName6;
+    private javax.swing.JLabel lblChildName7;
+    private javax.swing.JLabel lblEmailid;
     private javax.swing.JLabel lblNgoManagerId;
+    private javax.swing.JLabel lblQua;
+    private javax.swing.JLabel lblQua1;
+    private javax.swing.JLabel lblQua2;
     private javax.swing.JLabel lblRole;
+    private javax.swing.JLabel lblSchool;
+    private javax.swing.JLabel lblStatus;
+    private javax.swing.JLabel lblStatus1;
     private javax.swing.JLabel lblStudentClass;
     private javax.swing.JLabel lblStudentEmailId;
     private javax.swing.JLabel lblStudentGender;
     private javax.swing.JLabel lblStudentId;
     private javax.swing.JLabel lblStudentName;
     private javax.swing.JLabel lblStudentPhno;
+    private javax.swing.JLabel lblStudentPhno1;
     private javax.swing.JLabel lblStudentRole;
     private javax.swing.JLabel lblStudentSearch;
+    private javax.swing.JLabel lblSub;
     private javax.swing.JLabel lblTeacherAge;
     private javax.swing.JLabel lblTeacherAge1;
     private javax.swing.JLabel lblTeacherDOB;
@@ -1053,14 +1911,42 @@ public class PrincipalWorkspace extends javax.swing.JPanel {
     private javax.swing.JLabel lblTitle1;
     private javax.swing.JLabel lblTitle2;
     private javax.swing.JLabel lblTitle3;
+    private javax.swing.JLabel lblTitle5;
+    private javax.swing.JLabel lblTitle7;
+    private javax.swing.JLabel lblUsername;
+    private javax.swing.JLabel lblUsername1;
+    private javax.swing.JLabel lblUsername2;
+    private javax.swing.JPanel panelApplications;
     private javax.swing.JPanel panelControl;
     private javax.swing.JPanel panelHome;
+    private javax.swing.JPanel panelJobApply;
     private javax.swing.JPanel panelMarks;
     private javax.swing.JPanel panelStudent;
     private javax.swing.JPanel panelTeacher;
     private javax.swing.JPanel panelWork;
+    private javax.swing.JTable tableApplication;
+    private javax.swing.JTable tableJobApp;
     private javax.swing.JTable tableStudent;
     private javax.swing.JTable tableTeacher;
+    private javax.swing.JTextField txtAge;
+    private javax.swing.JTextField txtAppId;
+    private javax.swing.JTextField txtApplicationNo;
+    private javax.swing.JTextField txtChildAge;
+    private javax.swing.JTextField txtChildClass;
+    private javax.swing.JTextArea txtChildComment;
+    private javax.swing.JTextField txtChildDOB;
+    private javax.swing.JTextField txtChildName;
+    private javax.swing.JTextField txtChildSchool;
+    private javax.swing.JTextArea txtComm;
+    private javax.swing.JTextField txtEmailId;
+    private javax.swing.JTextField txtEx;
+    private javax.swing.JTextField txtGender;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JComboBox<String> txtNgo;
+    private javax.swing.JTextField txtQua;
+    private javax.swing.JTextField txtSchool;
+    private javax.swing.JTextField txtStatus;
+    private javax.swing.JTextField txtStatus1;
     private javax.swing.JTextField txtStudentAge;
     private javax.swing.JTextField txtStudentClass;
     private javax.swing.JTextField txtStudentDOB;
@@ -1070,6 +1956,8 @@ public class PrincipalWorkspace extends javax.swing.JPanel {
     private javax.swing.JTextField txtStudentPhno;
     private javax.swing.JTextField txtStudentRole;
     private javax.swing.JTextField txtStudentSearch;
+    private javax.swing.JTextField txtStudentTeacherId;
+    private javax.swing.JTextField txtSubject;
     private javax.swing.JTextField txtTeacherAge;
     private javax.swing.JTextField txtTeacherDOB;
     private javax.swing.JTextField txtTeacherEmailId;
@@ -1081,5 +1969,6 @@ public class PrincipalWorkspace extends javax.swing.JPanel {
     private javax.swing.JTextField txtTeacherRole;
     private javax.swing.JTextField txtTeacherSearch;
     private javax.swing.JTextField txtTeacherUsername;
+    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }

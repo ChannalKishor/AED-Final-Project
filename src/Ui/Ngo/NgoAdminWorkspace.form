@@ -2382,7 +2382,7 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="298" max="32767" attributes="0"/>
+                          <EmptySpace pref="286" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -2470,7 +2470,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblFood">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Food:"/>
+                    <Property name="text" type="java.lang.String" value="Essential Items:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtFood">

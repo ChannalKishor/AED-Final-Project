@@ -4,9 +4,13 @@
  */
 package Ui.LoginPage;
 
+import Hospital.Doctor.Doctor;
+import Hospital.Patient.Patient;
 import System.Directories.DB4OUtil;
 import System.Directories.MainSystem;
+import Ui.Hospital.DoctorWorkspace;
 import Ui.Hospital.HospitalAdminWorkspace;
+import Ui.Hospital.PatientWorkspace;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -101,8 +105,8 @@ public class HospitalLoginPage extends javax.swing.JPanel {
         String username = txtUsername.getText();
         String password = txtPass.getText();
         String role = String.valueOf(cmbRole.getSelectedItem());
-//        NgoManager ngoManager = system.getNgoManagerList().findNgoManager(username, password);
-//        Caretaker caretaker = system.getCareTakerList().findCaretaker(username, password);
+        Doctor doc = system.getDoctorList().findDoctor(username, password);
+        Patient pat = system.getPatientList().findPatient(username, password);
 
         try{
             if(role.equals("Hospital Admin")){
@@ -113,22 +117,22 @@ public class HospitalLoginPage extends javax.swing.JPanel {
                     cardLayout.next(cardPanel);
                 }
             }
-//            else if(role.equals("NGO Manager")){
-//                if(username.equals(ngoManager.getUsername()) && password.equals(ngoManager.getPassword())){
-//                    NgoManagerWorkspace ngoManJPanel = new NgoManagerWorkspace(ngoManager,cardPanel, system, dB4OUtil);
-//                    CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
-//                    cardPanel.add("ngoManagerJPanel",ngoManJPanel);
-//                    cardLayout.next(cardPanel);
-//                }
-//            }
-//            else if(role.equals("Caretaker")){
-//                if(username.equals(caretaker.getUsername()) && password.equals(caretaker.getPassword())){
-//                    CaretakerWorkspace caretakerJPanel = new CaretakerWorkspace(caretaker,cardPanel, system, dB4OUtil);
-//                    CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
-//                    cardPanel.add("caretakerJPanel",caretakerJPanel);
-//                    cardLayout.next(cardPanel);
-//                }
-//            }
+            else if(role.equals("Doctor")){
+                if(username.equals(doc.getUsername()) && password.equals(doc.getPassword())){
+                    DoctorWorkspace docJPanel = new DoctorWorkspace(doc,cardPanel, system, dB4OUtil);
+                    CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
+                    cardPanel.add("docJPanel",docJPanel);
+                    cardLayout.next(cardPanel);
+                }
+            }
+            else if(role.equals("Patient")){
+                if(username.equals(pat.getUsername()) && password.equals(pat.getPassword())){
+                    PatientWorkspace patJPanel = new PatientWorkspace(pat,cardPanel, system, dB4OUtil);
+                    CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
+                    cardPanel.add("patJPanel",patJPanel);
+                    cardLayout.next(cardPanel);
+                }
+            }
             else{
                 JOptionPane.showMessageDialog(this, "Please enter the correct username and password and role.");
             }

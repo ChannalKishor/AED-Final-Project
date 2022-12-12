@@ -35,4 +35,14 @@ public class DoctorDirectory {
         doctorList.remove(m);
     }
     
+    public Doctor findDoctor(String username, String password){
+        for(Doctor n: doctorList){
+            if(n.getUsername().equals(username) && n.getPassword().equals(password)){
+                return n;
+            }
+            
+        }
+        return null;
+    }
+    
 }

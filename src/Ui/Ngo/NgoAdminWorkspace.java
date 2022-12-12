@@ -1636,7 +1636,7 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
 
         lblHealth.setText("Health:");
 
-        lblFood.setText("Food:");
+        lblFood.setText("Essential Items:");
 
         lblExpenditure.setText("Expenditure:");
 
@@ -1693,7 +1693,7 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
                         .addGroup(panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblIncome)
                             .addComponent(lblExpenditure))))
-                .addContainerGap(298, Short.MAX_VALUE))
+                .addContainerGap(286, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBudgetLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(btnUpdate)
@@ -2877,7 +2877,7 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
             txtTotal.setText(String.valueOf(total));
             txtEducation.setText(String.valueOf(edu));
             txtHealth.setText(String.valueOf(hel));
-            txtEducation.setText(String.valueOf(ess));
+            txtFood.setText(String.valueOf(ess));
             
             
             
@@ -2897,7 +2897,7 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
             txtTotal.setText(String.valueOf(total));
             txtEducation.setText(String.valueOf(edu));
             txtHealth.setText(String.valueOf(hel));
-            txtEducation.setText(String.valueOf(ess));
+            txtFood.setText(String.valueOf(ess));
         }
         JOptionPane.showMessageDialog(this, "Budget updated succefully");
             

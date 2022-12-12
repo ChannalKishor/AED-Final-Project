@@ -54,7 +54,6 @@ public class SchoolAdminWorkspace extends javax.swing.JPanel {
         SplitPaneSchoolAdmin = new javax.swing.JSplitPane();
         panelControl = new javax.swing.JPanel();
         btnHome = new javax.swing.JButton();
-        btnSchool = new javax.swing.JButton();
         btnPrincipal = new javax.swing.JButton();
         btnTeacher = new javax.swing.JButton();
         btnStudent = new javax.swing.JButton();
@@ -228,8 +227,6 @@ public class SchoolAdminWorkspace extends javax.swing.JPanel {
             }
         });
 
-        btnSchool.setText("School");
-
         btnPrincipal.setText("Principal");
         btnPrincipal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -276,7 +273,6 @@ public class SchoolAdminWorkspace extends javax.swing.JPanel {
                     .addComponent(btnTeacher, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnApplication, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnSchool, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnStudent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnJobApp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -290,9 +286,7 @@ public class SchoolAdminWorkspace extends javax.swing.JPanel {
                 .addComponent(btnApplication)
                 .addGap(18, 18, 18)
                 .addComponent(btnJobApp)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
-                .addComponent(btnSchool)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
                 .addComponent(btnPrincipal)
                 .addGap(18, 18, 18)
                 .addComponent(btnTeacher)
@@ -739,9 +733,7 @@ public class SchoolAdminWorkspace extends javax.swing.JPanel {
                                     .addGroup(panelStudentLayout.createSequentialGroup()
                                         .addComponent(lblStudentPhno)
                                         .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelStudentLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(lblStudentPhno1)))
+                                    .addComponent(lblStudentPhno1, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(panelStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtStudentTeacherId)
@@ -2266,7 +2258,6 @@ public class SchoolAdminWorkspace extends javax.swing.JPanel {
     private javax.swing.JButton btnPrincipalView;
     private javax.swing.JButton btnReject;
     private javax.swing.JButton btnReject1;
-    private javax.swing.JButton btnSchool;
     private javax.swing.JButton btnStudent;
     private javax.swing.JButton btnStudentCreate;
     private javax.swing.JButton btnStudentDelete;
