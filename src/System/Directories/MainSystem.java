@@ -21,6 +21,7 @@ import Ngo.Children.ChildrenDirectory;
 
 import Ngo.NgoManager.NgoManagerDirectory;
 import Pharmacy.Medicine.MedicineDirectory;
+import Pharmacy.Order.OrderDirectory;
 import Pharmacy.Pharmacist.PharmacistDirectory;
 import School.Application.ApplicationDirectory;
 import School.FinalResult.FinalResultDirectory;
@@ -42,7 +43,7 @@ public class MainSystem {
     private EncounterDirectory encounterlist;
     private DoctorDirectory doctorList;
     private PatientDirectory patientList;
-    
+    private OrderDirectory orderList;
     private PharmacistDirectory pharmlist;
     private FinalResultDirectory resList;
     private ChildrenDirectory childrenList;
@@ -66,7 +67,7 @@ public class MainSystem {
         pharmlist = new PharmacistDirectory();
         doctorList = new DoctorDirectory();
         patientList = new PatientDirectory();
-       
+        orderList = new OrderDirectory();
         encounterlist = new EncounterDirectory();
         resList = new FinalResultDirectory();
         childrenList = new ChildrenDirectory();
@@ -223,6 +224,10 @@ public class MainSystem {
 
     public AppointmentDirectory getHosAppList() {
         return hosAppList;
+    }
+
+    public OrderDirectory getOrderList() {
+        return orderList;
     }
     
     

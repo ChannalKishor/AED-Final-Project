@@ -76,7 +76,7 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
         btnPerson = new javax.swing.JButton();
         lblAccounts = new javax.swing.JLabel();
         btnChildren = new javax.swing.JButton();
-        btnFoodInv = new javax.swing.JButton();
+        btnEssentialItems = new javax.swing.JButton();
         panelAdminWork = new javax.swing.JPanel();
         panelHome = new javax.swing.JPanel();
         lblTitle2 = new javax.swing.JLabel();
@@ -341,7 +341,7 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
             }
         });
 
-        btnFoodInv.setText("Food Inventory");
+        btnEssentialItems.setText("Essential Items");
 
         javax.swing.GroupLayout panelAdminControlLayout = new javax.swing.GroupLayout(panelAdminControl);
         panelAdminControl.setLayout(panelAdminControlLayout);
@@ -359,7 +359,7 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
                         .addComponent(lblAccounts)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(btnChildren, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnFoodInv, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnEssentialItems, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnHealth, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAdminControlLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -379,7 +379,7 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(btnBudget)
                 .addGap(18, 18, 18)
-                .addComponent(btnFoodInv)
+                .addComponent(btnEssentialItems)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
                 .addComponent(lblAccounts)
                 .addGap(18, 18, 18)
@@ -1920,7 +1920,7 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
 
         lblTitle10.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblTitle10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitle10.setText("Food Inventory");
+        lblTitle10.setText("Essential Items");
 
         javax.swing.GroupLayout panelFoodInvLayout = new javax.swing.GroupLayout(panelFoodInv);
         panelFoodInv.setLayout(panelFoodInvLayout);
@@ -3116,7 +3116,7 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
     private javax.swing.JButton btnChildrenView;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEducation;
-    private javax.swing.JButton btnFoodInv;
+    private javax.swing.JButton btnEssentialItems;
     private javax.swing.JButton btnFundManager;
     private javax.swing.JButton btnFundManagerCreate;
     private javax.swing.JButton btnFundManagerDelete;

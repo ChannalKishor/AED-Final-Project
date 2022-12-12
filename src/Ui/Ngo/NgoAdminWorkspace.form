@@ -53,7 +53,7 @@
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <Component id="btnChildren" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnFoodInv" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnEssentialItems" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnHealth" alignment="1" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -77,7 +77,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnBudget" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnFoodInv" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnEssentialItems" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="117" max="32767" attributes="0"/>
                       <Component id="lblAccounts" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -173,9 +173,9 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnChildrenActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnFoodInv">
+            <Component class="javax.swing.JButton" name="btnEssentialItems">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Food Inventory"/>
+                <Property name="text" type="java.lang.String" value="Essential Items"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -2844,7 +2844,7 @@
                       <Font name="Segoe UI" size="24" style="1"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Food Inventory"/>
+                    <Property name="text" type="java.lang.String" value="Essential Items"/>
                   </Properties>
                 </Component>
               </SubComponents>
