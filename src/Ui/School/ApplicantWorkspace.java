@@ -8,6 +8,7 @@ import JobApp.Applicant.Applicant;
 import JobApp.Applicant.TeacherApply;
 import School.Application.Application;
 import System.Directories.DB4OUtil;
+import System.Directories.DataValidation;
 import System.Directories.MainSystem;
 import java.awt.CardLayout;
 import java.util.Date;
@@ -38,6 +39,7 @@ public class ApplicantWorkspace extends javax.swing.JPanel {
     private DB4OUtil dB4OUtil;
     private final String FILENAME = "ProjectDataBank.db4o";
     private Applicant app;
+    private DataValidation data;
     
     public ApplicantWorkspace(Applicant app,JPanel cardPanel, MainSystem system, DB4OUtil dB4OUtil) {
         initComponents();
@@ -45,6 +47,8 @@ public class ApplicantWorkspace extends javax.swing.JPanel {
         this.cardPanel = cardPanel;
         this.system = system;
         this.dB4OUtil = dB4OUtil;
+        this.data=new DataValidation();
+        
         initializeJobApp();
         populateAppTable();
     }
@@ -111,6 +115,8 @@ public class ApplicantWorkspace extends javax.swing.JPanel {
         btnSend = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
+        panelControl.setBackground(new java.awt.Color(51, 51, 51));
+
         btnSendmail.setText("Send Mail");
         btnSendmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,11 +145,9 @@ public class ApplicantWorkspace extends javax.swing.JPanel {
             .addGroup(panelControlLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnSendmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnHome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panelControlLayout.createSequentialGroup()
-                        .addComponent(btnSendmail)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(btnJobApply, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnJobApply, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panelControlLayout.setVerticalGroup(
@@ -155,14 +159,16 @@ public class ApplicantWorkspace extends javax.swing.JPanel {
                 .addComponent(btnSendmail)
                 .addGap(18, 18, 18)
                 .addComponent(btnJobApply)
-                .addContainerGap(450, Short.MAX_VALUE))
+                .addContainerGap(508, Short.MAX_VALUE))
         );
 
         SplitPaneApplicant.setLeftComponent(panelControl);
 
         panelWork.setLayout(new java.awt.CardLayout());
 
-        lblTitle2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        panelHome.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblTitle2.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
         lblTitle2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle2.setText("School Job Apply");
 
@@ -185,35 +191,41 @@ public class ApplicantWorkspace extends javax.swing.JPanel {
         panelHome.setLayout(panelHomeLayout);
         panelHomeLayout.setHorizontalGroup(
             panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblTitle2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHomeLayout.createSequentialGroup()
-                .addContainerGap(539, Short.MAX_VALUE)
+                .addContainerGap(947, Short.MAX_VALUE)
                 .addGroup(panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnLogOut)
                     .addComponent(lblRole, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(70, 70, 70))
             .addGroup(panelHomeLayout.createSequentialGroup()
-                .addGap(95, 95, 95)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelHomeLayout.createSequentialGroup()
+                        .addGap(228, 228, 228)
+                        .addComponent(lblTitle2, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelHomeLayout.createSequentialGroup()
+                        .addGap(304, 304, 304)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelHomeLayout.setVerticalGroup(
             panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelHomeLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(45, 45, 45)
                 .addComponent(lblTitle2)
-                .addGap(57, 57, 57)
+                .addGap(18, 18, 18)
                 .addComponent(lblRole)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLogOut)
-                .addGap(32, 32, 32)
+                .addGap(41, 41, 41)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(279, Short.MAX_VALUE))
+                .addContainerGap(321, Short.MAX_VALUE))
         );
 
         panelWork.add(panelHome, "card2");
 
-        lblTitle3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        panelJobApply.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblTitle3.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
         lblTitle3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle3.setText("Job Application");
 
@@ -293,7 +305,7 @@ public class ApplicantWorkspace extends javax.swing.JPanel {
         panelJobApply.setLayout(panelJobApplyLayout);
         panelJobApplyLayout.setHorizontalGroup(
             panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblTitle3, javax.swing.GroupLayout.DEFAULT_SIZE, 748, Short.MAX_VALUE)
+            .addComponent(lblTitle3, javax.swing.GroupLayout.DEFAULT_SIZE, 1156, Short.MAX_VALUE)
             .addGroup(panelJobApplyLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane1)
@@ -317,47 +329,43 @@ public class ApplicantWorkspace extends javax.swing.JPanel {
                     .addComponent(txtName)
                     .addComponent(txtUsername)
                     .addComponent(txtAppId))
+                .addGap(203, 203, 203)
                 .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblQua2)
+                    .addComponent(lblEmailid)
                     .addGroup(panelJobApplyLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblQua2)
-                        .addGap(27, 27, 27))
-                    .addGroup(panelJobApplyLayout.createSequentialGroup()
-                        .addGap(49, 49, 49)
+                        .addGap(4, 4, 4)
                         .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblSchool)
                             .addComponent(lblStatus)
-                            .addComponent(lblSub)
-                            .addComponent(lblEmailid))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(lblSub))))
+                .addGap(27, 27, 27)
                 .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtEmailId)
                     .addComponent(txtStatus)
                     .addComponent(txtSchool)
                     .addComponent(txtSubject)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelJobApplyLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnApply)
-                .addGap(320, 320, 320))
+                .addGap(336, 336, 336))
         );
         panelJobApplyLayout.setVerticalGroup(
             panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelJobApplyLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(34, 34, 34)
                 .addComponent(lblTitle3)
-                .addGap(40, 40, 40)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblUsername1)
-                    .addComponent(txtAppId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblEmailid)
-                    .addComponent(txtEmailId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
                 .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelJobApplyLayout.createSequentialGroup()
+                        .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblUsername1)
+                            .addComponent(txtAppId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblUsername)
                             .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -376,33 +384,40 @@ public class ApplicantWorkspace extends javax.swing.JPanel {
                         .addGap(28, 28, 28)
                         .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblAge1)
-                            .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblQua1)
+                            .addComponent(txtEx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panelJobApplyLayout.createSequentialGroup()
-                        .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblSub)
-                            .addComponent(txtSubject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelJobApplyLayout.createSequentialGroup()
+                                .addComponent(txtEmailId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtSubject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblSub)))
+                            .addComponent(lblEmailid))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtSchool, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblSchool))
                         .addGap(18, 18, 18)
                         .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblSchool)
-                            .addComponent(txtSchool, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblStatus)
-                            .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblStatus))
                         .addGap(18, 18, 18)
                         .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblQua2)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelJobApplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblQua1)
-                    .addComponent(txtEx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(86, 86, 86)
+                .addGap(16, 16, 16)
                 .addComponent(btnApply)
-                .addGap(75, 75, 75))
+                .addGap(145, 145, 145))
         );
 
         panelWork.add(panelJobApply, "card3");
+
+        panelMail.setBackground(new java.awt.Color(255, 255, 255));
 
         lblTo.setText("To:");
 
@@ -410,8 +425,6 @@ public class ApplicantWorkspace extends javax.swing.JPanel {
 
         lblMes.setText("Message:");
 
-        txtTo.setEditable(false);
-        txtTo.setText("chinmaydharwad21@gmail.com");
         txtTo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtToActionPerformed(evt);
@@ -459,7 +472,7 @@ public class ApplicantWorkspace extends javax.swing.JPanel {
                     .addComponent(txtTo, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSub, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(216, Short.MAX_VALUE))
+                .addContainerGap(616, Short.MAX_VALUE))
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panelMailLayout.setVerticalGroup(
@@ -479,7 +492,7 @@ public class ApplicantWorkspace extends javax.swing.JPanel {
                 .addGroup(panelMailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblMes)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 249, Short.MAX_VALUE)
                 .addComponent(btnSend)
                 .addGap(105, 105, 105))
         );
@@ -527,17 +540,62 @@ public class ApplicantWorkspace extends javax.swing.JPanel {
     private void btnApplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApplyActionPerformed
         // TODO add your handling code here:
         String appNo = txtAppId.getText();
+        if(appNo.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Enter the Application Number");
+            return;
+        }
+        else if(system.getApplist().uiqueJobAppId(appNo)== false){
+            JOptionPane.showMessageDialog(this, "Application Number already exist");
+            return;
+        }
+        
         String uname = txtUsername.getText();
+        
+        
         String name = txtName.getText();
+        
+        
         String qua = txtQua.getText();
+        if(qua.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Enter Qualification");
+            return;
+        }
+        
+        
         Integer age = Integer.valueOf(txtAge.getText());
+        
+        
         String gender = txtGender.getText();
+        
+        
+        if(data.numcheck(txtEx.getText())==false){
+            JOptionPane.showMessageDialog(this, "Enter valid Experience");
+            return;
+        }
         Integer exp = Integer.valueOf(txtEx.getText());
+        
+        
         String email = txtEmailId.getText();
+        
+        
         String sub = txtSubject.getText();
+        if(sub.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Enter Subject");
+            return;
+        }
+        
         String school = txtSchool.getText();
+        
+        
         String status = txtStatus.getText();
+        
+        
         String comm = txtComm.getText();
+        if(comm.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Enter Comments");
+            return;
+        }
+        
         
         TeacherApply newApp = system.getApplist().addApp();
         
@@ -574,6 +632,10 @@ public class ApplicantWorkspace extends javax.swing.JPanel {
 
     private void btnSendmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendmailActionPerformed
         // TODO add your handling code here:
+        panelWork.removeAll();
+        panelWork.add(panelMail);
+        panelWork.repaint();
+        panelWork.revalidate();
     }//GEN-LAST:event_btnSendmailActionPerformed
 
     private void txtToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtToActionPerformed
@@ -628,12 +690,13 @@ public class ApplicantWorkspace extends javax.swing.JPanel {
         
 //        
             for(TeacherApply man: system.getApplist().getAppList()){
-
-                Object[] row = new Object[3];
-                row[0] = man; 
-                row[1] = man.getSubject();
-                row[2] = man.getStatus();
-                model.addRow(row);
+                if(man.getUsername().equals(app.getUsername())){
+                    Object[] row = new Object[3];
+                    row[0] = man; 
+                    row[1] = man.getSubject();
+                    row[2] = man.getStatus();
+                    model.addRow(row);
+                }
             }
     }
     

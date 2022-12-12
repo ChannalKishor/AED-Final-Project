@@ -11,14 +11,18 @@ import Ngo.Budget.Budget;
 import Ngo.CareTaker.Caretaker;
 import Ngo.Children.Children;
 import Ngo.NgoManager.NgoManager;
+import Ngo.Order.NgoOrder;
 import School.Application.Application;
 import System.Directories.DB4OUtil;
 import System.Directories.DataValidation;
 import System.Directories.MainSystem;
 import java.awt.CardLayout;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -51,6 +55,8 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
         populateStudentApp();
         populateAppoinmentTable();
         populatePublicUser();
+        populateNgoOrderTable();
+        populateCombo();
         initializeBud();
         
     }
@@ -106,16 +112,12 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
         btnNgoMangerUpdate = new javax.swing.JButton();
         lblNgoManagerId = new javax.swing.JLabel();
         txtNgoManagerId = new javax.swing.JTextField();
-        lblNgoManagerSearch = new javax.swing.JLabel();
-        txtNgoManagerSearch = new javax.swing.JTextField();
         lblNgoManagerGender = new javax.swing.JLabel();
         cmbNgoManagerGender = new javax.swing.JComboBox<>();
         lblNgoManagerRole = new javax.swing.JLabel();
         txtNgoManagerRole = new javax.swing.JTextField();
         panelCareTaker = new javax.swing.JPanel();
         lblTitle3 = new javax.swing.JLabel();
-        lblCaretakerSearch = new javax.swing.JLabel();
-        txtCaretakerSearch = new javax.swing.JTextField();
         ScrollPaneNgoManager1 = new javax.swing.JScrollPane();
         tableCaretaker = new javax.swing.JTable();
         btnCaretakerView = new javax.swing.JButton();
@@ -144,8 +146,6 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
         txtCaretakerRole = new javax.swing.JTextField();
         panelFundManager = new javax.swing.JPanel();
         lblTitle4 = new javax.swing.JLabel();
-        lblFundManagerSearch = new javax.swing.JLabel();
-        txtFundManagerSearch = new javax.swing.JTextField();
         ScrollPaneNgoManager2 = new javax.swing.JScrollPane();
         tableFundManager = new javax.swing.JTable();
         btnFundManagerView = new javax.swing.JButton();
@@ -227,7 +227,6 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         lblChildName6 = new javax.swing.JLabel();
         txtChildClass = new javax.swing.JTextField();
-        lblChildName7 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtNgo = new javax.swing.JTextField();
         btnAutofill = new javax.swing.JButton();
@@ -272,9 +271,22 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
         lblChildrenRole = new javax.swing.JLabel();
         txtChildrenRole = new javax.swing.JTextField();
         lblChildrenCaretaker = new javax.swing.JLabel();
-        txtChildrenCaretaker = new javax.swing.JTextField();
+        txtChildrenCaretaker = new javax.swing.JComboBox<>();
         panelFoodInv = new javax.swing.JPanel();
         lblTitle10 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tableNgoOrder = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
+        txtOrderId = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        txtStatus2 = new javax.swing.JTextField();
+        btnPlaceOrder = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        txtQty = new javax.swing.JTextField();
+        txtItem = new javax.swing.JComboBox<>();
+
+        panelAdminControl.setBackground(new java.awt.Color(51, 51, 51));
 
         btnHome.setText("Home");
         btnHome.addActionListener(new java.awt.event.ActionListener() {
@@ -332,6 +344,7 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
             }
         });
 
+        lblAccounts.setForeground(new java.awt.Color(255, 255, 255));
         lblAccounts.setText("Accounts:");
 
         btnChildren.setText("Children");
@@ -341,7 +354,12 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
             }
         });
 
-        btnEssentialItems.setText("Essential Items");
+        btnEssentialItems.setText("Orders");
+        btnEssentialItems.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEssentialItemsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelAdminControlLayout = new javax.swing.GroupLayout(panelAdminControl);
         panelAdminControl.setLayout(panelAdminControlLayout);
@@ -380,7 +398,7 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
                 .addComponent(btnBudget)
                 .addGap(18, 18, 18)
                 .addComponent(btnEssentialItems)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, Short.MAX_VALUE)
                 .addComponent(lblAccounts)
                 .addGap(18, 18, 18)
                 .addComponent(btnNgoManager)
@@ -399,12 +417,17 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
 
         panelAdminWork.setLayout(new java.awt.CardLayout());
 
-        lblTitle2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        panelHome.setBackground(new java.awt.Color(245, 245, 245));
+        panelHome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblTitle2.setFont(new java.awt.Font("Rockwell", 1, 40)); // NOI18N
         lblTitle2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitle2.setText("NGO");
+        lblTitle2.setText("NGO Admin");
+        panelHome.add(lblTitle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, 568, -1));
 
         lblRole.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         lblRole.setText("Role: NGO Admin");
+        panelHome.add(lblRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(967, 106, 139, -1));
 
         btnLogOut.setText("Log Out");
         btnLogOut.addActionListener(new java.awt.event.ActionListener() {
@@ -412,40 +435,25 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
                 btnLogOutActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout panelHomeLayout = new javax.swing.GroupLayout(panelHome);
-        panelHome.setLayout(panelHomeLayout);
-        panelHomeLayout.setHorizontalGroup(
-            panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblTitle2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHomeLayout.createSequentialGroup()
-                .addContainerGap(545, Short.MAX_VALUE)
-                .addGroup(panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnLogOut)
-                    .addComponent(lblRole, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(70, 70, 70))
-        );
-        panelHomeLayout.setVerticalGroup(
-            panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelHomeLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTitle2)
-                .addGap(57, 57, 57)
-                .addComponent(lblRole)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnLogOut)
-                .addContainerGap(575, Short.MAX_VALUE))
-        );
+        panelHome.add(btnLogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(967, 128, -1, -1));
 
         panelAdminWork.add(panelHome, "card3");
 
-        lblTitle1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        panelNgoManager.setBackground(new java.awt.Color(245, 245, 245));
+        panelNgoManager.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblTitle1.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
         lblTitle1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle1.setText("NGO Manager");
+        panelNgoManager.add(lblTitle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, 860, -1));
 
         lblNgoManagerName.setText("Name:");
+        panelNgoManager.add(lblNgoManagerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 331, -1, -1));
 
         lblNgoManagerAge.setText("Age:");
+        panelNgoManager.add(lblNgoManagerAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 411, -1, -1));
+        panelNgoManager.add(txtNgoManagerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 328, 206, -1));
+        panelNgoManager.add(txtNgoManagerAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 408, 206, -1));
 
         btnNgoManagerCreate.setText("Create");
         btnNgoManagerCreate.addActionListener(new java.awt.event.ActionListener() {
@@ -453,6 +461,7 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
                 btnNgoManagerCreateActionPerformed(evt);
             }
         });
+        panelNgoManager.add(btnNgoManagerCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(516, 237, -1, -1));
 
         btnNgoManagerView.setText("View");
         btnNgoManagerView.addActionListener(new java.awt.event.ActionListener() {
@@ -460,6 +469,7 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
                 btnNgoManagerViewActionPerformed(evt);
             }
         });
+        panelNgoManager.add(btnNgoManagerView, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 237, -1, -1));
 
         tableNgoManager.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -483,22 +493,35 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
         tableNgoManager.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         ScrollPaneNgoManager.setViewportView(tableNgoManager);
 
+        panelNgoManager.add(ScrollPaneNgoManager, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 107, 695, 112));
+
         btnNgoManagerDelete.setText("Delete");
         btnNgoManagerDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNgoManagerDeleteActionPerformed(evt);
             }
         });
+        panelNgoManager.add(btnNgoManagerDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 237, -1, -1));
 
         lblNgoManagerDOB.setText("DOB:");
+        panelNgoManager.add(lblNgoManagerDOB, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 451, -1, -1));
+        panelNgoManager.add(txtNgoManagerDOB, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 448, 206, -1));
 
         lblNgoManagerUsername.setText("Username:");
+        panelNgoManager.add(lblNgoManagerUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 371, -1, -1));
+        panelNgoManager.add(txtNgoManagerUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 368, 206, -1));
 
         lblNgoManagerEmailId.setText("Email-Id:");
+        panelNgoManager.add(lblNgoManagerEmailId, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 568, -1, -1));
+        panelNgoManager.add(txtNgoManagerEmailId, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 568, 206, -1));
+        panelNgoManager.add(txtNgoManagerPhno, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 608, 206, -1));
 
         lblNgoManagerPhno.setText("Phone No:");
+        panelNgoManager.add(lblNgoManagerPhno, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 608, -1, -1));
 
         lblNgoManagerPassword.setText("Password:");
+        panelNgoManager.add(lblNgoManagerPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 648, -1, -1));
+        panelNgoManager.add(txtNgoManagerPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 648, 206, -1));
 
         btnNgoMangerUpdate.setText("Update");
         btnNgoMangerUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -506,164 +529,34 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
                 btnNgoMangerUpdateActionPerformed(evt);
             }
         });
+        panelNgoManager.add(btnNgoMangerUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(622, 237, -1, -1));
 
         lblNgoManagerId.setText("Ngo Manager Id:");
-
-        lblNgoManagerSearch.setText("Search:");
+        panelNgoManager.add(lblNgoManagerId, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 291, -1, -1));
+        panelNgoManager.add(txtNgoManagerId, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 288, 206, -1));
 
         lblNgoManagerGender.setText("Gender:");
+        panelNgoManager.add(lblNgoManagerGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 531, -1, -1));
 
         cmbNgoManagerGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Others" }));
+        panelNgoManager.add(cmbNgoManagerGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 528, 206, -1));
 
         lblNgoManagerRole.setText("Role:");
+        panelNgoManager.add(lblNgoManagerRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 491, -1, -1));
 
         txtNgoManagerRole.setEditable(false);
         txtNgoManagerRole.setText("NGO Manager");
-
-        javax.swing.GroupLayout panelNgoManagerLayout = new javax.swing.GroupLayout(panelNgoManager);
-        panelNgoManager.setLayout(panelNgoManagerLayout);
-        panelNgoManagerLayout.setHorizontalGroup(
-            panelNgoManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblTitle1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(panelNgoManagerLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelNgoManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panelNgoManagerLayout.createSequentialGroup()
-                        .addComponent(lblNgoManagerSearch)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtNgoManagerSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelNgoManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(panelNgoManagerLayout.createSequentialGroup()
-                            .addComponent(btnNgoManagerView)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(btnNgoManagerDelete))
-                        .addComponent(ScrollPaneNgoManager, javax.swing.GroupLayout.PREFERRED_SIZE, 695, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelNgoManagerLayout.createSequentialGroup()
-                .addGroup(panelNgoManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelNgoManagerLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnNgoManagerCreate)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnNgoMangerUpdate))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelNgoManagerLayout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addGroup(panelNgoManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelNgoManagerLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(lblNgoManagerId)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNgoManagerId, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelNgoManagerLayout.createSequentialGroup()
-                                .addGroup(panelNgoManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblNgoManagerName)
-                                    .addComponent(lblNgoManagerAge)
-                                    .addComponent(lblNgoManagerDOB)
-                                    .addComponent(lblNgoManagerUsername))
-                                .addGroup(panelNgoManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(panelNgoManagerLayout.createSequentialGroup()
-                                        .addGap(40, 40, 40)
-                                        .addComponent(txtNgoManagerName, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelNgoManagerLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                                        .addGroup(panelNgoManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtNgoManagerAge, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelNgoManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(txtNgoManagerUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(txtNgoManagerDOB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                            .addGroup(panelNgoManagerLayout.createSequentialGroup()
-                                .addComponent(lblNgoManagerRole)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtNgoManagerRole, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(55, 55, 55)
-                        .addGroup(panelNgoManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelNgoManagerLayout.createSequentialGroup()
-                                .addGroup(panelNgoManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblNgoManagerPhno)
-                                    .addComponent(lblNgoManagerPassword))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                                .addGroup(panelNgoManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtNgoManagerPassword)
-                                    .addComponent(txtNgoManagerPhno, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelNgoManagerLayout.createSequentialGroup()
-                                .addGroup(panelNgoManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblNgoManagerEmailId)
-                                    .addComponent(lblNgoManagerGender))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(panelNgoManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cmbNgoManagerGender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtNgoManagerEmailId, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))))))
-                .addGap(77, 77, 77))
-        );
-        panelNgoManagerLayout.setVerticalGroup(
-            panelNgoManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelNgoManagerLayout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(lblTitle1)
-                .addGap(73, 73, 73)
-                .addGroup(panelNgoManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNgoManagerSearch)
-                    .addComponent(txtNgoManagerSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ScrollPaneNgoManager, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(panelNgoManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNgoManagerView)
-                    .addComponent(btnNgoManagerDelete))
-                .addGap(54, 54, 54)
-                .addGroup(panelNgoManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNgoManagerId)
-                    .addComponent(txtNgoManagerId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNgoManagerGender)
-                    .addComponent(cmbNgoManagerGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelNgoManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelNgoManagerLayout.createSequentialGroup()
-                        .addGroup(panelNgoManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtNgoManagerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblNgoManagerName))
-                        .addGap(18, 18, 18)
-                        .addGroup(panelNgoManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtNgoManagerUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblNgoManagerUsername))
-                        .addGap(20, 20, 20)
-                        .addGroup(panelNgoManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtNgoManagerAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblNgoManagerAge)))
-                    .addGroup(panelNgoManagerLayout.createSequentialGroup()
-                        .addGroup(panelNgoManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblNgoManagerEmailId)
-                            .addComponent(txtNgoManagerEmailId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(panelNgoManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblNgoManagerPhno)
-                            .addComponent(txtNgoManagerPhno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(panelNgoManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblNgoManagerPassword)
-                            .addComponent(txtNgoManagerPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addGroup(panelNgoManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNgoManagerDOB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNgoManagerDOB))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelNgoManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNgoManagerRole)
-                    .addComponent(txtNgoManagerRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addGroup(panelNgoManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNgoManagerCreate)
-                    .addComponent(btnNgoMangerUpdate))
-                .addGap(46, 46, 46))
-        );
+        panelNgoManager.add(txtNgoManagerRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 488, 206, -1));
 
         panelAdminWork.add(panelNgoManager, "card2");
 
-        lblTitle3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblTitle3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitle3.setText("Caretaker");
+        panelCareTaker.setBackground(new java.awt.Color(255, 255, 255));
+        panelCareTaker.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblCaretakerSearch.setText("Search:");
+        lblTitle3.setFont(new java.awt.Font("Rockwell", 1, 40)); // NOI18N
+        lblTitle3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle3.setText("NGO Caretaker");
+        panelCareTaker.add(lblTitle3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 900, -1));
 
         tableCaretaker.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -687,12 +580,15 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
         tableCaretaker.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         ScrollPaneNgoManager1.setViewportView(tableCaretaker);
 
+        panelCareTaker.add(ScrollPaneNgoManager1, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 102, 695, 112));
+
         btnCaretakerView.setText("View");
         btnCaretakerView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCaretakerViewActionPerformed(evt);
             }
         });
+        panelCareTaker.add(btnCaretakerView, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 232, -1, -1));
 
         btnCaretakerDelete.setText("Delete");
         btnCaretakerDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -700,28 +596,45 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
                 btnCaretakerDeleteActionPerformed(evt);
             }
         });
+        panelCareTaker.add(btnCaretakerDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 232, -1, -1));
 
         lblCaretakerId.setText("Caretaker Id:");
+        panelCareTaker.add(lblCaretakerId, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
 
         txtCaretakerId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCaretakerIdActionPerformed(evt);
             }
         });
+        panelCareTaker.add(txtCaretakerId, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 200, -1));
 
         lblCaretakerEmailId.setText("Email-Id:");
+        panelCareTaker.add(lblCaretakerEmailId, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 582, -1, -1));
+        panelCareTaker.add(txtCaretakerEmailId, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 582, 200, -1));
 
         lblCaretakerName.setText("Name:");
+        panelCareTaker.add(lblCaretakerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
+        panelCareTaker.add(txtCaretakerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 200, -1));
 
         lblCaretakerPhno.setText("Phone No:");
+        panelCareTaker.add(lblCaretakerPhno, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 625, -1, -1));
+        panelCareTaker.add(txtCaretakerPhno, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 622, 200, -1));
 
         lblCaretakerUsername.setText("Username:");
+        panelCareTaker.add(lblCaretakerUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 390, -1, -1));
+        panelCareTaker.add(txtCaretakerUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 387, 200, -1));
 
         lblCaretakerPassword.setText("Password:");
+        panelCareTaker.add(lblCaretakerPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 665, -1, -1));
+        panelCareTaker.add(txtCaretakerPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 662, 200, -1));
+        panelCareTaker.add(txtCaretakerAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 427, 200, -1));
 
         lblCaretakerAge.setText("Age:");
+        panelCareTaker.add(lblCaretakerAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 430, -1, -1));
 
         lblCaretakerDOB.setText("DOB:");
+        panelCareTaker.add(lblCaretakerDOB, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, -1, -1));
+        panelCareTaker.add(txtCaretakerDOB, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 470, 200, -1));
 
         btnCaretakerCreate.setText("Create");
         btnCaretakerCreate.addActionListener(new java.awt.event.ActionListener() {
@@ -729,6 +642,7 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
                 btnCaretakerCreateActionPerformed(evt);
             }
         });
+        panelCareTaker.add(btnCaretakerCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(521, 232, -1, -1));
 
         btnCaretakerUpdate.setText("Update");
         btnCaretakerUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -736,164 +650,30 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
                 btnCaretakerUpdateActionPerformed(evt);
             }
         });
+        panelCareTaker.add(btnCaretakerUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 232, -1, -1));
 
         lblCaretakerGender.setText("Gender:");
+        panelCareTaker.add(lblCaretakerGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 514, -1, -1));
 
         cmbCaretakerGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Others" }));
+        panelCareTaker.add(cmbCaretakerGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 510, 200, -1));
 
         lblCaretakerRole.setText("Role:");
+        panelCareTaker.add(lblCaretakerRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 548, -1, -1));
 
         txtCaretakerRole.setEditable(false);
         txtCaretakerRole.setText("Caretaker");
-
-        javax.swing.GroupLayout panelCareTakerLayout = new javax.swing.GroupLayout(panelCareTaker);
-        panelCareTaker.setLayout(panelCareTakerLayout);
-        panelCareTakerLayout.setHorizontalGroup(
-            panelCareTakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblTitle3, javax.swing.GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE)
-            .addGroup(panelCareTakerLayout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addGroup(panelCareTakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelCareTakerLayout.createSequentialGroup()
-                        .addComponent(lblCaretakerId)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(panelCareTakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCaretakerEmailId)
-                            .addGroup(panelCareTakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(panelCareTakerLayout.createSequentialGroup()
-                                    .addComponent(btnCaretakerCreate)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnCaretakerUpdate))
-                                .addGroup(panelCareTakerLayout.createSequentialGroup()
-                                    .addGroup(panelCareTakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lblCaretakerPhno)
-                                        .addComponent(lblCaretakerPassword))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(panelCareTakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtCaretakerPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtCaretakerPhno, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(77, 77, 77))
-                    .addGroup(panelCareTakerLayout.createSequentialGroup()
-                        .addGroup(panelCareTakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(panelCareTakerLayout.createSequentialGroup()
-                                .addComponent(lblCaretakerRole)
-                                .addGap(72, 72, 72)
-                                .addComponent(txtCaretakerRole, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
-                            .addGroup(panelCareTakerLayout.createSequentialGroup()
-                                .addGroup(panelCareTakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblCaretakerGender)
-                                    .addComponent(lblCaretakerUsername)
-                                    .addComponent(lblCaretakerDOB)
-                                    .addComponent(lblCaretakerAge))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(panelCareTakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtCaretakerDOB, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cmbCaretakerGender, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtCaretakerAge, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtCaretakerUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(397, 397, 397))))
-            .addGroup(panelCareTakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelCareTakerLayout.createSequentialGroup()
-                    .addGap(28, 28, 28)
-                    .addGroup(panelCareTakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCareTakerLayout.createSequentialGroup()
-                            .addGap(24, 24, 24)
-                            .addComponent(lblCaretakerName)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
-                            .addGroup(panelCareTakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(panelCareTakerLayout.createSequentialGroup()
-                                    .addComponent(txtCaretakerName)
-                                    .addGap(3, 3, 3))
-                                .addComponent(txtCaretakerId, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
-                            .addComponent(txtCaretakerEmailId, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(77, 77, 77))
-                        .addGroup(panelCareTakerLayout.createSequentialGroup()
-                            .addGroup(panelCareTakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(panelCareTakerLayout.createSequentialGroup()
-                                    .addComponent(lblCaretakerSearch)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(txtCaretakerSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(panelCareTakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(panelCareTakerLayout.createSequentialGroup()
-                                        .addComponent(btnCaretakerView)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnCaretakerDelete))
-                                    .addComponent(ScrollPaneNgoManager1, javax.swing.GroupLayout.PREFERRED_SIZE, 695, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(28, 28, 28)))))
-        );
-        panelCareTakerLayout.setVerticalGroup(
-            panelCareTakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCareTakerLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTitle3)
-                .addGap(293, 293, 293)
-                .addGroup(panelCareTakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCaretakerId)
-                    .addComponent(lblCaretakerEmailId))
-                .addGap(18, 18, 18)
-                .addGroup(panelCareTakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCaretakerPhno)
-                    .addComponent(txtCaretakerPhno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelCareTakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCaretakerPassword)
-                    .addComponent(txtCaretakerPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelCareTakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCaretakerUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCaretakerUsername))
-                .addGap(18, 18, 18)
-                .addGroup(panelCareTakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCaretakerAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCaretakerAge))
-                .addGap(18, 18, 18)
-                .addGroup(panelCareTakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCaretakerDOB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCaretakerDOB))
-                .addGap(18, 18, 18)
-                .addGroup(panelCareTakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cmbCaretakerGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCaretakerGender))
-                .addGap(18, 18, 18)
-                .addGroup(panelCareTakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCaretakerRole)
-                    .addComponent(txtCaretakerRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelCareTakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCaretakerCreate)
-                    .addComponent(btnCaretakerUpdate))
-                .addGap(59, 59, 59))
-            .addGroup(panelCareTakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelCareTakerLayout.createSequentialGroup()
-                    .addGap(98, 98, 98)
-                    .addGroup(panelCareTakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblCaretakerSearch)
-                        .addComponent(txtCaretakerSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(ScrollPaneNgoManager1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
-                    .addGroup(panelCareTakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnCaretakerView)
-                        .addComponent(btnCaretakerDelete))
-                    .addGap(54, 54, 54)
-                    .addGroup(panelCareTakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtCaretakerEmailId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtCaretakerId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(18, 18, 18)
-                    .addGroup(panelCareTakerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtCaretakerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblCaretakerName))
-                    .addContainerGap(327, Short.MAX_VALUE)))
-        );
+        panelCareTaker.add(txtCaretakerRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 550, 200, -1));
 
         panelAdminWork.add(panelCareTaker, "card4");
 
-        lblTitle4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        panelFundManager.setBackground(new java.awt.Color(249, 249, 249));
+        panelFundManager.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblTitle4.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
         lblTitle4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle4.setText("Fund Manager");
-
-        lblFundManagerSearch.setText("Search:");
+        panelFundManager.add(lblTitle4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 1290, -1));
 
         tableFundManager.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -917,12 +697,15 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
         tableFundManager.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         ScrollPaneNgoManager2.setViewportView(tableFundManager);
 
+        panelFundManager.add(ScrollPaneNgoManager2, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 81, 695, 112));
+
         btnFundManagerView.setText("View");
         btnFundManagerView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFundManagerViewActionPerformed(evt);
             }
         });
+        panelFundManager.add(btnFundManagerView, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 211, -1, -1));
 
         btnFundManagerDelete.setText("Delete");
         btnFundManagerDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -930,22 +713,39 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
                 btnFundManagerDeleteActionPerformed(evt);
             }
         });
+        panelFundManager.add(btnFundManagerDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 211, -1, -1));
 
         lblFundManagerId.setText("Fund Manager Id:");
+        panelFundManager.add(lblFundManagerId, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 483, -1, -1));
+        panelFundManager.add(txtFundManagerId, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 480, 210, -1));
 
         lblFundManagerName.setText("Name:");
+        panelFundManager.add(lblFundManagerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 268, -1, -1));
+        panelFundManager.add(txtFundManagerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(154, 268, 206, -1));
 
         lblFundManagerEmailId.setText("Email-Id:");
+        panelFundManager.add(lblFundManagerEmailId, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 508, -1, -1));
+        panelFundManager.add(txtFundManagerEmailId, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 508, 210, -1));
 
         lblFundManagerPhno.setText("Phone No:");
+        panelFundManager.add(lblFundManagerPhno, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 548, 63, -1));
+        panelFundManager.add(txtFundManagerPhno, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 548, 210, -1));
 
         lblFundManagerPassword.setText("Password:");
+        panelFundManager.add(lblFundManagerPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 588, -1, -1));
+        panelFundManager.add(txtFundManagerPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 588, 210, -1));
+        panelFundManager.add(txtFundManagerUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(154, 302, 206, -1));
 
         lblFundManagerUsername.setText("Username:");
+        panelFundManager.add(lblFundManagerUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 302, -1, -1));
 
         lblFundManagerAge.setText("Age:");
+        panelFundManager.add(lblFundManagerAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 344, -1, -1));
+        panelFundManager.add(txtFundManagerAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(154, 342, 206, -1));
 
         lblFundManagerDOB.setText("DOB:");
+        panelFundManager.add(lblFundManagerDOB, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 378, -1, -1));
+        panelFundManager.add(txtFundManagerDOB, new org.netbeans.lib.awtextra.AbsoluteConstraints(154, 376, 206, -1));
 
         btnFundManagerCreate.setText("Create");
         btnFundManagerCreate.addActionListener(new java.awt.event.ActionListener() {
@@ -953,6 +753,7 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
                 btnFundManagerCreateActionPerformed(evt);
             }
         });
+        panelFundManager.add(btnFundManagerCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(479, 211, -1, -1));
 
         btnFundMangerUpdate.setText("Update");
         btnFundMangerUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -960,8 +761,10 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
                 btnFundMangerUpdateActionPerformed(evt);
             }
         });
+        panelFundManager.add(btnFundMangerUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(617, 211, -1, -1));
 
         lblFundManagerGender.setText("Gender:");
+        panelFundManager.add(lblFundManagerGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 413, -1, -1));
 
         cmbFundManagerGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Others" }));
         cmbFundManagerGender.addActionListener(new java.awt.event.ActionListener() {
@@ -969,162 +772,24 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
                 cmbFundManagerGenderActionPerformed(evt);
             }
         });
+        panelFundManager.add(cmbFundManagerGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 410, 210, -1));
 
         lblFundManagerRole.setText("Role:");
+        panelFundManager.add(lblFundManagerRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 452, -1, -1));
 
         txtFundManagerRole.setEditable(false);
         txtFundManagerRole.setText("Fund Manager");
-
-        javax.swing.GroupLayout panelFundManagerLayout = new javax.swing.GroupLayout(panelFundManager);
-        panelFundManager.setLayout(panelFundManagerLayout);
-        panelFundManagerLayout.setHorizontalGroup(
-            panelFundManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblTitle4, javax.swing.GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE)
-            .addGroup(panelFundManagerLayout.createSequentialGroup()
-                .addGroup(panelFundManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelFundManagerLayout.createSequentialGroup()
-                        .addGap(149, 149, 149)
-                        .addComponent(txtFundManagerName, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelFundManagerLayout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addGroup(panelFundManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelFundManagerLayout.createSequentialGroup()
-                                .addComponent(lblFundManagerRole)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtFundManagerRole, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelFundManagerLayout.createSequentialGroup()
-                                .addComponent(lblFundManagerGender)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cmbFundManagerGender, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(399, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFundManagerLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnFundManagerCreate)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnFundMangerUpdate)
-                .addGap(78, 78, 78))
-            .addGroup(panelFundManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelFundManagerLayout.createSequentialGroup()
-                    .addGap(28, 28, 28)
-                    .addGroup(panelFundManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFundManagerLayout.createSequentialGroup()
-                            .addGap(24, 24, 24)
-                            .addGroup(panelFundManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFundManagerLayout.createSequentialGroup()
-                                    .addComponent(lblFundManagerId)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtFundManagerId, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(panelFundManagerLayout.createSequentialGroup()
-                                    .addGroup(panelFundManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblFundManagerName)
-                                        .addComponent(lblFundManagerAge)
-                                        .addComponent(lblFundManagerDOB)
-                                        .addComponent(lblFundManagerUsername))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(panelFundManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtFundManagerAge, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFundManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtFundManagerUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtFundManagerDOB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addGap(55, 55, 55)
-                            .addGroup(panelFundManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(panelFundManagerLayout.createSequentialGroup()
-                                    .addGroup(panelFundManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblFundManagerPhno)
-                                        .addComponent(lblFundManagerPassword))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(panelFundManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtFundManagerPassword)
-                                        .addComponent(txtFundManagerPhno, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(panelFundManagerLayout.createSequentialGroup()
-                                    .addComponent(lblFundManagerEmailId)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtFundManagerEmailId, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(77, 77, 77))
-                        .addGroup(panelFundManagerLayout.createSequentialGroup()
-                            .addGroup(panelFundManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(panelFundManagerLayout.createSequentialGroup()
-                                    .addComponent(lblFundManagerSearch)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(txtFundManagerSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(panelFundManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(panelFundManagerLayout.createSequentialGroup()
-                                        .addComponent(btnFundManagerView)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnFundManagerDelete))
-                                    .addComponent(ScrollPaneNgoManager2, javax.swing.GroupLayout.PREFERRED_SIZE, 695, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(28, 28, 28)))))
-        );
-        panelFundManagerLayout.setVerticalGroup(
-            panelFundManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelFundManagerLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTitle4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 356, Short.MAX_VALUE)
-                .addComponent(txtFundManagerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(138, 138, 138)
-                .addGroup(panelFundManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFundManagerGender)
-                    .addComponent(cmbFundManagerGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelFundManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFundManagerRole)
-                    .addComponent(txtFundManagerRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addGroup(panelFundManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnFundManagerCreate)
-                    .addComponent(btnFundMangerUpdate))
-                .addGap(71, 71, 71))
-            .addGroup(panelFundManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelFundManagerLayout.createSequentialGroup()
-                    .addGap(98, 98, 98)
-                    .addGroup(panelFundManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblFundManagerSearch)
-                        .addComponent(txtFundManagerSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(ScrollPaneNgoManager2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
-                    .addGroup(panelFundManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnFundManagerView)
-                        .addComponent(btnFundManagerDelete))
-                    .addGap(54, 54, 54)
-                    .addGroup(panelFundManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblFundManagerEmailId)
-                        .addComponent(txtFundManagerEmailId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblFundManagerId)
-                        .addComponent(txtFundManagerId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(18, 18, 18)
-                    .addGroup(panelFundManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(panelFundManagerLayout.createSequentialGroup()
-                            .addGroup(panelFundManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblFundManagerPhno)
-                                .addComponent(txtFundManagerPhno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(18, 18, 18)
-                            .addGroup(panelFundManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblFundManagerPassword)
-                                .addComponent(txtFundManagerPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(panelFundManagerLayout.createSequentialGroup()
-                            .addComponent(lblFundManagerName)
-                            .addGap(18, 18, 18)
-                            .addGroup(panelFundManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtFundManagerUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblFundManagerUsername))
-                            .addGap(20, 20, 20)
-                            .addGroup(panelFundManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtFundManagerAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblFundManagerAge))
-                            .addGap(18, 18, 18)
-                            .addGroup(panelFundManagerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtFundManagerDOB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblFundManagerDOB))))
-                    .addContainerGap(211, Short.MAX_VALUE)))
-        );
+        panelFundManager.add(txtFundManagerRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 446, 210, -1));
 
         panelAdminWork.add(panelFundManager, "card5");
 
-        lblTitle5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        panelPerson.setBackground(new java.awt.Color(255, 255, 255));
+        panelPerson.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblTitle5.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
         lblTitle5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle5.setText("Public User");
+        panelPerson.add(lblTitle5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 940, -1));
 
         tablePerson.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1147,44 +812,25 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
         });
         ScrollPane4.setViewportView(tablePerson);
 
+        panelPerson.add(ScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 1110, 129));
+
         btnDelete.setText("Delete Account");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout panelPersonLayout = new javax.swing.GroupLayout(panelPerson);
-        panelPerson.setLayout(panelPersonLayout);
-        panelPersonLayout.setHorizontalGroup(
-            panelPersonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblTitle5, javax.swing.GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE)
-            .addGroup(panelPersonLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(ScrollPane4)
-                .addContainerGap())
-            .addGroup(panelPersonLayout.createSequentialGroup()
-                .addGap(315, 315, 315)
-                .addComponent(btnDelete)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        panelPersonLayout.setVerticalGroup(
-            panelPersonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelPersonLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTitle5)
-                .addGap(71, 71, 71)
-                .addComponent(ScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
-                .addComponent(btnDelete)
-                .addContainerGap(346, Short.MAX_VALUE))
-        );
+        panelPerson.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 260, -1, -1));
 
         panelAdminWork.add(panelPerson, "card6");
 
-        lblTitle6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        panelHealth.setBackground(new java.awt.Color(255, 255, 255));
+        panelHealth.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblTitle6.setFont(new java.awt.Font("Rockwell", 1, 40)); // NOI18N
         lblTitle6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle6.setText("Children Health");
+        panelHealth.add(lblTitle6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 18, 1290, -1));
 
         tableChildrenHealth.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1210,12 +856,15 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
             tableChildrenHealth.getColumnModel().getColumn(3).setHeaderValue("DOB");
         }
 
+        panelHealth.add(ScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 123, 699, 93));
+
         btnAppointment.setText("Book Appointment");
         btnAppointment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAppointmentActionPerformed(evt);
             }
         });
+        panelHealth.add(btnAppointment, new org.netbeans.lib.awtextra.AbsoluteConstraints(786, 148, -1, -1));
 
         btnAutofill1.setText("Autofill");
         btnAutofill1.addActionListener(new java.awt.event.ActionListener() {
@@ -1223,6 +872,7 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
                 btnAutofill1ActionPerformed(evt);
             }
         });
+        panelHealth.add(btnAutofill1, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 222, -1, -1));
 
         tableChildrenAppoinment.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1245,137 +895,70 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
         });
         ScrollPane9.setViewportView(tableChildrenAppoinment);
 
+        panelHealth.add(ScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 251, 699, 93));
+
         lblApplicationNo1.setText("Appointment Id:");
+        panelHealth.add(lblApplicationNo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 377, -1, -1));
+
+        txtApplicationNo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtApplicationNo1ActionPerformed(evt);
+            }
+        });
+        panelHealth.add(txtApplicationNo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 374, 219, -1));
 
         lblChildName1.setText("Name:");
+        panelHealth.add(lblChildName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 417, -1, -1));
 
         txtChildName1.setEditable(false);
+        panelHealth.add(txtChildName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 414, 219, -1));
 
         lblChildAge1.setText("Age:");
+        panelHealth.add(lblChildAge1, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 457, -1, -1));
 
         lblChildName8.setText("Gender:");
+        panelHealth.add(lblChildName8, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 497, -1, -1));
 
         lblChildName9.setText("Date:");
+        panelHealth.add(lblChildName9, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 537, -1, -1));
+        panelHealth.add(txtAppDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 534, 219, -1));
 
         lblStatus1.setText("Status:");
+        panelHealth.add(lblStatus1, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 577, -1, -1));
 
         txtStatus1.setEditable(false);
         txtStatus1.setText("Pending");
+        panelHealth.add(txtStatus1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 574, 219, -1));
 
         lblChildName10.setText("Comment:");
+        panelHealth.add(lblChildName10, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 614, -1, -1));
 
         txtChildComment1.setColumns(20);
         txtChildComment1.setRows(5);
         jScrollPane5.setViewportView(txtChildComment1);
 
+        panelHealth.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 620, 219, 104));
+
         txtChildAge1.setEditable(false);
+        txtChildAge1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtChildAge1ActionPerformed(evt);
+            }
+        });
+        panelHealth.add(txtChildAge1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 454, 219, -1));
 
         txtChildGender2.setEditable(false);
-
-        javax.swing.GroupLayout panelHealthLayout = new javax.swing.GroupLayout(panelHealth);
-        panelHealth.setLayout(panelHealthLayout);
-        panelHealthLayout.setHorizontalGroup(
-            panelHealthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblTitle6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHealthLayout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
-                .addGroup(panelHealthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAutofill1)
-                    .addGroup(panelHealthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHealthLayout.createSequentialGroup()
-                            .addComponent(btnAppointment)
-                            .addGap(256, 256, 256))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHealthLayout.createSequentialGroup()
-                            .addComponent(ScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 699, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(26, 26, 26)))
-                    .addGroup(panelHealthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(panelHealthLayout.createSequentialGroup()
-                            .addGroup(panelHealthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(panelHealthLayout.createSequentialGroup()
-                                    .addComponent(lblChildName9)
-                                    .addGap(66, 66, 66)
-                                    .addComponent(txtAppDate, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(panelHealthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelHealthLayout.createSequentialGroup()
-                                        .addComponent(lblChildName8)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtChildGender2, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(panelHealthLayout.createSequentialGroup()
-                                        .addComponent(lblChildAge1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtChildAge1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(panelHealthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(panelHealthLayout.createSequentialGroup()
-                                            .addComponent(lblChildName1)
-                                            .addGap(66, 66, 66)
-                                            .addComponent(txtChildName1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(panelHealthLayout.createSequentialGroup()
-                                            .addComponent(lblApplicationNo1)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(txtApplicationNo1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(panelHealthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHealthLayout.createSequentialGroup()
-                                    .addComponent(lblStatus1)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtStatus1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHealthLayout.createSequentialGroup()
-                                    .addComponent(lblChildName10)
-                                    .addGap(27, 27, 27)
-                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addComponent(ScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 699, javax.swing.GroupLayout.PREFERRED_SIZE))))
-        );
-        panelHealthLayout.setVerticalGroup(
-            panelHealthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelHealthLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTitle6)
-                .addGap(59, 59, 59)
-                .addComponent(ScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnAutofill1)
-                .addGap(33, 33, 33)
-                .addComponent(ScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                .addGroup(panelHealthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelHealthLayout.createSequentialGroup()
-                        .addGroup(panelHealthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblApplicationNo1)
-                            .addComponent(txtApplicationNo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(panelHealthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblChildName1)
-                            .addComponent(txtChildName1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(panelHealthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblChildAge1)
-                            .addComponent(txtChildAge1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(panelHealthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblChildName8)
-                            .addComponent(txtChildGender2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panelHealthLayout.createSequentialGroup()
-                        .addGroup(panelHealthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtStatus1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblStatus1))
-                        .addGap(28, 28, 28)
-                        .addGroup(panelHealthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblChildName10)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addGroup(panelHealthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblChildName9)
-                    .addComponent(txtAppDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
-                .addComponent(btnAppointment)
-                .addGap(29, 29, 29))
-        );
+        panelHealth.add(txtChildGender2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 494, 219, -1));
 
         panelAdminWork.add(panelHealth, "card7");
 
-        lblTitle7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        panelEducation.setBackground(new java.awt.Color(255, 255, 255));
+        panelEducation.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblTitle7.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
         lblTitle7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle7.setText("Children Education");
+        panelEducation.add(lblTitle7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 1300, -1));
 
         tableChildrenApp.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1398,9 +981,13 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
         });
         ScrollPane6.setViewportView(tableChildrenApp);
 
+        panelEducation.add(ScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 247, 1140, 97));
+
         lblChildName.setText("Name:");
+        panelEducation.add(lblChildName, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 413, -1, -1));
 
         txtChildName.setEditable(false);
+        panelEducation.add(txtChildName, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 410, 219, -1));
 
         btnApply.setText("Apply");
         btnApply.addActionListener(new java.awt.event.ActionListener() {
@@ -1408,34 +995,49 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
                 btnApplyActionPerformed(evt);
             }
         });
+        panelEducation.add(btnApply, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 470, -1, -1));
 
-        lblApplicationNo.setText("Application No:");
+        lblApplicationNo.setText("Application Id:");
+        panelEducation.add(lblApplicationNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 373, -1, -1));
+        panelEducation.add(txtApplicationNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 370, 219, -1));
 
         txtChildAge.setEditable(false);
+        panelEducation.add(txtChildAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 450, 219, -1));
 
         lblChildAge.setText("Age:");
+        panelEducation.add(lblChildAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 453, -1, -1));
 
         lblChildName2.setText("DOB:");
+        panelEducation.add(lblChildName2, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 493, -1, -1));
 
         txtChildDOB.setEditable(false);
+        panelEducation.add(txtChildDOB, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 490, 219, -1));
 
         lblChildName3.setText("Gender:");
+        panelEducation.add(lblChildName3, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 533, -1, -1));
 
         lblChildName4.setText("School:");
+        panelEducation.add(lblChildName4, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 659, -1, -1));
 
         txtChildSchool.setEditable(false);
         txtChildSchool.setText("School");
+        panelEducation.add(txtChildSchool, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 656, 219, -1));
 
         lblChildName5.setText("Comment:");
+        panelEducation.add(lblChildName5, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 360, -1, -1));
 
         txtChildComment.setColumns(20);
         txtChildComment.setRows(5);
         jScrollPane1.setViewportView(txtChildComment);
 
+        panelEducation.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 360, 219, -1));
+
         lblStatus.setText("Status:");
+        panelEducation.add(lblStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 619, -1, -1));
 
         txtStatus.setEditable(false);
         txtStatus.setText("Pending");
+        panelEducation.add(txtStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 616, 219, -1));
 
         tableChildrenEducation.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1458,18 +1060,29 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
         });
         ScrollPane8.setViewportView(tableChildrenEducation);
 
+        panelEducation.add(ScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 77, 1140, 93));
+
         jLabel1.setText("NGO Children List:");
+        panelEducation.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 55, -1, -1));
 
         jLabel2.setText("Student Applications:");
+        panelEducation.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 225, -1, -1));
 
         lblChildName6.setText("Class:");
-
-        lblChildName7.setText("NGO:");
+        panelEducation.add(lblChildName6, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 579, -1, -1));
+        panelEducation.add(txtChildClass, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 576, 219, -1));
 
         jLabel3.setText("NGO:");
+        panelEducation.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 687, -1, -1));
 
         txtNgo.setEditable(false);
         txtNgo.setText("Yes");
+        txtNgo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNgoActionPerformed(evt);
+            }
+        });
+        panelEducation.add(txtNgo, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 684, 219, -1));
 
         btnAutofill.setText("Autofill");
         btnAutofill.addActionListener(new java.awt.event.ActionListener() {
@@ -1477,174 +1090,53 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
                 btnAutofillActionPerformed(evt);
             }
         });
+        panelEducation.add(btnAutofill, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 182, -1, -1));
 
         cmbChildGender.setEditable(false);
-
-        javax.swing.GroupLayout panelEducationLayout = new javax.swing.GroupLayout(panelEducation);
-        panelEducation.setLayout(panelEducationLayout);
-        panelEducationLayout.setHorizontalGroup(
-            panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblTitle7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEducationLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnApply)
-                .addGap(330, 330, 330))
-            .addGroup(panelEducationLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblChildName2)
-                    .addGroup(panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(panelEducationLayout.createSequentialGroup()
-                            .addComponent(lblChildAge)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtChildAge, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelEducationLayout.createSequentialGroup()
-                                .addComponent(lblChildName)
-                                .addGap(66, 66, 66)
-                                .addComponent(txtChildName, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelEducationLayout.createSequentialGroup()
-                                .addComponent(lblApplicationNo)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtApplicationNo, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(panelEducationLayout.createSequentialGroup()
-                            .addComponent(lblChildName3)
-                            .addGap(59, 59, 59)
-                            .addGroup(panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtChildDOB, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
-                                .addComponent(cmbChildGender)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(panelEducationLayout.createSequentialGroup()
-                        .addComponent(lblStatus)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEducationLayout.createSequentialGroup()
-                        .addComponent(lblChildName6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtChildClass, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelEducationLayout.createSequentialGroup()
-                        .addComponent(lblChildName4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                        .addComponent(txtChildSchool, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEducationLayout.createSequentialGroup()
-                        .addGroup(panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblChildName5)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
-                            .addComponent(txtNgo))))
-                .addGap(24, 24, 24))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEducationLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelEducationLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(583, 583, 583))
-                    .addComponent(ScrollPane8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 730, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(panelEducationLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(ScrollPane6)
-                .addContainerGap())
-            .addGroup(panelEducationLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(btnAutofill))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelEducationLayout.createSequentialGroup()
-                    .addGap(362, 362, 362)
-                    .addComponent(lblChildName7)
-                    .addContainerGap(363, Short.MAX_VALUE)))
-        );
-        panelEducationLayout.setVerticalGroup(
-            panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelEducationLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTitle7)
-                .addGap(44, 44, 44)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnAutofill)
-                .addGap(20, 20, 20)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addGroup(panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblApplicationNo)
-                    .addComponent(txtApplicationNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtChildClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblChildName6))
-                .addGap(18, 18, 18)
-                .addGroup(panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblChildName)
-                    .addComponent(txtChildName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblStatus)
-                    .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblChildAge)
-                    .addComponent(txtChildAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblChildName4)
-                    .addComponent(txtChildSchool, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panelEducationLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblChildName2)
-                            .addComponent(txtChildDOB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(33, 33, 33)
-                        .addGroup(panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblChildName3)
-                            .addComponent(cmbChildGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(panelEducationLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                        .addGroup(panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(txtNgo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelEducationLayout.createSequentialGroup()
-                                .addComponent(lblChildName5)
-                                .addGap(76, 76, 76)
-                                .addComponent(btnApply))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())))
-            .addGroup(panelEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelEducationLayout.createSequentialGroup()
-                    .addGap(342, 342, 342)
-                    .addComponent(lblChildName7)
-                    .addContainerGap(367, Short.MAX_VALUE)))
-        );
+        panelEducation.add(cmbChildGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 530, 219, -1));
 
         panelAdminWork.add(panelEducation, "card8");
 
-        lblTitle8.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        panelBudget.setBackground(new java.awt.Color(255, 255, 255));
+        panelBudget.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblTitle8.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
         lblTitle8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle8.setText("Budget");
+        panelBudget.add(lblTitle8, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 26, 852, -1));
 
-        lblTotal.setText("Total:");
+        lblTotal.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
+        lblTotal.setText("Total($):");
+        panelBudget.add(lblTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 119, -1, -1));
+        panelBudget.add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(209, 116, 301, 43));
 
         lblEducation.setText("Education:");
+        panelBudget.add(lblEducation, new org.netbeans.lib.awtextra.AbsoluteConstraints(121, 278, -1, -1));
+        panelBudget.add(txtEducation, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 275, 166, -1));
 
         lblHealth.setText("Health:");
+        panelBudget.add(lblHealth, new org.netbeans.lib.awtextra.AbsoluteConstraints(121, 318, -1, -1));
+        panelBudget.add(txtHealth, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 315, 166, -1));
 
         lblFood.setText("Essential Items:");
+        panelBudget.add(lblFood, new org.netbeans.lib.awtextra.AbsoluteConstraints(121, 358, -1, -1));
+        panelBudget.add(txtFood, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 355, 166, -1));
 
+        lblExpenditure.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         lblExpenditure.setText("Expenditure:");
+        panelBudget.add(lblExpenditure, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 223, -1, -1));
 
+        lblIncome.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblIncome.setText("Income:");
+        panelBudget.add(lblIncome, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 426, -1, -1));
+        panelBudget.add(txtDonation, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 480, 166, -1));
 
         lblDonation.setText("Donations:");
+        panelBudget.add(lblDonation, new org.netbeans.lib.awtextra.AbsoluteConstraints(121, 483, -1, -1));
+        panelBudget.add(txtOther, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 520, 166, -1));
 
         lblOthers.setText("Others:");
+        panelBudget.add(lblOthers, new org.netbeans.lib.awtextra.AbsoluteConstraints(121, 523, -1, -1));
 
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -1652,110 +1144,31 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
                 btnUpdateActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout panelBudgetLayout = new javax.swing.GroupLayout(panelBudget);
-        panelBudget.setLayout(panelBudgetLayout);
-        panelBudgetLayout.setHorizontalGroup(
-            panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblTitle8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(panelBudgetLayout.createSequentialGroup()
-                .addGroup(panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelBudgetLayout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addComponent(lblTotal)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelBudgetLayout.createSequentialGroup()
-                        .addGap(217, 217, 217)
-                        .addGroup(panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(panelBudgetLayout.createSequentialGroup()
-                                .addComponent(lblHealth)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtHealth, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelBudgetLayout.createSequentialGroup()
-                                .addComponent(lblEducation)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtEducation, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelBudgetLayout.createSequentialGroup()
-                                .addComponent(lblFood)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtFood, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBudgetLayout.createSequentialGroup()
-                                .addComponent(lblDonation)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtDonation, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelBudgetLayout.createSequentialGroup()
-                                .addComponent(lblOthers)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtOther, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(panelBudgetLayout.createSequentialGroup()
-                        .addGap(158, 158, 158)
-                        .addGroup(panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblIncome)
-                            .addComponent(lblExpenditure))))
-                .addContainerGap(286, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBudgetLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnUpdate)
-                .addGap(332, 332, 332))
-        );
-        panelBudgetLayout.setVerticalGroup(
-            panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBudgetLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTitle8)
-                .addGap(67, 67, 67)
-                .addGroup(panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTotal)
-                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(81, 81, 81)
-                .addComponent(lblExpenditure)
-                .addGap(30, 30, 30)
-                .addGroup(panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEducation)
-                    .addComponent(txtEducation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblHealth)
-                    .addComponent(txtHealth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFood)
-                    .addComponent(txtFood, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
-                .addComponent(lblIncome)
-                .addGap(29, 29, 29)
-                .addGroup(panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDonation)
-                    .addComponent(txtDonation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblOthers)
-                    .addComponent(txtOther, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(65, 65, 65)
-                .addComponent(btnUpdate)
-                .addContainerGap(116, Short.MAX_VALUE))
-        );
+        panelBudget.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 592, -1, -1));
 
         panelAdminWork.add(panelBudget, "card9");
 
-        lblTitle9.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        panelChildren.setBackground(new java.awt.Color(255, 255, 255));
+        panelChildren.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblTitle9.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
         lblTitle9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitle9.setText("Children");
+        lblTitle9.setText("NGO Children");
+        panelChildren.add(lblTitle9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 1340, -1));
 
         tableChildrenCreate.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Children Id", "Name", "Age", "DOB", "Gender"
+                "Children Id", "Name", "Age", "DOB", "Gender", "Caretaker"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1764,19 +1177,39 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
         });
         ScrollPane7.setViewportView(tableChildrenCreate);
 
+        panelChildren.add(ScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 134, 677, 119));
+
         lblChildrenName.setText("Name:");
+        panelChildren.add(lblChildrenName, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 349, -1, -1));
+        panelChildren.add(txtChildrenName, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 346, 230, -1));
 
         lblChildrenAge.setText("Age:");
+        panelChildren.add(lblChildrenAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 389, -1, -1));
+        panelChildren.add(txtChildrenAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 386, 230, -1));
 
         lblChildrenId.setText("Children Id:");
+        panelChildren.add(lblChildrenId, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 309, -1, -1));
+        panelChildren.add(txtChildrenId, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 306, 230, -1));
 
         lblChildrenDob.setText("DOB:");
+        panelChildren.add(lblChildrenDob, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 429, -1, -1));
+        panelChildren.add(txtChildrenDOB, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 426, 230, -1));
 
         lblChildrenGender.setText("Gender:");
+        panelChildren.add(lblChildrenGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 469, -1, -1));
 
         cmbChildrenGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Others" }));
+        panelChildren.add(cmbChildrenGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 466, 230, -1));
 
         lblChildrenSearch.setText("Search:");
+        panelChildren.add(lblChildrenSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 97, -1, -1));
+
+        txtChildrenSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtChildrenSearchKeyReleased(evt);
+            }
+        });
+        panelChildren.add(txtChildrenSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(485, 94, 225, -1));
 
         btnChildrenView.setText("View");
         btnChildrenView.addActionListener(new java.awt.event.ActionListener() {
@@ -1784,6 +1217,7 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
                 btnChildrenViewActionPerformed(evt);
             }
         });
+        panelChildren.add(btnChildrenView, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 271, -1, -1));
 
         btnChildrenDelete.setText("Delete");
         btnChildrenDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -1791,6 +1225,7 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
                 btnChildrenDeleteActionPerformed(evt);
             }
         });
+        panelChildren.add(btnChildrenDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 271, -1, -1));
 
         btnChildrenCreate.setText("Create");
         btnChildrenCreate.addActionListener(new java.awt.event.ActionListener() {
@@ -1798,6 +1233,7 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
                 btnChildrenCreateActionPerformed(evt);
             }
         });
+        panelChildren.add(btnChildrenCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 592, -1, -1));
 
         btnChildrenUpdate.setText("Update");
         btnChildrenUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -1805,136 +1241,80 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
                 btnChildrenUpdateActionPerformed(evt);
             }
         });
+        panelChildren.add(btnChildrenUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 592, -1, -1));
 
         lblChildrenRole.setText("Role:");
+        panelChildren.add(lblChildrenRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 509, -1, -1));
 
         txtChildrenRole.setEditable(false);
         txtChildrenRole.setText("Child");
+        panelChildren.add(txtChildrenRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 506, 230, -1));
 
         lblChildrenCaretaker.setText("Caretaker:");
+        panelChildren.add(lblChildrenCaretaker, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 543, -1, -1));
 
-        javax.swing.GroupLayout panelChildrenLayout = new javax.swing.GroupLayout(panelChildren);
-        panelChildren.setLayout(panelChildrenLayout);
-        panelChildrenLayout.setHorizontalGroup(
-            panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblTitle9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(panelChildrenLayout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelChildrenLayout.createSequentialGroup()
-                        .addComponent(btnChildrenView)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnChildrenDelete))
-                    .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(panelChildrenLayout.createSequentialGroup()
-                            .addComponent(lblChildrenSearch)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtChildrenSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(ScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 677, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(36, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelChildrenLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblChildrenRole)
-                        .addComponent(lblChildrenGender)
-                        .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(panelChildrenLayout.createSequentialGroup()
-                                .addComponent(lblChildrenId)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtChildrenId, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelChildrenLayout.createSequentialGroup()
-                                .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblChildrenName)
-                                    .addComponent(lblChildrenAge)
-                                    .addComponent(lblChildrenDob))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtChildrenAge, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtChildrenName, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtChildrenDOB, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cmbChildrenGender, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtChildrenRole, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(panelChildrenLayout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addComponent(btnChildrenCreate)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnChildrenUpdate))
-                                    .addComponent(txtChildrenCaretaker, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(panelChildrenLayout.createSequentialGroup()
-                        .addComponent(lblChildrenCaretaker)
-                        .addGap(282, 282, 282)))
-                .addGap(199, 199, 199))
-        );
-        panelChildrenLayout.setVerticalGroup(
-            panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelChildrenLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTitle9)
-                .addGap(94, 94, 94)
-                .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblChildrenSearch)
-                    .addComponent(txtChildrenSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(ScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnChildrenView)
-                    .addComponent(btnChildrenDelete))
-                .addGap(23, 23, 23)
-                .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblChildrenId)
-                    .addComponent(txtChildrenId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblChildrenName)
-                    .addComponent(txtChildrenName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblChildrenAge)
-                    .addComponent(txtChildrenAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblChildrenDob)
-                    .addComponent(txtChildrenDOB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblChildrenGender)
-                    .addComponent(cmbChildrenGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblChildrenRole)
-                    .addComponent(txtChildrenRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtChildrenCaretaker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblChildrenCaretaker))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addGroup(panelChildrenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnChildrenCreate)
-                    .addComponent(btnChildrenUpdate))
-                .addGap(36, 36, 36))
-        );
+        panelChildren.add(txtChildrenCaretaker, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 540, 230, -1));
 
         panelAdminWork.add(panelChildren, "card10");
 
-        lblTitle10.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        panelFoodInv.setBackground(new java.awt.Color(255, 255, 255));
+        panelFoodInv.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblTitle10.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
         lblTitle10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle10.setText("Essential Items");
+        panelFoodInv.add(lblTitle10, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 740, -1));
 
-        javax.swing.GroupLayout panelFoodInvLayout = new javax.swing.GroupLayout(panelFoodInv);
-        panelFoodInv.setLayout(panelFoodInvLayout);
-        panelFoodInvLayout.setHorizontalGroup(
-            panelFoodInvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblTitle10, javax.swing.GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE)
-        );
-        panelFoodInvLayout.setVerticalGroup(
-            panelFoodInvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelFoodInvLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTitle10)
-                .addContainerGap(680, Short.MAX_VALUE))
-        );
+        tableNgoOrder.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Order Id", "Item", "Quantity", "Status"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(tableNgoOrder);
+
+        panelFoodInv.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 93, 614, 115));
+
+        jLabel4.setText("Order Id:");
+        panelFoodInv.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 258, -1, -1));
+        panelFoodInv.add(txtOrderId, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 255, 189, -1));
+
+        jLabel5.setText("Item:");
+        panelFoodInv.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 298, -1, -1));
+
+        jLabel6.setText("Status:");
+        panelFoodInv.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 378, -1, -1));
+
+        txtStatus2.setEditable(false);
+        txtStatus2.setText("Pending");
+        panelFoodInv.add(txtStatus2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 375, 189, -1));
+
+        btnPlaceOrder.setText("Place Order");
+        btnPlaceOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPlaceOrderActionPerformed(evt);
+            }
+        });
+        panelFoodInv.add(btnPlaceOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 427, -1, -1));
+
+        jLabel7.setText("Quantity:");
+        panelFoodInv.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 338, -1, -1));
+        panelFoodInv.add(txtQty, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 335, 189, -1));
+
+        panelFoodInv.add(txtItem, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 295, 189, -1));
 
         panelAdminWork.add(panelFoodInv, "card9");
 
@@ -1957,16 +1337,27 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
             System.out.println("Hello");
             Integer donation = Integer.valueOf(system.getBudgetList().getMoney().getDonation());
             Integer other = Integer.valueOf(system.getBudgetList().getMoney().getOthers());
-            Integer total = donation+other;
-            Double edu = 0.3*total;
-            Double hel = 0.3*total;
-            Double ess = 0.4*total;
-            txtDonation.setText(String.valueOf(system.getBudgetList().getMoney().getDonation()));
-            txtOther.setText(String.valueOf(system.getBudgetList().getMoney().getOthers()));
-            txtTotal.setText(String.valueOf(donation+other));
+            System.out.println("issue with total");
+            Integer total= Integer.valueOf(system.getBudgetList().getMoney().getTotal());
+            
+//            Integer total = donation+other;
+            Double edu = 0.2*total;
+            Double hel = 0.2*total;
+            Double ess = 0.3*total;
+            txtDonation.setText(String.valueOf(donation));
+            txtOther.setText(String.valueOf(other));
+            txtTotal.setText(String.valueOf(total));
             txtEducation.setText(String.valueOf(edu));
             txtHealth.setText(String.valueOf(hel));
             txtFood.setText(String.valueOf(ess));
+        }
+        else{
+            txtDonation.setText(String.valueOf(0));
+            txtOther.setText(String.valueOf(0));
+            txtTotal.setText(String.valueOf(0));
+            txtEducation.setText(String.valueOf(0));
+            txtHealth.setText(String.valueOf(0));
+            txtFood.setText(String.valueOf(0));
         }
     }
    
@@ -1993,53 +1384,77 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Id already present");
             return;
         }
+        
+        
+        
         String name = txtNgoManagerName.getText();
         if(name.isEmpty()){
             JOptionPane.showMessageDialog(this, "Please enter Name");
             return;
         }
         
+        
+        
         String username = txtNgoManagerUsername.getText();
-         if(username.isEmpty()){
-            JOptionPane.showMessageDialog(this, "Please enter Username");
+        if(username.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Enter the username");
             return;
         }
-        else if(system.getNgoManagerList().uniqueNgoManagerUsername(username)== false){
-            JOptionPane.showMessageDialog(this, "Username already present");
+        else if(system.getNgoManagerList().uniqueNgoManagerUsername(username)==false){
+            JOptionPane.showMessageDialog(this, "Username already exist");
             return;
         }
         
-        try{
-            Integer age = Integer.valueOf(txtNgoManagerAge.getText());
-        }catch(NumberFormatException nfe){
-            JOptionPane.showMessageDialog(this, "Please enter Age");
+        
+        
+        if(data.numcheck(txtNgoManagerAge.getText())==false){
+            JOptionPane.showMessageDialog(this, "Enter valid age");
             return;
         }
         Integer age = Integer.valueOf(txtNgoManagerAge.getText());
+        
+        
+        
         String dob = txtNgoManagerDOB.getText();
-        if(dob.isEmpty()){
-            JOptionPane.showMessageDialog(this, "Please enter DOB");
+        if(!data.dateCheck(dob)){
+            JOptionPane.showMessageDialog(this, "Please enter correct date in format mm/dd/yyyy");
             return;
         }
+        
+        
+        
         String gender = String.valueOf(cmbNgoManagerGender.getSelectedItem());
+        
+        
+        
         String role = txtNgoManagerRole.getText();
+        
+        
+        
         String emailid= txtNgoManagerEmailId.getText();
-         if(emailid.isEmpty()){
-            JOptionPane.showMessageDialog(this, "Please enter Email-Id");
+        if(!data.emailCheck(emailid)){
+            JOptionPane.showMessageDialog(this, "Enter valid email id");
             return;
         }
-        try{
-            Long phno = Long.valueOf(txtNgoManagerPhno.getText());
-        }catch(NumberFormatException nfe){
-            JOptionPane.showMessageDialog(this, "Please enter Phone No");
+        
+        
+        
+        if(!data.phnocheck(txtNgoManagerPhno.getText())){
+            JOptionPane.showMessageDialog(this, "Enter valid phone no");
             return;
         }
         Long phno = Long.valueOf(txtNgoManagerPhno.getText());
+        
+        
+        
         String pass = txtNgoManagerPassword.getText();
         if(pass.isEmpty()){
             JOptionPane.showMessageDialog(this, "Please enter Password");
             return;
         }
+        
+        
+        
         NgoManager newManager = system.getNgoManagerList().addNgoManager();
         
         newManager.setNgoManagerId(id);
@@ -2179,14 +1594,38 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
     private void btnAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAppointmentActionPerformed
         // TODO add your handling code here:
         String appNo = txtApplicationNo1.getText();
+        if(appNo.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Enter Application Number");
+            return;
+        }
+        else if(system.getHosAppList().uiqueAppId(appNo)== false){
+            JOptionPane.showMessageDialog(this, "Application Number already exist");
+            return;
+        }
+        
+        
+        
         String name = txtChildName1.getText();
         Integer age = Integer.valueOf(txtChildAge1.getText());
         
         String gender = txtChildGender2.getText();
+        
+        
         String date  = txtAppDate.getText();
+        if(!data.dateCheck(date)){
+            JOptionPane.showMessageDialog(this, "Please enter correct date in format mm/dd/yyyy");
+            return;
+        }
+        
+        
+        
         String status = txtStatus1.getText();
         
         String comm = txtChildComment1.getText();
+        if(comm.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Enter Comment");
+            return;
+        }
         
         Appointment newApp = system.getHosAppList().addAppointment();
         
@@ -2202,13 +1641,13 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
         
         JOptionPane.showMessageDialog(this, "Application submitted successfully");
         
-        txtApplicationNo.setText("");
-        txtChildName.setText("");
-        txtChildAge.setText("");
+        txtApplicationNo1.setText("");
+        txtChildName1.setText("");
+        txtChildAge1.setText("");
         
         txtChildGender2.setText("");
-        
-        txtChildComment.setText("");
+        txtAppDate.setText("");
+        txtChildComment1.setText("");
         
         populateAppoinmentTable();
         
@@ -2261,64 +1700,91 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
 //
 //            selMan.setNgoManagerId(txtNgoManagerId.getText());
             
-            String name = txtNgoManagerName.getText();
-            if(name.isEmpty()){
-                JOptionPane.showMessageDialog(this, "Please enter Name");
+
+
+            selMan.setName(txtNgoManagerName.getText());
+            if(txtNgoManagerName.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "Enter valid name");
                 return;
             }
             selMan.setName(txtNgoManagerName.getText());
             
-            String username = txtNgoManagerUsername.getText();
-            if(username.isEmpty()){
-               JOptionPane.showMessageDialog(this, "Please enter Username");
-               return;
-            }
-           
-            selMan.setUsername(txtNgoManagerUsername.getText());
             
-            try{
-                Integer age = Integer.valueOf(txtNgoManagerAge.getText());
-            }catch(NumberFormatException nfe){
-                JOptionPane.showMessageDialog(this, "Please enter Age");
+            
+            
+//            String username = txtNgoManagerUsername.getText();
+//            if(username.isEmpty()){
+//               JOptionPane.showMessageDialog(this, "Please enter Username");
+//               return;
+//            }
+//            selMan.setUsername(txtNgoManagerUsername.getText());
+            
+            
+            
+            
+            if(!data.numcheck(txtNgoManagerAge.getText())){
+		JOptionPane.showMessageDialog(this, "Enter valid age");
                 return;
             }
-            
             selMan.setAge(Integer.valueOf(txtNgoManagerAge.getText()));
             
-            String dob = txtNgoManagerDOB.getText();
-            if(dob.isEmpty()){
-                JOptionPane.showMessageDialog(this, "Please enter DOB");
+            
+            
+            
+            selMan.setDob(txtNgoManagerDOB.getText());
+            if(!data.dateCheck(txtNgoManagerDOB.getText())){
+                JOptionPane.showMessageDialog(this, "Enter valid date");
                 return;
             }
             
-            selMan.setDob(txtNgoManagerDOB.getText());
+            
+            
             selMan.setGender(String.valueOf(cmbNgoManagerGender.getSelectedItem()));
+            
+            
+            
             selMan.setRole(txtNgoManagerRole.getText());
-            String emailid= txtNgoManagerEmailId.getText();
-            if(emailid.isEmpty()){
-               JOptionPane.showMessageDialog(this, "Please enter Email-Id");
-               return;
-            }
+            
+            
+            
             selMan.setEmailId(txtNgoManagerEmailId.getText());
-            try{
-                Long phno = Long.valueOf(txtNgoManagerPhno.getText());
-            }catch(NumberFormatException nfe){
-                JOptionPane.showMessageDialog(this, "Please enter Phone No");
+            if(!data.emailCheck(txtNgoManagerEmailId.getText())){
+                JOptionPane.showMessageDialog(this, "Enter valid emailid");
+                return;
+            }
+            
+            
+            
+            if(!data.phnocheck(txtNgoManagerPhno.getText())){
+		JOptionPane.showMessageDialog(this, "Enter valid phone no");
                 return;
             }
             selMan.setPhno(Long.valueOf(txtNgoManagerPhno.getText()));
             
-            try{
-            Long phno = Long.valueOf(txtNgoManagerPhno.getText());
-            }catch(NumberFormatException nfe){
-                JOptionPane.showMessageDialog(this, "Please enter Phone No");
+            
+            
+            selMan.setPassword(txtNgoManagerPassword.getText());
+            if(txtNgoManagerPassword.getText().isEmpty()){
+		JOptionPane.showMessageDialog(this, "Enter valid password");
                 return;
             }
-            selMan.setPassword(txtNgoManagerPassword.getText());
+            
+            
             
             JOptionPane.showMessageDialog(this, "Ngo Manager updated successfully");
             
-//            dB4OUtil.storeSystem(system);
+            txtNgoManagerId.setText("");
+            txtNgoManagerName.setText("");
+            txtNgoManagerUsername.setText("");
+            txtNgoManagerAge.setText("");
+            txtNgoManagerDOB.setText("");
+            txtNgoManagerEmailId.setText("");
+            txtNgoManagerPhno.setText("");
+            txtNgoManagerPassword.setText("");
+            
+            
+            
+
             populateNgoManagerTable();
             
           
@@ -2464,6 +1930,7 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
         
 //        dB4OUtil.storeSystem(system);
         populateCaretakerTable();
+        populateCombo();
     }//GEN-LAST:event_btnCaretakerCreateActionPerformed
 
     private void btnCaretakerUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaretakerUpdateActionPerformed
@@ -2581,15 +2048,78 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
     private void btnFundManagerCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFundManagerCreateActionPerformed
         // TODO add your handling code here:
         String id = txtFundManagerId.getText();
+        if(id.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Enter the Id");
+            return;
+        }
+        else if(system.getFundManagerList().uniqueFundManId(id)== false){
+            JOptionPane.showMessageDialog(this, "Id already exist");
+            return;
+        }
+        
+        
         String name = txtFundManagerName.getText();
+        if(name.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Enter the name");
+            return;
+        }
+        
+        
         String username = txtFundManagerUsername.getText();
+        if(username.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Enter the username");
+            return;
+        }
+        else if(system.getFundManagerList().uniqueFundManUsername(username)==false){
+            JOptionPane.showMessageDialog(this, "Username already exist");
+            return;
+        }
+        
+        
+        if(data.numcheck(txtFundManagerAge.getText())==false){
+            JOptionPane.showMessageDialog(this, "Enter valid age");
+            return;
+        }
         Integer age = Integer.valueOf(txtFundManagerAge.getText());
+        
+        
+        
         String gender = String.valueOf(cmbFundManagerGender.getSelectedItem());
+        
+        
+        
         String role = txtFundManagerRole.getText();
+        
+        
+        
         String dob = txtFundManagerDOB.getText();
+        if(!data.dateCheck(dob)){
+            JOptionPane.showMessageDialog(this, "Please enter correct date in format mm/dd/yyyy");
+            return;
+        }
+        
+        
         String emailid= txtFundManagerEmailId.getText();
+        if(!data.emailCheck(emailid)){
+            JOptionPane.showMessageDialog(this, "Enter valid email id");
+            return;
+        }
+        
+        if(!data.phnocheck(txtFundManagerPhno.getText())){
+            JOptionPane.showMessageDialog(this, "Enter valid phone no");
+            return;
+        }
         Long phno = Long.valueOf(txtFundManagerPhno.getText());
+        
+        
+        
         String pass = txtFundManagerPassword.getText();
+        if(pass.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Enter valid password");
+            return;
+        }
+        
+        
         
         FundManager newManager = system.getFundManagerList().addFundManager();
         
@@ -2634,16 +2164,72 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
             DefaultTableModel model = (DefaultTableModel) tableFundManager.getModel();
             FundManager selMan = (FundManager) model.getValueAt(selectedRowIndex,0);
             
-            selMan.setFundManagerId(txtFundManagerId.getText());
+//            selMan.setFundManagerId(txtFundManagerId.getText());
+            
+            
+            
             selMan.setName(txtFundManagerName.getText());
-            selMan.setUsername(txtFundManagerUsername.getText());
+            if(txtFundManagerPassword.getText().isEmpty()){
+		JOptionPane.showMessageDialog(this, "Enter valid name");
+                return;
+            }
+            selMan.setName(txtFundManagerName.getText());
+            
+            
+            
+//            selMan.setUsername(txtFundManagerUsername.getText());
+            
+            
+        
+            if(!data.numcheck(txtFundManagerAge.getText())){
+		JOptionPane.showMessageDialog(this, "Enter valid age");
+                return;
+            } 
+           
             selMan.setAge(Integer.valueOf(txtFundManagerAge.getText()));
+            
+            
+            
             selMan.setDob(txtFundManagerDOB.getText());
+            if(!data.dateCheck(txtFundManagerDOB.getText())){
+		JOptionPane.showMessageDialog(this, "Enter valid date");
+                return;
+            }
+            
+            
+            
             selMan.setGender(String.valueOf(cmbFundManagerGender.getSelectedItem()));
+            
+            
+            
             selMan.setRole(txtFundManagerRole.getText());
+            
+            
+            
             selMan.setEmailId(txtFundManagerEmailId.getText());
+            if(!data.emailCheck(txtFundManagerEmailId.getText())){
+		JOptionPane.showMessageDialog(this, "Enter valid emailid");
+                return;
+            }
+            
+            
+            
             selMan.setPhno(Long.valueOf(txtFundManagerPhno.getText()));
+            
+            if(!data.phnocheck(txtFundManagerPhno.getText())){
+                JOptionPane.showMessageDialog(this, "Enter valid phone no");
+                return;
+            }
+            
+            
+            
             selMan.setPassword(txtFundManagerPassword.getText());
+            if(txtFundManagerPassword.getText().isEmpty()){
+		JOptionPane.showMessageDialog(this, "Enter valid password");
+                return;
+            }
+            
+            
             
             JOptionPane.showMessageDialog(this, "Fund Manager updated successfully");
             
@@ -2680,7 +2266,7 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
             txtChildrenDOB.setText(selMan.getDob());
             cmbChildrenGender.setSelectedItem(selMan.getGender());
             txtChildrenRole.setText(selMan.getRole());
-            txtChildrenCaretaker.setText(selMan.getCaretaker());
+            txtChildrenCaretaker.setSelectedItem(selMan.getCaretaker());
         }
     }//GEN-LAST:event_btnChildrenViewActionPerformed
 
@@ -2710,12 +2296,46 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
     private void btnChildrenCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChildrenCreateActionPerformed
         // TODO add your handling code here:
         String id = txtChildrenId.getText();
+        if(id.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Enter the Id");
+            return;
+        }
+        else if(system.getChildrenList().uiqueChildrenId(id)== false){
+            JOptionPane.showMessageDialog(this, "Id already exist");
+            return;
+        }
+        
+        
         String name = txtChildrenName.getText();
+        if(name.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Enter the name");
+            return;
+        }
+        
+        if(data.numcheck(txtChildrenAge.getText())==false){
+            JOptionPane.showMessageDialog(this, "Enter valid age");
+            return;
+        }
         Integer age = Integer.valueOf(txtChildrenAge.getText());
+        
+        
+        
         String dob = txtChildrenDOB.getText();
+        if(!data.dateCheck(dob)){
+            JOptionPane.showMessageDialog(this, "Please enter correct date in format mm/dd/yyyy");
+            return;
+        }
+        
+        
         String gender = String.valueOf(cmbChildrenGender.getSelectedItem());
+        
+        
+        
         String role = txtChildrenRole.getText();
-        String caretaker = txtChildrenCaretaker.getText();
+        
+        
+        
+        String caretaker = String.valueOf(txtChildrenCaretaker.getSelectedItem());
         
         
         Children newManager = system.getChildrenList().addChildren();
@@ -2755,13 +2375,38 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
             DefaultTableModel model = (DefaultTableModel) tableChildrenCreate.getModel();
             Children selMan = (Children) model.getValueAt(selectedRowIndex,0);
             
-            selMan.setChildrenId(txtChildrenId.getText());
+//            selMan.setChildrenId(txtChildrenId.getText());
+            
+            
+            
             selMan.setName(txtChildrenName.getText());
+            if(txtChildrenName.getText().isEmpty()){
+		JOptionPane.showMessageDialog(this, "Enter valid name");
+                return;
+            }
+            
+            if(!data.numcheck(txtChildrenAge.getText())){
+		JOptionPane.showMessageDialog(this, "Enter valid age");
+                return;
+            }
             selMan.setAge(Integer.valueOf(txtChildrenAge.getText()));
+            
+            
             selMan.setDob(txtChildrenDOB.getText());
+            if(!data.dateCheck(txtChildrenDOB.getText())){
+                JOptionPane.showMessageDialog(this, "Enter valid date");
+                return;
+            }
+            
             selMan.setGender(String.valueOf(cmbChildrenGender.getSelectedItem()));
+            
+            
             selMan.setRole(txtChildrenRole.getText());
-            selMan.setCaretaker(txtChildrenCaretaker.getText());
+            
+            
+            selMan.setCaretaker(String.valueOf(txtChildrenCaretaker.getSelectedItem()));
+            
+            
             
             JOptionPane.showMessageDialog(this, "Child updated successfully");
             
@@ -2775,15 +2420,60 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
     private void btnApplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApplyActionPerformed
         // TODO add your handling code here:
         String appNo = txtApplicationNo.getText();
+        if(appNo.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Enter the Application Number");
+            return;
+        }
+        else if(system.getApplicationList().uiqueApplicationId(appNo)== false){
+            JOptionPane.showMessageDialog(this, "Application Number already exist");
+            return;
+        }
+
+//        if(appNo.isEmpty()){
+//            JOptionPane.showMessageDialog(this, "Enter the appNo");
+//            return;
+//        }
+//        else if(system.getCareTakerList().uiqueCaretakerId(appNo)== false){
+//            JOptionPane.showMessageDialog(this, "appNo already exist");
+//            return;
+//        }
+//        system.getap
+        
         String name = txtChildName.getText();
+   
         Integer age = Integer.valueOf(txtChildAge.getText());
+        
+        
         String dob = txtChildDOB.getText();
+        if(!data.dateCheck(dob)){
+            JOptionPane.showMessageDialog(this, "Please enter correct date in format mm/dd/yyy");
+            return;
+        }
+        
+        
         String gender = cmbChildGender.getText();
+        
+        
+        
         String cls = txtChildClass.getText();
+        if(cls.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Enter the Class");
+            return;
+        }
+        
+        
+        
         String status = txtStatus.getText();
         String school = txtChildSchool.getText();
         String ngo = txtNgo.getText();
+        
+        
         String comm = txtChildComment.getText();
+        if(comm.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Enter the Comments");
+            return;
+        }
+        
         
         Application newApp = system.getApplicationList().addApplication();
         
@@ -2865,16 +2555,22 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
         if(system.getBudgetList()==null){
             Budget b = system.getBudgetList().addBudget();
             
+            
             b.setDonation(Integer.valueOf(txtDonation.getText()));
             b.setOthers(Integer.valueOf(txtOther.getText()));
             
             Integer donation = b.getDonation();
             Integer other = b.getOthers();
             Integer total = donation+other;
+            b.setTotal(total);
+            txtTotal.setText(String.valueOf(total));
+
+            
             Double edu = 0.3*total;
             Double hel = 0.3*total;
             Double ess = 0.4*total;
-            txtTotal.setText(String.valueOf(total));
+            
+            
             txtEducation.setText(String.valueOf(edu));
             txtHealth.setText(String.valueOf(hel));
             txtFood.setText(String.valueOf(ess));
@@ -2891,6 +2587,7 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
             Integer donation = b.getDonation();
             Integer other = b.getOthers();
             Integer total = donation+other;
+            b.setTotal(total);
             Double edu = 0.3*total;
             Double hel = 0.3*total;
             Double ess = 0.4*total;
@@ -2924,6 +2621,74 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
             txtChildGender2.setText(selApp.getGender());
         }
     }//GEN-LAST:event_btnAutofill1ActionPerformed
+
+    private void btnPlaceOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlaceOrderActionPerformed
+        // TODO add your handling code here:
+        String id = txtOrderId.getText();
+        if(id.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Enter Order Id");
+            return;
+        }
+        else if(system.getNgoOrderList().uiqueNgoOrderId(id)== false){
+            JOptionPane.showMessageDialog(this, "Order already exist");
+            return;
+        }
+        
+        
+        String items = String.valueOf(txtItem.getSelectedItem());
+        
+        if(data.numcheck(txtQty.getText())==false){
+            JOptionPane.showMessageDialog(this, "Enter valid Quantity");
+            return;
+        }
+        Integer qty = Integer.valueOf(txtQty.getText());
+        
+        
+        
+        String status = txtStatus.getText();
+        
+        
+        NgoOrder newManager = system.getNgoOrderList().addNgoOrder();
+        
+        newManager.setOrderid(id);
+        newManager.setItems(items);
+        newManager.setQty(qty);
+        newManager.setStatus(status);
+        
+        JOptionPane.showMessageDialog(this, "Order created successfully");
+        
+        txtOrderId.setText("");
+        
+        txtQty.setText("");
+        
+        populateNgoOrderTable();
+    }//GEN-LAST:event_btnPlaceOrderActionPerformed
+
+    private void btnEssentialItemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEssentialItemsActionPerformed
+        // TODO add your handling code here:
+        panelAdminWork.removeAll();
+        panelAdminWork.add(panelFoodInv);
+        panelAdminWork.repaint();
+        panelAdminWork.revalidate();
+    }//GEN-LAST:event_btnEssentialItemsActionPerformed
+
+    private void txtChildrenSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtChildrenSearchKeyReleased
+        // TODO add your handling code here:
+        String searchQuery = txtChildrenSearch.getText();
+        SearchChildren(searchQuery);
+    }//GEN-LAST:event_txtChildrenSearchKeyReleased
+
+    private void txtChildAge1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtChildAge1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtChildAge1ActionPerformed
+
+    private void txtApplicationNo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApplicationNo1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtApplicationNo1ActionPerformed
+
+    private void txtNgoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNgoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNgoActionPerformed
 
 
     private void populateNgoManagerTable(){
@@ -2988,12 +2753,13 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
 //        
             for(Children c: system.getChildrenList().getChildrenList()){
 
-                Object[] row = new Object[5];
+                Object[] row = new Object[6];
                 row[0] = c; 
                 row[1] = c.getName();
                 row[2] = c.getAge();
                 row[3] = c.getDob();
                 row[4] = c.getGender();
+                row[5] = c.getCaretaker();
                 model.addRow(row);
             }
       }
@@ -3038,15 +2804,16 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
         
 //        
             for(Application man: system.getApplicationList().getApplicationList()){
-
-                Object[] row = new Object[5];
-                row[0] = man; 
-                row[1] = man.getName();
-                row[2] = man.getAge();
-                row[3] = man.getGender();
-//                row[4] = man.getNgo();
-                row[4] = man.getStatus();
-                model.addRow(row);
+                if(man.getNgo().equals("Yes")){
+                    Object[] row = new Object[5];
+                    row[0] = man; 
+                    row[1] = man.getName();
+                    row[2] = man.getAge();
+                    row[3] = man.getGender();
+    //                row[4] = man.getNgo();
+                    row[4] = man.getStatus();
+                    model.addRow(row);
+                }
             }
           
       }
@@ -3088,6 +2855,42 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
             }
           
       }
+    
+      private void populateNgoOrderTable(){
+        DefaultTableModel model = (DefaultTableModel) tableNgoOrder.getModel();
+        model.setRowCount(0);
+        
+//        
+            for(NgoOrder man: system.getNgoOrderList().getNgoOrderList()){
+
+                Object[] row = new Object[4];
+                row[0] = man; 
+                row[1] = man.getItems();
+                row[2] = man.getQty();
+                row[3] = man.getStatus();
+         
+                model.addRow(row);
+            }
+          
+      }
+      
+     public void populateCombo(){
+        String[] docArr1 = system.getCareTakerList().carUsernameArray();
+        DefaultComboBoxModel dn1 = new DefaultComboBoxModel(docArr1);
+        txtChildrenCaretaker.setModel(dn1);
+        
+        String[] docArr = system.getMedicineList().medArray();
+        DefaultComboBoxModel dn = new DefaultComboBoxModel(docArr);
+        txtItem.setModel(dn);
+      }
+     
+     public void SearchChildren(String query){
+        DefaultTableModel model = (DefaultTableModel) tableChildrenCreate.getModel();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
+        
+        tableChildrenCreate.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(query));
+     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane ScrollPane4;
     private javax.swing.JScrollPane ScrollPane5;
@@ -3131,6 +2934,7 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
     private javax.swing.JButton btnNgoManagerView;
     private javax.swing.JButton btnNgoMangerUpdate;
     private javax.swing.JButton btnPerson;
+    private javax.swing.JButton btnPlaceOrder;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> cmbCaretakerGender;
     private javax.swing.JTextField cmbChildGender;
@@ -3140,7 +2944,12 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JLabel lblAccounts;
     private javax.swing.JLabel lblApplicationNo;
@@ -3154,7 +2963,6 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
     private javax.swing.JLabel lblCaretakerPassword;
     private javax.swing.JLabel lblCaretakerPhno;
     private javax.swing.JLabel lblCaretakerRole;
-    private javax.swing.JLabel lblCaretakerSearch;
     private javax.swing.JLabel lblCaretakerUsername;
     private javax.swing.JLabel lblChildAge;
     private javax.swing.JLabel lblChildAge1;
@@ -3166,7 +2974,6 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
     private javax.swing.JLabel lblChildName4;
     private javax.swing.JLabel lblChildName5;
     private javax.swing.JLabel lblChildName6;
-    private javax.swing.JLabel lblChildName7;
     private javax.swing.JLabel lblChildName8;
     private javax.swing.JLabel lblChildName9;
     private javax.swing.JLabel lblChildrenAge;
@@ -3190,7 +2997,6 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
     private javax.swing.JLabel lblFundManagerPassword;
     private javax.swing.JLabel lblFundManagerPhno;
     private javax.swing.JLabel lblFundManagerRole;
-    private javax.swing.JLabel lblFundManagerSearch;
     private javax.swing.JLabel lblFundManagerUsername;
     private javax.swing.JLabel lblHealth;
     private javax.swing.JLabel lblIncome;
@@ -3203,7 +3009,6 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
     private javax.swing.JLabel lblNgoManagerPassword;
     private javax.swing.JLabel lblNgoManagerPhno;
     private javax.swing.JLabel lblNgoManagerRole;
-    private javax.swing.JLabel lblNgoManagerSearch;
     private javax.swing.JLabel lblNgoManagerUsername;
     private javax.swing.JLabel lblOthers;
     private javax.swing.JLabel lblRole;
@@ -3240,6 +3045,7 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
     private javax.swing.JTable tableChildrenHealth;
     private javax.swing.JTable tableFundManager;
     private javax.swing.JTable tableNgoManager;
+    private javax.swing.JTable tableNgoOrder;
     private javax.swing.JTable tablePerson;
     private javax.swing.JTextField txtAppDate;
     private javax.swing.JTextField txtApplicationNo;
@@ -3252,7 +3058,6 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
     private javax.swing.JPasswordField txtCaretakerPassword;
     private javax.swing.JTextField txtCaretakerPhno;
     private javax.swing.JTextField txtCaretakerRole;
-    private javax.swing.JTextField txtCaretakerSearch;
     private javax.swing.JTextField txtCaretakerUsername;
     private javax.swing.JTextField txtChildAge;
     private javax.swing.JTextField txtChildAge1;
@@ -3265,7 +3070,7 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
     private javax.swing.JTextField txtChildName1;
     private javax.swing.JTextField txtChildSchool;
     private javax.swing.JTextField txtChildrenAge;
-    private javax.swing.JTextField txtChildrenCaretaker;
+    private javax.swing.JComboBox<String> txtChildrenCaretaker;
     private javax.swing.JTextField txtChildrenDOB;
     private javax.swing.JTextField txtChildrenId;
     private javax.swing.JTextField txtChildrenName;
@@ -3282,9 +3087,9 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
     private javax.swing.JPasswordField txtFundManagerPassword;
     private javax.swing.JTextField txtFundManagerPhno;
     private javax.swing.JTextField txtFundManagerRole;
-    private javax.swing.JTextField txtFundManagerSearch;
     private javax.swing.JTextField txtFundManagerUsername;
     private javax.swing.JTextField txtHealth;
+    private javax.swing.JComboBox<String> txtItem;
     private javax.swing.JTextField txtNgo;
     private javax.swing.JTextField txtNgoManagerAge;
     private javax.swing.JTextField txtNgoManagerDOB;
@@ -3294,11 +3099,13 @@ public class NgoAdminWorkspace extends javax.swing.JPanel {
     private javax.swing.JPasswordField txtNgoManagerPassword;
     private javax.swing.JTextField txtNgoManagerPhno;
     private javax.swing.JTextField txtNgoManagerRole;
-    private javax.swing.JTextField txtNgoManagerSearch;
     private javax.swing.JTextField txtNgoManagerUsername;
+    private javax.swing.JTextField txtOrderId;
     private javax.swing.JTextField txtOther;
+    private javax.swing.JTextField txtQty;
     private javax.swing.JTextField txtStatus;
     private javax.swing.JTextField txtStatus1;
+    private javax.swing.JTextField txtStatus2;
     private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }

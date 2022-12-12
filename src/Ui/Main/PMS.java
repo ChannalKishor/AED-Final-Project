@@ -41,43 +41,34 @@ public class PMS extends javax.swing.JPanel {
 
         btnBack1 = new javax.swing.JButton();
         btnMedicalStore = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnBack1.setBackground(new java.awt.Color(204, 204, 204));
+        btnBack1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnBack1.setText("Back");
         btnBack1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBack1ActionPerformed(evt);
             }
         });
+        add(btnBack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 74, -1, -1));
 
+        btnMedicalStore.setBackground(new java.awt.Color(204, 204, 204));
+        btnMedicalStore.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnMedicalStore.setText("Medical Store");
         btnMedicalStore.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMedicalStoreActionPerformed(evt);
             }
         });
+        add(btnMedicalStore, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 90, 136, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(107, 107, 107)
-                .addComponent(btnBack1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(407, Short.MAX_VALUE)
-                .addComponent(btnMedicalStore, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(257, 257, 257))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(86, 86, 86)
-                .addComponent(btnBack1)
-                .addGap(148, 148, 148)
-                .addComponent(btnMedicalStore)
-                .addContainerGap(416, Short.MAX_VALUE))
-        );
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UiImagesssss/pharmacy.jpg"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 1010, 630));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
@@ -97,8 +88,8 @@ public class PMS extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnBack1;
     private javax.swing.JButton btnMedicalStore;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

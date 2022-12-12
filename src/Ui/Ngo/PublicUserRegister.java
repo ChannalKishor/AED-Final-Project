@@ -7,6 +7,7 @@ package Ui.Ngo;
 import Funding.FundManager.FundManager;
 import Funding.PublicUser.PublicUser;
 import System.Directories.DB4OUtil;
+import System.Directories.DataValidation;
 import System.Directories.MainSystem;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -25,12 +26,14 @@ public class PublicUserRegister extends javax.swing.JPanel {
     private MainSystem system;
     private DB4OUtil dB4OUtil;
     private final String FILENAME = "ProjectDataBank.db4o";
+    private DataValidation data;
     
     public PublicUserRegister(JPanel cardPanel,MainSystem system,DB4OUtil dB4OUtil ) {
         initComponents();
         this.cardPanel = cardPanel;
         this.system = system;
         this.dB4OUtil = dB4OUtil;
+        this.data = new DataValidation();
     }
 
     /**
@@ -63,24 +66,41 @@ public class PublicUserRegister extends javax.swing.JPanel {
         txtEmailId = new javax.swing.JTextField();
         lblPhno = new javax.swing.JLabel();
         txtPhno = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
-        lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblTitle.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("Public User Registration");
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 800, -1));
 
         lblUsername.setText("Username:");
+        add(lblUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 134, -1, -1));
+        add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 134, 238, -1));
 
         lblName.setText("Name:");
+        add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 177, -1, -1));
+        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 174, 238, -1));
 
         lblAge.setText("Age:");
+        add(lblAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 217, -1, -1));
+        add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 214, 238, -1));
 
         lblDOB.setText("DOB:");
+        add(lblDOB, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 257, -1, -1));
+        add(txtDOB, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 254, 238, -1));
 
         lblGender.setText("Gender:");
+        add(lblGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 297, -1, -1));
 
         cmbGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Others" }));
+        add(cmbGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 294, 238, -1));
+        add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 414, 238, -1));
 
         lblPassword.setText("Password:");
+        add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 417, -1, -1));
 
         btnRegister.setText("Register");
         btnRegister.addActionListener(new java.awt.event.ActionListener() {
@@ -88,11 +108,14 @@ public class PublicUserRegister extends javax.swing.JPanel {
                 btnRegisterActionPerformed(evt);
             }
         });
+        add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(198, 531, -1, -1));
 
         lblRole.setText("Role:");
+        add(lblRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 457, -1, -1));
 
         txtRole.setEditable(false);
         txtRole.setText("Public User");
+        add(txtRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 454, 238, -1));
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -100,103 +123,18 @@ public class PublicUserRegister extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 71, -1, -1));
 
         lblEmailId.setText("Email-Id:");
+        add(lblEmailId, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 337, -1, -1));
+        add(txtEmailId, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 334, 238, -1));
 
         lblPhno.setText("Phone No:");
+        add(lblPhno, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 377, -1, -1));
+        add(txtPhno, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 374, 238, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(btnBack))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(199, 199, 199)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblUsername)
-                    .addComponent(lblName)
-                    .addComponent(lblAge)
-                    .addComponent(lblDOB)
-                    .addComponent(lblGender)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblEmailId)
-                            .addComponent(lblPassword)
-                            .addComponent(lblRole)
-                            .addComponent(lblPhno))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPhno, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(txtRole, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(cmbGender, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtDOB, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtEmailId, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(341, 341, 341)
-                .addComponent(btnRegister))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addComponent(lblTitle)
-                .addGap(15, 15, 15)
-                .addComponent(btnBack)
-                .addGap(82, 82, 82)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblName))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblAge))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtDOB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblDOB))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmbGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblGender))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtEmailId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblEmailId))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtPhno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblPhno))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblPassword))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblRole)))
-                    .addComponent(lblUsername))
-                .addGap(77, 77, 77)
-                .addComponent(btnRegister)
-                .addContainerGap())
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UiImagesssss/office.jpg"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, 820, 490));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -210,14 +148,60 @@ public class PublicUserRegister extends javax.swing.JPanel {
         // TODO add your handling code here:
         
         String username = txtUsername.getText();
+        if(username.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Enter username");
+            return;
+        }
+        else if(system.getPublicUserList().uniquePublicUserUsername(username) == false){
+            JOptionPane.showMessageDialog(this, "Username already exist");
+            return;
+        }
+        
+        
         String name = txtName.getText();
-        Integer age = Integer.parseInt(txtAge.getText());
+        if(name.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Enter the name");
+        }
+        
+        
+        if(data.numcheck(txtAge.getText())==false){
+            JOptionPane.showMessageDialog(this, "Enter valid age");
+            return;
+        }
+        Integer age = Integer.valueOf(txtAge.getText());
+        
+        
         String dob = txtDOB.getText();
+        if(!data.dateCheck(dob)){
+            JOptionPane.showMessageDialog(this, "Please enter correct date in format mm/dd/yyyy");
+            return;
+        }
+        
         String gender = String.valueOf(cmbGender.getSelectedItem());
+        
+        
         String emailid= txtEmailId.getText();
-        Long phno = Long.parseLong(txtPhno.getText());
+        if(!data.emailCheck(emailid)){
+            JOptionPane.showMessageDialog(this, "Enter valid email id");
+            return;
+        }
+        
+        
+        if(!data.phnocheck(txtPhno.getText())){
+            JOptionPane.showMessageDialog(this, "Enter valid phone no");
+            return;
+        }
+        Long phno = Long.valueOf(txtPhno.getText());
+        
+        
         String pass = txtPassword.getText();
+        if(pass.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Enter valid password");
+            return;
+        }
+        
         String role = txtRole.getText();
+        
         
         PublicUser newUser = system.getPublicUserList().addUser();
         
@@ -251,6 +235,7 @@ public class PublicUserRegister extends javax.swing.JPanel {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnRegister;
     private javax.swing.JComboBox<String> cmbGender;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblAge;
     private javax.swing.JLabel lblDOB;
     private javax.swing.JLabel lblEmailId;

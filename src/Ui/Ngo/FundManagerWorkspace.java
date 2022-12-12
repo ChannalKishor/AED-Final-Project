@@ -81,6 +81,8 @@ public class FundManagerWorkspace extends javax.swing.JPanel {
         lblOthers = new javax.swing.JLabel();
         btnUpdate = new javax.swing.JButton();
 
+        panelControl.setBackground(new java.awt.Color(51, 51, 51));
+
         btnHome.setText("Home");
         btnHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,25 +119,30 @@ public class FundManagerWorkspace extends javax.swing.JPanel {
         panelControlLayout.setVerticalGroup(
             panelControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelControlLayout.createSequentialGroup()
-                .addGap(130, 130, 130)
+                .addGap(126, 126, 126)
                 .addComponent(btnHome)
-                .addGap(18, 18, 18)
+                .addGap(59, 59, 59)
                 .addComponent(btnBudget)
                 .addGap(18, 18, 18)
                 .addComponent(btnFund)
-                .addContainerGap(457, Short.MAX_VALUE))
+                .addContainerGap(478, Short.MAX_VALUE))
         );
 
         SplitPaneFundManager.setLeftComponent(panelControl);
 
         panelWork.setLayout(new java.awt.CardLayout());
 
-        lblTitle2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblTitle2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitle2.setText("NGO");
+        panelHome.setBackground(new java.awt.Color(255, 255, 255));
+        panelHome.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblRole.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        lblTitle2.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
+        lblTitle2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle2.setText("NGO Fund Manager");
+        panelHome.add(lblTitle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, 639, -1));
+
+        lblRole.setFont(new java.awt.Font("Segoe UI Emoji", 1, 18)); // NOI18N
         lblRole.setText("Role: Fund Manager");
+        panelHome.add(lblRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 110, 179, -1));
 
         btnLogOut.setText("Log Out");
         btnLogOut.addActionListener(new java.awt.event.ActionListener() {
@@ -143,32 +150,12 @@ public class FundManagerWorkspace extends javax.swing.JPanel {
                 btnLogOutActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout panelHomeLayout = new javax.swing.GroupLayout(panelHome);
-        panelHome.setLayout(panelHomeLayout);
-        panelHomeLayout.setHorizontalGroup(
-            panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblTitle2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHomeLayout.createSequentialGroup()
-                .addContainerGap(517, Short.MAX_VALUE)
-                .addGroup(panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnLogOut)
-                    .addComponent(lblRole, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(70, 70, 70))
-        );
-        panelHomeLayout.setVerticalGroup(
-            panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelHomeLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTitle2)
-                .addGap(57, 57, 57)
-                .addComponent(lblRole)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnLogOut)
-                .addContainerGap(548, Short.MAX_VALUE))
-        );
+        panelHome.add(btnLogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 130, -1, -1));
 
         panelWork.add(panelHome, "card2");
+
+        panelPublicFund.setBackground(new java.awt.Color(255, 255, 255));
+        panelPublicFund.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tablePublicFund.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -191,51 +178,55 @@ public class FundManagerWorkspace extends javax.swing.JPanel {
         });
         ScrollPane.setViewportView(tablePublicFund);
 
-        lblTitle3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        panelPublicFund.add(ScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 610, 270));
+
+        lblTitle3.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
         lblTitle3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle3.setText("Public Funds");
-
-        javax.swing.GroupLayout panelPublicFundLayout = new javax.swing.GroupLayout(panelPublicFund);
-        panelPublicFund.setLayout(panelPublicFundLayout);
-        panelPublicFundLayout.setHorizontalGroup(
-            panelPublicFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelPublicFundLayout.createSequentialGroup()
-                .addGap(135, 135, 135)
-                .addComponent(ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(139, Short.MAX_VALUE))
-            .addComponent(lblTitle3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        panelPublicFundLayout.setVerticalGroup(
-            panelPublicFundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPublicFundLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTitle3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
-                .addComponent(ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(326, 326, 326))
-        );
+        panelPublicFund.add(lblTitle3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, 575, -1));
 
         panelWork.add(panelPublicFund, "card4");
 
-        lblTitle8.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        panelBudget.setBackground(new java.awt.Color(255, 255, 255));
+        panelBudget.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblTitle8.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
         lblTitle8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle8.setText("Budget");
+        panelBudget.add(lblTitle8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 740, -1));
 
-        lblTotal.setText("Total:");
+        lblTotal.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
+        lblTotal.setText("Total ($):");
+        panelBudget.add(lblTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(62, 135, -1, -1));
+        panelBudget.add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 139, 294, 29));
 
         lblEducation.setText("Education:");
+        panelBudget.add(lblEducation, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 289, -1, -1));
+        panelBudget.add(txtEducation, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 286, 166, -1));
 
         lblHealth.setText("Health:");
+        panelBudget.add(lblHealth, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 329, -1, -1));
+        panelBudget.add(txtHealth, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 326, 166, -1));
 
         lblFood.setText("Essential Items:");
+        panelBudget.add(lblFood, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 369, -1, -1));
+        panelBudget.add(txtFood, new org.netbeans.lib.awtextra.AbsoluteConstraints(208, 366, 166, -1));
 
+        lblExpenditure.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblExpenditure.setText("Expenditure:");
+        panelBudget.add(lblExpenditure, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 225, -1, -1));
 
+        lblIncome.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblIncome.setText("Income:");
+        panelBudget.add(lblIncome, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 437, -1, -1));
+        panelBudget.add(txtDonation, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 491, 166, -1));
 
         lblDonation.setText("Donations:");
+        panelBudget.add(lblDonation, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 494, -1, -1));
+        panelBudget.add(txtOther, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 531, 166, -1));
 
         lblOthers.setText("Others:");
+        panelBudget.add(lblOthers, new org.netbeans.lib.awtextra.AbsoluteConstraints(122, 534, -1, -1));
 
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -243,90 +234,7 @@ public class FundManagerWorkspace extends javax.swing.JPanel {
                 btnUpdateActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout panelBudgetLayout = new javax.swing.GroupLayout(panelBudget);
-        panelBudget.setLayout(panelBudgetLayout);
-        panelBudgetLayout.setHorizontalGroup(
-            panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblTitle8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(panelBudgetLayout.createSequentialGroup()
-                .addGroup(panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelBudgetLayout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addComponent(lblTotal)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelBudgetLayout.createSequentialGroup()
-                        .addGap(217, 217, 217)
-                        .addGroup(panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(panelBudgetLayout.createSequentialGroup()
-                                .addComponent(lblHealth)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtHealth, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelBudgetLayout.createSequentialGroup()
-                                .addComponent(lblEducation)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtEducation, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelBudgetLayout.createSequentialGroup()
-                                .addComponent(lblFood)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtFood, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBudgetLayout.createSequentialGroup()
-                                .addComponent(lblDonation)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtDonation, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelBudgetLayout.createSequentialGroup()
-                                .addComponent(lblOthers)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtOther, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(panelBudgetLayout.createSequentialGroup()
-                        .addGap(158, 158, 158)
-                        .addGroup(panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblIncome)
-                            .addComponent(lblExpenditure))))
-                .addContainerGap(258, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBudgetLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnUpdate)
-                .addGap(332, 332, 332))
-        );
-        panelBudgetLayout.setVerticalGroup(
-            panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBudgetLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTitle8)
-                .addGap(67, 67, 67)
-                .addGroup(panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTotal)
-                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(81, 81, 81)
-                .addComponent(lblExpenditure)
-                .addGap(30, 30, 30)
-                .addGroup(panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEducation)
-                    .addComponent(txtEducation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblHealth)
-                    .addComponent(txtHealth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFood)
-                    .addComponent(txtFood, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
-                .addComponent(lblIncome)
-                .addGap(29, 29, 29)
-                .addGroup(panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDonation)
-                    .addComponent(txtDonation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelBudgetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblOthers)
-                    .addComponent(txtOther, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(65, 65, 65)
-                .addComponent(btnUpdate)
-                .addContainerGap(89, Short.MAX_VALUE))
-        );
+        panelBudget.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 620, -1, -1));
 
         panelWork.add(panelBudget, "card9");
 
@@ -359,6 +267,15 @@ public class FundManagerWorkspace extends javax.swing.JPanel {
             txtEducation.setText(String.valueOf(edu));
             txtHealth.setText(String.valueOf(hel));
             txtFood.setText(String.valueOf(ess));
+        }
+        else{
+            txtDonation.setText(String.valueOf(0));
+            txtOther.setText(String.valueOf(0));
+            txtTotal.setText(String.valueOf(0));
+            txtEducation.setText(String.valueOf(0));
+            txtHealth.setText(String.valueOf(0));
+            txtFood.setText(String.valueOf(0));
+        
         }
     }
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
@@ -400,17 +317,18 @@ public class FundManagerWorkspace extends javax.swing.JPanel {
         // TODO add your handling code here:
         if(system.getBudgetList()==null){
             Budget b = system.getBudgetList().addBudget();
-
-            b.setDonation(Integer.valueOf(txtDonation.getText()));
-            b.setOthers(Integer.valueOf(txtOther.getText()));
-
             Integer donation = b.getDonation();
             Integer other = b.getOthers();
             Integer total = donation+other;
+
+            b.setDonation(Integer.valueOf(txtDonation.getText()));
+            b.setOthers(Integer.valueOf(txtOther.getText()));
+            b.setTotal(total);
+
             Double edu = 0.3*total;
             Double hel = 0.3*total;
             Double ess = 0.4*total;
-            txtTotal.setText(String.valueOf(total));
+
             txtEducation.setText(String.valueOf(edu));
             txtHealth.setText(String.valueOf(hel));
             txtFood.setText(String.valueOf(ess));

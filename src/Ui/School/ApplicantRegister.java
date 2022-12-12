@@ -6,6 +6,7 @@ package Ui.School;
 
 import JobApp.Applicant.Applicant;
 import System.Directories.DB4OUtil;
+import System.Directories.DataValidation;
 import System.Directories.MainSystem;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -24,12 +25,14 @@ public class ApplicantRegister extends javax.swing.JPanel {
     private MainSystem system;
     private DB4OUtil dB4OUtil;
     private final String FILENAME = "ProjectDataBank.db4o";
+    private DataValidation data;
     
     public ApplicantRegister(JPanel cardPanel,MainSystem system,DB4OUtil dB4OUtil) {
         initComponents();
         this.cardPanel = cardPanel;
         this.system = system;
         this.dB4OUtil = dB4OUtil;
+        this.data = new DataValidation();
     }
 
     /**
@@ -55,7 +58,6 @@ public class ApplicantRegister extends javax.swing.JPanel {
         cmbGender = new javax.swing.JComboBox<>();
         txtPassword = new javax.swing.JPasswordField();
         lblPassword = new javax.swing.JLabel();
-        btnRegister = new javax.swing.JButton();
         lblRole = new javax.swing.JLabel();
         txtRole = new javax.swing.JTextField();
         btnBack = new javax.swing.JButton();
@@ -63,6 +65,11 @@ public class ApplicantRegister extends javax.swing.JPanel {
         txtEmailId = new javax.swing.JTextField();
         lblPhno = new javax.swing.JLabel();
         txtPhno = new javax.swing.JTextField();
+        btnRegister = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -82,13 +89,6 @@ public class ApplicantRegister extends javax.swing.JPanel {
 
         lblPassword.setText("Password:");
 
-        btnRegister.setText("Register");
-        btnRegister.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegisterActionPerformed(evt);
-            }
-        });
-
         lblRole.setText("Role:");
 
         txtRole.setEditable(false);
@@ -104,6 +104,13 @@ public class ApplicantRegister extends javax.swing.JPanel {
         lblEmailId.setText("Email-Id:");
 
         lblPhno.setText("Phone No:");
+
+        btnRegister.setText("Register");
+        btnRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisterActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -145,9 +152,10 @@ public class ApplicantRegister extends javax.swing.JPanel {
                                 .addComponent(cmbGender, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txtDOB, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txtEmailId, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(341, 341, 341)
-                .addComponent(btnRegister))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnRegister)
+                .addGap(360, 360, 360))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,7 +201,7 @@ public class ApplicantRegister extends javax.swing.JPanel {
                             .addComponent(txtRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblRole)))
                     .addComponent(lblUsername))
-                .addGap(77, 77, 77)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
                 .addComponent(btnRegister)
                 .addContainerGap())
         );
@@ -202,38 +210,84 @@ public class ApplicantRegister extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGap(0, 824, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 700, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGap(0, 38, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
+        cardPanel.remove(this);
+        cardLayout.previous(cardPanel);
+    }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
 
         String username = txtUsername.getText();
+        if(username.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Enter username");
+            return;
+        }
+        else if(system.getApplicantList().uiqueApplicantUsername(username) == false){
+            JOptionPane.showMessageDialog(this, "Username already exist");
+            return;
+        }
+
         String name = txtName.getText();
-        Integer age = Integer.parseInt(txtAge.getText());
+        if(name.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Enter the name");
+            return;
+        }
+
+        if(data.numcheck(txtAge.getText())==false){
+            JOptionPane.showMessageDialog(this, "Enter valid age");
+            return;
+        }
+        Integer age = Integer.valueOf(txtAge.getText());
+
         String dob = txtDOB.getText();
+        if(!data.dateCheck(dob)){
+            JOptionPane.showMessageDialog(this, "Please enter correct date in format mm/dd/yyyy");
+            return;
+        }
+
         String gender = String.valueOf(cmbGender.getSelectedItem());
+
         String emailid= txtEmailId.getText();
-        Long phno = Long.parseLong(txtPhno.getText());
+        if(!data.emailCheck(emailid)){
+            JOptionPane.showMessageDialog(this, "Enter valid email id");
+            return;
+        }
+
+        if(!data.phnocheck(txtPhno.getText())){
+            JOptionPane.showMessageDialog(this, "Enter valid phone no");
+            return;
+        }
+        Long phno = Long.valueOf(txtPhno.getText());
+
         String pass = txtPassword.getText();
+        if(pass.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Enter valid password");
+            return;
+        }
+
         String role = txtRole.getText();
 
-        Applicant newUser = (Applicant) system.getApplicantList().addUser();
+        Applicant newUser = system.getApplicantList().addUser();
 
         newUser.setName(name);
         newUser.setUsername(username);
@@ -245,7 +299,7 @@ public class ApplicantRegister extends javax.swing.JPanel {
         newUser.setPhno(phno);
         newUser.setPassword(pass);
 
-        JOptionPane.showMessageDialog(this, "Applicant created successfully");
+        JOptionPane.showMessageDialog(this, "Public User created successfully");
 
         txtName.setText("");
         txtUsername.setText("");
@@ -257,13 +311,6 @@ public class ApplicantRegister extends javax.swing.JPanel {
 
         dB4OUtil.storeSystem(system);
     }//GEN-LAST:event_btnRegisterActionPerformed
-
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
-        CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
-        cardPanel.remove(this);
-        cardLayout.previous(cardPanel);
-    }//GEN-LAST:event_btnBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

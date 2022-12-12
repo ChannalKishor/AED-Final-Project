@@ -4,9 +4,13 @@
  */
 package Ui.LoginPage;
 
+import Pharmacy.DeliveryMan.DeliveryMan;
+import Pharmacy.Pharmacist.Pharmacist;
 import System.Directories.DB4OUtil;
 import System.Directories.MainSystem;
+import Ui.MedStore.DeliveryManWorkspace;
 import Ui.MedStore.MedAdminWorkspace;
+import Ui.MedStore.PharmacistWorkspace;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -67,7 +71,7 @@ public class MedStoreLoginPage extends javax.swing.JPanel {
 
         lblRole.setText("Role:");
 
-        cmbRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MedStore Admin", "Storekeeper" }));
+        cmbRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MedStore Admin", "Pharmacist", "Delivery Man" }));
 
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -150,41 +154,41 @@ public class MedStoreLoginPage extends javax.swing.JPanel {
         String username = txtUsername.getText();
         String password = txtPass.getText();
         String role = String.valueOf(cmbRole.getSelectedItem());
-//        NgoManager ngoManager = system.getNgoManagerList().findNgoManager(username, password);
-//        Caretaker caretaker = system.getCareTakerList().findCaretaker(username, password);
+        Pharmacist pharm = system.getPharmlist().findPharmacist(username, password);
+        DeliveryMan delMan = system.getDeliveryManlist().findDeliveryMan(username, password);
 
-//        try{
-            if(role.equals("MedStore Admin")){
-                if(username.equals("Admin") && password.equals("pass")){
+        try{
+//            if(role.equals("MedStore Admin")){
+            if(role.equals("MedStore Admin")&&(username.equals("Admin") && password.equals("pass"))){
                     MedAdminWorkspace adminJPanel = new MedAdminWorkspace(cardPanel, system, dB4OUtil);
                     CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
                     cardPanel.add("adminJPanel",adminJPanel);
                     cardLayout.next(cardPanel);
                 }
-            }
-//            else if(role.equals("NGO Manager")){
-//                if(username.equals(ngoManager.getUsername()) && password.equals(ngoManager.getPassword())){
-//                    NgoManagerWorkspace ngoManJPanel = new NgoManagerWorkspace(ngoManager,cardPanel, system, dB4OUtil);
-//                    CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
-//                    cardPanel.add("ngoManagerJPanel",ngoManJPanel);
-//                    cardLayout.next(cardPanel);
-//                }
 //            }
-//            else if(role.equals("Caretaker")){
-//                if(username.equals(caretaker.getUsername()) && password.equals(caretaker.getPassword())){
-//                    CaretakerWorkspace caretakerJPanel = new CaretakerWorkspace(caretaker,cardPanel, system, dB4OUtil);
-//                    CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
-//                    cardPanel.add("caretakerJPanel",caretakerJPanel);
-//                    cardLayout.next(cardPanel);
-//                }
+//            else if(role.equals("Pharmacist")){
+            else if(role.equals("Pharmacist")&&(username.equals(pharm.getUsername()) && password.equals(pharm.getPassword()))){
+                    PharmacistWorkspace ngoManJPanel = new PharmacistWorkspace(pharm,cardPanel, system, dB4OUtil);
+                    CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
+                    cardPanel.add("ngoManagerJPanel",ngoManJPanel);
+                    cardLayout.next(cardPanel);
+                }
+//            }
+//            else if(role.equals("Delivery Man")){
+            else if(role.equals("Delivery Man")&&(username.equals(delMan.getUsername()) && password.equals(delMan.getPassword()))){
+                    DeliveryManWorkspace caretakerJPanel = new DeliveryManWorkspace(delMan,cardPanel, system, dB4OUtil);
+                    CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
+                    cardPanel.add("caretakerJPanel",caretakerJPanel);
+                    cardLayout.next(cardPanel);
+                }
 //            }
             else{
                 JOptionPane.showMessageDialog(this, "Please enter the correct username and password and role.");
             }
-//        }
-//        catch(NullPointerException n){
-//            JOptionPane.showMessageDialog(this, "Please enter the correct username and password and role.");
-//        }
+        }
+        catch(NullPointerException n){
+            JOptionPane.showMessageDialog(this, "Please enter the correct username and password and role.");
+        }
 
         txtUsername.setText("");
         txtPass.setText("");

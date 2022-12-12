@@ -46,6 +46,16 @@ public class CaretakerDirectory {
         }
         return null;
     }
+//    
+//    public Caretaker findCaretaker(String username){
+//        for(Caretaker c: caretakerList){
+//            if(c.getUsername().equals(username)){
+//                return c;
+//            }
+//            
+//        }
+//        return null;
+//    }
     
     public boolean uiqueCaretakerId(String id) {
 
@@ -66,5 +76,16 @@ public class CaretakerDirectory {
             }
         }
             return true;
+    }
+    
+     public String[] carUsernameArray(){
+        String[] carUsername = new String[caretakerList.size()+1];
+        
+        int count = 0;
+        for (Caretaker d: caretakerList){
+            carUsername[count] = d.getUsername();
+            count++; 
+        }
+        return carUsername;
     }
 }

@@ -45,4 +45,14 @@ public class PublicUserDirectory {
         }
         return null;
     }
+     
+    public boolean uniquePublicUserUsername(String username){
+        for (PublicUser d: publicUserList) {
+
+            if (username.equals(d.getUsername())) {
+                return false;
+            }
+        }
+            return true;
+    } 
 }

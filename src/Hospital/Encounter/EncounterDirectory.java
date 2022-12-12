@@ -4,6 +4,7 @@
  */
 package Hospital.Encounter;
 
+import Ngo.CareTaker.Caretaker;
 import Ngo.NgoManager.NgoManager;
 import java.util.ArrayList;
 
@@ -47,5 +48,15 @@ public class EncounterDirectory {
 //        return null;
 //    }
     
+    public boolean uiqueEncounterId(String id) {
+
+        for (Encounter d : hospitalEncounterList) {
+
+            if (id.equals(d.getEncounterNo())) {
+                return false;
+            }
+        }
+            return true; 
+    } 
     
 }

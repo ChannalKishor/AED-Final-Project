@@ -5,6 +5,8 @@
 package Ui.MedStore;
 
 import Hospital.Encounter.Encounter;
+import Ngo.Order.NgoOrder;
+import Pharmacy.DeliveryMan.DeliveryMan;
 import Pharmacy.Medicine.Medicine;
 import Pharmacy.Order.Order;
 import Pharmacy.Pharmacist.Pharmacist;
@@ -12,6 +14,9 @@ import System.Directories.DB4OUtil;
 import System.Directories.DataValidation;
 import System.Directories.MainSystem;
 import java.awt.CardLayout;
+import java.awt.print.PrinterException;
+import java.lang.System.Logger;
+import java.lang.System.Logger.Level;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Properties;
@@ -22,6 +27,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -52,7 +58,14 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
         
         populateHospitalEncounterTable();
         populateItemTable();
+        populateStorekeeperTable();
         populateHospitalEncounterOrderTable();
+        populateNgoOrderTable();
+        populateMedOrders();
+        populateCombo();
+        
+        populateDeliveryManTable();
+        populateBillItemTable();
     }
 
     /**
@@ -69,9 +82,11 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
         btnHome = new javax.swing.JButton();
         btnEncounter = new javax.swing.JButton();
         btnStorekeeper = new javax.swing.JButton();
-        btnMail = new javax.swing.JButton();
         btnBilling = new javax.swing.JButton();
         btnItems = new javax.swing.JButton();
+        btnDeliveryMan = new javax.swing.JButton();
+        btnNgoOrders = new javax.swing.JButton();
+        btnMedOrders = new javax.swing.JButton();
         panelWork = new javax.swing.JPanel();
         panelHome = new javax.swing.JPanel();
         lblTitle2 = new javax.swing.JLabel();
@@ -80,7 +95,7 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
         panelEncounter = new javax.swing.JPanel();
         lblTitleEncounter = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tableEncounter = new javax.swing.JTable();
+        tableEncounter1 = new javax.swing.JTable();
         btnEncounterView = new javax.swing.JButton();
         lblEncounterNo = new javax.swing.JLabel();
         lblEncounterHospital = new javax.swing.JLabel();
@@ -94,8 +109,6 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
         txtEncounterDate = new javax.swing.JTextField();
         lblEncounterBP = new javax.swing.JLabel();
         txtEncounterBP = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
         lblEncounterTemperature = new javax.swing.JLabel();
         txtEncounterTemperature = new javax.swing.JTextField();
         lblEncounterMedicine = new javax.swing.JLabel();
@@ -153,15 +166,6 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
         cmbCaretakerGender = new javax.swing.JComboBox<>();
         lblCaretakerRole = new javax.swing.JLabel();
         txtCaretakerRole = new javax.swing.JTextField();
-        panelMail = new javax.swing.JPanel();
-        lblTo = new javax.swing.JLabel();
-        lblSub = new javax.swing.JLabel();
-        lblMes = new javax.swing.JLabel();
-        txtTo = new javax.swing.JTextField();
-        txtSub = new javax.swing.JTextField();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        txtMess = new javax.swing.JTextArea();
-        btnSend = new javax.swing.JButton();
         panelBilling = new javax.swing.JPanel();
         lblTitle4 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -182,7 +186,60 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
         txtItemOrderId = new javax.swing.JTextField();
         jScrollPane7 = new javax.swing.JScrollPane();
         txtReceipt = new javax.swing.JTextArea();
-        btnPrintBill = new javax.swing.JButton();
+        btnPrint = new javax.swing.JButton();
+        panelDeliveryMan = new javax.swing.JPanel();
+        lblTitle5 = new javax.swing.JLabel();
+        ScrollPaneNgoManager2 = new javax.swing.JScrollPane();
+        tableDeliveryMan = new javax.swing.JTable();
+        btnCaretakerView1 = new javax.swing.JButton();
+        btnCaretakerDelete1 = new javax.swing.JButton();
+        lblCaretakerId1 = new javax.swing.JLabel();
+        txtCaretakerId1 = new javax.swing.JTextField();
+        lblCaretakerEmailId1 = new javax.swing.JLabel();
+        txtCaretakerEmailId1 = new javax.swing.JTextField();
+        lblCaretakerName1 = new javax.swing.JLabel();
+        txtCaretakerName1 = new javax.swing.JTextField();
+        lblCaretakerPhno1 = new javax.swing.JLabel();
+        txtCaretakerPhno1 = new javax.swing.JTextField();
+        lblCaretakerUsername1 = new javax.swing.JLabel();
+        txtCaretakerUsername1 = new javax.swing.JTextField();
+        lblCaretakerPassword1 = new javax.swing.JLabel();
+        txtCaretakerPassword1 = new javax.swing.JPasswordField();
+        txtCaretakerAge1 = new javax.swing.JTextField();
+        lblCaretakerAge1 = new javax.swing.JLabel();
+        btnCaretakerCreate1 = new javax.swing.JButton();
+        btnCaretakerUpdate1 = new javax.swing.JButton();
+        lblCaretakerGender1 = new javax.swing.JLabel();
+        cmbCaretakerGender1 = new javax.swing.JComboBox<>();
+        lblCaretakerRole1 = new javax.swing.JLabel();
+        txtCaretakerRole1 = new javax.swing.JTextField();
+        panelMedicalOrders = new javax.swing.JPanel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        tableNgoOrder1 = new javax.swing.JTable();
+        lblTitle7 = new javax.swing.JLabel();
+        panelNgoOrders = new javax.swing.JPanel();
+        lblTitle6 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tableNgoOrder = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtOrderId = new javax.swing.JTextField();
+        txtStatus = new javax.swing.JTextField();
+        btnOutForDelivery = new javax.swing.JButton();
+        btnViewOrder = new javax.swing.JButton();
+        btnUpdateOrder = new javax.swing.JButton();
+        btnCancelOrder = new javax.swing.JButton();
+        btnDelivered = new javax.swing.JButton();
+        txtItem = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtQty = new javax.swing.JTextField();
+        txtShopkeerId = new javax.swing.JComboBox<>();
+        txtDeliveryManId = new javax.swing.JComboBox<>();
+
+        panelControl.setBackground(new java.awt.Color(51, 51, 51));
 
         btnHome.setText("Home");
         btnHome.addActionListener(new java.awt.event.ActionListener() {
@@ -205,19 +262,38 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
             }
         });
 
-        btnMail.setText("Send Mail");
-        btnMail.addActionListener(new java.awt.event.ActionListener() {
+        btnBilling.setText("Billing");
+        btnBilling.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMailActionPerformed(evt);
+                btnBillingActionPerformed(evt);
             }
         });
-
-        btnBilling.setText("Billing");
 
         btnItems.setText("Items");
         btnItems.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnItemsActionPerformed(evt);
+            }
+        });
+
+        btnDeliveryMan.setText("Delivery Man");
+        btnDeliveryMan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeliveryManActionPerformed(evt);
+            }
+        });
+
+        btnNgoOrders.setText("NGO Orders");
+        btnNgoOrders.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNgoOrdersActionPerformed(evt);
+            }
+        });
+
+        btnMedOrders.setText("Medical Orders");
+        btnMedOrders.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMedOrdersActionPerformed(evt);
             }
         });
 
@@ -231,9 +307,11 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
                     .addComponent(btnStorekeeper, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEncounter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnMail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnBilling, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnItems, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnItems, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnDeliveryMan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnNgoOrders, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnMedOrders, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panelControlLayout.setVerticalGroup(
@@ -247,18 +325,22 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
                 .addComponent(btnItems)
                 .addGap(18, 18, 18)
                 .addComponent(btnStorekeeper)
+                .addGap(23, 23, 23)
+                .addComponent(btnDeliveryMan)
                 .addGap(18, 18, 18)
                 .addComponent(btnBilling)
-                .addGap(18, 18, 18)
-                .addComponent(btnMail)
-                .addContainerGap(311, Short.MAX_VALUE))
+                .addGap(13, 13, 13)
+                .addComponent(btnMedOrders)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnNgoOrders)
+                .addContainerGap(272, Short.MAX_VALUE))
         );
 
         SplitPaneMedAdmin.setLeftComponent(panelControl);
 
         panelWork.setLayout(new java.awt.CardLayout());
 
-        lblTitle2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTitle2.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
         lblTitle2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle2.setText("Medical Store");
 
@@ -278,7 +360,7 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
             panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblTitle2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHomeLayout.createSequentialGroup()
-                .addContainerGap(542, Short.MAX_VALUE)
+                .addContainerGap(964, Short.MAX_VALUE)
                 .addGroup(panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnLogOut)
                     .addComponent(lblRole))
@@ -293,16 +375,18 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
                 .addComponent(lblRole)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLogOut)
-                .addContainerGap(575, Short.MAX_VALUE))
+                .addContainerGap(599, Short.MAX_VALUE))
         );
 
         panelWork.add(panelHome, "card2");
+
+        panelEncounter.setBackground(new java.awt.Color(255, 255, 255));
 
         lblTitleEncounter.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         lblTitleEncounter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitleEncounter.setText("ENCOUNTER");
 
-        tableEncounter.setModel(new javax.swing.table.DefaultTableModel(
+        tableEncounter1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -321,7 +405,7 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(tableEncounter);
+        jScrollPane3.setViewportView(tableEncounter1);
 
         btnEncounterView.setText("View");
         btnEncounterView.addActionListener(new java.awt.event.ActionListener() {
@@ -345,8 +429,6 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
 
         lblEncounterBP.setText("BP");
 
-        jLabel9.setText("Search");
-
         lblEncounterTemperature.setText("Temperature");
 
         lblEncounterMedicine.setText("Medicine");
@@ -365,19 +447,8 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
             panelEncounterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelEncounterLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelEncounterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelEncounterLayout.createSequentialGroup()
-                        .addGroup(panelEncounterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTitleEncounter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(panelEncounterLayout.createSequentialGroup()
-                                .addGap(265, 265, 265)
-                                .addComponent(jLabel9)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())
-                    .addGroup(panelEncounterLayout.createSequentialGroup()
-                        .addGap(369, 369, 369)
-                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                .addComponent(lblTitleEncounter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(panelEncounterLayout.createSequentialGroup()
                 .addGap(103, 103, 103)
                 .addGroup(panelEncounterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -408,7 +479,7 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
                     .addComponent(txtMedicineQuantity))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEncounterLayout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelEncounterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnEncounterView)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -419,15 +490,11 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
             .addGroup(panelEncounterLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblTitleEncounter, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(panelEncounterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(58, 58, 58)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24)
                 .addComponent(btnEncounterView)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
                 .addGroup(panelEncounterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEncounterNo)
                     .addComponent(txtEncounterNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -462,7 +529,9 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
 
         panelWork.add(panelEncounter, "card5");
 
-        lblTitlePatient.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        panelItem.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblTitlePatient.setFont(new java.awt.Font("Rockwell", 0, 36)); // NOI18N
         lblTitlePatient.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitlePatient.setText("Items");
 
@@ -486,6 +555,11 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
             }
         });
         jScrollPane2.setViewportView(tableItem);
+        if (tableItem.getColumnModel().getColumnCount() > 0) {
+            tableItem.getColumnModel().getColumn(2).setHeaderValue("Cost");
+            tableItem.getColumnModel().getColumn(3).setHeaderValue("Expiry Date");
+            tableItem.getColumnModel().getColumn(4).setHeaderValue("Quantity");
+        }
 
         btnMedCreate.setText("Create");
         btnMedCreate.addActionListener(new java.awt.event.ActionListener() {
@@ -549,12 +623,21 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(panelItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelItemLayout.createSequentialGroup()
-                        .addComponent(lblTitlePatient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnPatientDelete)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 725, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(panelItemLayout.createSequentialGroup()
+                        .addGroup(panelItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTitlePatient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelItemLayout.createSequentialGroup()
+                                .addGroup(panelItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnMedCreate)
+                                    .addComponent(btnPatientView)
+                                    .addComponent(btnPatientUpdate))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(panelItemLayout.createSequentialGroup()
-                        .addComponent(btnPatientDelete)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelItemLayout.createSequentialGroup()
                         .addGap(74, 74, 74)
                         .addGroup(panelItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblPatientID)
@@ -563,13 +646,13 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
                             .addComponent(lblPatientAge)
                             .addComponent(lblPatientEmail))
                         .addGap(31, 31, 31)
-                        .addGroup(panelItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtItemId, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
-                            .addComponent(txtItemName)
-                            .addComponent(txtItemCost)
+                        .addGroup(panelItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtItemExDate)
-                            .addComponent(txtItemQuantity))
-                        .addGap(132, 132, 132)
+                            .addComponent(txtItemQuantity)
+                            .addComponent(txtItemId, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtItemName)
+                            .addComponent(txtItemCost))
+                        .addGap(76, 76, 76)
                         .addGroup(panelItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelItemLayout.createSequentialGroup()
                                 .addComponent(lblPatientEmail1)
@@ -579,15 +662,7 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
                                 .addComponent(lblPatientName1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelItemLayout.createSequentialGroup()
-                        .addGroup(panelItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnMedCreate)
-                            .addComponent(btnPatientView)
-                            .addComponent(btnPatientUpdate))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 556, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35))))
+                        .addGap(597, 597, 597))))
         );
         panelItemLayout.setVerticalGroup(
             panelItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -596,16 +671,16 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
                 .addComponent(lblTitlePatient, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelItemLayout.createSequentialGroup()
                         .addComponent(btnMedCreate)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnPatientView)
                         .addGap(18, 18, 18)
-                        .addComponent(btnPatientUpdate)))
-                .addGap(18, 18, 18)
-                .addComponent(btnPatientDelete)
-                .addGap(48, 48, 48)
+                        .addComponent(btnPatientUpdate)
+                        .addGap(34, 34, 34)
+                        .addComponent(btnPatientDelete))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
                 .addGroup(panelItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelItemLayout.createSequentialGroup()
                         .addGroup(panelItemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -636,7 +711,7 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
                                 .addComponent(lblPatientEmail))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(txtItemQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(203, Short.MAX_VALUE))
+                .addContainerGap(238, Short.MAX_VALUE))
         );
 
         panelWork.add(panelItem, "card4");
@@ -730,7 +805,7 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
         panelStorekeeper.setLayout(panelStorekeeperLayout);
         panelStorekeeperLayout.setHorizontalGroup(
             panelStorekeeperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblTitle3, javax.swing.GroupLayout.DEFAULT_SIZE, 751, Short.MAX_VALUE)
+            .addComponent(lblTitle3, javax.swing.GroupLayout.DEFAULT_SIZE, 1173, Short.MAX_VALUE)
             .addGroup(panelStorekeeperLayout.createSequentialGroup()
                 .addGap(53, 53, 53)
                 .addGroup(panelStorekeeperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -758,7 +833,7 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
                             .addGroup(panelStorekeeperLayout.createSequentialGroup()
                                 .addComponent(lblCaretakerRole)
                                 .addGap(72, 72, 72)
-                                .addComponent(txtCaretakerRole, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE))
+                                .addComponent(txtCaretakerRole, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE))
                             .addGroup(panelStorekeeperLayout.createSequentialGroup()
                                 .addComponent(lblCaretakerGender)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -818,7 +893,7 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
                 .addGroup(panelStorekeeperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCaretakerPassword)
                     .addComponent(txtCaretakerPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
                 .addGroup(panelStorekeeperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCaretakerGender)
                     .addComponent(cmbCaretakerGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -859,102 +934,28 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
                     .addGroup(panelStorekeeperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtCaretakerAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblCaretakerAge))
-                    .addContainerGap(245, Short.MAX_VALUE)))
+                    .addContainerGap(273, Short.MAX_VALUE)))
         );
 
         panelWork.add(panelStorekeeper, "card4");
 
-        lblTo.setText("To:");
-
-        lblSub.setText("Subject:");
-
-        lblMes.setText("Message:");
-
-        txtTo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtToActionPerformed(evt);
-            }
-        });
-
-        txtSub.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSubActionPerformed(evt);
-            }
-        });
-
-        txtMess.setColumns(20);
-        txtMess.setRows(5);
-        jScrollPane4.setViewportView(txtMess);
-
-        btnSend.setText("Send");
-        btnSend.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSendActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelMailLayout = new javax.swing.GroupLayout(panelMail);
-        panelMail.setLayout(panelMailLayout);
-        panelMailLayout.setHorizontalGroup(
-            panelMailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelMailLayout.createSequentialGroup()
-                .addGroup(panelMailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelMailLayout.createSequentialGroup()
-                        .addGap(215, 215, 215)
-                        .addGroup(panelMailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblMes)
-                            .addGroup(panelMailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblSub)
-                                .addComponent(lblTo)))
-                        .addGap(42, 42, 42)
-                        .addGroup(panelMailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtTo, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtSub, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panelMailLayout.createSequentialGroup()
-                        .addGap(350, 350, 350)
-                        .addComponent(btnSend)))
-                .addContainerGap(192, Short.MAX_VALUE))
-        );
-        panelMailLayout.setVerticalGroup(
-            panelMailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelMailLayout.createSequentialGroup()
-                .addGap(170, 170, 170)
-                .addGroup(panelMailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTo)
-                    .addComponent(txtTo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addGroup(panelMailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSub)
-                    .addComponent(txtSub, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addGroup(panelMailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblMes)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(67, 67, 67)
-                .addComponent(btnSend)
-                .addContainerGap(269, Short.MAX_VALUE))
-        );
-
-        panelWork.add(panelMail, "card6");
-
         lblTitle4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblTitle4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitle4.setText("Orders");
+        lblTitle4.setText("Medical Billing");
 
         tableEncounterOrder.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Encounter No", "Doctor UserName", "Patient Username", "BP", "Temperature"
+                "Encounter No", "Medicine", "Quantity"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1030,10 +1031,10 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
         txtReceipt.setRows(5);
         jScrollPane7.setViewportView(txtReceipt);
 
-        btnPrintBill.setText("Print");
-        btnPrintBill.addActionListener(new java.awt.event.ActionListener() {
+        btnPrint.setText("Print");
+        btnPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrintBillActionPerformed(evt);
+                btnPrintActionPerformed(evt);
             }
         });
 
@@ -1052,7 +1053,7 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
                     .addComponent(lblOrderId))
                 .addGap(47, 47, 47)
                 .addGroup(panelBillingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtItemOrderId, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+                    .addComponent(txtItemOrderId, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE)
                     .addComponent(txtItemName1, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtItemCost1, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtItemExDate1, javax.swing.GroupLayout.Alignment.LEADING)
@@ -1072,8 +1073,8 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
                 .addGap(222, 222, 222)
                 .addComponent(btnBillOrder)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnPrintBill)
-                .addGap(136, 136, 136))
+                .addComponent(btnPrint)
+                .addGap(147, 147, 147))
         );
         panelBillingLayout.setVerticalGroup(
             panelBillingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1114,17 +1115,452 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBillingLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(panelBillingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBillingLayout.createSequentialGroup()
+                    .addGroup(panelBillingLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                         .addComponent(btnBillOrder)
                         .addGap(26, 26, 26))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBillingLayout.createSequentialGroup()
-                        .addComponent(btnPrintBill)
-                        .addGap(34, 34, 34))))
+                    .addGroup(panelBillingLayout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(btnPrint)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         panelWork.add(panelBilling, "card7");
+
+        lblTitle5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTitle5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle5.setText("Delivery Man");
+
+        tableDeliveryMan.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Name", "Username", "Age", "Email-Id"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tableDeliveryMan.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ScrollPaneNgoManager2.setViewportView(tableDeliveryMan);
+
+        btnCaretakerView1.setText("View");
+        btnCaretakerView1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCaretakerView1ActionPerformed(evt);
+            }
+        });
+
+        btnCaretakerDelete1.setText("Delete");
+        btnCaretakerDelete1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCaretakerDelete1ActionPerformed(evt);
+            }
+        });
+
+        lblCaretakerId1.setText("Delivery Man Id:");
+
+        txtCaretakerId1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCaretakerId1ActionPerformed(evt);
+            }
+        });
+
+        lblCaretakerEmailId1.setText("Email-Id:");
+
+        lblCaretakerName1.setText("Name:");
+
+        lblCaretakerPhno1.setText("Phone No:");
+
+        lblCaretakerUsername1.setText("Username:");
+
+        lblCaretakerPassword1.setText("Password:");
+
+        lblCaretakerAge1.setText("Age:");
+
+        btnCaretakerCreate1.setText("Create");
+        btnCaretakerCreate1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCaretakerCreate1ActionPerformed(evt);
+            }
+        });
+
+        btnCaretakerUpdate1.setText("Update");
+        btnCaretakerUpdate1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCaretakerUpdate1ActionPerformed(evt);
+            }
+        });
+
+        lblCaretakerGender1.setText("Gender:");
+
+        cmbCaretakerGender1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Others" }));
+
+        lblCaretakerRole1.setText("Role:");
+
+        txtCaretakerRole1.setEditable(false);
+        txtCaretakerRole1.setText("Delivery Man");
+
+        javax.swing.GroupLayout panelDeliveryManLayout = new javax.swing.GroupLayout(panelDeliveryMan);
+        panelDeliveryMan.setLayout(panelDeliveryManLayout);
+        panelDeliveryManLayout.setHorizontalGroup(
+            panelDeliveryManLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblTitle5, javax.swing.GroupLayout.DEFAULT_SIZE, 1173, Short.MAX_VALUE)
+            .addGroup(panelDeliveryManLayout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addGroup(panelDeliveryManLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelDeliveryManLayout.createSequentialGroup()
+                        .addComponent(lblCaretakerId1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(panelDeliveryManLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblCaretakerEmailId1)
+                            .addGroup(panelDeliveryManLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(panelDeliveryManLayout.createSequentialGroup()
+                                    .addComponent(btnCaretakerCreate1)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnCaretakerUpdate1))
+                                .addGroup(panelDeliveryManLayout.createSequentialGroup()
+                                    .addGroup(panelDeliveryManLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lblCaretakerPhno1)
+                                        .addComponent(lblCaretakerPassword1))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(panelDeliveryManLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtCaretakerPassword1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtCaretakerPhno1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(77, 77, 77))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDeliveryManLayout.createSequentialGroup()
+                        .addGroup(panelDeliveryManLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(panelDeliveryManLayout.createSequentialGroup()
+                                .addComponent(lblCaretakerRole1)
+                                .addGap(72, 72, 72)
+                                .addComponent(txtCaretakerRole1, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE))
+                            .addGroup(panelDeliveryManLayout.createSequentialGroup()
+                                .addComponent(lblCaretakerGender1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cmbCaretakerGender1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(397, 397, 397))))
+            .addGroup(panelDeliveryManLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelDeliveryManLayout.createSequentialGroup()
+                    .addGap(28, 28, 28)
+                    .addGroup(panelDeliveryManLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDeliveryManLayout.createSequentialGroup()
+                            .addGap(24, 24, 24)
+                            .addGroup(panelDeliveryManLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDeliveryManLayout.createSequentialGroup()
+                                    .addGap(0, 0, Short.MAX_VALUE)
+                                    .addComponent(txtCaretakerId1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(panelDeliveryManLayout.createSequentialGroup()
+                                    .addGroup(panelDeliveryManLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblCaretakerName1)
+                                        .addComponent(lblCaretakerAge1)
+                                        .addComponent(lblCaretakerUsername1))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(panelDeliveryManLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtCaretakerAge1, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                                        .addComponent(txtCaretakerName1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtCaretakerUsername1))))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtCaretakerEmailId1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(77, 77, 77))
+                        .addGroup(panelDeliveryManLayout.createSequentialGroup()
+                            .addGroup(panelDeliveryManLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(panelDeliveryManLayout.createSequentialGroup()
+                                    .addComponent(btnCaretakerView1)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(btnCaretakerDelete1))
+                                .addComponent(ScrollPaneNgoManager2, javax.swing.GroupLayout.PREFERRED_SIZE, 695, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(28, 28, 28)))))
+        );
+        panelDeliveryManLayout.setVerticalGroup(
+            panelDeliveryManLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDeliveryManLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTitle5)
+                .addGap(293, 293, 293)
+                .addGroup(panelDeliveryManLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCaretakerId1)
+                    .addComponent(lblCaretakerEmailId1))
+                .addGap(18, 18, 18)
+                .addGroup(panelDeliveryManLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCaretakerPhno1)
+                    .addComponent(txtCaretakerPhno1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelDeliveryManLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCaretakerPassword1)
+                    .addComponent(txtCaretakerPassword1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
+                .addGroup(panelDeliveryManLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCaretakerGender1)
+                    .addComponent(cmbCaretakerGender1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelDeliveryManLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCaretakerRole1)
+                    .addComponent(txtCaretakerRole1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelDeliveryManLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCaretakerCreate1)
+                    .addComponent(btnCaretakerUpdate1))
+                .addGap(59, 59, 59))
+            .addGroup(panelDeliveryManLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelDeliveryManLayout.createSequentialGroup()
+                    .addGap(127, 127, 127)
+                    .addComponent(ScrollPaneNgoManager2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addGroup(panelDeliveryManLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnCaretakerView1)
+                        .addComponent(btnCaretakerDelete1))
+                    .addGap(54, 54, 54)
+                    .addGroup(panelDeliveryManLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtCaretakerEmailId1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtCaretakerId1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(18, 18, 18)
+                    .addGroup(panelDeliveryManLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtCaretakerName1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblCaretakerName1))
+                    .addGap(18, 18, 18)
+                    .addGroup(panelDeliveryManLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtCaretakerUsername1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblCaretakerUsername1))
+                    .addGap(20, 20, 20)
+                    .addGroup(panelDeliveryManLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtCaretakerAge1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblCaretakerAge1))
+                    .addContainerGap(272, Short.MAX_VALUE)))
+        );
+
+        panelWork.add(panelDeliveryMan, "card4");
+
+        tableNgoOrder1.setAutoCreateRowSorter(true);
+        tableNgoOrder1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Order Id", "Item", "Expiry Date", "Quantity", "Cost"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane9.setViewportView(tableNgoOrder1);
+
+        lblTitle7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTitle7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle7.setText("Medical Orders");
+
+        javax.swing.GroupLayout panelMedicalOrdersLayout = new javax.swing.GroupLayout(panelMedicalOrders);
+        panelMedicalOrders.setLayout(panelMedicalOrdersLayout);
+        panelMedicalOrdersLayout.setHorizontalGroup(
+            panelMedicalOrdersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblTitle7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMedicalOrdersLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        panelMedicalOrdersLayout.setVerticalGroup(
+            panelMedicalOrdersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMedicalOrdersLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTitle7)
+                .addGap(82, 82, 82)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(367, Short.MAX_VALUE))
+        );
+
+        panelWork.add(panelMedicalOrders, "card8");
+
+        lblTitle6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTitle6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle6.setText("NGO Orders");
+
+        tableNgoOrder.setAutoCreateRowSorter(true);
+        tableNgoOrder.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Order Id", "Shopkeeper Id", "Delivery Man Id", "Item", "Quantity", "Status"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(tableNgoOrder);
+
+        jLabel1.setText("Shopkeeper Id:");
+
+        jLabel2.setText("DeliveryMan Id:");
+
+        jLabel3.setText("Order Id:");
+
+        jLabel4.setText("Item:");
+
+        jLabel5.setText("Status:");
+
+        txtOrderId.setEditable(false);
+        txtOrderId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtOrderIdActionPerformed(evt);
+            }
+        });
+
+        txtStatus.setEditable(false);
+
+        btnOutForDelivery.setText("Out For Delivery");
+        btnOutForDelivery.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOutForDeliveryActionPerformed(evt);
+            }
+        });
+
+        btnViewOrder.setText("View");
+        btnViewOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewOrderActionPerformed(evt);
+            }
+        });
+
+        btnUpdateOrder.setText("Update");
+        btnUpdateOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateOrderActionPerformed(evt);
+            }
+        });
+
+        btnCancelOrder.setText("Cancel Order");
+        btnCancelOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelOrderActionPerformed(evt);
+            }
+        });
+
+        btnDelivered.setText("Delivered");
+        btnDelivered.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeliveredActionPerformed(evt);
+            }
+        });
+
+        txtItem.setEditable(false);
+
+        jLabel7.setText("Quantity:");
+
+        txtQty.setEditable(false);
+
+        javax.swing.GroupLayout panelNgoOrdersLayout = new javax.swing.GroupLayout(panelNgoOrders);
+        panelNgoOrders.setLayout(panelNgoOrdersLayout);
+        panelNgoOrdersLayout.setHorizontalGroup(
+            panelNgoOrdersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblTitle6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(panelNgoOrdersLayout.createSequentialGroup()
+                .addGroup(panelNgoOrdersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelNgoOrdersLayout.createSequentialGroup()
+                        .addGap(142, 142, 142)
+                        .addGroup(panelNgoOrdersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel7))
+                        .addGap(38, 38, 38)
+                        .addGroup(panelNgoOrdersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtStatus, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
+                            .addComponent(txtOrderId, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
+                            .addComponent(txtItem)
+                            .addComponent(txtQty)
+                            .addComponent(txtShopkeerId, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtDeliveryManId, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(panelNgoOrdersLayout.createSequentialGroup()
+                        .addGap(104, 104, 104)
+                        .addComponent(btnUpdateOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(btnCancelOrder)
+                        .addGap(33, 33, 33)
+                        .addComponent(btnOutForDelivery)
+                        .addGap(27, 27, 27)
+                        .addComponent(btnDelivered)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelNgoOrdersLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(panelNgoOrdersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelNgoOrdersLayout.createSequentialGroup()
+                        .addComponent(btnViewOrder)
+                        .addGap(663, 663, 663))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelNgoOrdersLayout.createSequentialGroup()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
+        );
+        panelNgoOrdersLayout.setVerticalGroup(
+            panelNgoOrdersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelNgoOrdersLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTitle6)
+                .addGap(117, 117, 117)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnViewOrder)
+                .addGap(41, 41, 41)
+                .addGroup(panelNgoOrdersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtShopkeerId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelNgoOrdersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtDeliveryManId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelNgoOrdersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtOrderId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelNgoOrdersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
+                .addGroup(panelNgoOrdersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(txtQty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                .addGroup(panelNgoOrdersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47)
+                .addGroup(panelNgoOrdersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnOutForDelivery)
+                    .addComponent(btnUpdateOrder)
+                    .addComponent(btnCancelOrder)
+                    .addComponent(btnDelivered))
+                .addGap(24, 24, 24))
+        );
+
+        panelWork.add(panelNgoOrders, "card9");
 
         SplitPaneMedAdmin.setRightComponent(panelWork);
 
@@ -1132,11 +1568,11 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(SplitPaneMedAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 850, Short.MAX_VALUE)
+            .addComponent(SplitPaneMedAdmin)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(SplitPaneMedAdmin)
+            .addComponent(SplitPaneMedAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1167,7 +1603,7 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
 
     private void btnEncounterViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEncounterViewActionPerformed
         // TODO add your handling code here:
-        Integer selectedRowIndex = tableEncounter.getSelectedRow();
+        Integer selectedRowIndex = tableEncounter1.getSelectedRow();
 
         if (selectedRowIndex<0){
 
@@ -1176,7 +1612,7 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
         }
         else{
 
-            DefaultTableModel model = (DefaultTableModel) tableEncounter.getModel();
+            DefaultTableModel model = (DefaultTableModel) tableEncounter1.getModel();
             Encounter enc = (Encounter) model.getValueAt(selectedRowIndex,0);
 
             txtEncounterNo.setText(enc.getEncounterNo());
@@ -1201,12 +1637,57 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
     private void btnMedCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedCreateActionPerformed
         // TODO add your handling code here:
         String id = txtItemId.getText();
+        if(id.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Enter the Id");
+            return;
+        }
+        else if(system.getMedicineList().uiqueItemId(id)== false){
+            JOptionPane.showMessageDialog(this, "Id already exist");
+            return;
+        }
+        
+        
+        
         String name = txtItemName.getText();
+        if(name.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Enter the name");
+            return;
+        }
+        
+        
+        if(data.numcheck(txtItemCost.getText())==false){
+            JOptionPane.showMessageDialog(this, "Enter valid Cost");
+            return;
+        }
         Integer cost = Integer.valueOf(txtItemCost.getText());
+        
+        
+        
         String date = txtItemExDate.getText();
-        Integer qt = Integer.valueOf(txtItemCost.getText());
+        if(!data.dateCheck(date)){
+            JOptionPane.showMessageDialog(this, "Please enter correct date in format mm/dd/yyyy");
+            return;
+        }
+        
+        
+        if(data.numcheck(txtItemQuantity.getText())==false){
+            JOptionPane.showMessageDialog(this, "Enter valid Item Quantity");
+            return;
+        }
+        Integer qt = Integer.valueOf(txtItemQuantity.getText());
+        
+        
+        
         String av = String.valueOf(txtItemAvailability.getSelectedItem());
+        
+        
+        
         String desc = txtItemDesc.getText();
+        if(desc.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Enter the description");
+            return;
+        }
+        
         
         Medicine newPatient = system.getMedicineList().addMed();
 
@@ -1231,6 +1712,9 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
         txtItemDesc.setText("");
 
         populateItemTable();
+        populateCombo();
+        populateBillItemTable();
+        
     }//GEN-LAST:event_btnMedCreateActionPerformed
 
     private void btnPatientViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPatientViewActionPerformed
@@ -1273,12 +1757,48 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
             Medicine pat = (Medicine) model.getValueAt(selectedRowIndex,0);
 
 //            pat.setItemid(txtItemId.getText());
+
+
+
             pat.setName(txtItemName.getText());
+            if(txtItemName.getText().isEmpty()){
+		JOptionPane.showMessageDialog(this, "Enter valid name");
+                return;
+            }
+            
+            
+            
+            if(!data.numcheck(txtItemCost.getText())){
+		JOptionPane.showMessageDialog(this, "Enter valid Item Cost");
+                return;
+            }
             pat.setCost(Integer.valueOf(txtItemCost.getText()));
+            
+            
+            
             pat.setDate(txtItemExDate.getText());
+            if(!data.dateCheck(txtItemExDate.getText())){
+		JOptionPane.showMessageDialog(this, "Enter valid Exp date");
+                return;
+            }
+            
+            if(!data.numcheck(txtItemQuantity.getText())){
+		JOptionPane.showMessageDialog(this, "Enter valid Item Quantity");
+                return;
+            }
+            
             pat.setQty(Integer.valueOf(txtItemQuantity.getText()));
+            
+            
             pat.setAv(String.valueOf(txtItemAvailability.getSelectedItem()));
+            
+            
+            
             pat.setDesc(txtItemDesc.getText());
+            if(txtItemDesc.getText().isEmpty()){
+		JOptionPane.showMessageDialog(this, "Enter valid description");
+                return;
+            }
             
 
             JOptionPane.showMessageDialog(this, "Item updated successfully");
@@ -1402,7 +1922,11 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
 
            
             selMan.setGender(String.valueOf(cmbCaretakerGender.getSelectedItem()));
+            
+            
             selMan.setRole(txtCaretakerRole.getText());
+            
+            
             selMan.setEmailId(txtCaretakerEmailId.getText());
             if(!data.emailCheck(txtCaretakerEmailId.getText())){
                 JOptionPane.showMessageDialog(this, "Enter valid emailid");
@@ -1414,6 +1938,8 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
                 return;
             }
             selMan.setPhno(Long.valueOf(txtCaretakerPhno.getText()));
+            
+            
             selMan.setPassword(txtCaretakerPassword.getText());
             if(txtCaretakerPassword.getText().isEmpty()){
                 JOptionPane.showMessageDialog(this, "Enter valid password");
@@ -1440,21 +1966,23 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Id already exist");
             return;
         }
+        
         String name = txtCaretakerName.getText();
         if(name.isEmpty()){
             JOptionPane.showMessageDialog(this, "Enter the name");
             return;
         }
+        
         String username = txtCaretakerUsername.getText();
         if(username.isEmpty()){
             JOptionPane.showMessageDialog(this, "Enter the username");
             return;
         }
-        else if(system.getCareTakerList().uniqueCaretakerUsername(username)==false){
+        else if(system.getPharmlist().uiquePharmacistUsername(username)==false){
             JOptionPane.showMessageDialog(this, "Username already exist");
             return;
         }
-
+        
         if(data.numcheck(txtCaretakerAge.getText())==false){
             JOptionPane.showMessageDialog(this, "Enter valid age");
             return;
@@ -1463,21 +1991,24 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
         
 
         String gender = String.valueOf(cmbCaretakerGender.getSelectedItem());
+        
         String role = txtCaretakerRole.getText();
+        
+        
         String emailid= txtCaretakerEmailId.getText();
-
         if(!data.emailCheck(emailid)){
             JOptionPane.showMessageDialog(this, "Enter valid email id");
             return;
         }
 
+
         if(!data.phnocheck(txtCaretakerPhno.getText())){
             JOptionPane.showMessageDialog(this, "Enter valid phone no");
             return;
         }
-
         Long phno = Long.valueOf(txtCaretakerPhno.getText());
 
+        
         String pass = txtCaretakerPassword.getText();
         if(pass.isEmpty()){
             JOptionPane.showMessageDialog(this, "Enter valid password");
@@ -1510,6 +2041,7 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
 
         //        dB4OUtil.storeSystem(system);
         populateStorekeeperTable();
+        populateCombo();
     }//GEN-LAST:event_btnCaretakerCreateActionPerformed
 
     private void btnStorekeeperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStorekeeperActionPerformed
@@ -1519,60 +2051,6 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
         panelWork.repaint();
         panelWork.revalidate();
     }//GEN-LAST:event_btnStorekeeperActionPerformed
-
-    private void btnMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMailActionPerformed
-        // TODO add your handling code here:
-        panelWork.removeAll();
-        panelWork.add(panelMail);
-        panelWork.repaint();
-        panelWork.revalidate();
-    }//GEN-LAST:event_btnMailActionPerformed
-
-    private void txtToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtToActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtToActionPerformed
-
-    private void txtSubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSubActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSubActionPerformed
-
-    private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
-        // TODO add your handling code here:
-        try{
-            Properties properties = new Properties();
-            
-            properties.put("mail.smtp.auth", "true");
-            properties.put("mail.smtp.starttls.enable", "true");
-            properties.put("mail.smtp.host", "smtp.gmail.com");
-            properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
-            properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
-            properties.put("mail.smtp.port", "587");
-            
-
-            Session session = Session.getDefaultInstance(properties, new Authenticator() {
-                @Override
-                protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication("cvshetter@gmail.com","uvflnegrkfxzprmu");
-
-                }
-
-            });
-
-            Message message = new MimeMessage(session);
-            message.setSubject(txtSub.getText());
-            message.setContent(txtMess.getText(), "text/plain");
-            message.setFrom(new InternetAddress("cvshetter@gmail.com"));
-            message.setRecipient(Message.RecipientType.TO , new InternetAddress(txtTo.getText()));
-            message.setSentDate(new Date());
-
-            Transport.send(message);
-
-            JOptionPane.showMessageDialog(null, "Sent");
-
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-    }//GEN-LAST:event_btnSendActionPerformed
 
     private void btnItemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnItemsActionPerformed
         // TODO add your handling code here:
@@ -1589,7 +2067,7 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
 
     private void btnSelectItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectItemActionPerformed
         // TODO add your handling code here:
-        Integer selectedRowIndex = tableItem.getSelectedRow();
+        Integer selectedRowIndex = tableItem1.getSelectedRow();
 
         if (selectedRowIndex<0){
 
@@ -1597,47 +2075,497 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
             return;
         }
         else{
-            DefaultTableModel model = (DefaultTableModel) tableItem.getModel();
+            DefaultTableModel model = (DefaultTableModel) tableItem1.getModel();
             Medicine pat = (Medicine) model.getValueAt(selectedRowIndex,0);
+            
+            if(pat.getQty()!=0){
+                txtItemName1.setText(pat.getName());
+                txtItemCost1.setText(String.valueOf(pat.getCost()));
 
-            txtItemName1.setText(pat.getName());
-            txtItemCost1.setText(String.valueOf(pat.getCost()));
-            
-            txtItemExDate1.setText(pat.getDate());
-            
-            txtItemQuantity1.setText(String.valueOf(pat.getQty()));
+                txtItemExDate1.setText(pat.getDate());
+
+                txtItemQuantity1.setText(String.valueOf(pat.getQty()));
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "The Item is not available");
+                return;
+            }
         }
     }//GEN-LAST:event_btnSelectItemActionPerformed
 
     private void btnBillOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBillOrderActionPerformed
         // TODO add your handling code here:
         String orderId = txtItemOrderId.getText();
+        if(orderId.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Enter the Order Id");
+            return;
+        }
+        else if(system.getOrderList().uiqueNgoOrderId(orderId)== false){
+            JOptionPane.showMessageDialog(this, "Order Id already exist");
+            return;
+        }
+        
+        
+        
         String name = txtItemName1.getText();
         Integer cost = Integer.valueOf(txtItemCost1.getText());
         String date = txtItemExDate1.getText();
+        
+        
+        if(data.numcheck(txtItemQuantity1.getText())==false){
+            JOptionPane.showMessageDialog(this, "Enter valid Quantity");
+            return;
+        }
         Integer qty = Integer.valueOf(txtItemQuantity1.getText());
         
         Order o = system.getOrderList().addOrder();
         
+        o.setOrderid(orderId);
+        o.setItem(name);
+        o.setCost(cost);
+        o.setDate(date);
+        o.setQty(qty);
+        
+        Medicine m = system.getMedicineList().findMedicine(name);
+        Integer currQty = m.getQty();
+        m.setQty(currQty - qty);
+        populateItemTable();
         JOptionPane.showMessageDialog(this, "Order generated successfully");
+        
+           txtReceipt.append("\t\t Receipt \n\n"+
+                "Order Id: \t\t\t" + txtOrderId.getText()+ "\n\n"+
+               
+                "\n==============================================================\n"+
+                "Item: \t\t\t"+ txtItemName1.getText()+ "\n\n"+
+                "Quantity: \t\t\t"+ txtItemQuantity1.getText()+ "\n\n"+
+                "Cost: \t\t\t"+ txtItemCost1.getText()+ "\n\n"
+                
+        );
         
         txtItemOrderId.setText("");
         txtItemName1.setText("");
         txtItemCost1.setText("");
         txtItemExDate1.setText("");
         txtItemQuantity1.setText("");
+        
+        populateMedOrders();
+        
+        
     }//GEN-LAST:event_btnBillOrderActionPerformed
 
     private void txtItemOrderIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtItemOrderIdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtItemOrderIdActionPerformed
 
-    private void btnPrintBillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintBillActionPerformed
+    private void btnCaretakerView1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaretakerView1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnPrintBillActionPerformed
+        Integer selectedRowIndex = tableDeliveryMan.getSelectedRow();
+
+        if (selectedRowIndex<0){
+
+            JOptionPane.showMessageDialog(this, "Please select a row to view.");
+            return;
+        }
+
+        else{
+            DefaultTableModel model = (DefaultTableModel) tableDeliveryMan.getModel();
+            DeliveryMan selMan = (DeliveryMan) model.getValueAt(selectedRowIndex,0);
+
+            txtCaretakerId1.setText(selMan.getDeliverymanId());
+            txtCaretakerName1.setText(selMan.getName());
+            txtCaretakerUsername1.setText(selMan.getUsername());
+            txtCaretakerAge1.setText(String.valueOf(selMan.getAge()));
+            
+            txtCaretakerRole1.setText(selMan.getRole());
+            cmbCaretakerGender1.setSelectedItem(selMan.getGender());
+            txtCaretakerEmailId1.setText(selMan.getEmailId());
+            txtCaretakerPhno1.setText(String.valueOf(selMan.getPhno()));
+            txtCaretakerPassword1.setText(selMan.getPassword());
+
+        }
+    }//GEN-LAST:event_btnCaretakerView1ActionPerformed
+
+    private void btnCaretakerDelete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaretakerDelete1ActionPerformed
+        // TODO add your handling code here:
+        Integer selectedRowIndex = tableDeliveryMan.getSelectedRow();
+
+        if (selectedRowIndex<0){
+
+            JOptionPane.showMessageDialog(this, "Please select a row to delete.");
+            return;
+        }
+
+        else{
+            DefaultTableModel model = (DefaultTableModel) tableDeliveryMan.getModel();
+            DeliveryMan selectedMan = (DeliveryMan) model.getValueAt(selectedRowIndex,0);
+
+            system.getDeliveryManlist().deleteDeliveryMan(selectedMan);
+
+            JOptionPane.showMessageDialog(this, "Delivery deleted successfully.");
+
+            //            dB4OUtil.storeSystem(system);
+            populateDeliveryManTable();
+        }
+    }//GEN-LAST:event_btnCaretakerDelete1ActionPerformed
+
+    private void txtCaretakerId1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCaretakerId1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCaretakerId1ActionPerformed
+
+    private void btnCaretakerCreate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaretakerCreate1ActionPerformed
+        // TODO add your handling code here:
+        String id = txtCaretakerId1.getText();
+        if(id.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Enter the Id");
+            return;
+        }
+        else if(system.getDeliveryManlist().uiqueDeliveryManId(id)==false){
+            JOptionPane.showMessageDialog(this, "Id already exist");
+            return;
+        }
+        
+        
+        String name = txtCaretakerName1.getText();
+        if(name.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Enter the name");
+            return;
+        }
+        
+        
+        String username = txtCaretakerUsername1.getText();
+        if(username.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Enter the username");
+            return;
+        }
+        else if(system.getPharmlist().uiquePharmacistId(id)==false){
+            JOptionPane.showMessageDialog(this, "Username already exist");
+            return;
+        }
+
+        
+        if(data.numcheck(txtCaretakerAge1.getText())==false){
+            JOptionPane.showMessageDialog(this, "Enter valid age");
+            return;
+        }
+        Integer age = Integer.valueOf(txtCaretakerAge1.getText());
+        
+
+        String gender = String.valueOf(cmbCaretakerGender1.getSelectedItem());
+        
+        
+        String role = txtCaretakerRole1.getText();
+        
+        
+        String emailid= txtCaretakerEmailId1.getText();
+        if(!data.emailCheck(emailid)){
+            JOptionPane.showMessageDialog(this, "Enter valid email id");
+            return;
+        }
+
+        
+        if(!data.phnocheck(txtCaretakerPhno1.getText())){
+            JOptionPane.showMessageDialog(this, "Enter valid phone no");
+            return;
+        }
+        Long phno = Long.valueOf(txtCaretakerPhno1.getText());
+
+        
+        String pass = txtCaretakerPassword1.getText();
+        if(pass.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Enter valid password");
+            return;
+        }
+
+        DeliveryMan newManager = system.getDeliveryManlist().addDeliveryMan();
+
+        newManager.setDeliverymanId(id);
+        newManager.setName(name);
+        newManager.setUsername(username);
+        newManager.setAge(age);
+
+        newManager.setGender(gender);
+        newManager.setRole(role);
+        newManager.setEmailId(emailid);
+        newManager.setPhno(phno);
+        newManager.setPassword(pass);
+
+        JOptionPane.showMessageDialog(this, "DeliveryMan created successfully");
+
+        txtCaretakerId1.setText("");
+        txtCaretakerName1.setText("");
+        txtCaretakerUsername1.setText("");
+        txtCaretakerAge1.setText("");
+
+        txtCaretakerEmailId1.setText("");
+        txtCaretakerPhno1.setText("");
+        txtCaretakerPassword1.setText("");
+
+        //        dB4OUtil.storeSystem(system);
+        populateDeliveryManTable();
+        populateCombo();
+        
+    }//GEN-LAST:event_btnCaretakerCreate1ActionPerformed
+
+    private void btnCaretakerUpdate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaretakerUpdate1ActionPerformed
+        // TODO add your handling code here:
+        Integer selectedRowIndex = tableDeliveryMan.getSelectedRow();
+
+        if (selectedRowIndex<0){
+
+            JOptionPane.showMessageDialog(this, "Please select a row to view.");
+            return;
+        }
+
+        else{
+            DefaultTableModel model = (DefaultTableModel) tableDeliveryMan.getModel();
+            DeliveryMan selMan = (DeliveryMan) model.getValueAt(selectedRowIndex,0);
+
+            //            selMan.setCaretakerId(txtCaretakerId.getText());
+            //
+            selMan.setName(txtCaretakerName1.getText());
+            if(txtCaretakerName1.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "Enter valid name");
+                return;
+            }
+            //            selMan.setUsername(txtCaretakerUsername.getText());
+
+            if(!data.numcheck(txtCaretakerAge1.getText())){
+                JOptionPane.showMessageDialog(this, "Enter valid age");
+                return;
+            }
+            selMan.setAge(Integer.valueOf(txtCaretakerAge1.getText()));
+
+           
+            selMan.setGender(String.valueOf(cmbCaretakerGender1.getSelectedItem()));
+            
+            
+            selMan.setRole(txtCaretakerRole1.getText());
+            
+            
+            selMan.setEmailId(txtCaretakerEmailId1.getText());
+            if(!data.emailCheck(txtCaretakerEmailId1.getText())){
+                JOptionPane.showMessageDialog(this, "Enter valid emailid");
+                return;
+            }
+
+            
+            if(!data.phnocheck(txtCaretakerPhno1.getText())){
+                JOptionPane.showMessageDialog(this, "Enter valid phone no");
+                return;
+            }
+            selMan.setPhno(Long.valueOf(txtCaretakerPhno1.getText()));
+            
+            
+            selMan.setPassword(txtCaretakerPassword1.getText());
+            if(txtCaretakerPassword1.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "Enter valid password");
+                return;
+            }
+
+            JOptionPane.showMessageDialog(this, "DeliveryMan updated successfully");
+
+            //            dB4OUtil.storeSystem(system);
+            populateDeliveryManTable();
+        }
+    }//GEN-LAST:event_btnCaretakerUpdate1ActionPerformed
+
+    private void btnOutForDeliveryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOutForDeliveryActionPerformed
+        // TODO add your handling code here:
+        Integer selectedRowIndex = tableNgoOrder.getSelectedRow();
+
+        if (selectedRowIndex<0){
+
+            JOptionPane.showMessageDialog(this, "Please select a row to view.");
+            return;
+        }
+
+        else{
+            
+            DefaultTableModel model = (DefaultTableModel) tableNgoOrder.getModel();
+            NgoOrder selMan = (NgoOrder) model.getValueAt(selectedRowIndex,0);
+            
+            Integer qty = selMan.getQty();
+            String name = selMan.getItems();
+            if(selMan.getStatus().equals("Pending")){
+                selMan.setStatus("Out for Delivery");
+                
+                Medicine m = system.getMedicineList().findMedicine(name);
+                Integer currQty = m.getQty();
+                m.setQty(currQty - qty);
+                populateItemTable();
+                populateNgoOrderTable();
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Cannot accept this process");
+                return;
+            }
+        }
+    }//GEN-LAST:event_btnOutForDeliveryActionPerformed
+
+    private void btnUpdateOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateOrderActionPerformed
+        // TODO add your handling code here:
+        Integer selectedRowIndex = tableNgoOrder.getSelectedRow();
+
+        if (selectedRowIndex<0){
+
+            JOptionPane.showMessageDialog(this, "Please select a row to view.");
+            return;
+        }
+
+        else{
+            
+            DefaultTableModel model = (DefaultTableModel) tableNgoOrder.getModel();
+            NgoOrder selMan = (NgoOrder) model.getValueAt(selectedRowIndex,0);
+
+            if(selMan.getStatus().equals("Cancelled") || selMan.getStatus().equals("Delivered")){
+                JOptionPane.showMessageDialog(this, "Cannot be updated");
+            }
+            else{
+                selMan.setShopkeeperId(String.valueOf(txtShopkeerId.getSelectedItem()));
+                selMan.setDeliveryManId(String.valueOf(txtDeliveryManId.getSelectedItem()));
+
+                populateNgoOrderTable();
+            }
+            
+            txtOrderId.setText("");
+            txtItem.setText("");
+            txtQty.setText("");
+            txtStatus.setText("");
+        }
+        
+        
+        
+    }//GEN-LAST:event_btnUpdateOrderActionPerformed
+
+    private void btnViewOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewOrderActionPerformed
+        // TODO add your handling code here:
+        Integer selectedRowIndex = tableNgoOrder.getSelectedRow();
+
+        if (selectedRowIndex<0){
+
+            JOptionPane.showMessageDialog(this, "Please select a row to view.");
+            return;
+        }
+
+        else{
+            
+            DefaultTableModel model = (DefaultTableModel) tableNgoOrder.getModel();
+            NgoOrder selMan = (NgoOrder) model.getValueAt(selectedRowIndex,0);
+            
+            if(selMan.getStatus().equals("Cancelled") || selMan.getStatus().equals("Delivered")){
+                
+                JOptionPane.showMessageDialog(this, "Cannot be Viewed");
+                return;
+            }
+            else{
+                txtOrderId.setText(selMan.getOrderid());
+                txtItem.setText(selMan.getItems());
+                txtQty.setText(String.valueOf(selMan.getQty()));
+                txtStatus.setText(selMan.getStatus());
+            }
+        }
+        
+    }//GEN-LAST:event_btnViewOrderActionPerformed
+
+    private void btnCancelOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelOrderActionPerformed
+        // TODO add your handling code here:
+        Integer selectedRowIndex = tableNgoOrder.getSelectedRow();
+
+        if (selectedRowIndex<0){
+
+            JOptionPane.showMessageDialog(this, "Please select a row to view.");
+            return;
+        }
+
+        else {
+            DefaultTableModel model = (DefaultTableModel) tableNgoOrder.getModel();
+            NgoOrder selMan = (NgoOrder) model.getValueAt(selectedRowIndex,0);
+            
+            if(selMan.getStatus()!="Delivered"){
+                selMan.setStatus("Cancelled");
+                
+                populateNgoOrderTable();
+            }
+        }
+    }//GEN-LAST:event_btnCancelOrderActionPerformed
+
+    private void btnDeliveredActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeliveredActionPerformed
+        // TODO add your handling code here:
+        
+        Integer selectedRowIndex = tableNgoOrder.getSelectedRow();
+
+        if (selectedRowIndex<0){
+
+            JOptionPane.showMessageDialog(this, "Please select a row to view.");
+            return;
+        }
+
+        else{
+            
+            DefaultTableModel model = (DefaultTableModel) tableNgoOrder.getModel();
+            NgoOrder selMan = (NgoOrder) model.getValueAt(selectedRowIndex,0);
+            
+            if(selMan.getStatus().equals("Out for Delivery")){
+                selMan.setStatus("Delivered");
+                
+                populateNgoOrderTable();
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Cannot accept this process");
+                return;
+            }
+        }
+    }//GEN-LAST:event_btnDeliveredActionPerformed
+
+    private void btnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBillingActionPerformed
+        // TODO add your handling code here:
+        panelWork.removeAll();
+        panelWork.add(panelBilling);
+        panelWork.repaint();
+        panelWork.revalidate();
+    }//GEN-LAST:event_btnBillingActionPerformed
+
+    private void btnNgoOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNgoOrdersActionPerformed
+        // TODO add your handling code here:
+        panelWork.removeAll();
+        panelWork.add(panelNgoOrders);
+        panelWork.repaint();
+        panelWork.revalidate();
+    }//GEN-LAST:event_btnNgoOrdersActionPerformed
+
+    private void btnMedOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedOrdersActionPerformed
+        // TODO add your handling code here:
+        panelWork.removeAll();
+        panelWork.add(panelMedicalOrders);
+        panelWork.repaint();
+        panelWork.revalidate();
+    }//GEN-LAST:event_btnMedOrdersActionPerformed
+
+    private void btnDeliveryManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeliveryManActionPerformed
+        // TODO add your handling code here:
+        panelWork.removeAll();
+        panelWork.add(panelDeliveryMan);
+        panelWork.repaint();
+        panelWork.revalidate();
+    }//GEN-LAST:event_btnDeliveryManActionPerformed
+
+    private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
+        try {
+            // TODO add your handling code here:
+            txtReceipt.print();
+        } catch (PrinterException ex) {
+            /*Logger.getLogger(MedAdminWorkspace.class.getName()).log(Level.SEVERE, null, ex);*/
+            JOptionPane.showMessageDialog(this, "Unable to print due to some issue");
+            return;
+        }
+    }//GEN-LAST:event_btnPrintActionPerformed
+
+    private void txtOrderIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOrderIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtOrderIdActionPerformed
 
     private void populateHospitalEncounterTable(){
-        DefaultTableModel model = (DefaultTableModel) tableEncounter.getModel();
+        DefaultTableModel model = (DefaultTableModel) tableEncounter1.getModel();
         model.setRowCount(0);
         
             for(Encounter e: system.getEncounterlist().getHospitalEncounterList()){
@@ -1654,19 +2582,16 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
             }
     }   
     
-      private void populateHospitalEncounterOrderTable(){
-        DefaultTableModel model = (DefaultTableModel) tableEncounter.getModel();
+    private void populateHospitalEncounterOrderTable(){
+        DefaultTableModel model = (DefaultTableModel) tableEncounterOrder.getModel();
         model.setRowCount(0);
         
             for(Encounter e: system.getEncounterlist().getHospitalEncounterList()){
                   
-                Object[] row = new Object[6];
+                Object[] row = new Object[3];
                 row[0] = e;
-                row[1] = e.getDoctorUserName();
-                row[2] = e.getPatientUsername(); 
-                row[3] = e.getBP();
-                row[4] = e.getTemperature();
-                row[5] = e.getStatus();
+                row[1] = e.getMedicine();
+                row[2] = e.getMedicineQuantity();
 
                 model.addRow(row);
             }
@@ -1676,6 +2601,24 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
 
     private void populateItemTable(){
         DefaultTableModel model = (DefaultTableModel) tableItem.getModel();
+        model.setRowCount(0);
+        
+            for(Medicine e: system.getMedicineList().getMedList()){
+                  
+                Object[] row = new Object[6];
+                row[0] = e;
+                row[1] = e.getName();
+                row[2] = e.getCost(); 
+                row[3] = e.getDate();
+                row[4] = e.getQty();
+                row[5] = e.getAv();
+
+                model.addRow(row);
+            }
+    }   
+    
+    private void populateBillItemTable(){
+        DefaultTableModel model = (DefaultTableModel) tableItem1.getModel();
         model.setRowCount(0);
         
             for(Medicine e: system.getMedicineList().getMedList()){
@@ -1708,31 +2651,112 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
                 model.addRow(row);
             }
     }
+    
+    private void populateDeliveryManTable(){
+        DefaultTableModel model = (DefaultTableModel) tableDeliveryMan.getModel();
+        model.setRowCount(0);
+        
+            for(DeliveryMan e: system.getDeliveryManlist().getDeliveryManList()){
+                  
+                Object[] row = new Object[5];
+                row[0] = e;
+                row[1] = e.getName();
+                row[2] = e.getUsername(); 
+                row[3] = e.getAge();
+                row[4] = e.getEmailId();
+
+                model.addRow(row);
+            }
+    }
+    
+    private void populateNgoOrderTable(){
+        
+        DefaultTableModel model = (DefaultTableModel) tableNgoOrder.getModel();
+        model.setRowCount(0);
+        
+            for(NgoOrder e: system.getNgoOrderList().getNgoOrderList()){
+                  
+                Object[] row = new Object[6];
+                row[0] = e;
+                row[1] = e.getShopkeeperId();
+                row[2] = e.getDeliveryManId();
+                row[3] = e.getItems();
+                row[4] = e.getQty();
+                row[5] = e.getStatus();
+
+                model.addRow(row);
+            }
+    }
+    
+    private void populateMedOrders(){
+        
+        DefaultTableModel model = (DefaultTableModel) tableNgoOrder1.getModel();
+        model.setRowCount(0);
+        
+            for(Order e: system.getOrderList().getOrderList()){
+                  
+                Object[] row = new Object[5];
+                row[0] = e;
+                row[1] = e.getItem();
+                row[2] = e.getDate();
+                row[3] = e.getQty();
+                row[4] = e.getCost();
+
+                model.addRow(row);
+            }
+    }
+    
+    public void populateCombo(){
+        String[] docArr1 = system.getPharmlist().pharUsernameArray();
+        DefaultComboBoxModel dn1 = new DefaultComboBoxModel(docArr1);
+        txtShopkeerId.setModel(dn1);
+        
+        String[] docArr = system.getDeliveryManlist().delUsernameArray();
+        DefaultComboBoxModel dn = new DefaultComboBoxModel(docArr);
+        txtDeliveryManId.setModel(dn);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane ScrollPaneNgoManager1;
+    private javax.swing.JScrollPane ScrollPaneNgoManager2;
     private javax.swing.JSplitPane SplitPaneMedAdmin;
     private javax.swing.JButton btnBillOrder;
     private javax.swing.JButton btnBilling;
+    private javax.swing.JButton btnCancelOrder;
     private javax.swing.JButton btnCaretakerCreate;
+    private javax.swing.JButton btnCaretakerCreate1;
     private javax.swing.JButton btnCaretakerDelete;
+    private javax.swing.JButton btnCaretakerDelete1;
     private javax.swing.JButton btnCaretakerUpdate;
+    private javax.swing.JButton btnCaretakerUpdate1;
     private javax.swing.JButton btnCaretakerView;
+    private javax.swing.JButton btnCaretakerView1;
+    private javax.swing.JButton btnDelivered;
+    private javax.swing.JButton btnDeliveryMan;
     private javax.swing.JButton btnEncounter;
     private javax.swing.JButton btnEncounterView;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnItems;
     private javax.swing.JButton btnLogOut;
-    private javax.swing.JButton btnMail;
     private javax.swing.JButton btnMedCreate;
+    private javax.swing.JButton btnMedOrders;
+    private javax.swing.JButton btnNgoOrders;
+    private javax.swing.JButton btnOutForDelivery;
     private javax.swing.JButton btnPatientDelete;
     private javax.swing.JButton btnPatientUpdate;
     private javax.swing.JButton btnPatientView;
-    private javax.swing.JButton btnPrintBill;
+    private javax.swing.JButton btnPrint;
     private javax.swing.JButton btnSelectItem;
-    private javax.swing.JButton btnSend;
     private javax.swing.JButton btnStorekeeper;
+    private javax.swing.JButton btnUpdateOrder;
+    private javax.swing.JButton btnViewOrder;
     private javax.swing.JComboBox<String> cmbCaretakerGender;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JComboBox<String> cmbCaretakerGender1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -1740,17 +2764,26 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JLabel lblCaretakerAge;
+    private javax.swing.JLabel lblCaretakerAge1;
     private javax.swing.JLabel lblCaretakerEmailId;
+    private javax.swing.JLabel lblCaretakerEmailId1;
     private javax.swing.JLabel lblCaretakerGender;
+    private javax.swing.JLabel lblCaretakerGender1;
     private javax.swing.JLabel lblCaretakerId;
+    private javax.swing.JLabel lblCaretakerId1;
     private javax.swing.JLabel lblCaretakerName;
+    private javax.swing.JLabel lblCaretakerName1;
     private javax.swing.JLabel lblCaretakerPassword;
+    private javax.swing.JLabel lblCaretakerPassword1;
     private javax.swing.JLabel lblCaretakerPhno;
+    private javax.swing.JLabel lblCaretakerPhno1;
     private javax.swing.JLabel lblCaretakerRole;
+    private javax.swing.JLabel lblCaretakerRole1;
     private javax.swing.JLabel lblCaretakerSearch;
     private javax.swing.JLabel lblCaretakerUsername;
+    private javax.swing.JLabel lblCaretakerUsername1;
     private javax.swing.JLabel lblDoctorEncounterUsername;
     private javax.swing.JLabel lblEncounterBP;
     private javax.swing.JLabel lblEncounterDate;
@@ -1760,7 +2793,6 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
     private javax.swing.JLabel lblEncounterNo;
     private javax.swing.JLabel lblEncounterPatientUsername;
     private javax.swing.JLabel lblEncounterTemperature;
-    private javax.swing.JLabel lblMes;
     private javax.swing.JLabel lblOrderId;
     private javax.swing.JLabel lblPatientAge;
     private javax.swing.JLabel lblPatientAge1;
@@ -1774,34 +2806,49 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
     private javax.swing.JLabel lblPatientUsername;
     private javax.swing.JLabel lblPatientUsername1;
     private javax.swing.JLabel lblRole;
-    private javax.swing.JLabel lblSub;
     private javax.swing.JLabel lblTitle2;
     private javax.swing.JLabel lblTitle3;
     private javax.swing.JLabel lblTitle4;
+    private javax.swing.JLabel lblTitle5;
+    private javax.swing.JLabel lblTitle6;
+    private javax.swing.JLabel lblTitle7;
     private javax.swing.JLabel lblTitleEncounter;
     private javax.swing.JLabel lblTitlePatient;
-    private javax.swing.JLabel lblTo;
     private javax.swing.JPanel panelBilling;
     private javax.swing.JPanel panelControl;
+    private javax.swing.JPanel panelDeliveryMan;
     private javax.swing.JPanel panelEncounter;
     private javax.swing.JPanel panelHome;
     private javax.swing.JPanel panelItem;
-    private javax.swing.JPanel panelMail;
+    private javax.swing.JPanel panelMedicalOrders;
+    private javax.swing.JPanel panelNgoOrders;
     private javax.swing.JPanel panelStorekeeper;
     private javax.swing.JPanel panelWork;
-    private javax.swing.JTable tableEncounter;
+    private javax.swing.JTable tableDeliveryMan;
+    private javax.swing.JTable tableEncounter1;
     private javax.swing.JTable tableEncounterOrder;
     private javax.swing.JTable tableItem;
     private javax.swing.JTable tableItem1;
+    private javax.swing.JTable tableNgoOrder;
+    private javax.swing.JTable tableNgoOrder1;
     private javax.swing.JTable tableStorekeeper;
     private javax.swing.JTextField txtCaretakerAge;
+    private javax.swing.JTextField txtCaretakerAge1;
     private javax.swing.JTextField txtCaretakerEmailId;
+    private javax.swing.JTextField txtCaretakerEmailId1;
     private javax.swing.JTextField txtCaretakerId;
+    private javax.swing.JTextField txtCaretakerId1;
     private javax.swing.JTextField txtCaretakerName;
+    private javax.swing.JTextField txtCaretakerName1;
     private javax.swing.JPasswordField txtCaretakerPassword;
+    private javax.swing.JPasswordField txtCaretakerPassword1;
     private javax.swing.JTextField txtCaretakerPhno;
+    private javax.swing.JTextField txtCaretakerPhno1;
     private javax.swing.JTextField txtCaretakerRole;
+    private javax.swing.JTextField txtCaretakerRole1;
     private javax.swing.JTextField txtCaretakerUsername;
+    private javax.swing.JTextField txtCaretakerUsername1;
+    private javax.swing.JComboBox<String> txtDeliveryManId;
     private javax.swing.JTextField txtEncounterBP;
     private javax.swing.JTextField txtEncounterDate;
     private javax.swing.JTextField txtEncounterDoctorUsername;
@@ -1810,6 +2857,7 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
     private javax.swing.JTextField txtEncounterNo;
     private javax.swing.JTextField txtEncounterPatientUsername;
     private javax.swing.JTextField txtEncounterTemperature;
+    private javax.swing.JTextField txtItem;
     private javax.swing.JComboBox<String> txtItemAvailability;
     private javax.swing.JTextField txtItemCost;
     private javax.swing.JTextField txtItemCost1;
@@ -1824,9 +2872,10 @@ public class MedAdminWorkspace extends javax.swing.JPanel {
     private javax.swing.JTextField txtItemQuantity1;
     private javax.swing.JTextField txtMedStoreSearch;
     private javax.swing.JTextField txtMedicineQuantity;
-    private javax.swing.JTextArea txtMess;
+    private javax.swing.JTextField txtOrderId;
+    private javax.swing.JTextField txtQty;
     private javax.swing.JTextArea txtReceipt;
-    private javax.swing.JTextField txtSub;
-    private javax.swing.JTextField txtTo;
+    private javax.swing.JComboBox<String> txtShopkeerId;
+    private javax.swing.JTextField txtStatus;
     // End of variables declaration//GEN-END:variables
 }

@@ -38,11 +38,30 @@ public class BudgetDirectory {
     
     public Budget getMoney(){
         for(Budget b: budgetList){
-            if(b.getDonation()!=null){
+            if(b.getDonation()!=null || b.getOthers()!=null){
                 return b;
             }
-            else{
-                return null;
+            
+        }
+        return null;
+    }
+    
+    
+//    public Budget getFund(){
+//        for(Budget b: budgetList){
+////            if(b.getTotal()!=null){
+//                return b;
+////            }
+//            
+//        }
+//        return null;
+//    }
+    
+    public Integer getTotal(){
+        for(Budget b: budgetList){
+            if(b.getTotal()!=null){
+                System.out.println("Need to fix");
+                return b.getTotal();
             }
         }
         return null;

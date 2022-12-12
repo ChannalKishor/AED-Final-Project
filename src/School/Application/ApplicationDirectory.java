@@ -36,5 +36,15 @@ public class ApplicationDirectory {
         applicationList.remove(m);
     }
     
+    public boolean uiqueApplicationId(String id) {
+
+        for (Application d : applicationList) {
+
+            if (id.equals(d.getAppNo())) {
+                return false;
+            }
+        }
+            return true; 
+    } 
     
 }

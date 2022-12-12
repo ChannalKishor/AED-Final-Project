@@ -54,32 +54,32 @@ public class NgoLoginPage extends javax.swing.JPanel {
         cmbRole = new javax.swing.JComboBox<>();
         btnLogin = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblTitle.setFont(new java.awt.Font("Perpetua", 1, 36)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("Login Page");
-        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 450, -1));
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 450, -1));
 
         lblUsername.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblUsername.setText("Username:");
-        add(lblUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
+        add(lblUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
 
         lblPass.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblPass.setText("Password:");
-        add(lblPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
-        add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 222, -1));
-        add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 224, -1));
+        add(lblPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, -1, -1));
+        add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 222, -1));
+        add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 224, -1));
 
         lblRole.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblRole.setText("Role:");
-        add(lblRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, -1, -1));
+        add(lblRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, -1, -1));
 
         cmbRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NGO Admin", "NGO Manager", "Caretaker" }));
-        add(cmbRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 224, -1));
+        add(cmbRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, 224, -1));
 
         btnLogin.setBackground(new java.awt.Color(204, 204, 204));
         btnLogin.setText("Login");
@@ -89,7 +89,7 @@ public class NgoLoginPage extends javax.swing.JPanel {
                 btnLoginActionPerformed(evt);
             }
         });
-        add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 60, 20));
+        add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 400, 60, 20));
 
         btnBack.setBackground(new java.awt.Color(204, 204, 204));
         btnBack.setText("Back");
@@ -101,8 +101,9 @@ public class NgoLoginPage extends javax.swing.JPanel {
         });
         add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 70, 20));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\kuchi\\OneDrive\\Desktop\\UI images\\NGO icon resized.jpg")); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 130, 370, 320));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UiImagesssss/hands together.jpg"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 1280, 750));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -122,38 +123,38 @@ public class NgoLoginPage extends javax.swing.JPanel {
         NgoManager ngoManager = system.getNgoManagerList().findNgoManager(username, password);
         Caretaker caretaker = system.getCareTakerList().findCaretaker(username, password);
         
-        try{
-            if(role.equals("NGO Admin")){
-                if(username.equals("Admin") && password.equals("pass")){
+//        try{
+//            if(role.equals("NGO Admin")){
+            if(role.equals("NGO Admin")&&(username.equals("Admin") && password.equals("pass"))){
                     NgoAdminWorkspace adminJPanel = new NgoAdminWorkspace(cardPanel, system, dB4OUtil);
                     CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
                     cardPanel.add("adminJPanel",adminJPanel);
                     cardLayout.next(cardPanel);
                 }
-            }
-            else if(role.equals("NGO Manager")){
-                if(username.equals(ngoManager.getUsername()) && password.equals(ngoManager.getPassword())){
+//            }
+//            else if(role.equals("NGO Manager")){
+            else if(role.equals("NGO Manager") &&(username.equals(ngoManager.getUsername()) && password.equals(ngoManager.getPassword()))){
                     NgoManagerWorkspace ngoManJPanel = new NgoManagerWorkspace(ngoManager,cardPanel, system, dB4OUtil);
                     CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
                     cardPanel.add("ngoManagerJPanel",ngoManJPanel);
                     cardLayout.next(cardPanel);
                 }
-            }
-            else if(role.equals("Caretaker")){
-                if(username.equals(caretaker.getUsername()) && password.equals(caretaker.getPassword())){
+//            }
+//            else if(role.equals("Caretaker")){
+            else if(role.equals("Caretaker")&&(username.equals(caretaker.getUsername()) && password.equals(caretaker.getPassword()))){
                     CaretakerWorkspace caretakerJPanel = new CaretakerWorkspace(caretaker,cardPanel, system, dB4OUtil);
                     CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
                     cardPanel.add("caretakerJPanel",caretakerJPanel);
                     cardLayout.next(cardPanel);
                 }
-            }
-            else{
+//            }
+            else {
                 JOptionPane.showMessageDialog(this, "Please enter the correct username and password and role.");
             }
-        }
-        catch(NullPointerException n){
-            JOptionPane.showMessageDialog(this, "Please enter the correct username and password and role.");
-        }
+//        }
+//        catch(NullPointerException n){
+//            JOptionPane.showMessageDialog(this, n.getMessage());
+//        }
         
         txtUsername.setText("");
         txtPass.setText("");
@@ -164,7 +165,7 @@ public class NgoLoginPage extends javax.swing.JPanel {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnLogin;
     private javax.swing.JComboBox<String> cmbRole;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblPass;
     private javax.swing.JLabel lblRole;
     private javax.swing.JLabel lblTitle;

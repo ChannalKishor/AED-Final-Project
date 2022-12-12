@@ -48,14 +48,14 @@ public class HomePage extends javax.swing.JPanel {
         btnHMS = new javax.swing.JButton();
         btnPMS = new javax.swing.JButton();
         btnSMS = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTitle.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("Home Page");
-        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 300, -1));
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 300, -1));
         add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, -1, -1));
 
         jTabbedPane2.setFont(new java.awt.Font("Rockwell", 0, 16)); // NOI18N
@@ -95,8 +95,9 @@ public class HomePage extends javax.swing.JPanel {
 
         add(jTabbedPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 520, 90));
 
-        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -50, 1370, 1080));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UiImagesssss/NGOhomeBig.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 750));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNMSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNMSActionPerformed
@@ -137,7 +138,7 @@ public class HomePage extends javax.swing.JPanel {
     private javax.swing.JButton btnNMS;
     private javax.swing.JButton btnPMS;
     private javax.swing.JButton btnSMS;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JLabel lblTitle;

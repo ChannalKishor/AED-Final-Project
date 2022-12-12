@@ -12,6 +12,7 @@ public class Budget {
     
     private Integer donation;
     private Integer others;
+    private Integer total;
 
     public Integer getDonation() {
         return donation;
@@ -28,6 +29,16 @@ public class Budget {
     public void setOthers(Integer others) {
         this.others = others;
     }
+
+    public Integer getTotal() {
+        return total;
+    }
+
+    public void setTotal(Integer total) {
+        this.total = total;
+    }
+    
+    
 
     
     

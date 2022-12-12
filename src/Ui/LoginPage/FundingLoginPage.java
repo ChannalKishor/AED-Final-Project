@@ -54,10 +54,16 @@ public class FundingLoginPage extends javax.swing.JPanel {
         cmbRole = new javax.swing.JComboBox<>();
         btnLogin = new javax.swing.JButton();
         btnReg = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
-        lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblTitle.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(255, 255, 255));
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("Login Page");
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 130, 388, -1));
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -65,14 +71,27 @@ public class FundingLoginPage extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, -1, -1));
+        add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, 222, -1));
 
+        lblUsername.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        lblUsername.setForeground(new java.awt.Color(255, 255, 255));
         lblUsername.setText("Username:");
+        add(lblUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, -1, -1));
 
+        lblPass.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        lblPass.setForeground(new java.awt.Color(255, 255, 255));
         lblPass.setText("Password:");
+        add(lblPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 100, 30));
+        add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, 224, -1));
 
+        lblRole.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        lblRole.setForeground(new java.awt.Color(255, 255, 255));
         lblRole.setText("Role:");
+        add(lblRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, -1, -1));
 
         cmbRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fund Manager", "Public User" }));
+        add(cmbRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 360, 224, -1));
 
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -80,6 +99,7 @@ public class FundingLoginPage extends javax.swing.JPanel {
                 btnLoginActionPerformed(evt);
             }
         });
+        add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 440, -1, -1));
 
         btnReg.setText("Register");
         btnReg.addActionListener(new java.awt.event.ActionListener() {
@@ -87,64 +107,13 @@ public class FundingLoginPage extends javax.swing.JPanel {
                 btnRegActionPerformed(evt);
             }
         });
+        add(btnReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 440, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(221, 221, 221)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblUsername)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblPass)
-                                    .addComponent(lblRole))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtPass)
-                                    .addComponent(cmbRole, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(btnBack))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(281, 281, 281)
-                        .addComponent(btnLogin)
-                        .addGap(77, 77, 77)
-                        .addComponent(btnReg)))
-                .addContainerGap(284, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTitle)
-                .addGap(37, 37, 37)
-                .addComponent(btnBack)
-                .addGap(72, 72, 72)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblUsername)
-                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPass)
-                    .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblRole)
-                    .addComponent(cmbRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(83, 83, 83)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnLogin)
-                    .addComponent(btnReg))
-                .addContainerGap(270, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UiImagesssss/login page.png"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -1, 1300, 750));
+
+        jLabel2.setText("jLabel2");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 420, 220));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -164,22 +133,22 @@ public class FundingLoginPage extends javax.swing.JPanel {
         PublicUser user = system.getPublicUserList().findPublicUser(username, password);
 
         try{
-            if(role.equals("Fund Manager")){
-                if(username.equals(fundManager.getUsername()) && password.equals(fundManager.getPassword())){
+//            if(role.equals("Fund Manager")){
+            if(role.equals("Fund Manager")&&(username.equals(fundManager.getUsername()) && password.equals(fundManager.getPassword()))){
                     FundManagerWorkspace ngoManJPanel = new FundManagerWorkspace(fundManager,cardPanel, system, dB4OUtil);
                     CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
                     cardPanel.add("FundManagerJPanel",ngoManJPanel);
                     cardLayout.next(cardPanel);
                 }
-            }
-            else if(role.equals("Public User")){
-                if(username.equals(user.getUsername()) && password.equals(user.getPassword())){
+//            }
+//            else if(role.equals("Public User")){
+             else if(role.equals("Public User")&&(username.equals(user.getUsername()) && password.equals(user.getPassword()))){
                     PublicUserWorkspace publicUserJPanel = new PublicUserWorkspace(user,cardPanel, system, dB4OUtil);
                     CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
                     cardPanel.add("publicUserJPanel",publicUserJPanel);
                     cardLayout.next(cardPanel);
                 }
-            }
+//            }
             else{
                 JOptionPane.showMessageDialog(this, "Please enter the correct username and password and role.");
             }
@@ -206,6 +175,8 @@ public class FundingLoginPage extends javax.swing.JPanel {
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnReg;
     private javax.swing.JComboBox<String> cmbRole;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblPass;
     private javax.swing.JLabel lblRole;
     private javax.swing.JLabel lblTitle;

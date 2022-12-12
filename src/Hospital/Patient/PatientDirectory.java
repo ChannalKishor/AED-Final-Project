@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Hospital.Patient;
+import Ngo.CareTaker.Caretaker;
 import java.util.ArrayList;
 
 /**
@@ -45,4 +46,36 @@ public class PatientDirectory {
         return null;
     }
     
+    public boolean uiquePatientId(String id) {
+
+        for (Patient d : patientList) {
+
+            if (id.equals(d.getPatientId())) {
+                return false;
+            }
+        }
+            return true; 
+    } 
+    
+    public boolean uniquePatientUsername(String username){
+        for (Patient d: patientList) {
+
+            if (username.equals(d.getUsername())) {
+                return false;
+            }
+        }
+            return true;
+    }
+
+    
+      public String[] patUsernameArray(){
+        String[] patUsername = new String[patientList.size()+1];
+        
+        int count = 0;
+        for (Patient d: patientList){
+            patUsername[count] = d.getUsername();
+            count++; 
+        }
+        return patUsername;
+    }
 }

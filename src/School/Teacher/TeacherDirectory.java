@@ -67,4 +67,15 @@ public class TeacherDirectory {
         }
             return true;
     }
+    
+     public String[] teaUsernameArray(){
+        String[] carUsername = new String[teacherList.size()+1];
+        
+        int count = 0;
+        for (Teacher d: teacherList){
+            carUsername[count] = d.getUsername();
+            count++; 
+        }
+        return carUsername;
+    }
 }

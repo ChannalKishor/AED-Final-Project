@@ -25,6 +25,9 @@ public class DataValidation {
     public boolean numcheck(String val){
         try{
             int temp = Integer.parseInt(val);
+            if(Integer.valueOf(val)<0){
+                return false;
+            }
         }catch(Exception err){
             return false;
         }

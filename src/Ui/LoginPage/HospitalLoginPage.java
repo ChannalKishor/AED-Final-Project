@@ -64,24 +64,25 @@ public class HospitalLoginPage extends javax.swing.JPanel {
         });
         add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 82, -1, -1));
 
-        lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(255, 255, 255));
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("Login Page");
-        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 13, 800, -1));
-        add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 179, 222, -1));
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 800, -1));
+        add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 190, 222, -1));
 
         lblUsername.setText("Username:");
-        add(lblUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 182, -1, -1));
+        add(lblUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, -1, -1));
 
         lblPass.setText("Password:");
-        add(lblPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 244, -1, -1));
+        add(lblPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, -1, -1));
         add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 241, 224, -1));
 
         lblRole.setText("Role:");
-        add(lblRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 303, -1, -1));
+        add(lblRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, -1, -1));
 
         cmbRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hospital Admin", "Doctor", "Patient" }));
-        add(cmbRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 300, 224, -1));
+        add(cmbRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 224, -1));
 
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -89,7 +90,7 @@ public class HospitalLoginPage extends javax.swing.JPanel {
                 btnLoginActionPerformed(evt);
             }
         });
-        add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 403, -1, -1));
+        add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -108,38 +109,38 @@ public class HospitalLoginPage extends javax.swing.JPanel {
         Doctor doc = system.getDoctorList().findDoctor(username, password);
         Patient pat = system.getPatientList().findPatient(username, password);
 
-        try{
-            if(role.equals("Hospital Admin")){
-                if(username.equals("Admin") && password.equals("pass")){
+//        try{
+//            if(role.equals("Hospital Admin")){
+            if(role.equals("Hospital Admin")&&(username.equals("Admin") && password.equals("pass"))){
                     HospitalAdminWorkspace adminJPanel = new HospitalAdminWorkspace(cardPanel, system, dB4OUtil);
                     CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
                     cardPanel.add("adminJPanel",adminJPanel);
                     cardLayout.next(cardPanel);
                 }
-            }
-            else if(role.equals("Doctor")){
-                if(username.equals(doc.getUsername()) && password.equals(doc.getPassword())){
+//            }
+//            else if(role.equals("Doctor")){
+            else if(role.equals("Doctor")&&(username.equals(doc.getUsername()) && password.equals(doc.getPassword()))){
                     DoctorWorkspace docJPanel = new DoctorWorkspace(doc,cardPanel, system, dB4OUtil);
                     CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
                     cardPanel.add("docJPanel",docJPanel);
                     cardLayout.next(cardPanel);
                 }
-            }
-            else if(role.equals("Patient")){
-                if(username.equals(pat.getUsername()) && password.equals(pat.getPassword())){
+//            }
+//            else if(role.equals("Patient")){
+            else if(role.equals("Patient")&&(username.equals(pat.getUsername()) && password.equals(pat.getPassword()))){
                     PatientWorkspace patJPanel = new PatientWorkspace(pat,cardPanel, system, dB4OUtil);
                     CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
                     cardPanel.add("patJPanel",patJPanel);
                     cardLayout.next(cardPanel);
                 }
-            }
+//            }
             else{
                 JOptionPane.showMessageDialog(this, "Please enter the correct username and password and role.");
             }
-        }
-        catch(NullPointerException n){
-            JOptionPane.showMessageDialog(this, "Please enter the correct username and password and role.");
-        }
+//        }
+//        catch(NullPointerException n){
+//            JOptionPane.showMessageDialog(this, n.getMessage());
+//        }
         txtUsername.setText("");
         txtPass.setText("");
     }//GEN-LAST:event_btnLoginActionPerformed

@@ -20,6 +20,8 @@ import Ngo.CareTaker.CaretakerDirectory;
 import Ngo.Children.ChildrenDirectory;
 
 import Ngo.NgoManager.NgoManagerDirectory;
+import Ngo.Order.NgoOrderDirectory;
+import Pharmacy.DeliveryMan.DeliveryManDirectory;
 import Pharmacy.Medicine.MedicineDirectory;
 import Pharmacy.Order.OrderDirectory;
 import Pharmacy.Pharmacist.PharmacistDirectory;
@@ -52,12 +54,13 @@ public class MainSystem {
     private ApplicantDirectory applicantList;
     private PrincipalDirectory principalList;
     private ApplicationDirectory applicationList;
-   
+    private DeliveryManDirectory deliveryManlist;
     private MedicineDirectory medicineList;
     private DonationDirectory donationList;
     private TeacherApplyDirectory applist;
     private BudgetDirectory budgetList;
     private AppointmentDirectory hosAppList;
+    private NgoOrderDirectory ngoOrderList;
     
     public MainSystem(){
         ngoManagerList = new NgoManagerDirectory();
@@ -76,12 +79,13 @@ public class MainSystem {
         applicantList = new ApplicantDirectory();
         principalList = new PrincipalDirectory();
         applicationList = new ApplicationDirectory();
-       
+        deliveryManlist = new DeliveryManDirectory();
         medicineList = new MedicineDirectory();
         donationList = new DonationDirectory();
         applist = new TeacherApplyDirectory();
         budgetList = new BudgetDirectory();
         hosAppList = new AppointmentDirectory();
+        ngoOrderList = new NgoOrderDirectory();
     }
     
    
@@ -229,6 +233,15 @@ public class MainSystem {
     public OrderDirectory getOrderList() {
         return orderList;
     }
+
+    public DeliveryManDirectory getDeliveryManlist() {
+        return deliveryManlist;
+    }
+
+    public NgoOrderDirectory getNgoOrderList() {
+        return ngoOrderList;
+    }
+    
     
     
    

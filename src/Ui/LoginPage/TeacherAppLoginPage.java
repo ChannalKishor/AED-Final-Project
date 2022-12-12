@@ -169,22 +169,22 @@ public class TeacherAppLoginPage extends javax.swing.JPanel {
         //        Principal principal =
 
         try{
-            if(role.equals("School Admin")){
-                if(username.equals("Admin") && password.equals("pass")){
+//            if(role.equals("School Admin")){
+            if(role.equals("School Admin")&&(username.equals("Admin") && password.equals("pass"))){
                     SchoolAdminWorkspace adminJPanel = new SchoolAdminWorkspace(cardPanel, system, dB4OUtil);
                     CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
                     cardPanel.add("adminJPanel",adminJPanel);
                     cardLayout.next(cardPanel);
                 }
-            }
-            else if(role.equals("Applicant")){
-                    if(username.equals(app.getUsername()) && password.equals(app.getPassword())){
-                            ApplicantWorkspace appJPanel = new ApplicantWorkspace(app,cardPanel, system, dB4OUtil);
-                            CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
-                            cardPanel.add("JobAppJPanel",appJPanel);
-                            cardLayout.next(cardPanel);
+//            }
+//            else if(role.equals("Applicant")){
+            else if(role.equals("Applicant")&&(username.equals(app.getUsername()) && password.equals(app.getPassword()))){
+                        ApplicantWorkspace appJPanel = new ApplicantWorkspace(app,cardPanel, system, dB4OUtil);
+                        CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
+                        cardPanel.add("JobAppJPanel",appJPanel);
+                        cardLayout.next(cardPanel);
                     }
-            }
+//            }
             //            else if(role.equals("Teacher")){
                 //                if(username.equals(caretaker.getUsername()) && password.equals(caretaker.getPassword())){
                     //                    CaretakerWorkspace caretakerJPanel = new CaretakerWorkspace(caretaker,cardPanel, system, dB4OUtil);

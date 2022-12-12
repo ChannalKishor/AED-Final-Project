@@ -71,8 +71,8 @@ public class DB4OUtil {
         }
         else{
             system = (MainSystem) result.get(result.size() - 1);
-            System.out.println(result);
-            System.out.println(2);
+//            System.out.println(result);
+//            System.out.println(2);
         }
         conn.close();
         return system;

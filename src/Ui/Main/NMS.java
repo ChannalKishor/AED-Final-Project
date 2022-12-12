@@ -49,7 +49,7 @@ public class NMS extends javax.swing.JPanel {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         btnNgo = new javax.swing.JButton();
         btnFunding = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -83,10 +83,12 @@ public class NMS extends javax.swing.JPanel {
         });
         jTabbedPane1.addTab("Funding", btnFunding);
 
-        add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 610, 60));
+        add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, 610, 60));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\kuchi\\OneDrive\\Desktop\\UI images\\NGO2.jpg")); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 700, 510));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UiImagesssss/vecteezy_volunteers-take-care-senior-disabled-people-cartoon-vector_8484615.jpg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1540, 850));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -120,7 +122,7 @@ public class NMS extends javax.swing.JPanel {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnFunding;
     private javax.swing.JButton btnNgo;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }

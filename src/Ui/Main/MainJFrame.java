@@ -33,7 +33,7 @@ public class MainJFrame extends javax.swing.JFrame {
         initComponents();
 //        ngoManagerList = ngoManager();
         system = db4oUtil.retrieveSystem();
-        System.out.println(system);
+//        System.out.println(system);
         initializeApp();
         
         

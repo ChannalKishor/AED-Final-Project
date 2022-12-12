@@ -37,6 +37,16 @@ public class TeacherApplyDirectory {
         appList.remove(p);
     }
     
+    public boolean uiqueJobAppId(String id) {
+
+        for (TeacherApply d : appList) {
+
+            if (id.equals(d.getAppId())) {
+                return false;
+            }
+        }
+            return true; 
+    } 
  
 
 }

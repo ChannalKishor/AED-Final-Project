@@ -160,30 +160,30 @@ public class SchoolLoginPage extends javax.swing.JPanel {
          
 
         try{
-            if(role.equals("School Admin")){
-                if(username.equals("Admin") && password.equals("pass")){
+//            if(role.equals("School Admin")){
+            if(role.equals("School Admin")&&(username.equals("Admin") && password.equals("pass"))){
                     SchoolAdminWorkspace adminJPanel = new SchoolAdminWorkspace(cardPanel, system, dB4OUtil);
                     CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
                     cardPanel.add("adminJPanel",adminJPanel);
                     cardLayout.next(cardPanel);
                 }
-            }
-            else if(role.equals("Principal")){
-                if(username.equals(principal.getUsername()) && password.equals(principal.getPassword())){
+//            }
+//            else if(role.equals("Principal")){
+            else if(role.equals("Principal")&&(username.equals(principal.getUsername()) && password.equals(principal.getPassword()))){
                     PrincipalWorkspace principalJPanel = new PrincipalWorkspace(principal,cardPanel, system, dB4OUtil);
                     CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
                     cardPanel.add("ngoManagerJPanel",principalJPanel);
                     cardLayout.next(cardPanel);
                 }
-            }
-            else if(role.equals("Teacher")){
-                if(username.equals(teacher.getUsername()) && password.equals(teacher.getPassword())){
+//            }
+//            else if(role.equals("Teacher")){
+            else if(role.equals("Teacher")&&(username.equals(teacher.getUsername()) && password.equals(teacher.getPassword()))){
                     TeacherWorkspace caretakerJPanel = new TeacherWorkspace(teacher,cardPanel, system, dB4OUtil);
                     CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
                     cardPanel.add("caretakerJPanel",caretakerJPanel);
                     cardLayout.next(cardPanel);
                 }
-            }
+//            }
             else{
                 JOptionPane.showMessageDialog(this, "Please enter the correct username and password and role.");
             }

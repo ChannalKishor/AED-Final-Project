@@ -105,7 +105,7 @@ public class Patient {
   
     @Override
     public String toString(){
-        String n = String.valueOf(name);
+        String n = String.valueOf(patientId);
         return n;
     }
     

@@ -43,6 +43,10 @@ public class SMS extends javax.swing.JPanel {
         btnBack = new javax.swing.JButton();
         btnSchool = new javax.swing.JButton();
         btnApplications = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -50,47 +54,33 @@ public class SMS extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 33, -1, -1));
 
+        btnSchool.setBackground(new java.awt.Color(204, 204, 204));
+        btnSchool.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         btnSchool.setText("School");
         btnSchool.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSchoolActionPerformed(evt);
             }
         });
+        add(btnSchool, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, 210, -1));
 
+        btnApplications.setBackground(new java.awt.Color(204, 204, 204));
+        btnApplications.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         btnApplications.setText("Teacher Applications");
         btnApplications.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnApplicationsActionPerformed(evt);
             }
         });
+        add(btnApplications, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 70, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnBack)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(272, 272, 272)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnApplications, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnSchool, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(316, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addComponent(btnBack)
-                .addGap(87, 87, 87)
-                .addComponent(btnSchool)
-                .addGap(86, 86, 86)
-                .addComponent(btnApplications)
-                .addContainerGap(378, Short.MAX_VALUE))
-        );
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UiImagesssss/school.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1290, 730));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -122,5 +112,6 @@ public class SMS extends javax.swing.JPanel {
     private javax.swing.JButton btnApplications;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSchool;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

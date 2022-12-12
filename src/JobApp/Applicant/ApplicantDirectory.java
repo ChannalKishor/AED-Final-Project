@@ -48,5 +48,15 @@ public class ApplicantDirectory {
         return null;
     }
 
+     public boolean uiqueApplicantUsername(String id) {
+
+        for (Applicant d : appList) {
+
+            if (id.equals(d.getUsername())) {
+                return false;
+            }
+        }
+            return true; 
+    } 
             
 }
