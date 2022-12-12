@@ -5,6 +5,7 @@
 package Ngo.NgoManager;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -37,9 +38,36 @@ public class NgoManagerDirectory {
         ngoManagerList.remove(m);
     }
     
+    public NgoManager findNgoManager(String username, String password){
+        for(NgoManager n: ngoManagerList){
+            if(n.getUsername().equals(username) && n.getPassword().equals(password)){
+                return n;
+            }
+            
+        }
+        return null;
+    }
     
+    public boolean uiqueNgoManagerId(String id) {
+
+        for (NgoManager d : ngoManagerList) {
+
+            if (id.equals(d.getNgoManagerId())) {
+                return false;
+            }
+        }
+            return true; 
+    } 
     
-    
+    public boolean uniqueNgoManagerUsername(String username){
+        for (NgoManager d: ngoManagerList) {
+
+            if (username.equals(d.getUsername())) {
+                return false;
+            }
+        }
+            return true;
+    }
     
     
 }

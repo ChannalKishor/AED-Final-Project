@@ -4,7 +4,7 @@
  */
 package Ui.Main;
 
-import Ngo.NgoManager.NgoManagerDirectory;
+
 import System.Directories.DB4OUtil;
 import System.Directories.MainSystem;
 import java.awt.CardLayout;
@@ -42,34 +42,62 @@ public class HomePage extends javax.swing.JPanel {
     private void initComponents() {
 
         lblTitle = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
         btnNMS = new javax.swing.JButton();
         btnHMS = new javax.swing.JButton();
+        btnPMS = new javax.swing.JButton();
         btnSMS = new javax.swing.JButton();
-        btnFMS = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("Home Page");
-        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 13, 800, -1));
+        add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 300, -1));
+        add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, -1, -1));
 
+        jTabbedPane2.setFont(new java.awt.Font("Rockwell", 0, 16)); // NOI18N
+
+        btnNMS.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
         btnNMS.setText("NGO Management System");
         btnNMS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNMSActionPerformed(evt);
             }
         });
-        add(btnNMS, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 151, 191, -1));
+        jTabbedPane2.addTab("NGO", btnNMS);
 
         btnHMS.setText("Hospital Management System");
-        add(btnHMS, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 209, -1, -1));
+        btnHMS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHMSActionPerformed(evt);
+            }
+        });
+        jTabbedPane2.addTab("Hospital", btnHMS);
+
+        btnPMS.setText("Medical Store Management System");
+        btnPMS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPMSActionPerformed(evt);
+            }
+        });
+        jTabbedPane2.addTab("Pharmacy", btnPMS);
 
         btnSMS.setText("School Management System");
-        add(btnSMS, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 276, 191, -1));
+        btnSMS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSMSActionPerformed(evt);
+            }
+        });
+        jTabbedPane2.addTab("School", btnSMS);
 
-        btnFMS.setText("Food Management System");
-        add(btnFMS, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 346, 191, -1));
+        add(jTabbedPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 520, 90));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UiImagesssss/NGOhomeBig.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1300, 750));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNMSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNMSActionPerformed
@@ -80,12 +108,39 @@ public class HomePage extends javax.swing.JPanel {
         cardLayout.next(cardPanel);
     }//GEN-LAST:event_btnNMSActionPerformed
 
+    private void btnSMSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSMSActionPerformed
+        // TODO add your handling code here:
+        CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
+        SMS panelSms = new SMS(cardPanel, system, dB4OUtil);
+        cardPanel.add("Sms", panelSms);
+        cardLayout.next(cardPanel);
+    }//GEN-LAST:event_btnSMSActionPerformed
+
+    private void btnHMSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHMSActionPerformed
+        // TODO add your handling code here:
+        CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
+        HMS panelHms = new HMS(cardPanel, system, dB4OUtil);
+        cardPanel.add("Sms", panelHms);
+        cardLayout.next(cardPanel);
+    }//GEN-LAST:event_btnHMSActionPerformed
+
+    private void btnPMSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPMSActionPerformed
+        // TODO add your handling code here:
+        CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
+        PMS panelPms = new PMS(cardPanel, system, dB4OUtil);
+        cardPanel.add("Pms", panelPms);
+        cardLayout.next(cardPanel);
+    }//GEN-LAST:event_btnPMSActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnFMS;
     private javax.swing.JButton btnHMS;
     private javax.swing.JButton btnNMS;
+    private javax.swing.JButton btnPMS;
     private javax.swing.JButton btnSMS;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JLabel lblTitle;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,10 +4,10 @@
  */
 package Ui.Main;
 
-import Ngo.NgoManager.NgoManagerDirectory;
 import System.Directories.DB4OUtil;
 import System.Directories.MainSystem;
-import Ui.LoginPage.NmsLoginPage;
+import Ui.LoginPage.FundingLoginPage;
+import Ui.LoginPage.NgoLoginPage;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -45,11 +45,27 @@ public class NMS extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnBack = new javax.swing.JButton();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         btnNgo = new javax.swing.JButton();
         btnFunding = new javax.swing.JButton();
-        btnBack = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnBack.setBackground(new java.awt.Color(204, 204, 204));
+        btnBack.setText("Back");
+        btnBack.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 2, true));
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 60, 20));
+
+        jTabbedPane1.setBackground(new java.awt.Color(204, 204, 204));
+        jTabbedPane1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
 
         btnNgo.setText("NGOs");
         btnNgo.addActionListener(new java.awt.event.ActionListener() {
@@ -57,18 +73,22 @@ public class NMS extends javax.swing.JPanel {
                 btnNgoActionPerformed(evt);
             }
         });
-        add(btnNgo, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 163, 75, -1));
+        jTabbedPane1.addTab("NGOs", btnNgo);
 
         btnFunding.setText("Funding");
-        add(btnFunding, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 274, -1, -1));
-
-        btnBack.setText("Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
+        btnFunding.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
+                btnFundingActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(46, 51, -1, -1));
+        jTabbedPane1.addTab("Funding", btnFunding);
+
+        add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, 610, 60));
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UiImagesssss/vecteezy_volunteers-take-care-senior-disabled-people-cartoon-vector_8484615.jpg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1540, 850));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -83,16 +103,26 @@ public class NMS extends javax.swing.JPanel {
 
     private void btnNgoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNgoActionPerformed
         // TODO add your handling code here:
-         NmsLoginPage loginJPanel = new NmsLoginPage(cardPanel, system, dB4OUtil);
+         NgoLoginPage ngologinJPanel = new NgoLoginPage(cardPanel, system, dB4OUtil);
          CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
-         cardPanel.add("loginJPanel",loginJPanel);
+         cardPanel.add("loginJPanel",ngologinJPanel);
          cardLayout.next(cardPanel);
     }//GEN-LAST:event_btnNgoActionPerformed
+
+    private void btnFundingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFundingActionPerformed
+        // TODO add your handling code here:
+         FundingLoginPage fundloginJPanel = new FundingLoginPage(cardPanel, system, dB4OUtil);
+         CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
+         cardPanel.add("loginJPanel",fundloginJPanel);
+         cardLayout.next(cardPanel);
+    }//GEN-LAST:event_btnFundingActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnFunding;
     private javax.swing.JButton btnNgo;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }
